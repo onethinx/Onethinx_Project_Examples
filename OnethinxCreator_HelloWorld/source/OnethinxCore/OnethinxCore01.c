@@ -92,7 +92,6 @@ volatile uint32_t callBackDone;
 
 void CM4_MessageCallback(uint32_t *msg)
 {
-	msg = msg;	// Supress 'unused' warning
 }
 
 void CM4_ReleaseCallback(void)
@@ -181,6 +180,14 @@ coreStatus_t LoRaWAN_Send(uint8_t * bufferPtr, uint8_t length, WaitMode_e waitMo
 	coreArguments.arg1 = (uint32_t) bufferPtr;
 	coreArguments.arg2 = length;
 	return coreComm(coreFunction_LW_send, waitMode);
+}
+
+coreStatus_t LoRaWAN_SendMac(uint8_t* bufferPtr, uint8_t length, WaitMode_e waitMode, MACcmd_e MACcmd)
+{
+	coreArguments.arg1 = (uint32_t) bufferPtr;
+	coreArguments.arg2 = length;
+	coreArguments.arg3 = MACcmd;
+	return coreComm(coreFunction_LW_sendMac, waitMode);
 }
 
 coreStatus_t LoRaWAN_GetRXdata(uint8_t * RXdata, uint8_t length)

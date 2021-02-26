@@ -54,7 +54,11 @@
  * 0x000000B8	Restructured stack core, added low-power idle/join
  * 0x000000B9	Fix ADR
  * 0x000000BA	Unlock functions to use Port 6 & 7 for Capsense and SDW IOs
- *
+ * 0x000000BB	Fix TX timeout setting for EU SF12/125 (payload > 27 bytes), Fix Flashwrites
+ * 0x000000BC	Fix LoRa to LoRa Communication
+ * 0x000000BD	Added FSK modulation
+ * 0x000000BE	Fixed small timing issues, MAC commands, restructured stack etc.
+ * 
  ********************************************************************************/
 
 #ifndef ONETHINXCORE01_H
@@ -64,8 +68,8 @@
 #include <stdbool.h>
 
 /* Do not modify. If stack version does not match, implement correct OnethinxCore.h & .c API drivers from the Onethinx Github page */
-#define minimumVersion 	0x000000B8
-#define maximumVersion 	0x000000BA
+#define minimumVersion 	0x000000BD
+#define maximumVersion 	0x000000BE
 
 typedef struct arr8b_t  { uint8_t bytes[8];  } arr8b_t;
 typedef struct arr16b_t { uint8_t bytes[16]; } arr16b_t;
@@ -79,6 +83,7 @@ typedef enum {
 	coreFunction_GetInfo				= 0x03,
 	coreFunction_LW_join				= 0x20,
 	coreFunction_LW_send				= 0x30,
+	coreFunction_LW_sendMac				= 0x31,
 	coreFunction_LW_getRXdata			= 0x40,
 	coreFunction_LW_sleep				= 0x50,
 	coreFunction_LW_MACsave				= 0x60,
@@ -283,6 +288,9 @@ typedef enum __attribute__ ((__packed__)) {
 	mac_InvalidPacket_Error 	= 0x09,
 	mac_RXtimeout_Error 		= 0x0A,
 	mac_CRC_Error       		= 0x0B,
+	mac_FCNT_Error       		= 0x0C,
+	mac_Confirmation_Error 		= 0x0D,
+	mac_PayloadSize_Error 		= 0x0E,
 	mac_UndefinedError			= 0xFA,
 } macErrors_e;
 
@@ -321,14 +329,18 @@ typedef union {
 	{
 		macErrors_e 			errorStatus  			: 8;	//!< MAC Errors
 		uint8_t		 			bytesToRead  			: 8;	//!< Total bytes in Receive buffer
-		uint8_t							 				: 2;	//!< reserved
-		bool 					confDown     			: 1;	//!< Is a confirmed downlink sent? (implemented since Stack version 0x000000B5)
+		uint8_t							 				: 1;	//!< reserved
+		bool 					MACcmdReceived 			: 1;	//!< The MAC received a MAC command (implemented since Stack version 0x000000BC)
+		bool 					confDown     			: 1;	//!< Is a confirmed downlink received? (implemented since Stack version 0x000000B5)
 		bool 					isConfigured			: 1;	//!< The MAC is configured?
 		bool 					messageReceived			: 1;	//!< The MAC received a message
 		bool 					isJoined 				: 1;	//!< Is Device Joined?
 		bool 					isBusy					: 1;	//!< Is the MAC busy?
 		bool 					isPublicNetwork			: 1;	//!< True for LoRaWAN Public Network
 		uint32_t				devAddr;						//!< The Device address received when joining the network
+		uint8_t 				Margin;							//!< The Demodulation Margin (in dB above the demodulation floor) for last LinkCheckReq command (implemented since Stack version 0x000000BC)
+		uint8_t 				GwCnt;							//!< The number of gateways that successfully received the last LinkCheckReq command (implemented since Stack version 0x000000BC)
+		uint8_t 				fPort;							//!< The port number of the last received packet (implemented since Stack version 0x000000BC)
 	};
 	uint8_t reserved[16];
 }  macStatus_t;
@@ -336,8 +348,9 @@ typedef union {
 typedef union {
 	struct
 	{
-		uint32_t				version;
+		uint32_t				version;					  //!< The version of the stack
 		systemErrors_e 			errorStatus  			: 8;  //!< System Errors
+		uint8_t					batteryLevel;				  //!< The battery level for the DevStatusAns command (network check on battery level) to be set optionally by the user (0 = external, 1 = minimum battery, 254 = maximum battery, 255 = not implemented)
 		uint8_t							 				: 5;  //!< reserved
 		bool 					breakCurrentFunction	: 1;  //!< Break current execution
 		bool 					isStarted  				: 1;  //!< System is started?
@@ -410,6 +423,13 @@ typedef enum  {
 	coresBoth	 				= 3
 } sleepCores_e;
 
+typedef enum  {
+	MACcmd_None						= 0,
+	LinkCheckReq					= 1,
+	DeviceTimeReq	 				= 2,
+	LinkCheck_DeviceTimeReq	 		= 3
+} MACcmd_e;
+
 #define 	wakeUpPinHigh(pullDown)							((wakeUpPin_t) { .enabled = true, .risingEdge = true, .internalPullUpDown =  pullDown})
 #define 	wakeUpPinLow(pullUp) 							((wakeUpPin_t) { .enabled = true, .risingEdge = false, .internalPullUpDown =  pullUp})
 #define 	wakeUpPinOff      								((wakeUpPin_t) { .enabled = false })
@@ -470,6 +490,7 @@ coreStatus_t				LoRaWAN_FlashRead(uint8_t* buffer, uint8_t block, uint8_t length
 coreStatus_t				LoRaWAN_FlashWrite(uint8_t* buffer, uint8_t block, uint8_t length);
 coreStatus_t 				LoRaWAN_GetRXdata(uint8_t * RXdata, uint8_t length);
 coreStatus_t 				LoRaWAN_Send(uint8_t* buffer, uint8_t length, WaitMode_e waitMode);
+coreStatus_t 				LoRaWAN_SendMac(uint8_t* buffer, uint8_t length, WaitMode_e waitMode, MACcmd_e MACcmd);
 coreStatus_t 				LoRaWAN_Sleep(sleepConfig_t * sleepConfig);
 coreStatus_t 				LoRaWAN_GetStatus();
 errorStatus_t 				LoRaWAN_GetError();
