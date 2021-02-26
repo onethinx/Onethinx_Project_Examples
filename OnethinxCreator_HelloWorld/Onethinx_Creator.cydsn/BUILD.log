@@ -1,0 +1,15 @@
+--------------- Build Started: 10/11/2020 12:25:00 Project: Onethinx_Creator, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+The compile step is up to date, no work needs to be done.
+The link step is up to date, no work needs to be done.
+The compile step is up to date, no work needs to be done.
+The link step is up to date, no work needs to be done.
+CoreStripper.exe 
+****************************************************
+*            Onethinx CoreStripper Tool            *
+*               (c) Rolf / Onethinx                *
+****************************************************
+Target file: R:\VScode\GIT\Onethinx_Creator\Onethinx_Creator.cydsn\Generated_Source\PSoC6\cyfitter_cfg.c
+Found Cy_SystemInit() at line 285, skipping code...
+Found clock setting at line 288, adding code...
+--------------- Build Succeeded: 10/11/2020 12:25:02 ---------------
