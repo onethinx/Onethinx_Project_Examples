@@ -1,5 +1,5 @@
-# Onethinx_Creator_Project
-This project combines the Visual Code setup for the Onethinx Core Module with the magnificent PSoC Creator Schematic Editor &amp; Design Wide Resources Editor
+# Onethinx_Creator_Project_Examples
+This project combines the Visual Code setup for the Onethinx Core Module with the magnificent PSoC Creator Schematic Editor &amp; Design Wide Resources Editor. Please see [Onethinx Creator Project](https://github.com/onethinx/Onethinx_Creator_Project) for details.
 
 ## Preparation
 1. Make sure you have the VS Code IDE & Dependencies Pack setup done:
