@@ -87,8 +87,7 @@ sleepConfig_t sleepConfig =
 coreStatus_t 	coreStatus;
 coreInfo_t 		coreInfo;
 
-uint8_t RXbuffer[64];
-uint8_t TXbuffer[64];
+#define TXbuffer "Onethinx Capsense"
 
 uint8_t wakeUpCounter = 0;
 
@@ -128,26 +127,6 @@ int main(void)
 		}
 	}
 
-	/* Create buffer to send */
-	j=0;
-	TXbuffer[j++] = 0x4f; /* O */
-	TXbuffer[j++] = 0x6e; /* n */
-	TXbuffer[j++] = 0x65; /* e */
-	TXbuffer[j++] = 0x74; /* t */
-	TXbuffer[j++] = 0x68; /* h */
-	TXbuffer[j++] = 0x69; /* i */
-	TXbuffer[j++] = 0x6e; /* n */
-	TXbuffer[j++] = 0x78; /* x */
-	TXbuffer[j++] = 0x20; /*   */
-	TXbuffer[j++] = 0x43; /* C */
-	TXbuffer[j++] = 0x61; /* a */
-	TXbuffer[j++] = 0x70; /* p */
-	TXbuffer[j++] = 0x53; /* S */
-	TXbuffer[j++] = 0x65; /* e */
-	TXbuffer[j++] = 0x6e; /* n */
-	TXbuffer[j++] = 0x73; /* s */
-	TXbuffer[j++] = 0x65; /* e */
-
 	CapSense_Start();
 	CapSense_InitializeAllBaselines();
 	CapSense_ScanAllWidgets();
@@ -173,7 +152,7 @@ int main(void)
 			Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, 1);
 
 			/* Send message over LoRaWAN */
-			coreStatus = LoRaWAN_Send(TXbuffer, j, M4_WaitDeepSleep);
+			coreStatus = LoRaWAN_Send((uint8_t *) TXbuffer, sizeof (TXbuffer), M4_WaitDeepSleep);
 
 			/* Turn led off before sleep */
 			Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, 0);
