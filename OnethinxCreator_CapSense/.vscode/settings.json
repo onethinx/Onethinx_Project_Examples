@@ -33,6 +33,7 @@
   "files.associations": {
     "project.h": "c",
     "capsense_configuration.h": "c",
-    "capsense_filter.h": "c"
+    "capsense_filter.h": "c",
+    "capsense_smartsense_ll.h": "c"
   }
 }

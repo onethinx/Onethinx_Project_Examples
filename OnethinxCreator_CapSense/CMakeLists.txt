@@ -172,6 +172,18 @@ endif()
 
 add_executable(${PROJECT_NAME}.elf ${PROJECT_SRCS} ${PDL_SRCS})
 
+
+######################################################################
+#
+#	LIBRARIES  Adding the Capsense library
+#
+######################################################################
+add_library(CapSense_Library_GCC_M4 STATIC IMPORTED)
+
+SET_TARGET_PROPERTIES(CapSense_Library_GCC_M4 PROPERTIES IMPORTED_LOCATION "${CREATOR_DIR}/CapSense_Library_GCC_M4.a")
+
+TARGET_LINK_LIBRARIES(${PROJECT_NAME}.elf CapSense_Library_GCC_M4)
+
 ######################################################################
 #
 #	Build actions
