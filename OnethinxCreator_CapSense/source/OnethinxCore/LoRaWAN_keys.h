@@ -1,0 +1,40 @@
+/* ==========================================================
+ *    ___             _   _     _			
+ *   / _ \ _ __   ___| |_| |__ (_)_ __ __  __
+ *  | | | | '_ \ / _ \ __| '_ \| | '_ \\ \/ /
+ *  | |_| | | | |  __/ |_| | | | | | | |>  < 
+ *   \___/|_| |_|\___|\__|_| |_|_|_| |_/_/\_\
+ *									   
+ * Copyright Onethinx, 2018
+ * All Rights Reserved
+ *
+ * UNPUBLISHED, LICENSED SOFTWARE.
+ * CONFIDENTIAL AND PROPRIETARY INFORMATION
+ * WHICH IS THE PROPERTY OF Onethinx BV
+ *
+ * ==========================================================
+*/
+
+#ifndef LORAWAN_KEYS_H
+#define LORAWAN_KEYS_H
+
+#include "OnethinxCore01.h"
+
+// LoRaWAN_keys_t TTN_OTAAkeys = {
+// 	.KeyType 						= OTAA_10x_key,
+// 	.PublicNetwork					= true,
+// 	.OTAA_10x.DevEui				= {{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }},
+// 	.OTAA_10x.AppEui				= {{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }},
+// 	.OTAA_10x.AppKey				= {{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+// };
+
+LoRaWAN_keys_t TTN_OTAAkeys = {
+	.KeyType 						= OTAA_10x_key,
+	.PublicNetwork					= true,
+	.OTAA_10x.DevEui				= {{ 0x00, 0x05, 0xB2, 0x77, 0x8F, 0x85, 0x25, 0x15 }},
+	.OTAA_10x.AppEui				= {{ 0x70, 0xB3, 0xD5, 0x7E, 0xD0, 0x01, 0x8B, 0xD6 }},
+	.OTAA_10x.AppKey				= {{ 0x19, 0x1F, 0xC3, 0x18, 0x08, 0x6E, 0xDD, 0xE7, 0xFB, 0x82, 0xCA, 0xB9, 0xF5, 0x5E, 0xC4, 0x8B }}
+};
+
+#endif /* LORAWAN_KEYS_H */
+/* [] END OF FILE */
