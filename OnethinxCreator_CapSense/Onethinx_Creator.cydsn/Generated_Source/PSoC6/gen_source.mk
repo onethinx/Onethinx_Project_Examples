@@ -29,6 +29,11 @@ GEN_SEP_C_SOURCE_CortexM0p=\
 	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/trigmux/cy_trigmux.c\
 	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/wdt/cy_wdt.c\
 	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/device/cy_device.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_common.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_i2c.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_ezi2c.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_spi.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_uart.c\
 	$(GEN_SOURCE_DIR)/pdl/middleware/ble/cy_ble_clk.c\
 	$(GEN_SOURCE_DIR)/CapSense_Control.c\
 	$(GEN_SOURCE_DIR)/CapSense_Processing.c\
@@ -37,7 +42,8 @@ GEN_SEP_C_SOURCE_CortexM0p=\
 	$(GEN_SOURCE_DIR)/CapSense_Filter.c\
 	$(GEN_SOURCE_DIR)/CapSense_Sensing.c\
 	$(GEN_SOURCE_DIR)/CapSense_INT.c\
-	$(GEN_SOURCE_DIR)/CapSense_SensingCSD_LL.c
+	$(GEN_SOURCE_DIR)/CapSense_SensingCSD_LL.c\
+	$(GEN_SOURCE_DIR)/I2C_CapSense.c
 
 GEN_LIBS_CortexM0p=\
 
@@ -68,6 +74,11 @@ GEN_SEP_C_SOURCE_CortexM4=\
 	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/trigmux/cy_trigmux.c\
 	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/wdt/cy_wdt.c\
 	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/device/cy_device.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_common.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_i2c.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_ezi2c.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_spi.c\
+	$(GEN_SOURCE_DIR)/pdl/drivers/peripheral/scb/cy_scb_uart.c\
 	$(GEN_SOURCE_DIR)/pdl/middleware/ble/cy_ble_clk.c\
 	$(GEN_SOURCE_DIR)/CapSense_Control.c\
 	$(GEN_SOURCE_DIR)/CapSense_Processing.c\
@@ -76,7 +87,8 @@ GEN_SEP_C_SOURCE_CortexM4=\
 	$(GEN_SOURCE_DIR)/CapSense_Filter.c\
 	$(GEN_SOURCE_DIR)/CapSense_Sensing.c\
 	$(GEN_SOURCE_DIR)/CapSense_INT.c\
-	$(GEN_SOURCE_DIR)/CapSense_SensingCSD_LL.c
+	$(GEN_SOURCE_DIR)/CapSense_SensingCSD_LL.c\
+	$(GEN_SOURCE_DIR)/I2C_CapSense.c
 
 GEN_LIBS_CortexM4=\
 

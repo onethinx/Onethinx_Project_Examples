@@ -1,8 +1,6 @@
-# Onethinx_Creator_HelloWorld
-This basic example shows how to send a "Hello World" text over LoRaWAN.
+# Onethinx_Creator_CapSense
+This example shows the use of CapSense with Onethinx LoRaWAN module.
 ## Description
-The red LED will flash with the rate defined in the PSoC Creator project.
-The blue LED will first be on during the join procedure.
-If successfully joined, the blue LED will turn off for one second. 
-A loop where the char-values of 'Hello World' will be sent every 10s is then entered.
-If not joined -this may take a long while-, the blue LED will blink fast forever.
+Blue LED will turn on while joining. After the device is joined, it will go to sleep and wake up from it every 2 seconds to check if the CapSense button is being held. If the button is held for over 10 seconds total, it will send a message "Onethinx CapSense" over LoRaWAN.
+
+Uses 2.2nF capacitor on the IO_3 (which is the Cmod pin). CapSense sense element is a one cent coin soldered to a wire, a 560ohm resistor and the P9.9 of the DevKit.

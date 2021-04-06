@@ -104,37 +104,37 @@
 #define CapSense_BUTTON0_RESOLUTION_VALUE                   (CapSense_dsRam.wdgtList.button0.resolution)
 #define CapSense_BUTTON0_RESOLUTION_OFFSET                  (30u)
 #define CapSense_BUTTON0_RESOLUTION_SIZE                    (2u)
-#define CapSense_BUTTON0_RESOLUTION_PARAM_ID                (0x8080001Eu)
+#define CapSense_BUTTON0_RESOLUTION_PARAM_ID                (0xAB80001Eu)
 
 #define CapSense_BUTTON0_FINGER_TH_VALUE                    (CapSense_dsRam.wdgtList.button0.fingerTh)
 #define CapSense_BUTTON0_FINGER_TH_OFFSET                   (32u)
 #define CapSense_BUTTON0_FINGER_TH_SIZE                     (2u)
-#define CapSense_BUTTON0_FINGER_TH_PARAM_ID                 (0x80800020u)
+#define CapSense_BUTTON0_FINGER_TH_PARAM_ID                 (0xAB800020u)
 
 #define CapSense_BUTTON0_NOISE_TH_VALUE                     (CapSense_dsRam.wdgtList.button0.noiseTh)
 #define CapSense_BUTTON0_NOISE_TH_OFFSET                    (34u)
 #define CapSense_BUTTON0_NOISE_TH_SIZE                      (1u)
-#define CapSense_BUTTON0_NOISE_TH_PARAM_ID                  (0x44800022u)
+#define CapSense_BUTTON0_NOISE_TH_PARAM_ID                  (0x6F800022u)
 
 #define CapSense_BUTTON0_NNOISE_TH_VALUE                    (CapSense_dsRam.wdgtList.button0.nNoiseTh)
 #define CapSense_BUTTON0_NNOISE_TH_OFFSET                   (35u)
 #define CapSense_BUTTON0_NNOISE_TH_SIZE                     (1u)
-#define CapSense_BUTTON0_NNOISE_TH_PARAM_ID                 (0x42800023u)
+#define CapSense_BUTTON0_NNOISE_TH_PARAM_ID                 (0x69800023u)
 
 #define CapSense_BUTTON0_HYSTERESIS_VALUE                   (CapSense_dsRam.wdgtList.button0.hysteresis)
 #define CapSense_BUTTON0_HYSTERESIS_OFFSET                  (36u)
 #define CapSense_BUTTON0_HYSTERESIS_SIZE                    (1u)
-#define CapSense_BUTTON0_HYSTERESIS_PARAM_ID                (0x49800024u)
+#define CapSense_BUTTON0_HYSTERESIS_PARAM_ID                (0x62800024u)
 
 #define CapSense_BUTTON0_ON_DEBOUNCE_VALUE                  (CapSense_dsRam.wdgtList.button0.onDebounce)
 #define CapSense_BUTTON0_ON_DEBOUNCE_OFFSET                 (37u)
 #define CapSense_BUTTON0_ON_DEBOUNCE_SIZE                   (1u)
-#define CapSense_BUTTON0_ON_DEBOUNCE_PARAM_ID               (0x4F800025u)
+#define CapSense_BUTTON0_ON_DEBOUNCE_PARAM_ID               (0x64800025u)
 
 #define CapSense_BUTTON0_LOW_BSLN_RST_VALUE                 (CapSense_dsRam.wdgtList.button0.lowBslnRst)
 #define CapSense_BUTTON0_LOW_BSLN_RST_OFFSET                (38u)
 #define CapSense_BUTTON0_LOW_BSLN_RST_SIZE                  (1u)
-#define CapSense_BUTTON0_LOW_BSLN_RST_PARAM_ID              (0x45800026u)
+#define CapSense_BUTTON0_LOW_BSLN_RST_PARAM_ID              (0x6E800026u)
 
 #define CapSense_BUTTON0_IDAC_MOD0_VALUE                    (CapSense_dsRam.wdgtList.button0.idacMod[0u])
 #define CapSense_BUTTON0_IDAC_MOD0_OFFSET                   (39u)
@@ -144,72 +144,62 @@
 #define CapSense_BUTTON0_SNS_CLK_VALUE                      (CapSense_dsRam.wdgtList.button0.snsClk)
 #define CapSense_BUTTON0_SNS_CLK_OFFSET                     (40u)
 #define CapSense_BUTTON0_SNS_CLK_SIZE                       (2u)
-#define CapSense_BUTTON0_SNS_CLK_PARAM_ID                   (0x82800028u)
+#define CapSense_BUTTON0_SNS_CLK_PARAM_ID                   (0xA9800028u)
 
 #define CapSense_BUTTON0_SNS_CLK_SOURCE_VALUE               (CapSense_dsRam.wdgtList.button0.snsClkSource)
 #define CapSense_BUTTON0_SNS_CLK_SOURCE_OFFSET              (42u)
 #define CapSense_BUTTON0_SNS_CLK_SOURCE_SIZE                (1u)
 #define CapSense_BUTTON0_SNS_CLK_SOURCE_PARAM_ID            (0x4680002Au)
 
-#define CapSense_BUTTON0_FINGER_CAP_VALUE                   (CapSense_dsRam.wdgtList.button0.fingerCap)
-#define CapSense_BUTTON0_FINGER_CAP_OFFSET                  (44u)
-#define CapSense_BUTTON0_FINGER_CAP_SIZE                    (2u)
-#define CapSense_BUTTON0_FINGER_CAP_PARAM_ID                (0xA500002Cu)
-
-#define CapSense_BUTTON0_SIGPFC_VALUE                       (CapSense_dsRam.wdgtList.button0.sigPFC)
-#define CapSense_BUTTON0_SIGPFC_OFFSET                      (46u)
-#define CapSense_BUTTON0_SIGPFC_SIZE                        (2u)
-#define CapSense_BUTTON0_SIGPFC_PARAM_ID                    (0xA900002Eu)
-
 #define CapSense_BUTTON0_SNS0_RAW0_VALUE                    (CapSense_dsRam.snsList.button0[0u].raw[0u])
-#define CapSense_BUTTON0_SNS0_RAW0_OFFSET                   (48u)
+#define CapSense_BUTTON0_SNS0_RAW0_OFFSET                   (44u)
 #define CapSense_BUTTON0_SNS0_RAW0_SIZE                     (2u)
-#define CapSense_BUTTON0_SNS0_RAW0_PARAM_ID                 (0x88000030u)
+#define CapSense_BUTTON0_SNS0_RAW0_PARAM_ID                 (0x8E00002Cu)
 
 #define CapSense_BUTTON0_SNS0_BSLN0_VALUE                   (CapSense_dsRam.snsList.button0[0u].bsln[0u])
-#define CapSense_BUTTON0_SNS0_BSLN0_OFFSET                  (50u)
+#define CapSense_BUTTON0_SNS0_BSLN0_OFFSET                  (46u)
 #define CapSense_BUTTON0_SNS0_BSLN0_SIZE                    (2u)
-#define CapSense_BUTTON0_SNS0_BSLN0_PARAM_ID                (0x84000032u)
+#define CapSense_BUTTON0_SNS0_BSLN0_PARAM_ID                (0x8200002Eu)
 
 #define CapSense_BUTTON0_SNS0_BSLN_EXT0_VALUE               (CapSense_dsRam.snsList.button0[0u].bslnExt[0u])
-#define CapSense_BUTTON0_SNS0_BSLN_EXT0_OFFSET              (52u)
+#define CapSense_BUTTON0_SNS0_BSLN_EXT0_OFFSET              (48u)
 #define CapSense_BUTTON0_SNS0_BSLN_EXT0_SIZE                (1u)
-#define CapSense_BUTTON0_SNS0_BSLN_EXT0_PARAM_ID            (0x41000034u)
+#define CapSense_BUTTON0_SNS0_BSLN_EXT0_PARAM_ID            (0x40000030u)
 
 #define CapSense_BUTTON0_SNS0_DIFF_VALUE                    (CapSense_dsRam.snsList.button0[0u].diff)
-#define CapSense_BUTTON0_SNS0_DIFF_OFFSET                   (54u)
+#define CapSense_BUTTON0_SNS0_DIFF_OFFSET                   (50u)
 #define CapSense_BUTTON0_SNS0_DIFF_SIZE                     (2u)
-#define CapSense_BUTTON0_SNS0_DIFF_PARAM_ID                 (0x85000036u)
+#define CapSense_BUTTON0_SNS0_DIFF_PARAM_ID                 (0x84000032u)
 
 #define CapSense_BUTTON0_SNS0_NEG_BSLN_RST_CNT0_VALUE       (CapSense_dsRam.snsList.button0[0u].negBslnRstCnt[0u])
-#define CapSense_BUTTON0_SNS0_NEG_BSLN_RST_CNT0_OFFSET      (56u)
+#define CapSense_BUTTON0_SNS0_NEG_BSLN_RST_CNT0_OFFSET      (52u)
 #define CapSense_BUTTON0_SNS0_NEG_BSLN_RST_CNT0_SIZE        (1u)
-#define CapSense_BUTTON0_SNS0_NEG_BSLN_RST_CNT0_PARAM_ID    (0x42000038u)
+#define CapSense_BUTTON0_SNS0_NEG_BSLN_RST_CNT0_PARAM_ID    (0x41000034u)
 
 #define CapSense_BUTTON0_SNS0_IDAC_COMP0_VALUE              (CapSense_dsRam.snsList.button0[0u].idacComp[0u])
-#define CapSense_BUTTON0_SNS0_IDAC_COMP0_OFFSET             (57u)
+#define CapSense_BUTTON0_SNS0_IDAC_COMP0_OFFSET             (53u)
 #define CapSense_BUTTON0_SNS0_IDAC_COMP0_SIZE               (1u)
-#define CapSense_BUTTON0_SNS0_IDAC_COMP0_PARAM_ID           (0x44000039u)
+#define CapSense_BUTTON0_SNS0_IDAC_COMP0_PARAM_ID           (0x47000035u)
 
 #define CapSense_SNR_TEST_WIDGET_ID_VALUE                   (CapSense_dsRam.snrTestWidgetId)
-#define CapSense_SNR_TEST_WIDGET_ID_OFFSET                  (58u)
+#define CapSense_SNR_TEST_WIDGET_ID_OFFSET                  (54u)
 #define CapSense_SNR_TEST_WIDGET_ID_SIZE                    (1u)
-#define CapSense_SNR_TEST_WIDGET_ID_PARAM_ID                (0x6500003Au)
+#define CapSense_SNR_TEST_WIDGET_ID_PARAM_ID                (0x66000036u)
 
 #define CapSense_SNR_TEST_SENSOR_ID_VALUE                   (CapSense_dsRam.snrTestSensorId)
-#define CapSense_SNR_TEST_SENSOR_ID_OFFSET                  (59u)
+#define CapSense_SNR_TEST_SENSOR_ID_OFFSET                  (55u)
 #define CapSense_SNR_TEST_SENSOR_ID_SIZE                    (1u)
-#define CapSense_SNR_TEST_SENSOR_ID_PARAM_ID                (0x6300003Bu)
+#define CapSense_SNR_TEST_SENSOR_ID_PARAM_ID                (0x60000037u)
 
 #define CapSense_SNR_TEST_SCAN_COUNTER_VALUE                (CapSense_dsRam.snrTestScanCounter)
-#define CapSense_SNR_TEST_SCAN_COUNTER_OFFSET               (60u)
+#define CapSense_SNR_TEST_SCAN_COUNTER_OFFSET               (56u)
 #define CapSense_SNR_TEST_SCAN_COUNTER_SIZE                 (2u)
-#define CapSense_SNR_TEST_SCAN_COUNTER_PARAM_ID             (0x8B00003Cu)
+#define CapSense_SNR_TEST_SCAN_COUNTER_PARAM_ID             (0x8A000038u)
 
 #define CapSense_SNR_TEST_RAW_COUNT0_VALUE                  (CapSense_dsRam.snrTestRawCount[0u])
-#define CapSense_SNR_TEST_RAW_COUNT0_OFFSET                 (62u)
+#define CapSense_SNR_TEST_RAW_COUNT0_OFFSET                 (58u)
 #define CapSense_SNR_TEST_RAW_COUNT0_SIZE                   (2u)
-#define CapSense_SNR_TEST_RAW_COUNT0_PARAM_ID               (0x8700003Eu)
+#define CapSense_SNR_TEST_RAW_COUNT0_PARAM_ID               (0x8600003Au)
 
 
 /*****************************************************************************/
@@ -259,11 +249,6 @@
 #define CapSense_BUTTON0_NUM_COLS_OFFSET                    (27u)
 #define CapSense_BUTTON0_NUM_COLS_SIZE                      (1u)
 #define CapSense_BUTTON0_NUM_COLS_PARAM_ID                  (0x5B00001Bu)
-
-#define CapSense_BUTTON0_PTR2NOISE_ENVLP_VALUE              (CapSense_dsFlash.wdgtArray[0].ptr2NoiseEnvlp)
-#define CapSense_BUTTON0_PTR2NOISE_ENVLP_OFFSET             (28u)
-#define CapSense_BUTTON0_PTR2NOISE_ENVLP_SIZE               (4u)
-#define CapSense_BUTTON0_PTR2NOISE_ENVLP_PARAM_ID           (0xD700001Cu)
 
 
 #endif /* End CY_SENSE_CapSense_REGISTER_MAP_H */

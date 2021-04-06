@@ -42,6 +42,7 @@
 
 #include "project.h"
 #include "OnethinxCore01.h"
+#include "OnethinxExt01.h"
 #include "LoRaWAN_keys.h"
 
 /* Go to ../OnethinxCore/LoRaWAN_keys.h and fill in the fields of the TTN_OTAAkeys structure */
@@ -68,8 +69,8 @@ sleepConfig_t sleepConfig =
 	.BleEcoON = false,
 	.DebugON = true,
 	.sleepCores = coresBoth,
-	.wakeUpPin = wakeUpPinOff,
-	.wakeUpTime = wakeUpDelay(0, 0, 0, 1), // day, hour, minute, second
+	.wakeUpPin = wakeUpPinHigh(true),
+	.wakeUpTime = wakeUpDelay(0, 0, 0, 2), // day, hour, minute, second
 	.saveMAC = true
 };
 
@@ -83,6 +84,8 @@ sleepConfig_t sleepConfig =
 *  Read the quickstart guide on how to create keys.
 *******************************************************************************/
 
+void Test_If_This_DevKit_Supports_CapSense();
+
 /* OnethinxCore uses the following structures and variables, which can be defined globally */
 coreStatus_t 	coreStatus;
 coreInfo_t 		coreInfo;
@@ -94,18 +97,26 @@ uint8_t wakeUpCounter = 0;
 #include <cyfitter_cfg.h>
 
 int main(void)
-{
-	CyDelay(1000); // Needs to be here
-	uint8_t j=0;
+ {
+	CyDelay(2000); // Needs to be here
+	//Cy_SystemInit();
 
 	/* enable global interrupts */
 	__enable_irq();
 
-	/* Blue LED ON while joining*/
+	// /* Blue LED ON while joining*/
 	Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, 1);
 
 	/* initialize radio with parameters in coreConfig */
 	coreStatus = LoRaWAN_Init(&coreConfig);
+
+	/* Ulock port 7 which is used for CapSense. */
+	LoRaWAN_Unlock();
+
+	/* You can use this fuction to see if your DevKit supports CapSense. P10.2 and P7.7 are shorted (IO_3). Older modules do not support CapSense*/
+	Test_If_This_DevKit_Supports_CapSense();
+
+	Cy_GPIO_Pin_FastInit(P10_2_PORT, P10_2_NUM, CY_GPIO_DM_HIGHZ, 0, CY_GPIO_DM_ANALOG);
 
 	/* Check Onethinx Core info */
 	LoRaWAN_GetInfo(&coreInfo);
@@ -127,23 +138,33 @@ int main(void)
 		}
 	}
 
+	/* Starts and configures EZI2C Block for CapSense tuning */
+	// I2C_CapSense_Start();
+	// I2C_CapSense_SetBuffer1((uint8_t *)&CapSense_dsRam,
+    //                     	sizeof(CapSense_dsRam),
+    //                     	sizeof(CapSense_dsRam));
+
+
 	CapSense_Start();
 	CapSense_InitializeAllBaselines();
 	CapSense_ScanAllWidgets();
-
+	volatile int status = 0;
 	/* main loop */
 	for(;;)
 	{
 		if (!CapSense_IsBusy())
 		{
 			CapSense_ProcessAllWidgets();
-			if (CapSense_IsWidgetActive(CapSense_BUTTON0_WDGT_ID))
-				wakeUpCounter++;
+			// CapSense_RunTuner();
+			status = CapSense_IsSensorActive(CapSense_BUTTON0_WDGT_ID, CapSense_BUTTON0_SNS0_ID);
+			Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, status);
+			if (status) wakeUpCounter++;
+			else wakeUpCounter = 0;
 			CapSense_UpdateAllBaselines();
 			CapSense_ScanAllWidgets();
 		}
 
-		if (wakeUpCounter >= 3)
+		if (wakeUpCounter > 5)
 		{
 			/* Reset wakeUpCounter */
 			wakeUpCounter = 0;
@@ -163,5 +184,19 @@ int main(void)
 	}
 }
 
-
+void Test_If_This_DevKit_Supports_CapSense()
+{
+	bool error = false;
+	Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, 1);
+	Cy_GPIO_Pin_FastInit(P7_7_PORT, P7_7_NUM, CY_GPIO_DM_PULLUP, 1UL, HSIOM_SEL_GPIO);
+	Cy_GPIO_Pin_FastInit(P10_2_PORT, P10_2_NUM, CY_GPIO_DM_STRONG, 0UL, HSIOM_SEL_GPIO);
+	if (Cy_GPIO_Read(P7_7_PORT, P7_7_NUM) != 0) 
+		error = true;
+	Cy_GPIO_Pin_FastInit(P7_7_PORT, P7_7_NUM, CY_GPIO_DM_PULLDOWN, 0UL, HSIOM_SEL_GPIO);
+	Cy_GPIO_Write(P10_2_PORT, P10_2_NUM, 1);
+	if (Cy_GPIO_Read(P7_7_PORT, P7_7_NUM) == 0) 
+		error = true;
+	Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, 0);
+	if (error) while (1);
+}
 /* [] END OF FILE */

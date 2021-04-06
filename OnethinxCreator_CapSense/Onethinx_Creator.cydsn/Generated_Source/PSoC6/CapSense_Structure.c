@@ -84,11 +84,6 @@ CapSense_RAM_STRUCT CapSense_dsRam;
 static uint8 CapSense_debounceButton0[CapSense_BUTTON0_NUM_SENSORS];
 
 
-/***************************************************************************//**
-* Declares Noise Envelope data structures
-*******************************************************************************/
-static SMARTSENSE_CSD_NOISE_ENVELOPE_STRUCT CapSense_noiseEnvlpButton0[CapSense_BUTTON0_NUM_SENSORS];
-
 /*******************************************************************************
 * Defines and initializes the Flash Data Structure
 *******************************************************************************/
@@ -117,7 +112,6 @@ const CapSense_FLASH_STRUCT CapSense_dsFlash =
             CapSense_BUTTON0_NUM_SENSORS,
             (uint8)CapSense_WD_BUTTON_E,
             CapSense_BUTTON0_NUM_SENSORS,
-            CapSense_noiseEnvlpButton0,
         },
     },
 };
@@ -154,8 +148,6 @@ const CapSense_RAM_WD_LIST_STRUCT CapSense_ramWidgetInit =
         },
         CapSense_BUTTON0_SNS_CLK,
         CapSense_BUTTON0_SNS_CLK_SOURCE,
-        CapSense_BUTTON0_FINGER_CAP,
-        CapSense_BUTTON0_SIGPFC,
     },
 };
 

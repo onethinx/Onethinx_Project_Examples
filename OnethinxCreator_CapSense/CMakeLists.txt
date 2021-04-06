@@ -93,6 +93,7 @@ set(PROJECT_FLAGS_ARCH
     "-mcpu=cortex-m4"
     "-mfloat-abi=softfp"
     "-mfpu=fpv4-sp-d16"
+    #"-D__NO_SYSTEM_INIT"
 )
 
 set(PROJECT_LINKER_FLAGS

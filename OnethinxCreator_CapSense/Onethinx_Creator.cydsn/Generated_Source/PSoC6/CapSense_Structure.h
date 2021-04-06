@@ -198,18 +198,6 @@ typedef struct
      *  Register for internal use
      */
     uint8  snsClkSource;
-
-    /**
-     *  Widget Finger capacitance parameter. Available only if the 
-     *  SmartSense is enabled.
-     *  Not used for the CSX Widgets.
-     */
-    uint16 fingerCap;
-
-    /**
-     *  The 75% of signal per user-defined finger capacitance
-     */
-    uint16 sigPFC;
 } CapSense_RAM_WD_BASE_STRUCT;
 
 /***************************************************************************//**
@@ -276,18 +264,6 @@ typedef struct
      *  Register for internal use
      */
     uint8  snsClkSource;
-
-    /**
-     *  Widget Finger capacitance parameter. Available only if the 
-     *  SmartSense is enabled.
-     *  Not used for the CSX Widgets.
-     */
-    uint16 fingerCap;
-
-    /**
-     *  The 75% of signal per user-defined finger capacitance
-     */
-    uint16 sigPFC;
 } CapSense_RAM_WD_BUTTON_STRUCT;
 
 
@@ -590,14 +566,6 @@ typedef struct
      *  For CSX Button, Touchpad and Matrix Button, the number of the Rx electrodes.
      */
     uint8  numCols;
-
-    /**
-     *  The pointer to the array with the sensor noise envelope data.
-     *  Set to the valid value only for the CSD widgets.
-     *  For the CSX widgets, this pointer is set to NULL.
-     *  The pointed array is not part of the data structure.
-     */
-    SMARTSENSE_CSD_NOISE_ENVELOPE_STRUCT * ptr2NoiseEnvlp;
 } CapSense_FLASH_WD_STRUCT;
 
 

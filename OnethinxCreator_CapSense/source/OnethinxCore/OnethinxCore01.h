@@ -413,8 +413,8 @@ typedef struct {
 
 typedef enum  {
 	modeSleep		 			= 0x1,
-	modeDeepSleep	 			= 0x2,
-	modeHibernate	 			= 0x3,
+	modeDeepSleep	 			= 0x2,   // 4uA
+	modeHibernate	 			= 0x3,	 // 0.7uA no RTC, 1uA with RTC
 } sleepMode_e;
 
 typedef enum  {
