@@ -58,6 +58,9 @@
  * 0x000000BC	Fix LoRa to LoRa Communication
  * 0x000000BD	Added FSK modulation
  * 0x000000BE	Fixed small timing issues, MAC commands, restructured stack etc.
+ * 0x000000BF   Changed RX timing window to SysTick timer (32MHz instead of 32KHz)
+ * 0x000000C0   Fix SX126x Wakeup settings from coldstart (used when BleEcoON = true), added MAC save functionality to resume LoRaWAN operations after hibernate, added RX boost functionality, added Set & Get timestamp RTC function
+ * 0x000000C1   Fix RX window timing after deepsleep
  * 
  ********************************************************************************/
 
@@ -68,8 +71,8 @@
 #include <stdbool.h>
 
 /* Do not modify. If stack version does not match, implement correct OnethinxCore.h & .c API drivers from the Onethinx Github page */
-#define minimumVersion 	0x000000BD
-#define maximumVersion 	0x000000BF
+#define minimumVersion 	0x000000C0
+#define maximumVersion 	0x000000C1
 
 typedef struct arr8b_t  { uint8_t bytes[8];  } arr8b_t;
 typedef struct arr16b_t { uint8_t bytes[16]; } arr16b_t;
@@ -86,7 +89,8 @@ typedef enum {
 	coreFunction_LW_sendMac				= 0x31,
 	coreFunction_LW_getRXdata			= 0x40,
 	coreFunction_LW_sleep				= 0x50,
-	coreFunction_LW_MACsave				= 0x60,
+	coreFunction_LW_setDateTime			= 0x60,
+	coreFunction_LW_getDateTime			= 0x61,
 	coreFunction_LW_flashRead			= 0x70,
 	coreFunction_LW_flashWrite			= 0x71,
 } coreFunctions_e;
@@ -159,19 +163,19 @@ typedef enum {
     DR_4						= 0x04,		//!< EU: SF8 125KHz, US: SF8 500KHz
     DR_5						= 0x05,		//!< EU: SF7 125KHz
     DR_6						= 0x06,		//!< EU: SF7 250KHz
-    DR_7						= 0x07,		//!< EU: FSK 50kbps (unsupported)
+    DR_7						= 0x07,		//!< EU: FSK 50kbps
     DR_8						= 0x08,		//!< US: SF12 500KHz (downlinks only)
     DR_9						= 0x09,		//!< US: SF11 500KHz (downlinks only)
     DR_10						= 0x0A,		//!< US: SF10 500KHz (downlinks only)
     DR_11						= 0x0B,		//!< US: SF9 500KHz (downlinks only)
     DR_12						= 0x0C,		//!< US: SF8 500KHz (downlinks only)
     DR_13						= 0x0D,		//!< US: SF7 500KHz (downlinks only)
-    DR_ADR						= 0xF0,		//!< Adaptive DataRate
+    DR_ADR						= 0xF0,		//!< ADR (Adaptive DataRate and Power Setting by LoRaWAN network)
 	DR_AUTO						= 0xF1,		//!< Automatic DataRate (during joining)
 } Radio_DataRate_e;
 
 typedef enum {
-	PWR_ADR						= 0xF0,		//!< ADR (Automatic Power setting by LoRaWAN network)
+	PWR_ADR						= 0xF0,		//!< ADR (ADR MAX PWR, same as PWR_MAX)
 	PWR_MAX						= 0x00,		//!<  15dBm for SX1261,  22dBm for SX1262
 	PWR_ATT_2dB					= 0x01,		//!<  14dBm for SX1261,  20dBm for SX1262
 	PWR_ATT_4dB					= 0x02,		//!<  12dBm for SX1261,  18dBm for SX1262
@@ -242,12 +246,16 @@ typedef union {
 		} Join;
 		struct  __attribute__ ((__packed__)) {
 			struct {
-				IdleMode_e				Mode			: 2;			/**< Set Idle Mode to idleActive, idleSleep or idleDeepSleep */
+				IdleMode_e				Mode			: 2;			/**< Set M0 Idle Mode to M0_Active, M0_Sleep or M0_DeepSleep */
 				bool 					BleEcoON	  	: 1;			/**< Leaves BLE ECO ON during idle. Consumes additional power, enable only when ECO/BLE functionality is needed */
 				bool 					DebugON			: 1;			/**< Leaves Debug Port active during idle. Consumes additional power, enable only for debugging purposes */
-		
+				uint8_t									: 4;			/**< Reserved */
 			} Idle;
 		} System;
+		struct  __attribute__ ((__packed__)) {
+			bool					Boost    			: 1;
+			uint8_t										: 7;
+		} RX;
 	};
 	uint8_t reserved[32];
 } coreConfiguration_t;
@@ -389,6 +397,19 @@ typedef volatile struct {
 
 #define errorStatus_NoError					0
 
+typedef union
+{
+    uint32_t value;
+    struct {
+        uint32_t		Second				: 6;
+        uint32_t		Minute				: 6;
+        uint32_t		Hour				: 5;			/**< Hour in 24h mode */
+        uint32_t		DayOfMonth			: 5;			/**< First day of month = 0 */
+        uint32_t		Month				: 4;			/**< First month = 0 */
+        uint32_t		Year				: 6;			/**< Year 2000 = 0 */
+    };
+} dateTime_t;
+
 typedef struct {
 	bool enabled					: 1;
 	bool risingEdge					: 1;
@@ -398,23 +419,25 @@ typedef struct {
 
 typedef struct {
 	bool enabled				: 1;
-	bool isTimestamp			: 1;
+	bool isDateTime				: 1;
 	uint8_t						: 6;
 	union {
-		uint32_t 	timestamp;
+		dateTime_t   		dateTime;
 		struct {
-			uint8_t		days;
-			uint8_t		hours;
-			uint8_t		minutes;
-			uint8_t		seconds;
+			uint8_t			days;					/**< Delay in days */
+			uint8_t			hours;					/**< Delay in hours */
+			uint8_t			minutes;				/**< Delay in minutes */
+			uint8_t			seconds;				/**< Delay in seconds */
 		};
 	};
 } wakeUpTime_t;
 
 typedef enum  {
 	modeSleep		 			= 0x1,
-	modeDeepSleep	 			= 0x2,   // 4uA
-	modeHibernate	 			= 0x3,	 // 0.7uA no RTC, 1uA with RTC
+	modeDeepSleep	 			= 0x2,
+	modeHibernate	 			= 0x3,			/**< Hibernates, WCO & RTC are shut down */
+	modeHibernate_RtcOn			= 0x4,			/**< Hibernates, RTC will keep running (consumes approx. an additional .7uA) */
+	modeHibernate_MACsave		= 0x5,			/**< Hibernates, RTC on, LoRaWAN MAC is saved to EEPROM and restored at wakeup. EEPROM USAGE = 0x1400.7800 - 0x1400.7FFF*/
 } sleepMode_e;
 
 typedef enum  {
@@ -433,8 +456,8 @@ typedef enum  {
 #define 	wakeUpPinHigh(pullDown)							((wakeUpPin_t) { .enabled = true, .risingEdge = true, .internalPullUpDown =  pullDown})
 #define 	wakeUpPinLow(pullUp) 							((wakeUpPin_t) { .enabled = true, .risingEdge = false, .internalPullUpDown =  pullUp})
 #define 	wakeUpPinOff      								((wakeUpPin_t) { .enabled = false })
-#define 	wakeUpTimestamp(_timestamp)     				((wakeUpTime_t) { .enabled = true, .isTimestamp = true, .timestamp = _timestamp })
-#define 	wakeUpDelay(_days, _hours, _minutes, _seconds)  ((wakeUpTime_t) { .enabled = true, .isTimestamp = false, .days = _days, .hours = _hours, .minutes = _minutes, .seconds = _seconds })
+#define 	wakeUpTimestamp(_dateTime)     					((wakeUpTime_t) { .enabled = true, .isDateTime = true, .dateTime = _dateTime })
+#define 	wakeUpDelay(_days, _hours, _minutes, _seconds)  ((wakeUpTime_t) { .enabled = true, .isDateTime = false, .days = _days, .hours = _hours, .minutes = _minutes, .seconds = _seconds })
 #define 	wakeUpTimeOff				     				((wakeUpTime_t) { .enabled = false })
 
 /** Sleep configuration  */
@@ -443,12 +466,11 @@ typedef struct  __attribute__ ((__packed__))
 {
 	wakeUpPin_t		wakeUpPin;							/**< S24 bits  */
 	wakeUpTime_t	wakeUpTime;							/**< S40 bits  */
-	sleepMode_e		sleepMode			: 2;			/**< Set sleepmode to Sleep, DeepSleep or Hibernate*/
-	bool 			BleEcoON	 	 	: 1;			/**< Leaves BLE ECO ON during sleep. Consumes additional power, enable only when ECO/BLE functionality is needed during sleep*/
+	sleepMode_e		sleepMode			: 3;			/**< Set sleepmode to Sleep, DeepSleep or Hibernate */
+	bool 			BleEcoON	 	 	: 1;			/**< Leaves BLE ECO ON during sleep. Consumes additional power, enable only when ECO/BLE functionality is needed during sleep */
 	bool 			DebugON				: 1;			/**< Leaves Debug Port active during idle. Consumes additional power, enable only for debugging purposes */
-	sleepCores_e	sleepCores			: 4;
-	bool			saveMAC				: 1;
-	uint32_t							: 31;
+	sleepCores_e	sleepCores			: 3;
+	uint32_t							: 32;			/**< Reserved */
 } sleepConfig_t;
 
 typedef enum  {
@@ -485,9 +507,10 @@ coreStatus_t				LoRaWAN_Reset(void);
 coreStatus_t		 		LoRaWAN_Init(coreConfiguration_t * coreConfigurationPtr);
 coreStatus_t				LoRaWAN_GetInfo(coreInfo_t * coreInfo);
 coreStatus_t				LoRaWAN_Join(WaitMode_e waitMode);
-coreStatus_t				LoRaWAN_MacSave();
 coreStatus_t				LoRaWAN_FlashRead(uint8_t* buffer, uint8_t block, uint8_t length);
 coreStatus_t				LoRaWAN_FlashWrite(uint8_t* buffer, uint8_t block, uint8_t length);
+coreStatus_t 				LoRaWAN_SetDateTime(dateTime_t* dt);
+coreStatus_t 				LoRaWAN_GetDateTime(dateTime_t* dt);
 coreStatus_t 				LoRaWAN_GetRXdata(uint8_t * RXdata, uint8_t length);
 coreStatus_t 				LoRaWAN_Send(uint8_t* buffer, uint8_t length, WaitMode_e waitMode);
 coreStatus_t 				LoRaWAN_SendMac(uint8_t* buffer, uint8_t length, WaitMode_e waitMode, MACcmd_e MACcmd);

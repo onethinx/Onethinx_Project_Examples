@@ -83,5 +83,5 @@ void LoRaWAN_Debug(bool debugLedsOn, uint32_t * coreStatePNT)
 void LoRaWAN_Unlock()
 {
 	coreArguments.arg1 = 0x4B1D;
-	coreComm(coreFunction_Unlock, true);
+	coreComm(coreFunction_Unlock, M4_WaitActive);
 }

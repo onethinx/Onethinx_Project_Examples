@@ -306,7 +306,7 @@ typedef struct {
 
 typedef struct {
     uint32_t                            Frequency;
-    Radio_TXpower_e                     TXpower;                                        //!< TXpower, not used in receive mode
+    Radio_TXpower_e                     TXpower;                                        //!< TXpower (PWR = MAX - (2 * value)), not used in receive mode
     union
     {
         struct
@@ -321,6 +321,8 @@ typedef struct {
         } FSK;
     };
     RadioPacketTypes_e                  PacketType;
+    uint8_t                             RXboost                 : 1;                    //!< RX Boost mode
+    uint8_t                                                     : 7;                    //!< Reserved
 }  RadioParams_t;
 
 /*!

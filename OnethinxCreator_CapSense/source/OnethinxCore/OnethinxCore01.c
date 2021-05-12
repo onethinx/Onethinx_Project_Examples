@@ -217,7 +217,7 @@ coreStatus_t LoRaWAN_Sleep(sleepConfig_t * sleepConfig)
 	coreArguments.arg1 = (uint32_t) sleepConfig;
 	coreComm(coreFunction_LW_sleep, M4_NoWait);
 	if (coreArguments.status.system.errorStatus != system_OK) return coreArguments.status;
-	if (sleepConfig->sleepMode == modeHibernate)	
+	if (sleepConfig->sleepMode >= modeHibernate)	
 		while(1);																		// CM0+ will put system in hibernate and system will restart with a reset
  	//while (!callBackDone) {}															// Wait till IPC call is finalized
 	if (sleepConfig->sleepMode == modeDeepSleep)
@@ -229,9 +229,16 @@ coreStatus_t LoRaWAN_Sleep(sleepConfig_t * sleepConfig)
 	return coreArguments.status;
 }
 
-coreStatus_t LoRaWAN_MacSave()
+coreStatus_t LoRaWAN_SetDateTime(dateTime_t* dt)
 {
-	return coreComm(coreFunction_LW_MACsave, M4_WaitActive);
+	coreArguments.arg1 = (uint32_t) dt;
+	return coreComm(coreFunction_LW_setDateTime, M4_WaitActive);
+}
+
+coreStatus_t LoRaWAN_GetDateTime(dateTime_t* dt)
+{
+	coreArguments.arg1 = (uint32_t) dt;
+	return coreComm(coreFunction_LW_getDateTime, M4_WaitActive);
 }
 
 coreStatus_t LoRaWAN_FlashRead(uint8_t* buffer, uint8_t block, uint8_t length)
