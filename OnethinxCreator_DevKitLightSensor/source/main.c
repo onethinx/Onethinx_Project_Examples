@@ -47,7 +47,7 @@
 /* Go to ../OnethinxCore/LoRaWAN_keys.h and fill in the fields of the TTN_OTAAkeys structure */
 
 coreConfiguration_t	coreConfig = {
-	.Join.KeysPtr = 		&myKeys,
+	.Join.KeysPtr = 		&myKeys0,
 	.Join.DataRate =		DR_AUTO,
 	.Join.Power =			PWR_MAX,
 	.Join.MAXTries = 		100,
@@ -70,7 +70,6 @@ sleepConfig_t sleepConfig =
 	.sleepCores = coresBoth,
 	.wakeUpPin = wakeUpPinHigh(true),
 	.wakeUpTime = wakeUpTimeOff,
-	.saveMAC = true
 };
 
 /*******************************************************************************arm-none-eabi-gcc

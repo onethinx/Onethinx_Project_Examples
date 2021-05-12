@@ -70,7 +70,6 @@ sleepConfig_t sleepConfig =
 	.sleepCores = coresBoth,
 	.wakeUpPin = wakeUpPinHigh(true),
 	.wakeUpTime = wakeUpDelay(0, 0, 0, 20), // day, hour, minute, second
-	.saveMAC = true
 };
 
 /*******************************************************************************arm-none-eabi-gcc
