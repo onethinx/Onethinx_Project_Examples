@@ -59,7 +59,8 @@ coreConfiguration_t	coreConfig = {
 	.TX.FPort = 			1,
 	.System.Idle.Mode = 	M0_DeepSleep,
 	.System.Idle.BleEcoON = false,
-	.System.Idle.DebugON =  true,
+	.System.Idle.DebugON  = true,
+	.RX.Boost			  = false,
 };
 
 sleepConfig_t sleepConfig =
