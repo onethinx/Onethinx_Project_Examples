@@ -1,0 +1,286 @@
+The target system is: Generic -  - ARM
+The host system is: Darwin - 21.4.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is GNU, found in "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/3.23.5/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is GNU, found in "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/3.23.5/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ca843/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_ca843.dir/build.make CMakeFiles/cmTC_ca843.dir/build
+Building C object CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj
+/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc   -v -o CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj -c /opt/local/share/cmake-3.23/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc
+Target: arm-none-eabi
+Configured with: /tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/src/gcc/configure --target=arm-none-eabi --prefix=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native --libexecdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/lib --infodir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/arm-none-eabi --build=x86_64-apple-darwin10 --host=x86_64-apple-darwin10 --with-gmp=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpfr=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpc=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-isl=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-libelf=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-lstdc++ -lm' --with-pkgversion='GNU Arm Embedded Toolchain 10.3-2021.10' --with-multilib-list=rmprofile,aprofile
+Thread model: single
+Supported LTO compression algorithms: zlib
+gcc version 10.3.1 20210824 (release) (GNU Arm Embedded Toolchain 10.3-2021.10) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet -v -iprefix /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/ -isysroot /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi -D__USES_INITFINI__ /opt/local/share/cmake-3.23/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj -version -o /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//cc8sEVBA.s
+GNU C17 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)
+	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17), GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include"
+ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/local/include"
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include-fixed"
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include"
+ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include
+End of search list.
+GNU C17 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)
+	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17), GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 733728c033f099ebc66962b91852e3eb
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//cc8sEVBA.s
+GNU assembler version 2.36.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10.3-2021.10) 2.36.1.20210621
+COMPILER_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/
+LIBRARY_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+Linking C static library libcmTC_ca843.a
+/opt/local/bin/cmake -P CMakeFiles/cmTC_ca843.dir/cmake_clean_target.cmake
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ca843.dir/link.txt --verbose=1
+/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ar qc libcmTC_ca843.a CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj
+/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ranlib libcmTC_ca843.a
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include]
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include]
+  end of search list found
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include]
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include]
+  implicit include dirs: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include;/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed;/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-none-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_ca843/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_ca843.dir/build.make CMakeFiles/cmTC_ca843.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc   -v -o CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj -c /opt/local/share/cmake-3.23/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc]
+  ignore line: [Target: arm-none-eabi]
+  ignore line: [Configured with: /tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/src/gcc/configure --target=arm-none-eabi --prefix=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native --libexecdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/lib --infodir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/arm-none-eabi --build=x86_64-apple-darwin10 --host=x86_64-apple-darwin10 --with-gmp=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpfr=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpc=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-isl=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-libelf=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-lstdc++ -lm' --with-pkgversion='GNU Arm Embedded Toolchain 10.3-2021.10' --with-multilib-list=rmprofile,aprofile]
+  ignore line: [Thread model: single]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 10.3.1 20210824 (release) (GNU Arm Embedded Toolchain 10.3-2021.10) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet -v -iprefix /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/ -isysroot /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi -D__USES_INITFINI__ /opt/local/share/cmake-3.23/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj -version -o /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//cc8sEVBA.s]
+  ignore line: [GNU C17 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)]
+  ignore line: [	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17)  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include"]
+  ignore line: [ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include-fixed"]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include"]
+  ignore line: [ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)]
+  ignore line: [	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17)  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 733728c033f099ebc66962b91852e3eb]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//cc8sEVBA.s]
+  ignore line: [GNU assembler version 2.36.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10.3-2021.10) 2.36.1.20210621]
+  ignore line: [COMPILER_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/]
+  ignore line: [LIBRARY_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+  ignore line: [Linking C static library libcmTC_ca843.a]
+  ignore line: [/opt/local/bin/cmake -P CMakeFiles/cmTC_ca843.dir/cmake_clean_target.cmake]
+  ignore line: [/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ca843.dir/link.txt --verbose=1]
+  ignore line: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ar qc libcmTC_ca843.a CMakeFiles/cmTC_ca843.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ranlib libcmTC_ca843.a]
+  ignore line: []
+  ignore line: []
+  implicit libs: []
+  implicit objs: []
+  implicit dirs: []
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_1d7c9/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_1d7c9.dir/build.make CMakeFiles/cmTC_1d7c9.dir/build
+Building CXX object CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj
+/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++   -v -o CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj -c /opt/local/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++
+Target: arm-none-eabi
+Configured with: /tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/src/gcc/configure --target=arm-none-eabi --prefix=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native --libexecdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/lib --infodir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/arm-none-eabi --build=x86_64-apple-darwin10 --host=x86_64-apple-darwin10 --with-gmp=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpfr=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpc=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-isl=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-libelf=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-lstdc++ -lm' --with-pkgversion='GNU Arm Embedded Toolchain 10.3-2021.10' --with-multilib-list=rmprofile,aprofile
+Thread model: single
+Supported LTO compression algorithms: zlib
+gcc version 10.3.1 20210824 (release) (GNU Arm Embedded Toolchain 10.3-2021.10) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/cc1plus -quiet -v -iprefix /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/ -isysroot /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi -D__USES_INITFINI__ /opt/local/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj -version -o /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//ccqSKBt5.s
+GNU C++14 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)
+	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17), GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include"
+ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/local/include"
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include-fixed"
+ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include"
+ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include
+End of search list.
+GNU C++14 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)
+	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17), GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: aef279e1140f94be80a6badcc599c728
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//ccqSKBt5.s
+GNU assembler version 2.36.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10.3-2021.10) 2.36.1.20210621
+COMPILER_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/
+LIBRARY_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+Linking CXX static library libcmTC_1d7c9.a
+/opt/local/bin/cmake -P CMakeFiles/cmTC_1d7c9.dir/cmake_clean_target.cmake
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d7c9.dir/link.txt --verbose=1
+/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ar qc libcmTC_1d7c9.a CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj
+/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ranlib libcmTC_1d7c9.a
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1]
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi]
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward]
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include]
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+    add: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include]
+  end of search list found
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1]
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi]
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/backward]
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include]
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+  collapse include dir [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include] ==> [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include]
+  implicit include dirs: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1;/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi;/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1/backward;/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include;/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed;/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-none-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_1d7c9/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_1d7c9.dir/build.make CMakeFiles/cmTC_1d7c9.dir/build]
+  ignore line: [Building CXX object CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++   -v -o CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj -c /opt/local/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-g++]
+  ignore line: [Target: arm-none-eabi]
+  ignore line: [Configured with: /tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/src/gcc/configure --target=arm-none-eabi --prefix=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native --libexecdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/lib --infodir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/install-native/arm-none-eabi --build=x86_64-apple-darwin10 --host=x86_64-apple-darwin10 --with-gmp=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpfr=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-mpc=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-isl=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-libelf=/tmp/jenkins-GCC-10-pipeline-338_20211018_1634516195/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-lstdc++ -lm' --with-pkgversion='GNU Arm Embedded Toolchain 10.3-2021.10' --with-multilib-list=rmprofile,aprofile]
+  ignore line: [Thread model: single]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 10.3.1 20210824 (release) (GNU Arm Embedded Toolchain 10.3-2021.10) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/cc1plus -quiet -v -iprefix /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/ -isysroot /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi -D__USES_INITFINI__ /opt/local/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj -version -o /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//ccqSKBt5.s]
+  ignore line: [GNU C++14 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)]
+  ignore line: [	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17)  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include"]
+  ignore line: [ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include-fixed"]
+  ignore line: [ignoring duplicate directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include"]
+  ignore line: [ignoring nonexistent directory "/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/usr/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/include-fixed]
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++14 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)]
+  ignore line: [	compiled by GNU C version 4.2.1 Compatible Apple LLVM 11.0.0 (clang-1100.0.33.17)  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: aef279e1140f94be80a6badcc599c728]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+  ignore line: [ /Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj /var/folders/cq/m43p1sl5571fwl_72l5dzsm80000gn/T//ccqSKBt5.s]
+  ignore line: [GNU assembler version 2.36.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10.3-2021.10) 2.36.1.20210621]
+  ignore line: [COMPILER_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/]
+  ignore line: [LIBRARY_PATH=/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/:/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/../arm-none-eabi/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t']
+  ignore line: [Linking CXX static library libcmTC_1d7c9.a]
+  ignore line: [/opt/local/bin/cmake -P CMakeFiles/cmTC_1d7c9.dir/cmake_clean_target.cmake]
+  ignore line: [/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d7c9.dir/link.txt --verbose=1]
+  ignore line: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ar qc libcmTC_1d7c9.a CMakeFiles/cmTC_1d7c9.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-ranlib libcmTC_1d7c9.a]
+  ignore line: []
+  ignore line: []
+  implicit libs: []
+  implicit objs: []
+  implicit dirs: []
+  implicit fwks: []
+
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+arm-none-eabi-gcc (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

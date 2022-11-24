@@ -1,0 +1,8 @@
+\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_LoRa\Onethinx_Creator.cydsn\Onethinx_Creator.cyprj|8544c92e-6670-4b05-9260-907b2281b673
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4cf6ece3-9350-46b9-8292-ca1bd529681c
+C:\Users\Rolf\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|7d6ab126-ce8f-4fd0-8769-a7efdb7bfbfb
+C:\Users\Rolf\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|5eb8ed54-3528-41ec-9f4d-5077488cd14a
+C:\Users\Rolf\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|cdf27bb1-57dc-45ad-adc9-da21564869d2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5a8afec6-c0d1-4163-8ca1-91536903c45e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|104ece6c-64d5-4f9c-ae2a-16a165ccd95e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|b866cd91-d291-4448-a3a2-740452a60dfc

@@ -1,0 +1,4 @@
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_DevKitLightSensor/build/DEBUG/CMakeFiles/Example_DevKitLightSensor.elf.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_DevKitLightSensor/build/DEBUG/CMakeFiles/Example_DevKitLightSensor.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_DevKitLightSensor/build/DEBUG/CMakeFiles/edit_cache.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_DevKitLightSensor/build/DEBUG/CMakeFiles/rebuild_cache.dir

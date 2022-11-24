@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib/gcc/cy_syslib_gcc.S
+
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/gcc/startup_psoc6_01_cm4.S
+

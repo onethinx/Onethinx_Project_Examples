@@ -1,0 +1,4 @@
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/Example_HelloWorld.elf.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/Example_HelloWorld.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/edit_cache.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug/CMakeFiles/rebuild_cache.dir

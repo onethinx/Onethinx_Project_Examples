@@ -1,0 +1,11 @@
+dont_use_location p4usbcell -1 -1 0
+dont_use_location USB -1 -1 0
+dont_use_location usbcell -1 -1 0
+set_location "cydff_1" macrocell 0 4 0 0
+set_location "ClockGenBlock" CLK_GEN -1 -1 0
+set_location "ClockBlock" Clock -1 -1 0
+set_io "LED_R(0)" iocell 12 5
+set_location "SRSS" SRSS -1 -1 0
+set_io "CY_SRSS_WCO_IN(0)" iocell 0 0
+set_io "CY_SRSS_WCO_OUT(0)" iocell 0 1
+set_io "LED_B(0)" iocell 12 4

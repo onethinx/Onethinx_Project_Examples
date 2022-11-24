@@ -1,0 +1,21 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2022-11-23T15:33:14Z")
+ (DESIGN "Onethinx_Creator")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.4")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "Onethinx_Creator")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT ClockBlock.periclk \\ADC\:IRQ\\.clock (0.000:0.000:0.000))
+    (INTERCONNECT \\ADC\:SAR\\.interrupt \\ADC\:IRQ\\.interrupt (0.000:0.000:0.000))
+    (INTERCONNECT ClockBlock.ff_div_49 \\ADC\:SAR\\.clock (0.000:0.000:0.000))
+   )
+  )
+ )
+)

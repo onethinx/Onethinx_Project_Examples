@@ -1,0 +1,4 @@
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/build/DEBUG/CMakeFiles/Example_CapSense.elf.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/build/DEBUG/CMakeFiles/Example_CapSense.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/build/DEBUG/CMakeFiles/edit_cache.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/build/DEBUG/CMakeFiles/rebuild_cache.dir

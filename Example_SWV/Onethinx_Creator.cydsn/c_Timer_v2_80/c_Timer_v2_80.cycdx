@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<deviceData version="1"
+  xmlns="http://cypress.com/xsd/cydevicedata"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cypress.com/xsd/cydevicedata cydevicedata.xsd">
+
+  <block name="`$INSTANCE_NAME`" desc="" visible="true">
+
+    <block name="`$INSTANCE_NAME`" desc="" visible="`$FF8`"> 
+        <!-- Fixed Function Configuration Specific Registers -->
+        <register name="CONTROL"
+        address="`$INSTANCE_NAME`_TimerHW__CFG0" bitWidth="8" desc="TMRx.CFG0">
+            <field name="EN" from="0" to="0" access="RW" desc="Enables timer/comparator.">
+            </field>
+            <field name="MODE" from="1" to="1" access="RW" desc="Mode. (0 = Timer; 1 = Comparator)">
+                <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
+                <value name="Comparator" value="1" desc="Comparator mode. CNT/CMP register holds comparator threshold value." />
+            </field>
+            <field name="ONESHOT" from="2" to="2" access="RW" desc="Timer stops upon reaching stop condition defined by TMR_CFG bits. Can be restarted by asserting TIMER RESET or disabling and re-enabling block.">
+            </field>
+            <field name="CMP_BUFF" from="3" to="3" access="RW" desc="Buffer compare register. Compare register updates only on timer terminal count.">
+            </field>
+            <field name="INV" from="4" to="4" access="RW" desc="Invert sense of TIMEREN signal">
+            </field>
+            <field name="DB" from="5" to="5" access="RW" desc="Deadband mode--Deadband phases phi1 and phi2 are outputted on CMP and TC output pins respectively.">
+                <value name="Timer" value="0" desc="CMP and TC are output." />
+                <value name="Deadband" value="1" desc="PHI1 (instead of CMP) and PHI2 (instead of TC) are output." />
+            </field>
+            <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" desc="Deadband Period">
+            </field>
+        </register>
+        <register name="CONTROL2"
+        address="`$INSTANCE_NAME`_TimerHW__CFG1" bitWidth="8" desc="TMRx.CFG1">
+            <field name="IRQ_SEL" from="0" to="0" access="RW" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)">
+            </field>
+            <field name="FTC" from="1" to="1" access="RW" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled.">
+                <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
+                <value name="Enable FTC" value="1" desc="Enable the single cycle pulse, which signifies the timer is starting." />
+            </field>
+            <field name="DCOR" from="2" to="2" access="RW" desc="Disable Clear on Read (DCOR) of Status Register SR0.">
+            </field>
+            <field name="DBMODE" from="3" to="3" access="RW" desc="Deadband mode (asynchronous/synchronous). CMP output pin is also affected when not in deadband mode (CFG0.DEADBAND).">
+            </field>
+            <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" desc="Digital Global Clock selection.">
+            </field>
+            <field name="BUS_CLK_SEL" from="7" to="7" access="RW" desc="Bus Clock selection.">
+            </field>
+        </register>
+        <!-- Cannot Add Status register because it has clear on Read Bits -->
+        
+        <!-- Fixed Function Parameter Specific Registers -->
+        <register name="PERIOD"
+        address="`$INSTANCE_NAME`_TimerHW__PER0" bitWidth="8" desc="TMRx.PER0 - Assigned Period">
+        </register>
+        <register name="COUNTER"
+        address="`$INSTANCE_NAME`_TimerHW__CNT_CMP0" bitWidth="8" desc="TMRx.CNT_CMP0 - Current Down Counter Value">
+        </register>
+        <!-- Cannot Add FIFO registers because they pop from FIFO -->
+        
+        <!-- TMR Fixed Function Power Management Register -->
+        <register name="GLOBAL_ENABLE"
+        address="`$INSTANCE_NAME`_TimerHW__PM_ACT_CFG" bitWidth="8" desc="PM.ACT.CFG">
+            <field name="en_timer" from="3" to="0" access="RW" desc="Enable timer/counters.">
+            </field>
+        </register>
+    </block>
+    
+    <block name="`$INSTANCE_NAME`" desc="" visible="`$FF16`"> 
+        <!-- Fixed Function Configuration Specific Registers -->
+        <register name="CONTROL"
+        address="`$INSTANCE_NAME`_TimerHW__CFG0" bitWidth="8" desc="TMRx.CFG0">
+            <field name="EN" from="0" to="0" access="RW" desc="Enables timer/comparator.">
+            </field>
+            <field name="MODE" from="1" to="1" access="RW" desc="Mode. (0 = Timer; 1 = Comparator)">
+                <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
+                <value name="Comparator" value="1" desc="Comparator mode. CNT/CMP register holds comparator threshold value." />
+            </field>
+            <field name="ONESHOT" from="2" to="2" access="RW" desc="Timer stops upon reaching stop condition defined by TMR_CFG bits. Can be restarted by asserting TIMER RESET or disabling and re-enabling block.">
+            </field>
+            <field name="CMP_BUFF" from="3" to="3" access="RW" desc="Buffer compare register. Compare register updates only on timer terminal count.">
+            </field>
+            <field name="INV" from="4" to="4" access="RW" desc="Invert sense of TIMEREN signal">
+            </field>
+            <field name="DB" from="5" to="5" access="RW" desc="Deadband mode--Deadband phases phi1 and phi2 are outputted on CMP and TC output pins respectively.">
+                <value name="Timer" value="0" desc="CMP and TC are output." />
+                <value name="Deadband" value="1" desc="PHI1 (instead of CMP) and PHI2 (instead of TC) are output." />
+            </field>
+            <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" desc="Deadband Period">
+            </field>
+        </register>
+        <register name="CONTROL2"
+        address="`$INSTANCE_NAME`_TimerHW__CFG1" bitWidth="8" desc="TMRx.CFG1">
+            <field name="IRQ_SEL" from="0" to="0" access="RW" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)">
+            </field>
+            <field name="FTC" from="1" to="1" access="RW" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled.">
+                <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
+                <value name="Enable FTC" value="1" desc="Enable the single cycle pulse, which signifies the timer is starting." />
+            </field>
+            <field name="DCOR" from="2" to="2" access="RW" desc="Disable Clear on Read (DCOR) of Status Register SR0.">
+            </field>
+            <field name="DBMODE" from="3" to="3" access="RW" desc="Deadband mode (asynchronous/synchronous). CMP output pin is also affected when not in deadband mode (CFG0.DEADBAND).">
+            </field>
+            <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" desc="Digital Global Clock selection.">
+            </field>
+            <field name="BUS_CLK_SEL" from="7" to="7" access="RW" desc="Bus Clock selection.">
+            </field>
+        </register>
+        <!-- Cannot Add Status register because it has clear on Read Bits -->
+        
+        <!-- Fixed Function Parameter Specific Registers -->
+        <register name="PERIOD"
+        address="`$INSTANCE_NAME`_TimerHW__PER0" bitWidth="16" desc="TMRx.PER0 - Assigned Period">
+        </register>
+        <register name="COUNTER"
+        address="`$INSTANCE_NAME`_TimerHW__CNT_CMP0" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value">
+        </register>
+        <!-- Cannot Add FIFO registers because they pop from FIFO -->
+        
+        <!-- TMR Fixed Function Power Management Register -->
+        <register name="GLOBAL_ENABLE"
+        address="`$INSTANCE_NAME`_TimerHW__PM_ACT_CFG" bitWidth="8" desc="PM.ACT.CFG">
+            <field name="en_timer" from="3" to="0" access="RW" desc="Enable timer/counters.">
+            </field>
+        </register>
+    </block>
+    
+    <block name="`$INSTANCE_NAME`_CONTROL3" desc="" visible="`$CONTROL3`"> 
+        <!-- UDB Parameter Specific Registers -->
+        <register name=""
+        address="`$INSTANCE_NAME`_TimerHW__CFG2" bitWidth="8" desc="TMRx.CFG2">
+            <field name="TMR_CFG" from="1" to="0" access="RW" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ">
+                <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
+                <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
+                <value name="Period" value="10" desc="Timer runs from positive to positive edge of TIMEREN." />
+                <value name="Irq" value="11" desc="Timer runs until IRQ." />
+            </field>
+            <field name="COD" from="2" to="2" access="RW" desc="Clear On Disable (COD). Clears or gates outputs to zero.">
+            </field>
+            <field name="ROD" from="3" to="3" access="RW" desc="Reset On Disable (ROD). Resets internal state of output logic">
+            </field>
+            <field name="CMP_CFG" from="6" to="4" access="RW" desc="Comparator configurations">
+                <value name="Equal" value="0" desc="Compare Equal " />
+                <value name="Less than" value="1" desc="Compare Less Than " />
+                <value name="Less than or equal" value="10" desc="Compare Less Than or Equal ." />
+                <value name="Greater" value="11" desc="Compare Greater Than ." />
+                <value name="Greater than or equal" value="100" desc="Compare Greater Than or Equal " />
+            </field>
+            <field name="HW_EN" from="7" to="7" access="RW" desc="When set Timer Enable controls counting.">
+            </field>
+        </register>
+    </block>
+    
+    <block name="`$INSTANCE_NAME`" desc="" visible="`$UDB8`"> 
+        <!-- UDB Parameter Specific Registers -->
+        <register name="PERIOD"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__D0_REG" bitWidth="8" desc="UDB.D0 - Assigned Period">
+        </register>
+        <register name="COUNTER"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__A0_REG" bitWidth="8" desc="UDB.A0 - Current Down Counter Value">
+        </register>
+        <!-- Cannot Add FIFO registers because they pop from FIFO -->
+    </block>
+    
+    <block name="`$INSTANCE_NAME`" desc="" visible="`$UDB16`"> 
+        <!-- UDB Parameter Specific Registers -->
+        <register name="PERIOD"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__D0_REG" bitWidth="16" desc="UDB.D0 - Assigned Period">
+        </register>
+        <register name="COUNTER"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__A0_REG" bitWidth="16" desc="UDB.A0 - Current Down Counter Value">
+        </register>
+        <!-- Cannot Add FIFO registers because they pop from FIFO -->
+    </block>
+    
+    <block name="`$INSTANCE_NAME`" desc="" visible="`$UDB24`"> 
+        <!-- UDB Parameter Specific Registers -->
+        <register name="PERIOD"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__D0_REG" bitWidth="24" desc="UDB.D0 - Assigned Period">
+        </register>
+        <register name="COUNTER"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__A0_REG" bitWidth="24" desc="UDB.A0 - Current Down Counter Value">
+        </register>
+        <!-- Cannot Add FIFO registers because they pop from FIFO -->
+    </block>
+    
+    <block name="`$INSTANCE_NAME`" desc="" visible="`$UDB32`"> 
+        <!-- UDB Parameter Specific Registers -->
+        <register name="PERIOD"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__D0_REG" bitWidth="32" desc="UDB.D0 - Assigned Period">
+        </register>
+        <register name="COUNTER"
+        address="`$INSTANCE_NAME`_TimerUDB_`$VerilogSectionReplacementString`_timerdp_u0__A0_REG" bitWidth="32" desc="UDB.A0 - Current Down Counter Value">
+        </register>
+        <!-- Cannot Add FIFO registers because they pop from FIFO -->
+    </block>
+    
+    <block name="`$INSTANCE_NAME`_STATUS" desc="" visible="!`$FixedFunctionUsed`"> 
+        <!-- UDB Configuration Specific Registers -->
+        <register name="MASK"
+        address="`$INSTANCE_NAME`_TimerUDB_`$RstStatusReplacementString`_stsreg__MASK_REG" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
+            <field name="TIMER_STS_TC" from="0" to="0" access="R" desc="Enables the Interrupt on TC">
+            </field>
+            <field name="TIMER_STS_CAPT" from="1" to="1" access="R" desc="Enables the Interrupt on Capture">
+            </field>
+            <field name="TIMER_STS_FIFO_FULL" from="2" to="2" access="R" desc="FIFO Full Status ">
+            </field>
+            <field name="TIMER_STS_FIFO_NEMPTY" from="3" to="3" access="R" desc="FIFO Empty status ">
+            </field>
+        </register>
+        <!-- Cannot Add Status register because it has clear on Read Bits -->
+        <register name="AUX_CTRL"
+        address="`$INSTANCE_NAME`_TimerUDB_`$RstStatusReplacementString`_stsreg__STATUS_AUX_CTL_REG" bitWidth="8" desc="UDB Auxilliary Control Register">
+            <field name="FIFO0_CLR" from="0" to="0" access="RW" desc="FIFO0 clear">
+                <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+                <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+            </field>
+            <field name="FIFO1_CLR" from="1" to="1" access="RW" desc="FIFO1 clear">
+                <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+                <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+            </field>
+            <field name="FIFO0_LVL" from="2" to="2" access="RW" desc="FIFO level">
+                <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+                <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+            </field>
+            <field name="FIFO1_LVL" from="3" to="3" access="RW" desc="FIFO level">
+                <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+                <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+            </field>
+            <field name="INT_EN" from="4" to="4" access="RW" desc="">
+                <value name="E_INT_EN0" value="0" desc="Interrupt disabled" />
+                <value name="E_INT_EN1" value="1" desc="Interrupt enabled" />
+            </field>
+            <field name="CNT_START" from="5" to="5" access="RW" desc="FIFO0 clear">
+                <value name="E_CNT_START0" value="0" desc="Disable counter" />
+                <value name="E_CNT_START1" value="1" desc="Enable counter" />
+            </field>
+        </register>
+    </block>
+    
+    <block name="`$INSTANCE_NAME`_Control" desc="" visible="(!(`=IsDefined(`$INSTANCE_NAME`_TimerUDB_sCTRLReg_`$CtlModeReplacementString`_ctrlreg__REMOVED)`)) &amp;&amp; `$UDBControlReg`">
+        <!-- UDB Parameter Specific Registers -->
+        <register name="Reg"
+        address="`$INSTANCE_NAME`_TimerUDB_sCTRLReg_`$CtlModeReplacementString`_ctrlreg__CONTROL_REG" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+            <field name="CTRL_ENABLE" from="7" to="7" access="RW" desc="Enable the Timer">
+            </field>
+            <field name="CTRL_CMODE" from="6" to="5" access="RW" desc="Capture Mode">
+            </field>
+            <field name="CTRL_TEN" from="4" to="4" access="RW" desc="Trigger Enable Bit">
+            </field>
+            <field name="CTRL_TMODE" from="3" to="2" access="RW" desc="Trigger Mode">
+            </field>
+            <field name="CTRL_IC" from="1" to="0" access="RW" desc="Interrupt Count">
+            </field>
+        </register>
+    </block>
+
+  </block>
+</deviceData>

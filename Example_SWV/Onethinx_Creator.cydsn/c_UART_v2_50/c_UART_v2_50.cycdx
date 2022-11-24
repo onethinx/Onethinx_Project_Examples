@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<deviceData version="1"
+  xmlns="http://cypress.com/xsd/cydevicedata"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cypress.com/xsd/cydevicedata cydevicedata.xsd">
+
+    <block name="`$INSTANCE_NAME`" desc="UART" visible="true">
+        <block name="RX" desc="RX UART" visible="`$Enable_RX`">
+            <register name="`$INSTANCE_NAME`_RX_STATUS"
+                address="`$INSTANCE_NAME`_BUART_sRX_RxSts__STATUS_REG" 
+                bitWidth="8" desc="RX status register">
+                <field name="`$INSTANCE_NAME`_RX_STS_MRKSPC"         from="0"  to="0" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_BREAK"          from="1"  to="1" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_PAR_ERROR"      from="2"  to="2" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_STOP_ERROR"     from="3"  to="3" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_OVERRUN"        from="4"  to="4" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_FIFO_NOTEMPTY"  from="5"  to="5" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_ADDR_MATCH"     from="6"  to="6" access="R" desc="">
+                </field>
+    	    </register>        
+           	<register name="`$INSTANCE_NAME`_RX_DATA" 
+                    address="`$INSTANCE_NAME`_BUART_sRX_RxShifter_u0__F0_REG" bitWidth="8" desc="RX Data Register">                
+            </register>
+           	<register name="`$INSTANCE_NAME`_RX_ADDRESS1" 
+                    address="`$INSTANCE_NAME`_BUART_sRX_RxShifter_u0__D0_REG" bitWidth="8" desc="RX Address1 Register">                
+            </register>
+           	<register name="`$INSTANCE_NAME`_RX_ADDRESS2" 
+                    address="`$INSTANCE_NAME`_BUART_sRX_RxShifter_u0__D1_REG" bitWidth="8" desc="RX Address2 Register">                
+            </register>
+        </block>
+
+        <block name="TX" desc="TX UART" visible="`$Enable_TX`">
+            <register name="`$INSTANCE_NAME`_TX_STATUS"
+                address="`$INSTANCE_NAME`_BUART_sTX_TxSts__STATUS_REG" 
+                bitWidth="8" desc="TX status register">
+                <field name="`$INSTANCE_NAME`_TX_STS_COMPLETE"       from="0"  to="0" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_TX_STS_FIFO_EMPTY"     from="1"  to="1" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_TX_STS_FIFO_FULL"      from="2"  to="2" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_TX_STS_FIFO_NOT_FULL"  from="3"  to="3" access="R" desc="">
+                </field>
+    	    </register>        
+           	<register name="`$INSTANCE_NAME`_TX_DATA" 
+                    address="`$INSTANCE_NAME`_BUART_sTX_TxShifter_u0__F0_REG" bitWidth="8" desc="TX Data Register">                
+            </register>
+        </block>
+
+        <block name="HD" desc="HD UART" visible="`$HalfDuplexEn`">
+            <register name="`$INSTANCE_NAME`_RX_STATUS"
+                address="`$INSTANCE_NAME`_BUART_sRX_RxSts__STATUS_REG" 
+                bitWidth="8" desc="RX status register">
+                <field name="`$INSTANCE_NAME`_RX_STS_MRKSPC"         from="0"  to="0" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_BREAK"          from="1"  to="1" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_PAR_ERROR"      from="2"  to="2" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_STOP_ERROR"     from="3"  to="3" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_OVERRUN"        from="4"  to="4" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_FIFO_NOTEMPTY"  from="5"  to="5" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_RX_STS_ADDR_MATCH"     from="6"  to="6" access="R" desc="">
+                </field>
+    	    </register>        
+           	<register name="`$INSTANCE_NAME`_RX_DATA" 
+                    address="`$INSTANCE_NAME`_BUART_sRX_RxShifter_u0__F0_REG" bitWidth="8" desc="RX Data Register">                
+            </register>
+           	<register name="`$INSTANCE_NAME`_RX_ADDRESS1" 
+                    address="`$INSTANCE_NAME`_BUART_sRX_RxShifter_u0__D0_REG" bitWidth="8" desc="RX Address1 Register">                
+            </register>
+           	<register name="`$INSTANCE_NAME`_RX_ADDRESS2" 
+                    address="`$INSTANCE_NAME`_BUART_sRX_RxShifter_u0__D1_REG" bitWidth="8" desc="RX Address2 Register">                
+            </register>
+
+            <register name="`$INSTANCE_NAME`_TX_STATUS"
+                address="`$INSTANCE_NAME`_BUART_sRX_RxSts__STATUS_REG" 
+                bitWidth="8" desc="TX status register">
+                <field name="`$INSTANCE_NAME`_TX_STS_COMPLETE"       from="0"  to="0" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_TX_STS_FIFO_EMPTY"     from="1"  to="1" access="R" desc="">
+                </field>
+                <field name="`$INSTANCE_NAME`_TX_STS_FIFO_FULL"      from="5"  to="5" access="R" desc="">
+                </field>
+    	    </register>        
+           	<register name="`$INSTANCE_NAME`_TX_DATA" 
+                    address="`$INSTANCE_NAME`_BUART_sRX_RxShifter_u0__F1_REG" bitWidth="8" desc="TX Data Register">                
+            </register>
+        </block>
+    </block>
+</deviceData>
