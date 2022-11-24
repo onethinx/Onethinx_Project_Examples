@@ -2,7 +2,7 @@
 cmake-build*./**
 **/local\.cmake
 **/\.idea
-build/**
+/**/build/*
 .vscode/ipch*
 Onethinx_Creator.cydsn/codegentemp/**
 Onethinx_Creator.cydsn/CortexM0p/**
