@@ -11,6 +11,7 @@
     "debug": { "visibility": "hidden" },
     "launch": { "visibility": "hidden" }
   },
+  "cmake.buildDirectory": "${workspaceFolder}/build/${buildType}",
   "ego.power-tools": {
     "commands": {
       "otx.preLaunch": {

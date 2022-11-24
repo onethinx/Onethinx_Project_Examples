@@ -31,7 +31,7 @@
                 "-target-download",                     // Comment this out if you don't want to reload program
                 //"set output-radix 16",                  // Comment this out if you want decimal output instead of hexadecimal
                 "monitor reset run",
-                "monitor sleep 200",
+                //"monitor sleep 200",
                 "monitor psoc6 reset_halt sysresetreq"
             ],
             "postStartSessionCommands": [       // Needed if runToMain is false
@@ -49,7 +49,7 @@
             "overrideRestartCommands": [
                 "monitor reset init",
                 "monitor reset run",
-                "monitor sleep 200",
+                //"monitor sleep 200",
                 "monitor psoc6 reset_halt sysresetreq"
             ],
             "postRestartSessionCommands": [
@@ -57,11 +57,10 @@
                 "stepi",
                 "tbreak main"
             ],
-            // svdFile is optional, it can be very large.
-            "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",
-            "runToMain": true,                  // if true, program will halt at main. Not used for a restart     
-            "preLaunchTask": "${command:otx.preLaunch}",     // Set this to run a task from tasks.json before starting a debug session
-            "showDevDebugOutput": false,        // Shows output of GDB, helpful when something is not working right
+            "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",          // svdFile is optional, it can be very large.
+            "runToEntryPoint": "main",                                  // if true, program will halt at main. Not used for a restart     
+            "preLaunchTask": "${command:otx.preLaunch}",                // otx.preLaunch will build the project to prevent unmatched source code debugging
+            "showDevDebugOutput": "raw",                                // Shows output of GDB, helpful when something is not working right
         },
         {
             "name": "Launch CM4 (J-Link)",
@@ -83,7 +82,7 @@
             "overrideLaunchCommands": [
                 "set mem inaccessible-by-default off",
                 "-enable-pretty-printing",
-                "monitor reset init",
+                //"monitor reset init",
                 "-target-download",                     // Comment this out if you don't want to reload program
                 //"set output-radix 16",                  // Comment this out if you want decimal output instead of hexadecimal
                 "monitor reset run",
@@ -113,11 +112,10 @@
                 "stepi",
                 "tbreak main"
             ],
-            // svdFile is optional, it can be very large.
-            "svdFile": "${workspaceFolder}/psoc6pdl/devices/svd/psoc6_01.svd",
-            "runToMain": true,                  // if true, program will halt at main. Not used for a restart     
-            "preLaunchTask": "Check build",     // Set this to run a task from tasks.json before starting a debug session
-            "showDevDebugOutput": false,        // Shows output of GDB, helpful when something is not working right
+            "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",          // svdFile is optional, it can be very large.
+            "runToEntryPoint": "main",                                  // if true, program will halt at main. Not used for a restart     
+            "preLaunchTask": "${command:otx.preLaunch}",                // otx.preLaunch will build the project to prevent unmatched source code debugging
+            "showDevDebugOutput": "raw",                                // Shows output of GDB, helpful when something is not working right
         },
         // When using 'attach', make sure your program is running on the board and that your executable matches
         // the image in the chip exactly, or else strange things can happen with breakpoint, variables, etc.
@@ -147,7 +145,7 @@
             "overrideRestartCommands": [
                 "monitor reset init",
                 "monitor reset run",
-                "monitor sleep 200",
+                //"monitor sleep 200",
                 "monitor psoc6 reset_halt sysresetreq"
             ],
             "postRestartSessionCommands": [
@@ -156,8 +154,8 @@
                 "tbreak main"
             ],
             // svdFile is optional, it can be very large.
-            "svdFile": "${workspaceFolder}/psoc6pdl/devices/svd/psoc6_01.svd",
-            "showDevDebugOutput": false,// Shows output of GDB, helpful when something is not working right
+            "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",          // svdFile is optional, it can be very large.
+            "showDevDebugOutput": "raw",                                // Shows output of GDB, helpful when something is not working right
         },
         {
             "name": "Erase (KitProg)",

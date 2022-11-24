@@ -177,6 +177,8 @@ add_custom_target(
     ${PROJECT_NAME} ALL
     #POST BUILD
     COMMAND "${CYPRESS_ELF_TOOL}" --sign "${PROJECT_NAME}.elf" --output "${PROJECT_NAME}_signed.elf" --hex "${PROJECT_NAME}.hex"
+    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_NAME}.elf ../${PROJECT_NAME}.elf
+    COMMAND ${CMAKE_COMMAND} -E copy compile_commands.json ../compile_commands.json
     COMMAND echo "------- Memory usage -------"
     #COMMAND "${CYPRESS_ELF_TOOL}" -A "${PROJECT_NAME}.elf"
     COMMAND "${READELF_TOOL}" -Sl ${PROJECT_NAME}.elf > ${PROJECT_NAME}.readelf
