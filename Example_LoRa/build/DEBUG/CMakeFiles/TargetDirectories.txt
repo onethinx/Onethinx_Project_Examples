@@ -1,0 +1,4 @@
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_LoRa/build/DEBUG/CMakeFiles/Example_LoRa.elf.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_LoRa/build/DEBUG/CMakeFiles/Example_LoRa.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_LoRa/build/DEBUG/CMakeFiles/edit_cache.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_LoRa/build/DEBUG/CMakeFiles/rebuild_cache.dir
