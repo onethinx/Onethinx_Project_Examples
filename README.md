@@ -19,10 +19,10 @@ These projects combine the Visual Code setup for code editing with the magnifice
 1. Open the Onethinx_Creator.cywrk workspace (File >> Open >> Project/Workspace)
 1. The PSoC Schematic Editor and the Design Wide Resources can be accessed at the left 'Workspace Explorer' pane:
 <br>`..Onethinx_Project_Examples\Example_X\Onethinx_Creator.cydsn\Onethinx_Creator.cywrk`<br><br>
-![PSoC_Creator_Config](https://github.com/onethinx/Onethinx_Project_Examples/blob/master/assets/PSoC_Creator_Config.png)
+![PSoC_Creator_Config](https://github.com/onethinx/Readme_assets/blob/main/PSoC_Creator_Config.png)
 1. After the changes to the chip configuration are done, build the Onethinx Creator project (Build >> Build Onethinx_Creator or Shift + F5)
 1. Make sure the project builds well from the output tab and the Onethinx CoreStripper has run:<br>
-![Onethinx CoreStripper](https://github.com/onethinx/Onethinx_Project_Examples/blob/master/assets/PSoC_Creator_Build.png)
+![Onethinx CoreStripper](https://github.com/onethinx/Readme_assets/blob/main/PSoC_Creator_Build.png)
 1. The chip configuration is done and PSoC Creator may be closed.
 ## Prepare the project in VS Code
 1. Start VS Code
@@ -31,7 +31,7 @@ These projects combine the Visual Code setup for code editing with the magnifice
 1. If your project has LoRaWAN keys:
     - Navigate to source/OnethinxCore/LoRaWAN_keys.h and fill in your LoRaWAN keys.
 1. The following buttons in the statusbar can be used to configure, build and debug the project.
-![VScode Buttons](https://github.com/onethinx/Onethinx_Project_Examples/blob/master/assets/VScode_buttons.png)<br>
+![VScode Buttons](https://github.com/onethinx/Readme_assets/blob/main/VScode_buttons.png)<br>
 1. On first-time load of a project, the CMake kit may be uninitialized. Select the correct kit GCC arm-none-eabi from the list.
     - If the GCC compiler in the VSCode_OnethinxPack folder isn't listed, it is adviced to clear the user-local CMake kits file and do a fresh scan:
     View >> Command Pallette >> type 'kits' >> Edit User-Local CMake Kits
