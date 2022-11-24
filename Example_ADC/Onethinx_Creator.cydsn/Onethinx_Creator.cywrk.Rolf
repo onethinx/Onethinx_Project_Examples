@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Onethinx_Creator\Onethinx_Creator\TopDesign">
 <ExpandedNodeIds>
 <v>Onethinx_Creator</v>
 <v>Onethinx_Creator\Onethinx_Creator</v>
@@ -338,7 +338,17 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\TopDesign\TopDesign.cysch" />
+<name v=".\Onethinx_Creator.cydwr" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="588, 932" SelectedTabbedMdiWindow="64e16c4d-3b28-4068-a19f-666d5261df14"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="824c2bac-a1b0-4b2e-980f-68a0b68a063e" /><DocumentWindow Key="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_ADC\Onethinx_Creator.cydsn\TopDesign\TopDesign.cysch" Guid="64e16c4d-3b28-4068-a19f-666d5261df14" /></TabbedMdiContainer><TabbedMdiContainer Size="1043, 932" SelectedTabbedMdiWindow="f757f89d-91bf-4d38-a2b7-ed978a9e495a"><DocumentWindow Key="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_ADC\Onethinx_Creator.cydsn\Onethinx_Creator.cydwr" Guid="f757f89d-91bf-4d38-a2b7-ed978a9e495a" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
