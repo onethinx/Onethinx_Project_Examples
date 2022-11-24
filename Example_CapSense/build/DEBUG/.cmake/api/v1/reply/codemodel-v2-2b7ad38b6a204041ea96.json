@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-DEBUG-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "DEBUG",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Example_CapSense",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Example_CapSense::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Example_CapSense-DEBUG-1009b91f70c005ba9820.json",
+					"name" : "Example_CapSense",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Example_CapSense.elf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Example_CapSense.elf-DEBUG-31c3dc193ca817e505b7.json",
+					"name" : "Example_CapSense.elf",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/build/DEBUG",
+		"source" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
