@@ -153,7 +153,6 @@
                 "stepi",
                 "tbreak main"
             ],
-            // svdFile is optional, it can be very large.
             "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",          // svdFile is optional, it can be very large.
             "showDevDebugOutput": "raw",                                // Shows output of GDB, helpful when something is not working right
         },
