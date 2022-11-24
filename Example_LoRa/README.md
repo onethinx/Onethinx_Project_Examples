@@ -1,7 +1,6 @@
 # Onethinx LoRa To LoRa communication example
    
-   ![LoRa to LoRa](https://github.com/onethinx/Readme_assets/blob/main/LoRa-to-LoRa.gif?raw=true)<br/>
-   
+![LoRa to LoRa](https://github.com/onethinx/Readme_assets/blob/main/LoRa-to-LoRa.gif?raw=true)<br/>
 
 This example presents LoRa to LoRa communication. 
 
