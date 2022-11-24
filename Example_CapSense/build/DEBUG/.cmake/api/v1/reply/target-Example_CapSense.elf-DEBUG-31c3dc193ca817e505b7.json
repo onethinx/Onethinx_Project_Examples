@@ -1,0 +1,686 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "Example_CapSense.elf"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"TARGET_LINK_LIBRARIES",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 169,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 181,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 109,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -Wall -Wno-unused-function -Wextra -Wtype-limits -DDEBUG -ffunction-sections -ffat-lto-objects -Og -fno-exceptions -fmessage-length=0 -fsigned-char -fdata-sections -g3 -mthumb -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -g   -D CY8C6347BZI_BLD53"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/cmsis"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/devices/psoc6/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/devices/psoc6/include/ip"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/middleware"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/device"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/efuse"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/flash"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/gpio"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/lvd"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/profile"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/prot"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/scb"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysanalog"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysclk"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysint"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syspm"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/systick"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/trigmux"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/wdt"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/cmsis/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/middleware/ble"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/codegentemp"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/source/OnethinxCore"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -Wall -Wno-unused-function -Wextra -Wtype-limits -DDEBUG -ffunction-sections -ffat-lto-objects -Og -fno-exceptions -fmessage-length=0 -fsigned-char -fdata-sections -g3 -mthumb -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -g   -D CY8C6347BZI_BLD53"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/cmsis"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/devices/psoc6/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/devices/psoc6/include/ip"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/middleware"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/device"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/efuse"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/flash"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/gpio"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/lvd"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/profile"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/prot"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/scb"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysanalog"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysclk"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysint"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syspm"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/systick"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/trigmux"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/wdt"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/cmsis/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/middleware/ble"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn/codegentemp"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/Onethinx_Creator.cydsn"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_CapSense/source/OnethinxCore"
+				}
+			],
+			"language" : "ASM",
+			"sourceIndexes" : 
+			[
+				40,
+				41
+			]
+		}
+	],
+	"id" : "Example_CapSense.elf::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Wall -Wno-unused-function -Wextra -Wtype-limits -DDEBUG -ffunction-sections -ffat-lto-objects -Og -fno-exceptions -fmessage-length=0 -fsigned-char -fdata-sections -g3 -mthumb -mcpu=cortex-m4 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "--specs=nosys.specs -L/Volumes/Data/VScode/GIT/VSCode_OnethinxPack_macOS/linker -Wl,--gc-sections -ffunction-sections -ffat-lto-objects -Wl,-Map=Example_CapSense.map -TOnethinxCore_18.ld -DDEBUG -ffunction-sections -ffat-lto-objects -Og -fno-exceptions -fmessage-length=0 -fsigned-char -fdata-sections -g3",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../../Onethinx_Creator.cydsn/CapSense_Library_GCC_M4.a",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "Example_CapSense.elf",
+	"nameOnDisk" : "Example_CapSense.elf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				40,
+				41
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/OnethinxCore/OnethinxCore01.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/OnethinxCore/OnethinxExt01.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/main.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_Control.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_Filter.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_INT.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_Processing.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_Sensing.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_SensingCSD_LL.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_Structure.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/CapSense_Tuner.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/I2C_CapSense.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/cyfitter_cfg.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/cyfitter_sysint_cfg.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/cymetadata.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/device/cy_device.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/efuse/cy_efuse.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/flash/cy_flash.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/gpio/cy_gpio.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc/cy_ipc_drv.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc/cy_ipc_pipe.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc/cy_ipc_sema.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/lvd/cy_lvd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/profile/cy_profile.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/prot/cy_prot.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/scb/cy_scb_common.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/scb/cy_scb_ezi2c.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/scb/cy_scb_i2c.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/scb/cy_scb_spi.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/scb/cy_scb_uart.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysanalog/cy_sysanalog.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysclk/cy_sysclk.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysint/cy_sysint.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib/cy_syslib.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syspm/cy_syspm.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/systick/cy_systick.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/trigmux/cy_trigmux.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/wdt/cy_wdt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/middleware/ble/cy_ble_clk.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Onethinx_Creator.cydsn/system_psoc6_cm4.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "Onethinx_Creator.cydsn/gcc/startup_psoc6_01_cm4.S",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib/gcc/cy_syslib_gcc.S",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "EXECUTABLE"
+}

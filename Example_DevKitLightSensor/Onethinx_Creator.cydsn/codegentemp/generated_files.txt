@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<fileSet version="1" anchorPath="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp" xsi:schemaLocation="http://cypress.com/xsd/cypathdictionary cypathdictionary.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cypress.com/xsd/cypathdictionary">
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cyfitter_cfg.h" value="HEADER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cyfitter_sysint_cfg.h" value="HEADER;;;;;Pins and Interrupts" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cyfitter_sysint_cfg.c" value="SOURCE_C;CortexM0p,CortexM4;;;;Pins and Interrupts" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cyfitter_cfg.c" value="SOURCE_C;CortexM0p;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cymetadata.c" value="SOURCE_C;CortexM0p,CortexM4;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cydevice_trm.h" value="HEADER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cydevicegnu_trm.inc" value="HEADER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cydevicerv_trm.inc" value="HEADER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cydeviceiar_trm.inc" value="HEADER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cyfitter.h" value="HEADER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cyfitter_gpio.h" value="HEADER;;;;;Pins and Interrupts" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cyfitter_sysint.h" value="HEADER;;;;;Pins and Interrupts" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cydisabledsheets.h" value="HEADER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\ADC.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\ADC.h" value="HEADER;;;;;ADC" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\ADC_INT.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\ADC_INIT.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\ADC_PM.c" value="SOURCE_C;CortexM0p,CortexM4;;;;ADC" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\ADC_intSarClock.h" value="HEADER;;;;;ADC_intSarClock" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\project.h" value="OTHER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cycodeshareimport.ld" value="OTHER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cycodeshareexport.ld" value="OTHER;;;;;" />
+  <file name="\\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\codegentemp\cycodeshareimport.scat" value="OTHER;;;;;" />
+</fileSet>

@@ -1,0 +1,4 @@
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_SWV/build/DEBUG/CMakeFiles/Example_SWV.elf.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_SWV/build/DEBUG/CMakeFiles/Example_SWV.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_SWV/build/DEBUG/CMakeFiles/edit_cache.dir
+/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_SWV/build/DEBUG/CMakeFiles/rebuild_cache.dir

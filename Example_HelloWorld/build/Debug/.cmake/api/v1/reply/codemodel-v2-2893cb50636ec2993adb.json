@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Example_HelloWorld",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Example_HelloWorld::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Example_HelloWorld-Debug-93e71f46f2886e536e78.json",
+					"name" : "Example_HelloWorld",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Example_HelloWorld.elf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Example_HelloWorld.elf-Debug-58b091fc1bab05693891.json",
+					"name" : "Example_HelloWorld.elf",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld/build/Debug",
+		"source" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_HelloWorld"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

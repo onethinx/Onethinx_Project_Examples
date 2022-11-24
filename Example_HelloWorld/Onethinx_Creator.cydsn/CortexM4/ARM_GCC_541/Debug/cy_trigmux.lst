@@ -1,0 +1,4012 @@
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.fpu fpv4-sp-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"cy_trigmux.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.section	.text.Cy_TrigMux_Connect,"ax",%progbits
+  21              		.align	2
+  22              		.global	Cy_TrigMux_Connect
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	Cy_TrigMux_Connect, %function
+  26              	Cy_TrigMux_Connect:
+  27              	.LFB132:
+  28              		.file 1 "Generated_Source\\PSoC6\\pdl\\drivers\\peripheral\\trigmux\\cy_trigmux.c"
+   1:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \file cy_trigmux.c
+   3:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \version 1.20
+   4:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+   5:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \brief Trigger mux API.
+   6:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+   7:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** ********************************************************************************
+   8:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \copyright
+   9:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Copyright 2016-2018, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *******************************************************************************/
+  14:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  15:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #include "cy_trigmux.h"
+  16:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #include "cy_device.h"
+  17:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  18:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  19:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_IS_TRIGTYPE_VALID(trigType)  (((trigType) == TRIGGER_TYPE_EDGE) || \
+  20:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                  ((trigType) == TRIGGER_TYPE_LEVEL))
+  21:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  22:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_V1_IS_CYCLES_VALID(cycles)   (CY_TRIGGER_INFINITE >= (cycles))
+  23:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_V2_IS_CYCLES_VALID(cycles)   ((CY_TRIGGER_DEACTIVATE == (cycles)) || \
+  24:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                  (CY_TRIGGER_TWO_CYCLES == (cycles)) || \
+  25:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                  (CY_TRIGGER_INFINITE   == (cycles)))
+  26:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_IS_CYCLES_VALID(cycles)      ((CY_PERI_V1 && CY_TRIGMUX_V1_IS_CYCLES_VALID(cycle
+  27:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                                 CY_TRIGMUX_V2_IS_CYCLES_VALID(cycle
+  28:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  29:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_INTRIG_MASK                  (PERI_TR_CMD_GROUP_SEL_Msk | PERI_TR_GR_TR_OUT_CTL_
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 2
+
+
+  30:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_IS_INTRIG_VALID(inTrg)       (0UL == ((inTrg) & (uint32_t)~CY_TRIGMUX_INTRIG_MAS
+  31:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  32:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_OUTTRIG_MASK                 (PERI_TR_CMD_OUT_SEL_Msk | PERI_TR_CMD_GROUP_SEL_Ms
+  33:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_IS_OUTTRIG_VALID(outTrg)     ((0UL == ((outTrg) & (uint32_t)~CY_TRIGMUX_OUTTRIG_
+  34:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                  (0UL != ((outTrg) & PERI_TR_CMD_OUT_SEL_Msk)))
+  35:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  36:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_ONETRIG_MASK                 (PERI_V2_TR_CMD_OUT_SEL_Msk | PERI_V2_TR_CMD_GROUP_
+  37:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_IS_ONETRIG_VALID(oneTrg)     ((0UL == ((oneTrg) & (uint32_t)~CY_TRIGMUX_ONETRIG_
+  38:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                  (0UL != ((oneTrg) & PERI_V2_TR_CMD_OUT_SEL_Msk)) &
+  39:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                  (0UL != ((oneTrg) & (PERI_V2_TR_CMD_GROUP_SEL_Msk 
+  40:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  41:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_TRIGLINE_MASK                (PERI_TR_CMD_OUT_SEL_Msk | CY_PERI_TR_CMD_GROUP_SEL
+  42:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_IS_TRIGLINE_VALID(trgLn)     (0U == ((trgLn) & (uint32_t)~CY_TRIGMUX_TRIGLINE_MA
+  43:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  44:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** #define CY_TRIGMUX_TR_CTL(outTrig)              (PERI_TR_GR_TR_CTL(_FLD2VAL(CY_PERI_TR_CMD_GROUP_SE
+  45:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                                    _FLD2VAL(CY_PERI_TR_CTL_SEL,    
+  46:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  47:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  48:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** /*******************************************************************************
+  49:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Function Name: Cy_TrigMux_Connect
+  50:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** ****************************************************************************//**
+  51:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+  52:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Connects an input trigger source and output trigger.
+  53:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+  54:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param inTrig
+  55:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * An input selection for the trigger mux.
+  56:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 30 should be cleared.
+  57:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 12 should be cleared.
+  58:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 11:8 represent the trigger group selection.
+  59:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 7:0 select the input trigger signal for the specified trigger multiplexer.
+  60:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+  61:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param outTrig
+  62:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * The output of the trigger mux. This refers to the consumer of the trigger mux.
+  63:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 30 should be set.
+  64:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 12 should be cleared.
+  65:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 11:8 represent the trigger group selection.<br>
+  66:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  For PERI_ver1:
+  67:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 6:0 select the output trigger number in the trigger group.<br>
+  68:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  For PERI_ver2:
+  69:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 7:0 select the output trigger number in the trigger group.
+  70:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+  71:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param invert
+  72:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - true: The output trigger is inverted.
+  73:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - false: The output trigger is not inverted.
+  74:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+  75:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param trigType The trigger signal type.
+  76:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - TRIGGER_TYPE_EDGE: The trigger is synchronized to the consumer blocks clock
+  77:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   and a two-cycle pulse is generated on this clock.
+  78:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - TRIGGER_TYPE_LEVEL: The trigger is a simple level output.
+  79:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+  80:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \return status:
+  81:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_SUCCESS: The connection is made successfully.
+  82:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_BAD_PARAM: Some parameter is invalid.
+  83:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+  84:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \funcusage
+  85:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \snippet trigmux\1.20\snippet\main.c snippet_Cy_TrigMux_Connect
+  86:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 3
+
+
+  87:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *******************************************************************************/
+  88:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** cy_en_trigmux_status_t Cy_TrigMux_Connect(uint32_t inTrig, uint32_t outTrig, bool invert, en_trig_t
+  89:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** {
+  29              		.loc 1 89 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LVL0:
+  34 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  35              		.cfi_def_cfa_offset 24
+  36              		.cfi_offset 4, -24
+  37              		.cfi_offset 5, -20
+  38              		.cfi_offset 6, -16
+  39              		.cfi_offset 7, -12
+  40              		.cfi_offset 8, -8
+  41              		.cfi_offset 14, -4
+  42 0004 0546     		mov	r5, r0
+  43 0006 0C46     		mov	r4, r1
+  44 0008 1746     		mov	r7, r2
+  45 000a 1E46     		mov	r6, r3
+  46              	.LVL1:
+  90:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     cy_en_trigmux_status_t retVal = CY_TRIGMUX_BAD_PARAM;
+  91:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L3(CY_TRIGMUX_IS_TRIGTYPE_VALID(trigType));
+  47              		.loc 1 91 0
+  48 000c 012B     		cmp	r3, #1
+  49 000e 03D9     		bls	.L2
+  50              		.loc 1 91 0 is_stmt 0 discriminator 1
+  51 0010 5B21     		movs	r1, #91
+  52              	.LVL2:
+  53 0012 2C48     		ldr	r0, .L10
+  54              	.LVL3:
+  55 0014 FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+  56              	.LVL4:
+  57              	.L2:
+  92:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L2(CY_TRIGMUX_IS_INTRIG_VALID(inTrig));
+  58              		.loc 1 92 0 is_stmt 1
+  59 0018 25F47F63 		bic	r3, r5, #4080
+  60 001c 23F00F03 		bic	r3, r3, #15
+  61 0020 1BB1     		cbz	r3, .L3
+  62              		.loc 1 92 0 is_stmt 0 discriminator 1
+  63 0022 5C21     		movs	r1, #92
+  64 0024 2748     		ldr	r0, .L10
+  65 0026 FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+  66              	.LVL5:
+  67              	.L3:
+  93:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L2(CY_TRIGMUX_IS_OUTTRIG_VALID(outTrig));
+  68              		.loc 1 93 0 is_stmt 1
+  69 002a 274B     		ldr	r3, .L10+4
+  70 002c 1B68     		ldr	r3, [r3]
+  71 002e B3F86E30 		ldrh	r3, [r3, #110]
+  72 0032 9B08     		lsrs	r3, r3, #2
+  73 0034 013B     		subs	r3, r3, #1
+  74 0036 43F08043 		orr	r3, r3, #1073741824
+  75 003a 43F47063 		orr	r3, r3, #3840
+  76 003e 34EA0303 		bics	r3, r4, r3
+  77 0042 02D1     		bne	.L4
+  78              		.loc 1 93 0 is_stmt 0 discriminator 2
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 4
+
+
+  79 0044 14F0804F 		tst	r4, #1073741824
+  80 0048 03D1     		bne	.L5
+  81              	.L4:
+  82              		.loc 1 93 0 discriminator 3
+  83 004a 5D21     		movs	r1, #93
+  84 004c 1D48     		ldr	r0, .L10
+  85 004e FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+  86              	.LVL6:
+  87              	.L5:
+  94:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+  95:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     /* inTrig and outTrig should be in the same group */
+  96:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     if ((inTrig & PERI_TR_CMD_GROUP_SEL_Msk) == (outTrig & PERI_TR_CMD_GROUP_SEL_Msk))
+  88              		.loc 1 96 0 is_stmt 1
+  89 0052 85EA0403 		eor	r3, r5, r4
+  90 0056 13F47068 		ands	r8, r3, #3840
+  91 005a 2FD1     		bne	.L8
+  92              	.LBB2:
+  97:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     {
+  98:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         uint32_t interruptState = Cy_SysLib_EnterCriticalSection();
+  93              		.loc 1 98 0
+  94 005c FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+  95              	.LVL7:
+  99:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 100:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         CY_TRIGMUX_TR_CTL(outTrig) = (CY_TRIGMUX_TR_CTL(outTrig) &
+  96              		.loc 1 100 0
+  97 0060 194B     		ldr	r3, .L10+4
+  98 0062 D3F800E0 		ldr	lr, [r3]
+  99 0066 DEF80820 		ldr	r2, [lr, #8]
+ 100 006a BEF86C30 		ldrh	r3, [lr, #108]
+ 101 006e 1A44     		add	r2, r2, r3
+ 102 0070 BEF86EC0 		ldrh	ip, [lr, #110]
+ 103 0074 4FEA9C03 		lsr	r3, ip, #2
+ 104 0078 013B     		subs	r3, r3, #1
+ 105 007a 04EA0301 		and	r1, r4, r3
+ 106 007e BEF86AE0 		ldrh	lr, [lr, #106]
+ 107 0082 04EA0E04 		and	r4, r4, lr
+ 108              	.LVL8:
+ 109 0086 240A     		lsrs	r4, r4, #8
+ 110 0088 0CFB04F4 		mul	r4, ip, r4
+ 111 008c 04EB8103 		add	r3, r4, r1, lsl #2
+ 112 0090 9958     		ldr	r1, [r3, r2]
+ 113 0092 21F47F71 		bic	r1, r1, #1020
+ 114 0096 21F00301 		bic	r1, r1, #3
+ 101:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                       (uint32_t)~(PERI_TR_GR_TR_OUT_CTL_TR_SEL_Msk |
+ 102:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                   PERI_TR_GR_TR_OUT_CTL_TR_INV_Msk |
+ 103:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                   PERI_TR_GR_TR_OUT_CTL_TR_EDGE_Msk)) |
+ 104:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                         (_VAL2FLD(PERI_TR_GR_TR_OUT_CTL_TR_SEL, inTrig) |
+ 115              		.loc 1 104 0
+ 116 009a EDB2     		uxtb	r5, r5
+ 117              	.LVL9:
+ 105:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                         _BOOL2FLD(PERI_TR_GR_TR_OUT_CTL_TR_INV, invert) |
+ 118              		.loc 1 105 0
+ 119 009c 0FB1     		cbz	r7, .L7
+ 120 009e 4FF48078 		mov	r8, #256
+ 121              	.L7:
+ 104:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                         _BOOL2FLD(PERI_TR_GR_TR_OUT_CTL_TR_INV, invert) |
+ 122              		.loc 1 104 0
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 5
+
+
+ 123 00a2 48EA0505 		orr	r5, r8, r5
+ 106:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                          _VAL2FLD(PERI_TR_GR_TR_OUT_CTL_TR_EDGE, trigType));
+ 124              		.loc 1 106 0
+ 125 00a6 7602     		lsls	r6, r6, #9
+ 126 00a8 06F40076 		and	r6, r6, #512
+ 105:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                         _BOOL2FLD(PERI_TR_GR_TR_OUT_CTL_TR_INV, invert) |
+ 127              		.loc 1 105 0
+ 128 00ac 3543     		orrs	r5, r5, r6
+ 103:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                         (_VAL2FLD(PERI_TR_GR_TR_OUT_CTL_TR_SEL, inTrig) |
+ 129              		.loc 1 103 0
+ 130 00ae 0D43     		orrs	r5, r5, r1
+ 100:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                       (uint32_t)~(PERI_TR_GR_TR_OUT_CTL_TR_SEL_Msk |
+ 131              		.loc 1 100 0
+ 132 00b0 9D50     		str	r5, [r3, r2]
+ 107:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 108:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         Cy_SysLib_ExitCriticalSection(interruptState);
+ 133              		.loc 1 108 0
+ 134 00b2 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 135              	.LVL10:
+ 109:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 110:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         retVal = CY_TRIGMUX_SUCCESS;
+ 136              		.loc 1 110 0
+ 137 00b6 0020     		movs	r0, #0
+ 138 00b8 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 139              	.LVL11:
+ 140              	.L8:
+ 141              	.LBE2:
+  90:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L3(CY_TRIGMUX_IS_TRIGTYPE_VALID(trigType));
+ 142              		.loc 1 90 0
+ 143 00bc 0348     		ldr	r0, .L10+8
+ 144              	.LVL12:
+ 111:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     }
+ 112:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 113:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     return retVal;
+ 114:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** }
+ 145              		.loc 1 114 0
+ 146 00be BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 147              	.LVL13:
+ 148              	.L11:
+ 149 00c2 00BF     		.align	2
+ 150              	.L10:
+ 151 00c4 00000000 		.word	.LC0
+ 152 00c8 00000000 		.word	cy_device
+ 153 00cc 0100CE00 		.word	13500417
+ 154              		.cfi_endproc
+ 155              	.LFE132:
+ 156              		.size	Cy_TrigMux_Connect, .-Cy_TrigMux_Connect
+ 157              		.section	.text.Cy_TrigMux_Select,"ax",%progbits
+ 158              		.align	2
+ 159              		.global	Cy_TrigMux_Select
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.type	Cy_TrigMux_Select, %function
+ 163              	Cy_TrigMux_Select:
+ 164              	.LFB133:
+ 115:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 116:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 6
+
+
+ 117:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** /*******************************************************************************
+ 118:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Function Name: Cy_TrigMux_Select
+ 119:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** ****************************************************************************//**
+ 120:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 121:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Enables and configures the specified 1-to-1 trigger line. For PERI_ver2 only.
+ 122:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 123:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param outTrig
+ 124:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * The 1to1 trigger line.
+ 125:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 30 should be set.
+ 126:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 12 should be set.
+ 127:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 11:8 represent the 1-to-1 trigger group selection.
+ 128:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 7:0 select the trigger line number in the trigger group.
+ 129:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 130:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param invert
+ 131:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - true: The trigger signal is inverted.
+ 132:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - false: The trigger signal is not inverted.
+ 133:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 134:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param trigType The trigger signal type.
+ 135:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - TRIGGER_TYPE_EDGE: The trigger is synchronized to the consumer blocks clock
+ 136:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   and a two-cycle pulse is generated on this clock.
+ 137:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - TRIGGER_TYPE_LEVEL: The trigger is a simple level output.
+ 138:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 139:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \return status:
+ 140:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_SUCCESS: The selection is made successfully.
+ 141:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_BAD_PARAM: Some parameter is invalid.
+ 142:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 143:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \funcusage
+ 144:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \snippet trigmux\1.20\snippet\main.c snippet_Cy_TrigMux_Select
+ 145:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  
+ 146:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *******************************************************************************/
+ 147:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** cy_en_trigmux_status_t Cy_TrigMux_Select(uint32_t outTrig, bool invert, en_trig_type_t trigType)
+ 148:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** {
+ 165              		.loc 1 148 0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              	.LVL14:
+ 170 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 171              		.cfi_def_cfa_offset 24
+ 172              		.cfi_offset 3, -24
+ 173              		.cfi_offset 4, -20
+ 174              		.cfi_offset 5, -16
+ 175              		.cfi_offset 6, -12
+ 176              		.cfi_offset 7, -8
+ 177              		.cfi_offset 14, -4
+ 178 0002 0546     		mov	r5, r0
+ 179 0004 0E46     		mov	r6, r1
+ 180 0006 1446     		mov	r4, r2
+ 181              	.LVL15:
+ 149:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     cy_en_trigmux_status_t retVal = CY_TRIGMUX_BAD_PARAM;
+ 150:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     
+ 151:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L3(CY_TRIGMUX_IS_TRIGTYPE_VALID(trigType));
+ 182              		.loc 1 151 0
+ 183 0008 012A     		cmp	r2, #1
+ 184 000a 03D9     		bls	.L13
+ 185              		.loc 1 151 0 is_stmt 0 discriminator 1
+ 186 000c 9721     		movs	r1, #151
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 7
+
+
+ 187              	.LVL16:
+ 188 000e 2348     		ldr	r0, .L21
+ 189              	.LVL17:
+ 190 0010 FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+ 191              	.LVL18:
+ 192              	.L13:
+ 152:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L2(CY_TRIGMUX_IS_ONETRIG_VALID(outTrig));
+ 193              		.loc 1 152 0 is_stmt 1
+ 194 0014 224B     		ldr	r3, .L21+4
+ 195 0016 1B68     		ldr	r3, [r3]
+ 196 0018 B3F86E30 		ldrh	r3, [r3, #110]
+ 197 001c 9B08     		lsrs	r3, r3, #2
+ 198 001e 013B     		subs	r3, r3, #1
+ 199 0020 43F08043 		orr	r3, r3, #1073741824
+ 200 0024 43F4F853 		orr	r3, r3, #7936
+ 201 0028 35EA0303 		bics	r3, r5, r3
+ 202 002c 02D1     		bne	.L14
+ 203              		.loc 1 152 0 is_stmt 0 discriminator 2
+ 204 002e 1D4B     		ldr	r3, .L21+8
+ 205 0030 AB43     		bics	r3, r3, r5
+ 206 0032 03D0     		beq	.L15
+ 207              	.L14:
+ 208              		.loc 1 152 0 discriminator 3
+ 209 0034 9821     		movs	r1, #152
+ 210 0036 1948     		ldr	r0, .L21
+ 211 0038 FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+ 212              	.LVL19:
+ 213              	.L15:
+ 153:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 154:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     if (!CY_PERI_V1)
+ 214              		.loc 1 154 0 is_stmt 1
+ 215 003c 184B     		ldr	r3, .L21+4
+ 216 003e 1B68     		ldr	r3, [r3]
+ 217 0040 93F82F30 		ldrb	r3, [r3, #47]	@ zero_extendqisi2
+ 218 0044 012B     		cmp	r3, #1
+ 219 0046 27D0     		beq	.L18
+ 220              	.LBB3:
+ 155:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     {
+ 156:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         uint32_t interruptState;
+ 157:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 158:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         interruptState = Cy_SysLib_EnterCriticalSection();
+ 221              		.loc 1 158 0
+ 222 0048 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 223              	.LVL20:
+ 159:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 160:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         CY_TRIGMUX_TR_CTL(outTrig) = (CY_TRIGMUX_TR_CTL(outTrig) &
+ 224              		.loc 1 160 0
+ 225 004c 144B     		ldr	r3, .L21+4
+ 226 004e 1F68     		ldr	r7, [r3]
+ 227 0050 B968     		ldr	r1, [r7, #8]
+ 228 0052 B7F86C30 		ldrh	r3, [r7, #108]
+ 229 0056 1944     		add	r1, r1, r3
+ 230 0058 B7F86E30 		ldrh	r3, [r7, #110]
+ 231 005c 9A08     		lsrs	r2, r3, #2
+ 232 005e 013A     		subs	r2, r2, #1
+ 233 0060 2A40     		ands	r2, r2, r5
+ 234 0062 B7F86A70 		ldrh	r7, [r7, #106]
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 8
+
+
+ 235 0066 3D40     		ands	r5, r5, r7
+ 236              	.LVL21:
+ 237 0068 2D0A     		lsrs	r5, r5, #8
+ 238 006a 03FB05F3 		mul	r3, r3, r5
+ 239 006e 03EB8205 		add	r5, r3, r2, lsl #2
+ 240 0072 6A58     		ldr	r2, [r5, r1]
+ 241 0074 22F44072 		bic	r2, r2, #768
+ 161:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                           (uint32_t)~(PERI_TR_1TO1_GR_V2_TR_CTL_TR_INV_Msk |
+ 162:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                       PERI_TR_1TO1_GR_V2_TR_CTL_TR_EDGE_Msk)) |
+ 163:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                      (PERI_TR_1TO1_GR_V2_TR_CTL_TR_SEL_Msk      |
+ 242              		.loc 1 163 0
+ 243 0078 16B1     		cbz	r6, .L19
+ 244 007a 40F20116 		movw	r6, #257
+ 245 007e 00E0     		b	.L17
+ 246              	.L19:
+ 247 0080 0126     		movs	r6, #1
+ 248              	.L17:
+ 164:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                             _BOOL2FLD(PERI_TR_1TO1_GR_V2_TR_CTL_TR_INV, invert) |
+ 165:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                              _VAL2FLD(PERI_TR_1TO1_GR_V2_TR_CTL_TR_EDGE, trigType));
+ 249              		.loc 1 165 0
+ 250 0082 6302     		lsls	r3, r4, #9
+ 251 0084 03F40073 		and	r3, r3, #512
+ 164:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                             _BOOL2FLD(PERI_TR_1TO1_GR_V2_TR_CTL_TR_INV, invert) |
+ 252              		.loc 1 164 0
+ 253 0088 46EA0304 		orr	r4, r6, r3
+ 162:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                      (PERI_TR_1TO1_GR_V2_TR_CTL_TR_SEL_Msk      |
+ 254              		.loc 1 162 0
+ 255 008c 1443     		orrs	r4, r4, r2
+ 160:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                           (uint32_t)~(PERI_TR_1TO1_GR_V2_TR_CTL_TR_INV_Msk |
+ 256              		.loc 1 160 0
+ 257 008e 6C50     		str	r4, [r5, r1]
+ 166:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 167:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         Cy_SysLib_ExitCriticalSection(interruptState);
+ 258              		.loc 1 167 0
+ 259 0090 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 260              	.LVL22:
+ 168:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 169:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         retVal = CY_TRIGMUX_SUCCESS;
+ 261              		.loc 1 169 0
+ 262 0094 0020     		movs	r0, #0
+ 263 0096 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 264              	.LVL23:
+ 265              	.L18:
+ 266              	.LBE3:
+ 149:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     
+ 267              		.loc 1 149 0
+ 268 0098 0348     		ldr	r0, .L21+12
+ 269              	.LVL24:
+ 170:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     }
+ 171:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 172:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     return retVal;
+ 173:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** }
+ 270              		.loc 1 173 0
+ 271 009a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 272              	.LVL25:
+ 273              	.L22:
+ 274              		.align	2
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 9
+
+
+ 275              	.L21:
+ 276 009c 00000000 		.word	.LC0
+ 277 00a0 00000000 		.word	cy_device
+ 278 00a4 00100040 		.word	1073745920
+ 279 00a8 0100CE00 		.word	13500417
+ 280              		.cfi_endproc
+ 281              	.LFE133:
+ 282              		.size	Cy_TrigMux_Select, .-Cy_TrigMux_Select
+ 283              		.section	.text.Cy_TrigMux_Deselect,"ax",%progbits
+ 284              		.align	2
+ 285              		.global	Cy_TrigMux_Deselect
+ 286              		.thumb
+ 287              		.thumb_func
+ 288              		.type	Cy_TrigMux_Deselect, %function
+ 289              	Cy_TrigMux_Deselect:
+ 290              	.LFB134:
+ 174:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 175:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 176:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** /*******************************************************************************
+ 177:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Function Name: Cy_TrigMux_Deselect
+ 178:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** ****************************************************************************//**
+ 179:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 180:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Disables the specified 1-to-1 trigger line. For PERI_ver2 only.
+ 181:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 182:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param outTrig
+ 183:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * The 1to1 trigger line.
+ 184:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 30 should be set.
+ 185:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 12 should be set.
+ 186:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 11:8 represent the 1-to-1 trigger group selection.
+ 187:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 7:0 select the trigger line number in the trigger group.
+ 188:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 189:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \return status:
+ 190:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_SUCCESS: The deselection is made successfully.
+ 191:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_BAD_PARAM: Some parameter is invalid.
+ 192:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 193:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \funcusage
+ 194:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \snippet trigmux\1.20\snippet\main.c snippet_Cy_TrigMux_Deselect
+ 195:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  
+ 196:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *******************************************************************************/
+ 197:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** cy_en_trigmux_status_t Cy_TrigMux_Deselect(uint32_t outTrig)
+ 198:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** {
+ 291              		.loc 1 198 0
+ 292              		.cfi_startproc
+ 293              		@ args = 0, pretend = 0, frame = 0
+ 294              		@ frame_needed = 0, uses_anonymous_args = 0
+ 295              	.LVL26:
+ 296 0000 38B5     		push	{r3, r4, r5, lr}
+ 297              		.cfi_def_cfa_offset 16
+ 298              		.cfi_offset 3, -16
+ 299              		.cfi_offset 4, -12
+ 300              		.cfi_offset 5, -8
+ 301              		.cfi_offset 14, -4
+ 302 0002 0446     		mov	r4, r0
+ 303              	.LVL27:
+ 199:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     cy_en_trigmux_status_t retVal = CY_TRIGMUX_BAD_PARAM;
+ 200:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 201:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L2(CY_TRIGMUX_IS_ONETRIG_VALID(outTrig));
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 10
+
+
+ 304              		.loc 1 201 0
+ 305 0004 1C4B     		ldr	r3, .L29
+ 306 0006 1B68     		ldr	r3, [r3]
+ 307 0008 B3F86E30 		ldrh	r3, [r3, #110]
+ 308 000c 9B08     		lsrs	r3, r3, #2
+ 309 000e 013B     		subs	r3, r3, #1
+ 310 0010 43F08043 		orr	r3, r3, #1073741824
+ 311 0014 43F4F853 		orr	r3, r3, #7936
+ 312 0018 30EA0303 		bics	r3, r0, r3
+ 313 001c 02D1     		bne	.L24
+ 314              		.loc 1 201 0 is_stmt 0 discriminator 2
+ 315 001e 174B     		ldr	r3, .L29+4
+ 316 0020 8343     		bics	r3, r3, r0
+ 317 0022 03D0     		beq	.L25
+ 318              	.L24:
+ 319              		.loc 1 201 0 discriminator 3
+ 320 0024 C921     		movs	r1, #201
+ 321 0026 1648     		ldr	r0, .L29+8
+ 322              	.LVL28:
+ 323 0028 FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+ 324              	.LVL29:
+ 325              	.L25:
+ 202:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 203:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     if (!CY_PERI_V1)
+ 326              		.loc 1 203 0 is_stmt 1
+ 327 002c 124B     		ldr	r3, .L29
+ 328 002e 1B68     		ldr	r3, [r3]
+ 329 0030 93F82F30 		ldrb	r3, [r3, #47]	@ zero_extendqisi2
+ 330 0034 012B     		cmp	r3, #1
+ 331 0036 1DD0     		beq	.L27
+ 332              	.LBB4:
+ 204:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     {
+ 205:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         uint32_t interruptState;
+ 206:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 207:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         interruptState = Cy_SysLib_EnterCriticalSection();
+ 333              		.loc 1 207 0
+ 334 0038 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 335              	.LVL30:
+ 208:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 209:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         CY_TRIGMUX_TR_CTL(outTrig) &= (uint32_t)~(PERI_TR_1TO1_GR_V2_TR_CTL_TR_SEL_Msk |
+ 336              		.loc 1 209 0
+ 337 003c 0E4B     		ldr	r3, .L29
+ 338 003e 1B68     		ldr	r3, [r3]
+ 339 0040 9968     		ldr	r1, [r3, #8]
+ 340 0042 B3F86C20 		ldrh	r2, [r3, #108]
+ 341 0046 1144     		add	r1, r1, r2
+ 342 0048 B3F86E50 		ldrh	r5, [r3, #110]
+ 343 004c AA08     		lsrs	r2, r5, #2
+ 344 004e 013A     		subs	r2, r2, #1
+ 345 0050 B3F86A30 		ldrh	r3, [r3, #106]
+ 346 0054 2340     		ands	r3, r3, r4
+ 347 0056 1B0A     		lsrs	r3, r3, #8
+ 348 0058 1440     		ands	r4, r4, r2
+ 349              	.LVL31:
+ 350 005a A400     		lsls	r4, r4, #2
+ 351 005c 05FB0344 		mla	r4, r5, r3, r4
+ 352 0060 6358     		ldr	r3, [r4, r1]
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 11
+
+
+ 353 0062 23F44073 		bic	r3, r3, #768
+ 354 0066 23F00103 		bic	r3, r3, #1
+ 355 006a 6350     		str	r3, [r4, r1]
+ 210:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                   PERI_TR_1TO1_GR_V2_TR_CTL_TR_INV_Msk |
+ 211:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                                   PERI_TR_1TO1_GR_V2_TR_CTL_TR_EDGE_Msk);
+ 212:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 213:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         Cy_SysLib_ExitCriticalSection(interruptState);
+ 356              		.loc 1 213 0
+ 357 006c FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 358              	.LVL32:
+ 214:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 215:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         retVal = CY_TRIGMUX_SUCCESS;
+ 359              		.loc 1 215 0
+ 360 0070 0020     		movs	r0, #0
+ 361 0072 38BD     		pop	{r3, r4, r5, pc}
+ 362              	.LVL33:
+ 363              	.L27:
+ 364              	.LBE4:
+ 199:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 365              		.loc 1 199 0
+ 366 0074 0348     		ldr	r0, .L29+12
+ 367              	.LVL34:
+ 216:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     }
+ 217:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 218:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     return retVal;
+ 219:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** }
+ 368              		.loc 1 219 0
+ 369 0076 38BD     		pop	{r3, r4, r5, pc}
+ 370              	.LVL35:
+ 371              	.L30:
+ 372              		.align	2
+ 373              	.L29:
+ 374 0078 00000000 		.word	cy_device
+ 375 007c 00100040 		.word	1073745920
+ 376 0080 00000000 		.word	.LC0
+ 377 0084 0100CE00 		.word	13500417
+ 378              		.cfi_endproc
+ 379              	.LFE134:
+ 380              		.size	Cy_TrigMux_Deselect, .-Cy_TrigMux_Deselect
+ 381              		.section	.text.Cy_TrigMux_SetDebugFreeze,"ax",%progbits
+ 382              		.align	2
+ 383              		.global	Cy_TrigMux_SetDebugFreeze
+ 384              		.thumb
+ 385              		.thumb_func
+ 386              		.type	Cy_TrigMux_SetDebugFreeze, %function
+ 387              	Cy_TrigMux_SetDebugFreeze:
+ 388              	.LFB135:
+ 220:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 221:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 222:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** /*******************************************************************************
+ 223:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Function Name: Cy_TrigMux_SetDebugFreeze
+ 224:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** ****************************************************************************//**
+ 225:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 226:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Enables/disables the Debug Freeze feature for the specified trigger 
+ 227:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * multiplexer or 1-to-1 trigger line. For PERI_ver2 only.
+ 228:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 229:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param outTrig
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 12
+
+
+ 230:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * The output of the trigger mux or dedicated 1-to-1 trigger line.
+ 231:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 30 should be set.
+ 232:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 12:8 represent the trigger group selection.
+ 233:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 7:0 select the output trigger number in the trigger group.
+ 234:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 235:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param enable
+ 236:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - true: The Debug Freeze feature is enabled.
+ 237:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - false: The Debug Freeze feature is disabled.
+ 238:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 239:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \return status:
+ 240:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_SUCCESS: The operation is made successfully.
+ 241:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_BAD_PARAM: The outTrig parameter is invalid.
+ 242:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 243:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \funcusage
+ 244:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \snippet trigmux\1.20\snippet\main.c snippet_Cy_TrigMux_SetDebugFreeze
+ 245:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  
+ 246:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *******************************************************************************/
+ 247:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** cy_en_trigmux_status_t Cy_TrigMux_SetDebugFreeze(uint32_t outTrig, bool enable)
+ 248:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** {    
+ 389              		.loc 1 248 0
+ 390              		.cfi_startproc
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 393              	.LVL36:
+ 394 0000 38B5     		push	{r3, r4, r5, lr}
+ 395              		.cfi_def_cfa_offset 16
+ 396              		.cfi_offset 3, -16
+ 397              		.cfi_offset 4, -12
+ 398              		.cfi_offset 5, -8
+ 399              		.cfi_offset 14, -4
+ 400              	.LVL37:
+ 249:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     cy_en_trigmux_status_t retVal = CY_TRIGMUX_BAD_PARAM;
+ 250:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 251:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     if (!CY_PERI_V1)
+ 401              		.loc 1 251 0
+ 402 0002 1F4B     		ldr	r3, .L37
+ 403 0004 1B68     		ldr	r3, [r3]
+ 404 0006 93F82F30 		ldrb	r3, [r3, #47]	@ zero_extendqisi2
+ 405 000a 012B     		cmp	r3, #1
+ 406 000c 35D0     		beq	.L35
+ 407 000e 0D46     		mov	r5, r1
+ 408 0010 0446     		mov	r4, r0
+ 409              	.LBB5:
+ 252:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     {
+ 253:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         uint32_t interruptState;
+ 254:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 255:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         interruptState = Cy_SysLib_EnterCriticalSection();
+ 410              		.loc 1 255 0
+ 411 0012 FFF7FEFF 		bl	Cy_SysLib_EnterCriticalSection
+ 412              	.LVL38:
+ 256:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 257:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         if (enable)
+ 413              		.loc 1 257 0
+ 414 0016 B5B1     		cbz	r5, .L33
+ 258:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         {
+ 259:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             CY_TRIGMUX_TR_CTL(outTrig) |= PERI_TR_GR_V2_TR_CTL_DBG_FREEZE_EN_Msk;
+ 415              		.loc 1 259 0
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 13
+
+
+ 416 0018 194B     		ldr	r3, .L37
+ 417 001a 1B68     		ldr	r3, [r3]
+ 418 001c 9968     		ldr	r1, [r3, #8]
+ 419 001e B3F86C20 		ldrh	r2, [r3, #108]
+ 420 0022 1144     		add	r1, r1, r2
+ 421 0024 B3F86E50 		ldrh	r5, [r3, #110]
+ 422 0028 AA08     		lsrs	r2, r5, #2
+ 423 002a 013A     		subs	r2, r2, #1
+ 424 002c B3F86A30 		ldrh	r3, [r3, #106]
+ 425 0030 2340     		ands	r3, r3, r4
+ 426 0032 1B0A     		lsrs	r3, r3, #8
+ 427 0034 1440     		ands	r4, r4, r2
+ 428              	.LVL39:
+ 429 0036 A400     		lsls	r4, r4, #2
+ 430 0038 05FB0344 		mla	r4, r5, r3, r4
+ 431 003c 6358     		ldr	r3, [r4, r1]
+ 432 003e 43F48053 		orr	r3, r3, #4096
+ 433 0042 6350     		str	r3, [r4, r1]
+ 434 0044 15E0     		b	.L34
+ 435              	.LVL40:
+ 436              	.L33:
+ 260:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         }
+ 261:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         else
+ 262:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         {
+ 263:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             CY_TRIGMUX_TR_CTL(outTrig) &= (uint32_t)~PERI_TR_GR_V2_TR_CTL_DBG_FREEZE_EN_Msk;
+ 437              		.loc 1 263 0
+ 438 0046 0E4B     		ldr	r3, .L37
+ 439 0048 1B68     		ldr	r3, [r3]
+ 440 004a 9968     		ldr	r1, [r3, #8]
+ 441 004c B3F86C20 		ldrh	r2, [r3, #108]
+ 442 0050 1144     		add	r1, r1, r2
+ 443 0052 B3F86E50 		ldrh	r5, [r3, #110]
+ 444 0056 AA08     		lsrs	r2, r5, #2
+ 445 0058 013A     		subs	r2, r2, #1
+ 446 005a B3F86A30 		ldrh	r3, [r3, #106]
+ 447 005e 2340     		ands	r3, r3, r4
+ 448 0060 1B0A     		lsrs	r3, r3, #8
+ 449 0062 1440     		ands	r4, r4, r2
+ 450              	.LVL41:
+ 451 0064 A400     		lsls	r4, r4, #2
+ 452 0066 05FB0344 		mla	r4, r5, r3, r4
+ 453 006a 6358     		ldr	r3, [r4, r1]
+ 454 006c 23F48053 		bic	r3, r3, #4096
+ 455 0070 6350     		str	r3, [r4, r1]
+ 456              	.L34:
+ 264:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         }
+ 265:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 266:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         Cy_SysLib_ExitCriticalSection(interruptState);
+ 457              		.loc 1 266 0
+ 458 0072 FFF7FEFF 		bl	Cy_SysLib_ExitCriticalSection
+ 459              	.LVL42:
+ 267:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 268:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         retVal = CY_TRIGMUX_SUCCESS;
+ 460              		.loc 1 268 0
+ 461 0076 0020     		movs	r0, #0
+ 462 0078 38BD     		pop	{r3, r4, r5, pc}
+ 463              	.LVL43:
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 14
+
+
+ 464              	.L35:
+ 465              	.LBE5:
+ 249:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 466              		.loc 1 249 0
+ 467 007a 0248     		ldr	r0, .L37+4
+ 468              	.LVL44:
+ 269:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     }
+ 270:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 271:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     return retVal;
+ 272:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** }
+ 469              		.loc 1 272 0
+ 470 007c 38BD     		pop	{r3, r4, r5, pc}
+ 471              	.L38:
+ 472 007e 00BF     		.align	2
+ 473              	.L37:
+ 474 0080 00000000 		.word	cy_device
+ 475 0084 0100CE00 		.word	13500417
+ 476              		.cfi_endproc
+ 477              	.LFE135:
+ 478              		.size	Cy_TrigMux_SetDebugFreeze, .-Cy_TrigMux_SetDebugFreeze
+ 479              		.section	.text.Cy_TrigMux_SwTrigger,"ax",%progbits
+ 480              		.align	2
+ 481              		.global	Cy_TrigMux_SwTrigger
+ 482              		.thumb
+ 483              		.thumb_func
+ 484              		.type	Cy_TrigMux_SwTrigger, %function
+ 485              	Cy_TrigMux_SwTrigger:
+ 486              	.LFB136:
+ 273:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 274:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 275:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** /*******************************************************************************
+ 276:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * Function Name: Cy_TrigMux_SwTrigger
+ 277:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** ****************************************************************************//**
+ 278:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 279:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * This function generates a software trigger on an input trigger line. 
+ 280:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * All output triggers connected to this input trigger will be triggered. 
+ 281:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * The function also verifies that there is no activated trigger before 
+ 282:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * generating another activation. 
+ 283:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 284:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param trigLine
+ 285:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * The input of the trigger mux.
+ 286:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bit 30 represents if the signal is an input/output. When this bit is set, 
+ 287:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   the trigger activation is for an output trigger from the trigger multiplexer.
+ 288:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   When this bit is reset, the trigger activation is for an input trigger to 
+ 289:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   the trigger multiplexer.
+ 290:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 12:8 represent the trigger group selection.<br>
+ 291:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * In case of output trigger line (bit 30 is set):
+ 292:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  For PERI_ver1:
+ 293:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 6:0 select the output trigger number in the trigger group.<br>
+ 294:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  For PERI_ver2:
+ 295:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 7:0 select the output trigger number in the trigger group.
+ 296:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * In case of input trigger line (bit 30 is unset):
+ 297:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - Bits 7:0 select the input trigger signal for the trigger multiplexer.
+ 298:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 299:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \param cycles
+ 300:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  The number of "Clk_Peri" cycles during which the trigger remains activated.<br>
+ 301:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  For PERI_ver1: The valid range of cycles is 1 ... 254.<br>
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 15
+
+
+ 302:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  For PERI_ver2: The only valid value of cycles is 2 (\ref CY_TRIGGER_TWO_CYCLES).<br>
+ 303:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *  Also there are special values (supported with both PERI_ver1 and PERI_ver2):
+ 304:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   - CY_TRIGGER_INFINITE - trigger remains activated until the user deactivates it by
+ 305:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   calling this function with CY_TRIGGER_DEACTIVATE parameter.
+ 306:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   - CY_TRIGGER_DEACTIVATE - this is used to deactivate the trigger activated by
+ 307:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *   calling this function with CY_TRIGGER_INFINITE parameter.
+ 308:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * 
+ 309:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \return status:
+ 310:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_SUCCESS: The trigger is successfully activated/deactivated.
+ 311:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_INVALID_STATE: The trigger is already activated/not active.
+ 312:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * - CY_TRIGMUX_BAD_PARAM: Some parameter is invalid.
+ 313:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 314:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \funcusage
+ 315:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** * \snippet trigmux\1.20\snippet\main.c snippet_Cy_TrigMux_SwTrigger
+ 316:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *
+ 317:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** *******************************************************************************/
+ 318:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** cy_en_trigmux_status_t Cy_TrigMux_SwTrigger(uint32_t trigLine, uint32_t cycles)
+ 319:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** {
+ 487              		.loc 1 319 0
+ 488              		.cfi_startproc
+ 489              		@ args = 0, pretend = 0, frame = 0
+ 490              		@ frame_needed = 0, uses_anonymous_args = 0
+ 491              	.LVL45:
+ 492 0000 70B5     		push	{r4, r5, r6, lr}
+ 493              		.cfi_def_cfa_offset 16
+ 494              		.cfi_offset 4, -16
+ 495              		.cfi_offset 5, -12
+ 496              		.cfi_offset 6, -8
+ 497              		.cfi_offset 14, -4
+ 498 0002 0546     		mov	r5, r0
+ 499 0004 0C46     		mov	r4, r1
+ 500              	.LVL46:
+ 320:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     cy_en_trigmux_status_t retVal = CY_TRIGMUX_INVALID_STATE;
+ 321:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 322:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L2(CY_TRIGMUX_IS_TRIGLINE_VALID(trigLine));
+ 501              		.loc 1 322 0
+ 502 0006 2F4B     		ldr	r3, .L51
+ 503 0008 1A68     		ldr	r2, [r3]
+ 504 000a B2F86A10 		ldrh	r1, [r2, #106]
+ 505              	.LVL47:
+ 506 000e B2F86E30 		ldrh	r3, [r2, #110]
+ 507 0012 9B08     		lsrs	r3, r3, #2
+ 508 0014 013B     		subs	r3, r3, #1
+ 509 0016 0B43     		orrs	r3, r3, r1
+ 510 0018 43F08043 		orr	r3, r3, #1073741824
+ 511 001c 30EA0303 		bics	r3, r0, r3
+ 512 0020 04D0     		beq	.L40
+ 513              		.loc 1 322 0 is_stmt 0 discriminator 1
+ 514 0022 4FF4A171 		mov	r1, #322
+ 515 0026 2848     		ldr	r0, .L51+4
+ 516              	.LVL48:
+ 517 0028 FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+ 518              	.LVL49:
+ 519              	.L40:
+ 323:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     CY_ASSERT_L2(CY_TRIGMUX_IS_CYCLES_VALID(cycles));
+ 520              		.loc 1 323 0 is_stmt 1
+ 521 002c 254B     		ldr	r3, .L51
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 16
+
+
+ 522 002e 1B68     		ldr	r3, [r3]
+ 523 0030 93F82F30 		ldrb	r3, [r3, #47]	@ zero_extendqisi2
+ 524 0034 012B     		cmp	r3, #1
+ 525 0036 01D1     		bne	.L41
+ 526              		.loc 1 323 0 is_stmt 0 discriminator 2
+ 527 0038 FF2C     		cmp	r4, #255
+ 528 003a 09D9     		bls	.L42
+ 529              	.L41:
+ 530              		.loc 1 323 0 discriminator 3
+ 531 003c 44B1     		cbz	r4, .L42
+ 532              		.loc 1 323 0 discriminator 4
+ 533 003e 022C     		cmp	r4, #2
+ 534 0040 06D0     		beq	.L42
+ 535              		.loc 1 323 0 discriminator 5
+ 536 0042 FF2C     		cmp	r4, #255
+ 537 0044 04D0     		beq	.L42
+ 538              		.loc 1 323 0 discriminator 6
+ 539 0046 40F24311 		movw	r1, #323
+ 540 004a 1F48     		ldr	r0, .L51+4
+ 541 004c FFF7FEFF 		bl	Cy_SysLib_AssertFailed
+ 542              	.LVL50:
+ 543              	.L42:
+ 324:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 325:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     if (CY_TRIGGER_DEACTIVATE != cycles)
+ 544              		.loc 1 325 0 is_stmt 1
+ 545 0050 3CB3     		cbz	r4, .L43
+ 326:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     {
+ 327:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         /* Activate the trigger if it is not in the active state. */
+ 328:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         if (PERI_TR_CMD_ACTIVATE_Msk != (PERI_TR_CMD & PERI_TR_CMD_ACTIVATE_Msk))
+ 546              		.loc 1 328 0
+ 547 0052 1C4B     		ldr	r3, .L51
+ 548 0054 1A68     		ldr	r2, [r3]
+ 549 0056 9068     		ldr	r0, [r2, #8]
+ 550 0058 B2F86810 		ldrh	r1, [r2, #104]
+ 551 005c 4358     		ldr	r3, [r0, r1]
+ 552 005e 002B     		cmp	r3, #0
+ 553 0060 2ADB     		blt	.L47
+ 554              	.LBB6:
+ 329:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         {
+ 330:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 331:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             uint32_t trCmd = (trigLine & (PERI_TR_CMD_TR_SEL_Msk |
+ 332:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                           PERI_TR_CMD_OUT_SEL_Msk |
+ 333:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                        CY_PERI_TR_CMD_GROUP_SEL_Msk)) |
+ 555              		.loc 1 333 0
+ 556 0062 B2F86A30 		ldrh	r3, [r2, #106]
+ 332:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                        CY_PERI_TR_CMD_GROUP_SEL_Msk)) |
+ 557              		.loc 1 332 0
+ 558 0066 43F08043 		orr	r3, r3, #1073741824
+ 559 006a 43F0FF03 		orr	r3, r3, #255
+ 331:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                           PERI_TR_CMD_OUT_SEL_Msk |
+ 560              		.loc 1 331 0
+ 561 006e 1D40     		ands	r5, r5, r3
+ 562              	.LVL51:
+ 563 0070 45F00046 		orr	r6, r5, #-2147483648
+ 564              	.LVL52:
+ 334:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                                           PERI_TR_CMD_ACTIVATE_Msk;
+ 335:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 17
+
+
+ 336:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             retVal = CY_TRIGMUX_SUCCESS;
+ 337:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             
+ 338:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             if (CY_PERI_V1) /* mxperi_v1 */
+ 565              		.loc 1 338 0
+ 566 0074 92F82F30 		ldrb	r3, [r2, #47]	@ zero_extendqisi2
+ 567 0078 012B     		cmp	r3, #1
+ 568 007a 06D1     		bne	.L45
+ 339:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             {
+ 340:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                 PERI_TR_CMD = trCmd | _VAL2FLD(PERI_TR_CMD_COUNT, cycles);
+ 569              		.loc 1 340 0
+ 570 007c 2404     		lsls	r4, r4, #16
+ 571              	.LVL53:
+ 572 007e 04F47F04 		and	r4, r4, #16711680
+ 573 0082 2643     		orrs	r6, r6, r4
+ 574              	.LVL54:
+ 575 0084 4650     		str	r6, [r0, r1]
+ 336:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             
+ 576              		.loc 1 336 0
+ 577 0086 0020     		movs	r0, #0
+ 578 0088 70BD     		pop	{r4, r5, r6, pc}
+ 579              	.LVL55:
+ 580              	.L45:
+ 341:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             }
+ 342:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             else if (CY_TRIGGER_TWO_CYCLES == cycles) /* mxperi_v2 or later, 2 cycles pulse */
+ 581              		.loc 1 342 0
+ 582 008a 022C     		cmp	r4, #2
+ 583 008c 04D1     		bne	.L46
+ 343:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             {
+ 344:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                 PERI_TR_CMD = trCmd | PERI_V2_TR_CMD_TR_EDGE_Msk;
+ 584              		.loc 1 344 0
+ 585 008e 45F02045 		orr	r5, r5, #-1610612736
+ 586 0092 4550     		str	r5, [r0, r1]
+ 336:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             
+ 587              		.loc 1 336 0
+ 588 0094 0020     		movs	r0, #0
+ 589 0096 70BD     		pop	{r4, r5, r6, pc}
+ 590              	.LVL56:
+ 591              	.L46:
+ 345:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             }
+ 346:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             else if (CY_TRIGGER_INFINITE == cycles) /* mxperi_v2 or later, infinite activating */
+ 592              		.loc 1 346 0
+ 593 0098 FF2C     		cmp	r4, #255
+ 594 009a 0FD1     		bne	.L48
+ 347:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             {
+ 348:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                 PERI_TR_CMD = trCmd;
+ 595              		.loc 1 348 0
+ 596 009c 4650     		str	r6, [r0, r1]
+ 336:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             
+ 597              		.loc 1 336 0
+ 598 009e 0020     		movs	r0, #0
+ 599 00a0 70BD     		pop	{r4, r5, r6, pc}
+ 600              	.LVL57:
+ 601              	.L43:
+ 602              	.LBE6:
+ 349:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             }
+ 350:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             else /* mxperi_v2 or later, invalid cycles value */
+ 351:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             {
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 18
+
+
+ 352:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****                 retVal = CY_TRIGMUX_BAD_PARAM;
+ 353:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             }
+ 354:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         }
+ 355:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     }
+ 356:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     else
+ 357:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     {
+ 358:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         /* Forcibly deactivate the trigger if it is in the active state. */
+ 359:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         if (PERI_TR_CMD_ACTIVATE_Msk == (PERI_TR_CMD & PERI_TR_CMD_ACTIVATE_Msk))
+ 603              		.loc 1 359 0
+ 604 00a2 084B     		ldr	r3, .L51
+ 605 00a4 1B68     		ldr	r3, [r3]
+ 606 00a6 9A68     		ldr	r2, [r3, #8]
+ 607 00a8 B3F86830 		ldrh	r3, [r3, #104]
+ 608 00ac D158     		ldr	r1, [r2, r3]
+ 609 00ae 0029     		cmp	r1, #0
+ 610 00b0 06DA     		bge	.L49
+ 360:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         {
+ 361:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             PERI_TR_CMD = 0UL;
+ 611              		.loc 1 361 0
+ 612 00b2 0020     		movs	r0, #0
+ 613 00b4 D050     		str	r0, [r2, r3]
+ 614              	.LVL58:
+ 615 00b6 70BD     		pop	{r4, r5, r6, pc}
+ 616              	.LVL59:
+ 617              	.L47:
+ 320:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 618              		.loc 1 320 0
+ 619 00b8 0448     		ldr	r0, .L51+8
+ 620 00ba 70BD     		pop	{r4, r5, r6, pc}
+ 621              	.LVL60:
+ 622              	.L48:
+ 623              	.LBB7:
+ 352:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             }
+ 624              		.loc 1 352 0
+ 625 00bc 0448     		ldr	r0, .L51+12
+ 626 00be 70BD     		pop	{r4, r5, r6, pc}
+ 627              	.LVL61:
+ 628              	.L49:
+ 629              	.LBE7:
+ 320:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 630              		.loc 1 320 0
+ 631 00c0 0248     		ldr	r0, .L51+8
+ 632              	.LVL62:
+ 362:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 363:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****             retVal = CY_TRIGMUX_SUCCESS;
+ 364:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****         }
+ 365:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     }
+ 366:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** 
+ 367:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c ****     return retVal;
+ 368:Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux/cy_trigmux.c **** }
+ 633              		.loc 1 368 0
+ 634 00c2 70BD     		pop	{r4, r5, r6, pc}
+ 635              	.LVL63:
+ 636              	.L52:
+ 637              		.align	2
+ 638              	.L51:
+ 639 00c4 00000000 		.word	cy_device
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 19
+
+
+ 640 00c8 00000000 		.word	.LC0
+ 641 00cc 0200CE00 		.word	13500418
+ 642 00d0 0100CE00 		.word	13500417
+ 643              		.cfi_endproc
+ 644              	.LFE136:
+ 645              		.size	Cy_TrigMux_SwTrigger, .-Cy_TrigMux_SwTrigger
+ 646              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 647              		.align	2
+ 648              	.LC0:
+ 649 0000 47656E65 		.ascii	"Generated_Source\\PSoC6\\pdl\\drivers\\peripheral\\"
+ 649      72617465 
+ 649      645F536F 
+ 649      75726365 
+ 649      5C50536F 
+ 650 002e 74726967 		.ascii	"trigmux\\cy_trigmux.c\000"
+ 650      6D75785C 
+ 650      63795F74 
+ 650      7269676D 
+ 650      75782E63 
+ 651              		.text
+ 652              	.Letext0:
+ 653              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\4.4\\psoc creator\\import\\gnu\\arm\
+ 654              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\4.4\\psoc creator\\import\\gnu\\arm\
+ 655              		.file 4 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/device/cy_device.h"
+ 656              		.file 5 "Generated_Source\\PSoC6\\pdl\\devices/psoc6/include/psoc6_01_config.h"
+ 657              		.file 6 "Generated_Source\\PSoC6\\pdl\\drivers/peripheral/syslib/cy_syslib.h"
+ 658              		.file 7 "Generated_Source\\PSoC6\\pdl\\drivers\\peripheral\\trigmux\\cy_trigmux.h"
+ 659              		.file 8 "Generated_Source\\PSoC6\\pdl\\cmsis/include/core_cm4.h"
+ 660              		.section	.debug_info,"",%progbits
+ 661              	.Ldebug_info0:
+ 662 0000 FC080000 		.4byte	0x8fc
+ 663 0004 0400     		.2byte	0x4
+ 664 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 665 000a 04       		.byte	0x4
+ 666 000b 01       		.uleb128 0x1
+ 667 000c B2050000 		.4byte	.LASF140
+ 668 0010 0C       		.byte	0xc
+ 669 0011 64080000 		.4byte	.LASF141
+ 670 0015 AF020000 		.4byte	.LASF142
+ 671 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 672 001d 00000000 		.4byte	0
+ 673 0021 00000000 		.4byte	.Ldebug_line0
+ 674 0025 02       		.uleb128 0x2
+ 675 0026 01       		.byte	0x1
+ 676 0027 06       		.byte	0x6
+ 677 0028 8B010000 		.4byte	.LASF0
+ 678 002c 03       		.uleb128 0x3
+ 679 002d A1000000 		.4byte	.LASF2
+ 680 0031 02       		.byte	0x2
+ 681 0032 1D       		.byte	0x1d
+ 682 0033 37000000 		.4byte	0x37
+ 683 0037 02       		.uleb128 0x2
+ 684 0038 01       		.byte	0x1
+ 685 0039 08       		.byte	0x8
+ 686 003a C6060000 		.4byte	.LASF1
+ 687 003e 03       		.uleb128 0x3
+ 688 003f 43030000 		.4byte	.LASF3
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 20
+
+
+ 689 0043 02       		.byte	0x2
+ 690 0044 29       		.byte	0x29
+ 691 0045 49000000 		.4byte	0x49
+ 692 0049 02       		.uleb128 0x2
+ 693 004a 02       		.byte	0x2
+ 694 004b 05       		.byte	0x5
+ 695 004c E8060000 		.4byte	.LASF4
+ 696 0050 03       		.uleb128 0x3
+ 697 0051 AD070000 		.4byte	.LASF5
+ 698 0055 02       		.byte	0x2
+ 699 0056 2B       		.byte	0x2b
+ 700 0057 5B000000 		.4byte	0x5b
+ 701 005b 02       		.uleb128 0x2
+ 702 005c 02       		.byte	0x2
+ 703 005d 07       		.byte	0x7
+ 704 005e 7E020000 		.4byte	.LASF6
+ 705 0062 03       		.uleb128 0x3
+ 706 0063 CB070000 		.4byte	.LASF7
+ 707 0067 02       		.byte	0x2
+ 708 0068 3F       		.byte	0x3f
+ 709 0069 6D000000 		.4byte	0x6d
+ 710 006d 02       		.uleb128 0x2
+ 711 006e 04       		.byte	0x4
+ 712 006f 05       		.byte	0x5
+ 713 0070 E6010000 		.4byte	.LASF8
+ 714 0074 03       		.uleb128 0x3
+ 715 0075 28030000 		.4byte	.LASF9
+ 716 0079 02       		.byte	0x2
+ 717 007a 41       		.byte	0x41
+ 718 007b 7F000000 		.4byte	0x7f
+ 719 007f 02       		.uleb128 0x2
+ 720 0080 04       		.byte	0x4
+ 721 0081 07       		.byte	0x7
+ 722 0082 B1030000 		.4byte	.LASF10
+ 723 0086 02       		.uleb128 0x2
+ 724 0087 08       		.byte	0x8
+ 725 0088 05       		.byte	0x5
+ 726 0089 7D010000 		.4byte	.LASF11
+ 727 008d 02       		.uleb128 0x2
+ 728 008e 08       		.byte	0x8
+ 729 008f 07       		.byte	0x7
+ 730 0090 F0000000 		.4byte	.LASF12
+ 731 0094 04       		.uleb128 0x4
+ 732 0095 04       		.byte	0x4
+ 733 0096 05       		.byte	0x5
+ 734 0097 696E7400 		.ascii	"int\000"
+ 735 009b 02       		.uleb128 0x2
+ 736 009c 04       		.byte	0x4
+ 737 009d 07       		.byte	0x7
+ 738 009e 82030000 		.4byte	.LASF13
+ 739 00a2 03       		.uleb128 0x3
+ 740 00a3 CC080000 		.4byte	.LASF14
+ 741 00a7 03       		.byte	0x3
+ 742 00a8 18       		.byte	0x18
+ 743 00a9 2C000000 		.4byte	0x2c
+ 744 00ad 03       		.uleb128 0x3
+ 745 00ae 75010000 		.4byte	.LASF15
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 21
+
+
+ 746 00b2 03       		.byte	0x3
+ 747 00b3 20       		.byte	0x20
+ 748 00b4 3E000000 		.4byte	0x3e
+ 749 00b8 03       		.uleb128 0x3
+ 750 00b9 8F030000 		.4byte	.LASF16
+ 751 00bd 03       		.byte	0x3
+ 752 00be 24       		.byte	0x24
+ 753 00bf 50000000 		.4byte	0x50
+ 754 00c3 03       		.uleb128 0x3
+ 755 00c4 BE060000 		.4byte	.LASF17
+ 756 00c8 03       		.byte	0x3
+ 757 00c9 2C       		.byte	0x2c
+ 758 00ca 62000000 		.4byte	0x62
+ 759 00ce 03       		.uleb128 0x3
+ 760 00cf 5F070000 		.4byte	.LASF18
+ 761 00d3 03       		.byte	0x3
+ 762 00d4 30       		.byte	0x30
+ 763 00d5 74000000 		.4byte	0x74
+ 764 00d9 02       		.uleb128 0x2
+ 765 00da 08       		.byte	0x8
+ 766 00db 04       		.byte	0x4
+ 767 00dc 68070000 		.4byte	.LASF19
+ 768 00e0 02       		.uleb128 0x2
+ 769 00e1 04       		.byte	0x4
+ 770 00e2 07       		.byte	0x7
+ 771 00e3 17050000 		.4byte	.LASF20
+ 772 00e7 05       		.uleb128 0x5
+ 773 00e8 B8       		.byte	0xb8
+ 774 00e9 04       		.byte	0x4
+ 775 00ea 34       		.byte	0x34
+ 776 00eb F8040000 		.4byte	0x4f8
+ 777 00ef 06       		.uleb128 0x6
+ 778 00f0 D7000000 		.4byte	.LASF21
+ 779 00f4 04       		.byte	0x4
+ 780 00f5 37       		.byte	0x37
+ 781 00f6 CE000000 		.4byte	0xce
+ 782 00fa 00       		.byte	0
+ 783 00fb 06       		.uleb128 0x6
+ 784 00fc 1D030000 		.4byte	.LASF22
+ 785 0100 04       		.byte	0x4
+ 786 0101 38       		.byte	0x38
+ 787 0102 CE000000 		.4byte	0xce
+ 788 0106 04       		.byte	0x4
+ 789 0107 06       		.uleb128 0x6
+ 790 0108 12020000 		.4byte	.LASF23
+ 791 010c 04       		.byte	0x4
+ 792 010d 39       		.byte	0x39
+ 793 010e CE000000 		.4byte	0xce
+ 794 0112 08       		.byte	0x8
+ 795 0113 06       		.uleb128 0x6
+ 796 0114 B0060000 		.4byte	.LASF24
+ 797 0118 04       		.byte	0x4
+ 798 0119 3A       		.byte	0x3a
+ 799 011a CE000000 		.4byte	0xce
+ 800 011e 0C       		.byte	0xc
+ 801 011f 06       		.uleb128 0x6
+ 802 0120 AC010000 		.4byte	.LASF25
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 22
+
+
+ 803 0124 04       		.byte	0x4
+ 804 0125 3B       		.byte	0x3b
+ 805 0126 CE000000 		.4byte	0xce
+ 806 012a 10       		.byte	0x10
+ 807 012b 06       		.uleb128 0x6
+ 808 012c DC010000 		.4byte	.LASF26
+ 809 0130 04       		.byte	0x4
+ 810 0131 3C       		.byte	0x3c
+ 811 0132 CE000000 		.4byte	0xce
+ 812 0136 14       		.byte	0x14
+ 813 0137 06       		.uleb128 0x6
+ 814 0138 DD030000 		.4byte	.LASF27
+ 815 013c 04       		.byte	0x4
+ 816 013d 3D       		.byte	0x3d
+ 817 013e CE000000 		.4byte	0xce
+ 818 0142 18       		.byte	0x18
+ 819 0143 06       		.uleb128 0x6
+ 820 0144 8A000000 		.4byte	.LASF28
+ 821 0148 04       		.byte	0x4
+ 822 0149 3E       		.byte	0x3e
+ 823 014a CE000000 		.4byte	0xce
+ 824 014e 1C       		.byte	0x1c
+ 825 014f 06       		.uleb128 0x6
+ 826 0150 31090000 		.4byte	.LASF29
+ 827 0154 04       		.byte	0x4
+ 828 0155 3F       		.byte	0x3f
+ 829 0156 CE000000 		.4byte	0xce
+ 830 015a 20       		.byte	0x20
+ 831 015b 06       		.uleb128 0x6
+ 832 015c 9A050000 		.4byte	.LASF30
+ 833 0160 04       		.byte	0x4
+ 834 0161 40       		.byte	0x40
+ 835 0162 CE000000 		.4byte	0xce
+ 836 0166 24       		.byte	0x24
+ 837 0167 06       		.uleb128 0x6
+ 838 0168 E9040000 		.4byte	.LASF31
+ 839 016c 04       		.byte	0x4
+ 840 016d 43       		.byte	0x43
+ 841 016e A2000000 		.4byte	0xa2
+ 842 0172 28       		.byte	0x28
+ 843 0173 06       		.uleb128 0x6
+ 844 0174 70000000 		.4byte	.LASF32
+ 845 0178 04       		.byte	0x4
+ 846 0179 44       		.byte	0x44
+ 847 017a A2000000 		.4byte	0xa2
+ 848 017e 29       		.byte	0x29
+ 849 017f 06       		.uleb128 0x6
+ 850 0180 27090000 		.4byte	.LASF33
+ 851 0184 04       		.byte	0x4
+ 852 0185 45       		.byte	0x45
+ 853 0186 A2000000 		.4byte	0xa2
+ 854 018a 2A       		.byte	0x2a
+ 855 018b 06       		.uleb128 0x6
+ 856 018c 8C050000 		.4byte	.LASF34
+ 857 0190 04       		.byte	0x4
+ 858 0191 46       		.byte	0x46
+ 859 0192 A2000000 		.4byte	0xa2
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 23
+
+
+ 860 0196 2B       		.byte	0x2b
+ 861 0197 06       		.uleb128 0x6
+ 862 0198 38040000 		.4byte	.LASF35
+ 863 019c 04       		.byte	0x4
+ 864 019d 47       		.byte	0x47
+ 865 019e A2000000 		.4byte	0xa2
+ 866 01a2 2C       		.byte	0x2c
+ 867 01a3 06       		.uleb128 0x6
+ 868 01a4 D5070000 		.4byte	.LASF36
+ 869 01a8 04       		.byte	0x4
+ 870 01a9 48       		.byte	0x48
+ 871 01aa A2000000 		.4byte	0xa2
+ 872 01ae 2D       		.byte	0x2d
+ 873 01af 06       		.uleb128 0x6
+ 874 01b0 B5010000 		.4byte	.LASF37
+ 875 01b4 04       		.byte	0x4
+ 876 01b5 49       		.byte	0x49
+ 877 01b6 A2000000 		.4byte	0xa2
+ 878 01ba 2E       		.byte	0x2e
+ 879 01bb 06       		.uleb128 0x6
+ 880 01bc F6040000 		.4byte	.LASF38
+ 881 01c0 04       		.byte	0x4
+ 882 01c1 4A       		.byte	0x4a
+ 883 01c2 A2000000 		.4byte	0xa2
+ 884 01c6 2F       		.byte	0x2f
+ 885 01c7 06       		.uleb128 0x6
+ 886 01c8 93070000 		.4byte	.LASF39
+ 887 01cc 04       		.byte	0x4
+ 888 01cd 4B       		.byte	0x4b
+ 889 01ce A2000000 		.4byte	0xa2
+ 890 01d2 30       		.byte	0x30
+ 891 01d3 06       		.uleb128 0x6
+ 892 01d4 D2030000 		.4byte	.LASF40
+ 893 01d8 04       		.byte	0x4
+ 894 01d9 4E       		.byte	0x4e
+ 895 01da A2000000 		.4byte	0xa2
+ 896 01de 31       		.byte	0x31
+ 897 01df 06       		.uleb128 0x6
+ 898 01e0 93000000 		.4byte	.LASF41
+ 899 01e4 04       		.byte	0x4
+ 900 01e5 4F       		.byte	0x4f
+ 901 01e6 A2000000 		.4byte	0xa2
+ 902 01ea 32       		.byte	0x32
+ 903 01eb 06       		.uleb128 0x6
+ 904 01ec 76030000 		.4byte	.LASF42
+ 905 01f0 04       		.byte	0x4
+ 906 01f1 50       		.byte	0x50
+ 907 01f2 A2000000 		.4byte	0xa2
+ 908 01f6 33       		.byte	0x33
+ 909 01f7 06       		.uleb128 0x6
+ 910 01f8 2B050000 		.4byte	.LASF43
+ 911 01fc 04       		.byte	0x4
+ 912 01fd 51       		.byte	0x51
+ 913 01fe A2000000 		.4byte	0xa2
+ 914 0202 34       		.byte	0x34
+ 915 0203 06       		.uleb128 0x6
+ 916 0204 46080000 		.4byte	.LASF44
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 24
+
+
+ 917 0208 04       		.byte	0x4
+ 918 0209 52       		.byte	0x52
+ 919 020a AD000000 		.4byte	0xad
+ 920 020e 36       		.byte	0x36
+ 921 020f 06       		.uleb128 0x6
+ 922 0210 54070000 		.4byte	.LASF45
+ 923 0214 04       		.byte	0x4
+ 924 0215 53       		.byte	0x53
+ 925 0216 AD000000 		.4byte	0xad
+ 926 021a 38       		.byte	0x38
+ 927 021b 06       		.uleb128 0x6
+ 928 021c A7080000 		.4byte	.LASF46
+ 929 0220 04       		.byte	0x4
+ 930 0221 54       		.byte	0x54
+ 931 0222 AD000000 		.4byte	0xad
+ 932 0226 3A       		.byte	0x3a
+ 933 0227 06       		.uleb128 0x6
+ 934 0228 18090000 		.4byte	.LASF47
+ 935 022c 04       		.byte	0x4
+ 936 022d 55       		.byte	0x55
+ 937 022e A2000000 		.4byte	0xa2
+ 938 0232 3C       		.byte	0x3c
+ 939 0233 06       		.uleb128 0x6
+ 940 0234 61020000 		.4byte	.LASF48
+ 941 0238 04       		.byte	0x4
+ 942 0239 56       		.byte	0x56
+ 943 023a A2000000 		.4byte	0xa2
+ 944 023e 3D       		.byte	0x3d
+ 945 023f 06       		.uleb128 0x6
+ 946 0240 36070000 		.4byte	.LASF49
+ 947 0244 04       		.byte	0x4
+ 948 0245 57       		.byte	0x57
+ 949 0246 A2000000 		.4byte	0xa2
+ 950 024a 3E       		.byte	0x3e
+ 951 024b 06       		.uleb128 0x6
+ 952 024c 7E000000 		.4byte	.LASF50
+ 953 0250 04       		.byte	0x4
+ 954 0251 58       		.byte	0x58
+ 955 0252 A2000000 		.4byte	0xa2
+ 956 0256 3F       		.byte	0x3f
+ 957 0257 06       		.uleb128 0x6
+ 958 0258 A5050000 		.4byte	.LASF51
+ 959 025c 04       		.byte	0x4
+ 960 025d 59       		.byte	0x59
+ 961 025e A2000000 		.4byte	0xa2
+ 962 0262 40       		.byte	0x40
+ 963 0263 06       		.uleb128 0x6
+ 964 0264 33030000 		.4byte	.LASF52
+ 965 0268 04       		.byte	0x4
+ 966 0269 5A       		.byte	0x5a
+ 967 026a A2000000 		.4byte	0xa2
+ 968 026e 41       		.byte	0x41
+ 969 026f 06       		.uleb128 0x6
+ 970 0270 86040000 		.4byte	.LASF53
+ 971 0274 04       		.byte	0x4
+ 972 0275 5B       		.byte	0x5b
+ 973 0276 A2000000 		.4byte	0xa2
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 25
+
+
+ 974 027a 42       		.byte	0x42
+ 975 027b 06       		.uleb128 0x6
+ 976 027c 81050000 		.4byte	.LASF54
+ 977 0280 04       		.byte	0x4
+ 978 0281 5C       		.byte	0x5c
+ 979 0282 A2000000 		.4byte	0xa2
+ 980 0286 43       		.byte	0x43
+ 981 0287 06       		.uleb128 0x6
+ 982 0288 1B020000 		.4byte	.LASF55
+ 983 028c 04       		.byte	0x4
+ 984 028d 5D       		.byte	0x5d
+ 985 028e A2000000 		.4byte	0xa2
+ 986 0292 44       		.byte	0x44
+ 987 0293 06       		.uleb128 0x6
+ 988 0294 00000000 		.4byte	.LASF56
+ 989 0298 04       		.byte	0x4
+ 990 0299 5E       		.byte	0x5e
+ 991 029a CE000000 		.4byte	0xce
+ 992 029e 48       		.byte	0x48
+ 993 029f 06       		.uleb128 0x6
+ 994 02a0 EF010000 		.4byte	.LASF57
+ 995 02a4 04       		.byte	0x4
+ 996 02a5 5F       		.byte	0x5f
+ 997 02a6 CE000000 		.4byte	0xce
+ 998 02aa 4C       		.byte	0x4c
+ 999 02ab 06       		.uleb128 0x6
+ 1000 02ac 68090000 		.4byte	.LASF58
+ 1001 02b0 04       		.byte	0x4
+ 1002 02b1 60       		.byte	0x60
+ 1003 02b2 A2000000 		.4byte	0xa2
+ 1004 02b6 50       		.byte	0x50
+ 1005 02b7 06       		.uleb128 0x6
+ 1006 02b8 4F010000 		.4byte	.LASF59
+ 1007 02bc 04       		.byte	0x4
+ 1008 02bd 61       		.byte	0x61
+ 1009 02be A2000000 		.4byte	0xa2
+ 1010 02c2 51       		.byte	0x51
+ 1011 02c3 06       		.uleb128 0x6
+ 1012 02c4 BC080000 		.4byte	.LASF60
+ 1013 02c8 04       		.byte	0x4
+ 1014 02c9 62       		.byte	0x62
+ 1015 02ca A2000000 		.4byte	0xa2
+ 1016 02ce 52       		.byte	0x52
+ 1017 02cf 06       		.uleb128 0x6
+ 1018 02d0 4F090000 		.4byte	.LASF61
+ 1019 02d4 04       		.byte	0x4
+ 1020 02d5 63       		.byte	0x63
+ 1021 02d6 A2000000 		.4byte	0xa2
+ 1022 02da 53       		.byte	0x53
+ 1023 02db 06       		.uleb128 0x6
+ 1024 02dc 44070000 		.4byte	.LASF62
+ 1025 02e0 04       		.byte	0x4
+ 1026 02e1 64       		.byte	0x64
+ 1027 02e2 A2000000 		.4byte	0xa2
+ 1028 02e6 54       		.byte	0x54
+ 1029 02e7 06       		.uleb128 0x6
+ 1030 02e8 61010000 		.4byte	.LASF63
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 26
+
+
+ 1031 02ec 04       		.byte	0x4
+ 1032 02ed 65       		.byte	0x65
+ 1033 02ee A2000000 		.4byte	0xa2
+ 1034 02f2 55       		.byte	0x55
+ 1035 02f3 06       		.uleb128 0x6
+ 1036 02f4 04080000 		.4byte	.LASF64
+ 1037 02f8 04       		.byte	0x4
+ 1038 02f9 66       		.byte	0x66
+ 1039 02fa A2000000 		.4byte	0xa2
+ 1040 02fe 56       		.byte	0x56
+ 1041 02ff 06       		.uleb128 0x6
+ 1042 0300 E6030000 		.4byte	.LASF65
+ 1043 0304 04       		.byte	0x4
+ 1044 0305 67       		.byte	0x67
+ 1045 0306 A2000000 		.4byte	0xa2
+ 1046 030a 57       		.byte	0x57
+ 1047 030b 06       		.uleb128 0x6
+ 1048 030c 2C000000 		.4byte	.LASF66
+ 1049 0310 04       		.byte	0x4
+ 1050 0311 68       		.byte	0x68
+ 1051 0312 A2000000 		.4byte	0xa2
+ 1052 0316 58       		.byte	0x58
+ 1053 0317 06       		.uleb128 0x6
+ 1054 0318 D4060000 		.4byte	.LASF67
+ 1055 031c 04       		.byte	0x4
+ 1056 031d 69       		.byte	0x69
+ 1057 031e A2000000 		.4byte	0xa2
+ 1058 0322 59       		.byte	0x59
+ 1059 0323 06       		.uleb128 0x6
+ 1060 0324 20050000 		.4byte	.LASF68
+ 1061 0328 04       		.byte	0x4
+ 1062 0329 6E       		.byte	0x6e
+ 1063 032a B8000000 		.4byte	0xb8
+ 1064 032e 5A       		.byte	0x5a
+ 1065 032f 06       		.uleb128 0x6
+ 1066 0330 2F080000 		.4byte	.LASF69
+ 1067 0334 04       		.byte	0x4
+ 1068 0335 6F       		.byte	0x6f
+ 1069 0336 B8000000 		.4byte	0xb8
+ 1070 033a 5C       		.byte	0x5c
+ 1071 033b 06       		.uleb128 0x6
+ 1072 033c E1000000 		.4byte	.LASF70
+ 1073 0340 04       		.byte	0x4
+ 1074 0341 70       		.byte	0x70
+ 1075 0342 A2000000 		.4byte	0xa2
+ 1076 0346 5E       		.byte	0x5e
+ 1077 0347 06       		.uleb128 0x6
+ 1078 0348 9A060000 		.4byte	.LASF71
+ 1079 034c 04       		.byte	0x4
+ 1080 034d 71       		.byte	0x71
+ 1081 034e A2000000 		.4byte	0xa2
+ 1082 0352 5F       		.byte	0x5f
+ 1083 0353 06       		.uleb128 0x6
+ 1084 0354 70050000 		.4byte	.LASF72
+ 1085 0358 04       		.byte	0x4
+ 1086 0359 72       		.byte	0x72
+ 1087 035a A2000000 		.4byte	0xa2
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 27
+
+
+ 1088 035e 60       		.byte	0x60
+ 1089 035f 06       		.uleb128 0x6
+ 1090 0360 73060000 		.4byte	.LASF73
+ 1091 0364 04       		.byte	0x4
+ 1092 0365 73       		.byte	0x73
+ 1093 0366 CE000000 		.4byte	0xce
+ 1094 036a 64       		.byte	0x64
+ 1095 036b 06       		.uleb128 0x6
+ 1096 036c 1C010000 		.4byte	.LASF74
+ 1097 0370 04       		.byte	0x4
+ 1098 0371 76       		.byte	0x76
+ 1099 0372 B8000000 		.4byte	0xb8
+ 1100 0376 68       		.byte	0x68
+ 1101 0377 06       		.uleb128 0x6
+ 1102 0378 9F030000 		.4byte	.LASF75
+ 1103 037c 04       		.byte	0x4
+ 1104 037d 77       		.byte	0x77
+ 1105 037e B8000000 		.4byte	0xb8
+ 1106 0382 6A       		.byte	0x6a
+ 1107 0383 06       		.uleb128 0x6
+ 1108 0384 FA030000 		.4byte	.LASF76
+ 1109 0388 04       		.byte	0x4
+ 1110 0389 78       		.byte	0x78
+ 1111 038a B8000000 		.4byte	0xb8
+ 1112 038e 6C       		.byte	0x6c
+ 1113 038f 06       		.uleb128 0x6
+ 1114 0390 2B040000 		.4byte	.LASF77
+ 1115 0394 04       		.byte	0x4
+ 1116 0395 79       		.byte	0x79
+ 1117 0396 B8000000 		.4byte	0xb8
+ 1118 039a 6E       		.byte	0x6e
+ 1119 039b 06       		.uleb128 0x6
+ 1120 039c 0B070000 		.4byte	.LASF78
+ 1121 03a0 04       		.byte	0x4
+ 1122 03a1 7B       		.byte	0x7b
+ 1123 03a2 A2000000 		.4byte	0xa2
+ 1124 03a6 70       		.byte	0x70
+ 1125 03a7 06       		.uleb128 0x6
+ 1126 03a8 97010000 		.4byte	.LASF79
+ 1127 03ac 04       		.byte	0x4
+ 1128 03ad 7C       		.byte	0x7c
+ 1129 03ae A2000000 		.4byte	0xa2
+ 1130 03b2 71       		.byte	0x71
+ 1131 03b3 06       		.uleb128 0x6
+ 1132 03b4 39090000 		.4byte	.LASF80
+ 1133 03b8 04       		.byte	0x4
+ 1134 03b9 7D       		.byte	0x7d
+ 1135 03ba A2000000 		.4byte	0xa2
+ 1136 03be 72       		.byte	0x72
+ 1137 03bf 06       		.uleb128 0x6
+ 1138 03c0 3C050000 		.4byte	.LASF81
+ 1139 03c4 04       		.byte	0x4
+ 1140 03c5 7E       		.byte	0x7e
+ 1141 03c6 A2000000 		.4byte	0xa2
+ 1142 03ca 73       		.byte	0x73
+ 1143 03cb 06       		.uleb128 0x6
+ 1144 03cc 6C020000 		.4byte	.LASF82
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 28
+
+
+ 1145 03d0 04       		.byte	0x4
+ 1146 03d1 80       		.byte	0x80
+ 1147 03d2 B8000000 		.4byte	0xb8
+ 1148 03d6 74       		.byte	0x74
+ 1149 03d7 06       		.uleb128 0x6
+ 1150 03d8 B8070000 		.4byte	.LASF83
+ 1151 03dc 04       		.byte	0x4
+ 1152 03dd 81       		.byte	0x81
+ 1153 03de B8000000 		.4byte	0xb8
+ 1154 03e2 76       		.byte	0x76
+ 1155 03e3 06       		.uleb128 0x6
+ 1156 03e4 4C020000 		.4byte	.LASF84
+ 1157 03e8 04       		.byte	0x4
+ 1158 03e9 82       		.byte	0x82
+ 1159 03ea B8000000 		.4byte	0xb8
+ 1160 03ee 78       		.byte	0x78
+ 1161 03ef 06       		.uleb128 0x6
+ 1162 03f0 AB000000 		.4byte	.LASF85
+ 1163 03f4 04       		.byte	0x4
+ 1164 03f5 83       		.byte	0x83
+ 1165 03f6 B8000000 		.4byte	0xb8
+ 1166 03fa 7A       		.byte	0x7a
+ 1167 03fb 06       		.uleb128 0x6
+ 1168 03fc FD010000 		.4byte	.LASF86
+ 1169 0400 04       		.byte	0x4
+ 1170 0401 86       		.byte	0x86
+ 1171 0402 A2000000 		.4byte	0xa2
+ 1172 0406 7C       		.byte	0x7c
+ 1173 0407 06       		.uleb128 0x6
+ 1174 0408 53080000 		.4byte	.LASF87
+ 1175 040c 04       		.byte	0x4
+ 1176 040d 87       		.byte	0x87
+ 1177 040e A2000000 		.4byte	0xa2
+ 1178 0412 7D       		.byte	0x7d
+ 1179 0413 06       		.uleb128 0x6
+ 1180 0414 40000000 		.4byte	.LASF88
+ 1181 0418 04       		.byte	0x4
+ 1182 0419 88       		.byte	0x88
+ 1183 041a A2000000 		.4byte	0xa2
+ 1184 041e 7E       		.byte	0x7e
+ 1185 041f 06       		.uleb128 0x6
+ 1186 0420 09030000 		.4byte	.LASF89
+ 1187 0424 04       		.byte	0x4
+ 1188 0425 89       		.byte	0x89
+ 1189 0426 A2000000 		.4byte	0xa2
+ 1190 042a 7F       		.byte	0x7f
+ 1191 042b 06       		.uleb128 0x6
+ 1192 042c 62030000 		.4byte	.LASF90
+ 1193 0430 04       		.byte	0x4
+ 1194 0431 8A       		.byte	0x8a
+ 1195 0432 A2000000 		.4byte	0xa2
+ 1196 0436 80       		.byte	0x80
+ 1197 0437 06       		.uleb128 0x6
+ 1198 0438 D2040000 		.4byte	.LASF91
+ 1199 043c 04       		.byte	0x4
+ 1200 043d 8D       		.byte	0x8d
+ 1201 043e CE000000 		.4byte	0xce
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 29
+
+
+ 1202 0442 84       		.byte	0x84
+ 1203 0443 06       		.uleb128 0x6
+ 1204 0444 C0000000 		.4byte	.LASF92
+ 1205 0448 04       		.byte	0x4
+ 1206 0449 8E       		.byte	0x8e
+ 1207 044a CE000000 		.4byte	0xce
+ 1208 044e 88       		.byte	0x88
+ 1209 044f 06       		.uleb128 0x6
+ 1210 0450 D4080000 		.4byte	.LASF93
+ 1211 0454 04       		.byte	0x4
+ 1212 0455 8F       		.byte	0x8f
+ 1213 0456 CE000000 		.4byte	0xce
+ 1214 045a 8C       		.byte	0x8c
+ 1215 045b 06       		.uleb128 0x6
+ 1216 045c 02050000 		.4byte	.LASF94
+ 1217 0460 04       		.byte	0x4
+ 1218 0461 90       		.byte	0x90
+ 1219 0462 CE000000 		.4byte	0xce
+ 1220 0466 90       		.byte	0x90
+ 1221 0467 06       		.uleb128 0x6
+ 1222 0468 4D030000 		.4byte	.LASF95
+ 1223 046c 04       		.byte	0x4
+ 1224 046d 91       		.byte	0x91
+ 1225 046e CE000000 		.4byte	0xce
+ 1226 0472 94       		.byte	0x94
+ 1227 0473 06       		.uleb128 0x6
+ 1228 0474 BC040000 		.4byte	.LASF96
+ 1229 0478 04       		.byte	0x4
+ 1230 0479 92       		.byte	0x92
+ 1231 047a CE000000 		.4byte	0xce
+ 1232 047e 98       		.byte	0x98
+ 1233 047f 06       		.uleb128 0x6
+ 1234 0480 02090000 		.4byte	.LASF97
+ 1235 0484 04       		.byte	0x4
+ 1236 0485 93       		.byte	0x93
+ 1237 0486 CE000000 		.4byte	0xce
+ 1238 048a 9C       		.byte	0x9c
+ 1239 048b 06       		.uleb128 0x6
+ 1240 048c 2C010000 		.4byte	.LASF98
+ 1241 0490 04       		.byte	0x4
+ 1242 0491 94       		.byte	0x94
+ 1243 0492 CE000000 		.4byte	0xce
+ 1244 0496 A0       		.byte	0xa0
+ 1245 0497 06       		.uleb128 0x6
+ 1246 0498 C0010000 		.4byte	.LASF99
+ 1247 049c 04       		.byte	0x4
+ 1248 049d 95       		.byte	0x95
+ 1249 049e B8000000 		.4byte	0xb8
+ 1250 04a2 A4       		.byte	0xa4
+ 1251 04a3 06       		.uleb128 0x6
+ 1252 04a4 A7040000 		.4byte	.LASF100
+ 1253 04a8 04       		.byte	0x4
+ 1254 04a9 96       		.byte	0x96
+ 1255 04aa B8000000 		.4byte	0xb8
+ 1256 04ae A6       		.byte	0xa6
+ 1257 04af 06       		.uleb128 0x6
+ 1258 04b0 8E060000 		.4byte	.LASF101
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 30
+
+
+ 1259 04b4 04       		.byte	0x4
+ 1260 04b5 97       		.byte	0x97
+ 1261 04b6 B8000000 		.4byte	0xb8
+ 1262 04ba A8       		.byte	0xa8
+ 1263 04bb 06       		.uleb128 0x6
+ 1264 04bc 9F070000 		.4byte	.LASF102
+ 1265 04c0 04       		.byte	0x4
+ 1266 04c1 98       		.byte	0x98
+ 1267 04c2 B8000000 		.4byte	0xb8
+ 1268 04c6 AA       		.byte	0xaa
+ 1269 04c7 06       		.uleb128 0x6
+ 1270 04c8 09040000 		.4byte	.LASF103
+ 1271 04cc 04       		.byte	0x4
+ 1272 04cd 99       		.byte	0x99
+ 1273 04ce B8000000 		.4byte	0xb8
+ 1274 04d2 AC       		.byte	0xac
+ 1275 04d3 06       		.uleb128 0x6
+ 1276 04d4 53050000 		.4byte	.LASF104
+ 1277 04d8 04       		.byte	0x4
+ 1278 04d9 9A       		.byte	0x9a
+ 1279 04da B8000000 		.4byte	0xb8
+ 1280 04de AE       		.byte	0xae
+ 1281 04df 06       		.uleb128 0x6
+ 1282 04e0 38080000 		.4byte	.LASF105
+ 1283 04e4 04       		.byte	0x4
+ 1284 04e5 9D       		.byte	0x9d
+ 1285 04e6 B8000000 		.4byte	0xb8
+ 1286 04ea B0       		.byte	0xb0
+ 1287 04eb 06       		.uleb128 0x6
+ 1288 04ec 5C000000 		.4byte	.LASF106
+ 1289 04f0 04       		.byte	0x4
+ 1290 04f1 9E       		.byte	0x9e
+ 1291 04f2 CE000000 		.4byte	0xce
+ 1292 04f6 B4       		.byte	0xb4
+ 1293 04f7 00       		.byte	0
+ 1294 04f8 03       		.uleb128 0x3
+ 1295 04f9 44040000 		.4byte	.LASF107
+ 1296 04fd 04       		.byte	0x4
+ 1297 04fe 9F       		.byte	0x9f
+ 1298 04ff E7000000 		.4byte	0xe7
+ 1299 0503 07       		.uleb128 0x7
+ 1300 0504 01       		.byte	0x1
+ 1301 0505 37000000 		.4byte	0x37
+ 1302 0509 05       		.byte	0x5
+ 1303 050a 6E05     		.2byte	0x56e
+ 1304 050c 1D050000 		.4byte	0x51d
+ 1305 0510 08       		.uleb128 0x8
+ 1306 0511 F1070000 		.4byte	.LASF108
+ 1307 0515 00       		.byte	0
+ 1308 0516 08       		.uleb128 0x8
+ 1309 0517 F2060000 		.4byte	.LASF109
+ 1310 051b 01       		.byte	0x1
+ 1311 051c 00       		.byte	0
+ 1312 051d 09       		.uleb128 0x9
+ 1313 051e E2070000 		.4byte	.LASF110
+ 1314 0522 05       		.byte	0x5
+ 1315 0523 7405     		.2byte	0x574
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 31
+
+
+ 1316 0525 03050000 		.4byte	0x503
+ 1317 0529 09       		.uleb128 0x9
+ 1318 052a 98030000 		.4byte	.LASF111
+ 1319 052e 06       		.byte	0x6
+ 1320 052f F601     		.2byte	0x1f6
+ 1321 0531 35050000 		.4byte	0x535
+ 1322 0535 02       		.uleb128 0x2
+ 1323 0536 01       		.byte	0x1
+ 1324 0537 08       		.byte	0x8
+ 1325 0538 74070000 		.4byte	.LASF112
+ 1326 053c 02       		.uleb128 0x2
+ 1327 053d 04       		.byte	0x4
+ 1328 053e 04       		.byte	0x4
+ 1329 053f 6D060000 		.4byte	.LASF113
+ 1330 0543 02       		.uleb128 0x2
+ 1331 0544 08       		.byte	0x8
+ 1332 0545 04       		.byte	0x4
+ 1333 0546 45020000 		.4byte	.LASF114
+ 1334 054a 07       		.uleb128 0x7
+ 1335 054b 04       		.byte	0x4
+ 1336 054c 9B000000 		.4byte	0x9b
+ 1337 0550 07       		.byte	0x7
+ 1338 0551 1301     		.2byte	0x113
+ 1339 0553 70050000 		.4byte	0x570
+ 1340 0557 08       		.uleb128 0x8
+ 1341 0558 73040000 		.4byte	.LASF115
+ 1342 055c 00       		.byte	0
+ 1343 055d 0A       		.uleb128 0xa
+ 1344 055e 07010000 		.4byte	.LASF116
+ 1345 0562 0100CE00 		.4byte	0xce0001
+ 1346 0566 0A       		.uleb128 0xa
+ 1347 0567 E9080000 		.4byte	.LASF117
+ 1348 056b 0200CE00 		.4byte	0xce0002
+ 1349 056f 00       		.byte	0
+ 1350 0570 09       		.uleb128 0x9
+ 1351 0571 1F070000 		.4byte	.LASF118
+ 1352 0575 07       		.byte	0x7
+ 1353 0576 1701     		.2byte	0x117
+ 1354 0578 4A050000 		.4byte	0x54a
+ 1355 057c 0B       		.uleb128 0xb
+ 1356 057d 19000000 		.4byte	.LASF126
+ 1357 0581 01       		.byte	0x1
+ 1358 0582 58       		.byte	0x58
+ 1359 0583 70050000 		.4byte	0x570
+ 1360 0587 00000000 		.4byte	.LFB132
+ 1361 058b D0000000 		.4byte	.LFE132-.LFB132
+ 1362 058f 01       		.uleb128 0x1
+ 1363 0590 9C       		.byte	0x9c
+ 1364 0591 63060000 		.4byte	0x663
+ 1365 0595 0C       		.uleb128 0xc
+ 1366 0596 D5010000 		.4byte	.LASF119
+ 1367 059a 01       		.byte	0x1
+ 1368 059b 58       		.byte	0x58
+ 1369 059c CE000000 		.4byte	0xce
+ 1370 05a0 00000000 		.4byte	.LLST0
+ 1371 05a4 0C       		.uleb128 0xc
+ 1372 05a5 65060000 		.4byte	.LASF120
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 32
+
+
+ 1373 05a9 01       		.byte	0x1
+ 1374 05aa 58       		.byte	0x58
+ 1375 05ab CE000000 		.4byte	0xce
+ 1376 05af 45000000 		.4byte	.LLST1
+ 1377 05b3 0C       		.uleb128 0xc
+ 1378 05b4 61090000 		.4byte	.LASF121
+ 1379 05b8 01       		.byte	0x1
+ 1380 05b9 58       		.byte	0x58
+ 1381 05ba 63060000 		.4byte	0x663
+ 1382 05be 8A000000 		.4byte	.LLST2
+ 1383 05c2 0C       		.uleb128 0xc
+ 1384 05c3 53000000 		.4byte	.LASF122
+ 1385 05c7 01       		.byte	0x1
+ 1386 05c8 58       		.byte	0x58
+ 1387 05c9 1D050000 		.4byte	0x51d
+ 1388 05cd AB000000 		.4byte	.LLST3
+ 1389 05d1 0D       		.uleb128 0xd
+ 1390 05d2 12000000 		.4byte	.LASF123
+ 1391 05d6 01       		.byte	0x1
+ 1392 05d7 5A       		.byte	0x5a
+ 1393 05d8 70050000 		.4byte	0x570
+ 1394 05dc CC000000 		.4byte	.LLST4
+ 1395 05e0 0E       		.uleb128 0xe
+ 1396 05e1 5C000000 		.4byte	.LBB2
+ 1397 05e5 60000000 		.4byte	.LBE2-.LBB2
+ 1398 05e9 0F060000 		.4byte	0x60f
+ 1399 05ed 0D       		.uleb128 0xd
+ 1400 05ee C3030000 		.4byte	.LASF124
+ 1401 05f2 01       		.byte	0x1
+ 1402 05f3 62       		.byte	0x62
+ 1403 05f4 CE000000 		.4byte	0xce
+ 1404 05f8 0B010000 		.4byte	.LLST5
+ 1405 05fc 0F       		.uleb128 0xf
+ 1406 05fd 60000000 		.4byte	.LVL7
+ 1407 0601 DB080000 		.4byte	0x8db
+ 1408 0605 0F       		.uleb128 0xf
+ 1409 0606 B6000000 		.4byte	.LVL10
+ 1410 060a E7080000 		.4byte	0x8e7
+ 1411 060e 00       		.byte	0
+ 1412 060f 10       		.uleb128 0x10
+ 1413 0610 18000000 		.4byte	.LVL4
+ 1414 0614 F3080000 		.4byte	0x8f3
+ 1415 0618 2C060000 		.4byte	0x62c
+ 1416 061c 11       		.uleb128 0x11
+ 1417 061d 01       		.uleb128 0x1
+ 1418 061e 50       		.byte	0x50
+ 1419 061f 05       		.uleb128 0x5
+ 1420 0620 03       		.byte	0x3
+ 1421 0621 00000000 		.4byte	.LC0
+ 1422 0625 11       		.uleb128 0x11
+ 1423 0626 01       		.uleb128 0x1
+ 1424 0627 51       		.byte	0x51
+ 1425 0628 02       		.uleb128 0x2
+ 1426 0629 08       		.byte	0x8
+ 1427 062a 5B       		.byte	0x5b
+ 1428 062b 00       		.byte	0
+ 1429 062c 10       		.uleb128 0x10
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 33
+
+
+ 1430 062d 2A000000 		.4byte	.LVL5
+ 1431 0631 F3080000 		.4byte	0x8f3
+ 1432 0635 49060000 		.4byte	0x649
+ 1433 0639 11       		.uleb128 0x11
+ 1434 063a 01       		.uleb128 0x1
+ 1435 063b 50       		.byte	0x50
+ 1436 063c 05       		.uleb128 0x5
+ 1437 063d 03       		.byte	0x3
+ 1438 063e 00000000 		.4byte	.LC0
+ 1439 0642 11       		.uleb128 0x11
+ 1440 0643 01       		.uleb128 0x1
+ 1441 0644 51       		.byte	0x51
+ 1442 0645 02       		.uleb128 0x2
+ 1443 0646 08       		.byte	0x8
+ 1444 0647 5C       		.byte	0x5c
+ 1445 0648 00       		.byte	0
+ 1446 0649 12       		.uleb128 0x12
+ 1447 064a 52000000 		.4byte	.LVL6
+ 1448 064e F3080000 		.4byte	0x8f3
+ 1449 0652 11       		.uleb128 0x11
+ 1450 0653 01       		.uleb128 0x1
+ 1451 0654 50       		.byte	0x50
+ 1452 0655 05       		.uleb128 0x5
+ 1453 0656 03       		.byte	0x3
+ 1454 0657 00000000 		.4byte	.LC0
+ 1455 065b 11       		.uleb128 0x11
+ 1456 065c 01       		.uleb128 0x1
+ 1457 065d 51       		.byte	0x51
+ 1458 065e 02       		.uleb128 0x2
+ 1459 065f 08       		.byte	0x8
+ 1460 0660 5D       		.byte	0x5d
+ 1461 0661 00       		.byte	0
+ 1462 0662 00       		.byte	0
+ 1463 0663 02       		.uleb128 0x2
+ 1464 0664 01       		.byte	0x1
+ 1465 0665 02       		.byte	0x2
+ 1466 0666 B8060000 		.4byte	.LASF125
+ 1467 066a 0B       		.uleb128 0xb
+ 1468 066b 2C020000 		.4byte	.LASF127
+ 1469 066f 01       		.byte	0x1
+ 1470 0670 93       		.byte	0x93
+ 1471 0671 70050000 		.4byte	0x570
+ 1472 0675 00000000 		.4byte	.LFB133
+ 1473 0679 AC000000 		.4byte	.LFE133-.LFB133
+ 1474 067d 01       		.uleb128 0x1
+ 1475 067e 9C       		.byte	0x9c
+ 1476 067f 25070000 		.4byte	0x725
+ 1477 0683 0C       		.uleb128 0xc
+ 1478 0684 65060000 		.4byte	.LASF120
+ 1479 0688 01       		.byte	0x1
+ 1480 0689 93       		.byte	0x93
+ 1481 068a CE000000 		.4byte	0xce
+ 1482 068e 1E010000 		.4byte	.LLST6
+ 1483 0692 0C       		.uleb128 0xc
+ 1484 0693 61090000 		.4byte	.LASF121
+ 1485 0697 01       		.byte	0x1
+ 1486 0698 93       		.byte	0x93
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 34
+
+
+ 1487 0699 63060000 		.4byte	0x663
+ 1488 069d 63010000 		.4byte	.LLST7
+ 1489 06a1 0C       		.uleb128 0xc
+ 1490 06a2 53000000 		.4byte	.LASF122
+ 1491 06a6 01       		.byte	0x1
+ 1492 06a7 93       		.byte	0x93
+ 1493 06a8 1D050000 		.4byte	0x51d
+ 1494 06ac 84010000 		.4byte	.LLST8
+ 1495 06b0 0D       		.uleb128 0xd
+ 1496 06b1 12000000 		.4byte	.LASF123
+ 1497 06b5 01       		.byte	0x1
+ 1498 06b6 95       		.byte	0x95
+ 1499 06b7 70050000 		.4byte	0x570
+ 1500 06bb A5010000 		.4byte	.LLST9
+ 1501 06bf 0E       		.uleb128 0xe
+ 1502 06c0 48000000 		.4byte	.LBB3
+ 1503 06c4 50000000 		.4byte	.LBE3-.LBB3
+ 1504 06c8 EE060000 		.4byte	0x6ee
+ 1505 06cc 0D       		.uleb128 0xd
+ 1506 06cd C3030000 		.4byte	.LASF124
+ 1507 06d1 01       		.byte	0x1
+ 1508 06d2 9C       		.byte	0x9c
+ 1509 06d3 CE000000 		.4byte	0xce
+ 1510 06d7 E4010000 		.4byte	.LLST10
+ 1511 06db 0F       		.uleb128 0xf
+ 1512 06dc 4C000000 		.4byte	.LVL20
+ 1513 06e0 DB080000 		.4byte	0x8db
+ 1514 06e4 0F       		.uleb128 0xf
+ 1515 06e5 94000000 		.4byte	.LVL22
+ 1516 06e9 E7080000 		.4byte	0x8e7
+ 1517 06ed 00       		.byte	0
+ 1518 06ee 10       		.uleb128 0x10
+ 1519 06ef 14000000 		.4byte	.LVL18
+ 1520 06f3 F3080000 		.4byte	0x8f3
+ 1521 06f7 0B070000 		.4byte	0x70b
+ 1522 06fb 11       		.uleb128 0x11
+ 1523 06fc 01       		.uleb128 0x1
+ 1524 06fd 50       		.byte	0x50
+ 1525 06fe 05       		.uleb128 0x5
+ 1526 06ff 03       		.byte	0x3
+ 1527 0700 00000000 		.4byte	.LC0
+ 1528 0704 11       		.uleb128 0x11
+ 1529 0705 01       		.uleb128 0x1
+ 1530 0706 51       		.byte	0x51
+ 1531 0707 02       		.uleb128 0x2
+ 1532 0708 08       		.byte	0x8
+ 1533 0709 97       		.byte	0x97
+ 1534 070a 00       		.byte	0
+ 1535 070b 12       		.uleb128 0x12
+ 1536 070c 3C000000 		.4byte	.LVL19
+ 1537 0710 F3080000 		.4byte	0x8f3
+ 1538 0714 11       		.uleb128 0x11
+ 1539 0715 01       		.uleb128 0x1
+ 1540 0716 50       		.byte	0x50
+ 1541 0717 05       		.uleb128 0x5
+ 1542 0718 03       		.byte	0x3
+ 1543 0719 00000000 		.4byte	.LC0
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 35
+
+
+ 1544 071d 11       		.uleb128 0x11
+ 1545 071e 01       		.uleb128 0x1
+ 1546 071f 51       		.byte	0x51
+ 1547 0720 02       		.uleb128 0x2
+ 1548 0721 08       		.byte	0x8
+ 1549 0722 98       		.byte	0x98
+ 1550 0723 00       		.byte	0
+ 1551 0724 00       		.byte	0
+ 1552 0725 0B       		.uleb128 0xb
+ 1553 0726 17040000 		.4byte	.LASF128
+ 1554 072a 01       		.byte	0x1
+ 1555 072b C5       		.byte	0xc5
+ 1556 072c 70050000 		.4byte	0x570
+ 1557 0730 00000000 		.4byte	.LFB134
+ 1558 0734 88000000 		.4byte	.LFE134-.LFB134
+ 1559 0738 01       		.uleb128 0x1
+ 1560 0739 9C       		.byte	0x9c
+ 1561 073a A5070000 		.4byte	0x7a5
+ 1562 073e 0C       		.uleb128 0xc
+ 1563 073f 65060000 		.4byte	.LASF120
+ 1564 0743 01       		.byte	0x1
+ 1565 0744 C5       		.byte	0xc5
+ 1566 0745 CE000000 		.4byte	0xce
+ 1567 0749 F7010000 		.4byte	.LLST11
+ 1568 074d 0D       		.uleb128 0xd
+ 1569 074e 12000000 		.4byte	.LASF123
+ 1570 0752 01       		.byte	0x1
+ 1571 0753 C7       		.byte	0xc7
+ 1572 0754 70050000 		.4byte	0x570
+ 1573 0758 3C020000 		.4byte	.LLST12
+ 1574 075c 0E       		.uleb128 0xe
+ 1575 075d 38000000 		.4byte	.LBB4
+ 1576 0761 3C000000 		.4byte	.LBE4-.LBB4
+ 1577 0765 8B070000 		.4byte	0x78b
+ 1578 0769 0D       		.uleb128 0xd
+ 1579 076a C3030000 		.4byte	.LASF124
+ 1580 076e 01       		.byte	0x1
+ 1581 076f CD       		.byte	0xcd
+ 1582 0770 CE000000 		.4byte	0xce
+ 1583 0774 7B020000 		.4byte	.LLST13
+ 1584 0778 0F       		.uleb128 0xf
+ 1585 0779 3C000000 		.4byte	.LVL30
+ 1586 077d DB080000 		.4byte	0x8db
+ 1587 0781 0F       		.uleb128 0xf
+ 1588 0782 70000000 		.4byte	.LVL32
+ 1589 0786 E7080000 		.4byte	0x8e7
+ 1590 078a 00       		.byte	0
+ 1591 078b 12       		.uleb128 0x12
+ 1592 078c 2C000000 		.4byte	.LVL29
+ 1593 0790 F3080000 		.4byte	0x8f3
+ 1594 0794 11       		.uleb128 0x11
+ 1595 0795 01       		.uleb128 0x1
+ 1596 0796 50       		.byte	0x50
+ 1597 0797 05       		.uleb128 0x5
+ 1598 0798 03       		.byte	0x3
+ 1599 0799 00000000 		.4byte	.LC0
+ 1600 079d 11       		.uleb128 0x11
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 36
+
+
+ 1601 079e 01       		.uleb128 0x1
+ 1602 079f 51       		.byte	0x51
+ 1603 07a0 02       		.uleb128 0x2
+ 1604 07a1 08       		.byte	0x8
+ 1605 07a2 C9       		.byte	0xc9
+ 1606 07a3 00       		.byte	0
+ 1607 07a4 00       		.byte	0
+ 1608 07a5 0B       		.uleb128 0xb
+ 1609 07a6 79070000 		.4byte	.LASF129
+ 1610 07aa 01       		.byte	0x1
+ 1611 07ab F7       		.byte	0xf7
+ 1612 07ac 70050000 		.4byte	0x570
+ 1613 07b0 00000000 		.4byte	.LFB135
+ 1614 07b4 88000000 		.4byte	.LFE135-.LFB135
+ 1615 07b8 01       		.uleb128 0x1
+ 1616 07b9 9C       		.byte	0x9c
+ 1617 07ba 17080000 		.4byte	0x817
+ 1618 07be 0C       		.uleb128 0xc
+ 1619 07bf 65060000 		.4byte	.LASF120
+ 1620 07c3 01       		.byte	0x1
+ 1621 07c4 F7       		.byte	0xf7
+ 1622 07c5 CE000000 		.4byte	0xce
+ 1623 07c9 8E020000 		.4byte	.LLST14
+ 1624 07cd 0C       		.uleb128 0xc
+ 1625 07ce 3E020000 		.4byte	.LASF130
+ 1626 07d2 01       		.byte	0x1
+ 1627 07d3 F7       		.byte	0xf7
+ 1628 07d4 63060000 		.4byte	0x663
+ 1629 07d8 EC020000 		.4byte	.LLST15
+ 1630 07dc 0D       		.uleb128 0xd
+ 1631 07dd 12000000 		.4byte	.LASF123
+ 1632 07e1 01       		.byte	0x1
+ 1633 07e2 F9       		.byte	0xf9
+ 1634 07e3 70050000 		.4byte	0x570
+ 1635 07e7 18030000 		.4byte	.LLST16
+ 1636 07eb 13       		.uleb128 0x13
+ 1637 07ec 12000000 		.4byte	.LBB5
+ 1638 07f0 68000000 		.4byte	.LBE5-.LBB5
+ 1639 07f4 0D       		.uleb128 0xd
+ 1640 07f5 C3030000 		.4byte	.LASF124
+ 1641 07f9 01       		.byte	0x1
+ 1642 07fa FD       		.byte	0xfd
+ 1643 07fb CE000000 		.4byte	0xce
+ 1644 07ff 57030000 		.4byte	.LLST17
+ 1645 0803 0F       		.uleb128 0xf
+ 1646 0804 16000000 		.4byte	.LVL38
+ 1647 0808 DB080000 		.4byte	0x8db
+ 1648 080c 0F       		.uleb128 0xf
+ 1649 080d 76000000 		.4byte	.LVL42
+ 1650 0811 E7080000 		.4byte	0x8e7
+ 1651 0815 00       		.byte	0
+ 1652 0816 00       		.byte	0
+ 1653 0817 14       		.uleb128 0x14
+ 1654 0818 92040000 		.4byte	.LASF131
+ 1655 081c 01       		.byte	0x1
+ 1656 081d 3E01     		.2byte	0x13e
+ 1657 081f 70050000 		.4byte	0x570
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 37
+
+
+ 1658 0823 00000000 		.4byte	.LFB136
+ 1659 0827 D4000000 		.4byte	.LFE136-.LFB136
+ 1660 082b 01       		.uleb128 0x1
+ 1661 082c 9C       		.byte	0x9c
+ 1662 082d B4080000 		.4byte	0x8b4
+ 1663 0831 15       		.uleb128 0x15
+ 1664 0832 61050000 		.4byte	.LASF132
+ 1665 0836 01       		.byte	0x1
+ 1666 0837 3E01     		.2byte	0x13e
+ 1667 0839 CE000000 		.4byte	0xce
+ 1668 083d 6A030000 		.4byte	.LLST18
+ 1669 0841 15       		.uleb128 0x15
+ 1670 0842 04070000 		.4byte	.LASF133
+ 1671 0846 01       		.byte	0x1
+ 1672 0847 3E01     		.2byte	0x13e
+ 1673 0849 CE000000 		.4byte	0xce
+ 1674 084d C8030000 		.4byte	.LLST19
+ 1675 0851 16       		.uleb128 0x16
+ 1676 0852 12000000 		.4byte	.LASF123
+ 1677 0856 01       		.byte	0x1
+ 1678 0857 4001     		.2byte	0x140
+ 1679 0859 70050000 		.4byte	0x570
+ 1680 085d 0D040000 		.4byte	.LLST20
+ 1681 0861 17       		.uleb128 0x17
+ 1682 0862 00000000 		.4byte	.Ldebug_ranges0+0
+ 1683 0866 7B080000 		.4byte	0x87b
+ 1684 086a 16       		.uleb128 0x16
+ 1685 086b 6A050000 		.4byte	.LASF134
+ 1686 086f 01       		.byte	0x1
+ 1687 0870 4B01     		.2byte	0x14b
+ 1688 0872 CE000000 		.4byte	0xce
+ 1689 0876 84040000 		.4byte	.LLST21
+ 1690 087a 00       		.byte	0
+ 1691 087b 10       		.uleb128 0x10
+ 1692 087c 2C000000 		.4byte	.LVL49
+ 1693 0880 F3080000 		.4byte	0x8f3
+ 1694 0884 99080000 		.4byte	0x899
+ 1695 0888 11       		.uleb128 0x11
+ 1696 0889 01       		.uleb128 0x1
+ 1697 088a 50       		.byte	0x50
+ 1698 088b 05       		.uleb128 0x5
+ 1699 088c 03       		.byte	0x3
+ 1700 088d 00000000 		.4byte	.LC0
+ 1701 0891 11       		.uleb128 0x11
+ 1702 0892 01       		.uleb128 0x1
+ 1703 0893 51       		.byte	0x51
+ 1704 0894 03       		.uleb128 0x3
+ 1705 0895 0A       		.byte	0xa
+ 1706 0896 4201     		.2byte	0x142
+ 1707 0898 00       		.byte	0
+ 1708 0899 12       		.uleb128 0x12
+ 1709 089a 50000000 		.4byte	.LVL50
+ 1710 089e F3080000 		.4byte	0x8f3
+ 1711 08a2 11       		.uleb128 0x11
+ 1712 08a3 01       		.uleb128 0x1
+ 1713 08a4 50       		.byte	0x50
+ 1714 08a5 05       		.uleb128 0x5
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 38
+
+
+ 1715 08a6 03       		.byte	0x3
+ 1716 08a7 00000000 		.4byte	.LC0
+ 1717 08ab 11       		.uleb128 0x11
+ 1718 08ac 01       		.uleb128 0x1
+ 1719 08ad 51       		.byte	0x51
+ 1720 08ae 03       		.uleb128 0x3
+ 1721 08af 0A       		.byte	0xa
+ 1722 08b0 4301     		.2byte	0x143
+ 1723 08b2 00       		.byte	0
+ 1724 08b3 00       		.byte	0
+ 1725 08b4 18       		.uleb128 0x18
+ 1726 08b5 84060000 		.4byte	.LASF135
+ 1727 08b9 04       		.byte	0x4
+ 1728 08ba A7       		.byte	0xa7
+ 1729 08bb BF080000 		.4byte	0x8bf
+ 1730 08bf 19       		.uleb128 0x19
+ 1731 08c0 04       		.byte	0x4
+ 1732 08c1 C5080000 		.4byte	0x8c5
+ 1733 08c5 1A       		.uleb128 0x1a
+ 1734 08c6 F8040000 		.4byte	0x4f8
+ 1735 08ca 1B       		.uleb128 0x1b
+ 1736 08cb 42010000 		.4byte	.LASF136
+ 1737 08cf 08       		.byte	0x8
+ 1738 08d0 F907     		.2byte	0x7f9
+ 1739 08d2 D6080000 		.4byte	0x8d6
+ 1740 08d6 1C       		.uleb128 0x1c
+ 1741 08d7 C3000000 		.4byte	0xc3
+ 1742 08db 1D       		.uleb128 0x1d
+ 1743 08dc 54040000 		.4byte	.LASF137
+ 1744 08e0 54040000 		.4byte	.LASF137
+ 1745 08e4 06       		.byte	0x6
+ 1746 08e5 B203     		.2byte	0x3b2
+ 1747 08e7 1D       		.uleb128 0x1d
+ 1748 08e8 91020000 		.4byte	.LASF138
+ 1749 08ec 91020000 		.4byte	.LASF138
+ 1750 08f0 06       		.byte	0x6
+ 1751 08f1 C103     		.2byte	0x3c1
+ 1752 08f3 1D       		.uleb128 0x1d
+ 1753 08f4 18080000 		.4byte	.LASF139
+ 1754 08f8 18080000 		.4byte	.LASF139
+ 1755 08fc 06       		.byte	0x6
+ 1756 08fd 9203     		.2byte	0x392
+ 1757 08ff 00       		.byte	0
+ 1758              		.section	.debug_abbrev,"",%progbits
+ 1759              	.Ldebug_abbrev0:
+ 1760 0000 01       		.uleb128 0x1
+ 1761 0001 11       		.uleb128 0x11
+ 1762 0002 01       		.byte	0x1
+ 1763 0003 25       		.uleb128 0x25
+ 1764 0004 0E       		.uleb128 0xe
+ 1765 0005 13       		.uleb128 0x13
+ 1766 0006 0B       		.uleb128 0xb
+ 1767 0007 03       		.uleb128 0x3
+ 1768 0008 0E       		.uleb128 0xe
+ 1769 0009 1B       		.uleb128 0x1b
+ 1770 000a 0E       		.uleb128 0xe
+ 1771 000b 55       		.uleb128 0x55
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 39
+
+
+ 1772 000c 17       		.uleb128 0x17
+ 1773 000d 11       		.uleb128 0x11
+ 1774 000e 01       		.uleb128 0x1
+ 1775 000f 10       		.uleb128 0x10
+ 1776 0010 17       		.uleb128 0x17
+ 1777 0011 00       		.byte	0
+ 1778 0012 00       		.byte	0
+ 1779 0013 02       		.uleb128 0x2
+ 1780 0014 24       		.uleb128 0x24
+ 1781 0015 00       		.byte	0
+ 1782 0016 0B       		.uleb128 0xb
+ 1783 0017 0B       		.uleb128 0xb
+ 1784 0018 3E       		.uleb128 0x3e
+ 1785 0019 0B       		.uleb128 0xb
+ 1786 001a 03       		.uleb128 0x3
+ 1787 001b 0E       		.uleb128 0xe
+ 1788 001c 00       		.byte	0
+ 1789 001d 00       		.byte	0
+ 1790 001e 03       		.uleb128 0x3
+ 1791 001f 16       		.uleb128 0x16
+ 1792 0020 00       		.byte	0
+ 1793 0021 03       		.uleb128 0x3
+ 1794 0022 0E       		.uleb128 0xe
+ 1795 0023 3A       		.uleb128 0x3a
+ 1796 0024 0B       		.uleb128 0xb
+ 1797 0025 3B       		.uleb128 0x3b
+ 1798 0026 0B       		.uleb128 0xb
+ 1799 0027 49       		.uleb128 0x49
+ 1800 0028 13       		.uleb128 0x13
+ 1801 0029 00       		.byte	0
+ 1802 002a 00       		.byte	0
+ 1803 002b 04       		.uleb128 0x4
+ 1804 002c 24       		.uleb128 0x24
+ 1805 002d 00       		.byte	0
+ 1806 002e 0B       		.uleb128 0xb
+ 1807 002f 0B       		.uleb128 0xb
+ 1808 0030 3E       		.uleb128 0x3e
+ 1809 0031 0B       		.uleb128 0xb
+ 1810 0032 03       		.uleb128 0x3
+ 1811 0033 08       		.uleb128 0x8
+ 1812 0034 00       		.byte	0
+ 1813 0035 00       		.byte	0
+ 1814 0036 05       		.uleb128 0x5
+ 1815 0037 13       		.uleb128 0x13
+ 1816 0038 01       		.byte	0x1
+ 1817 0039 0B       		.uleb128 0xb
+ 1818 003a 0B       		.uleb128 0xb
+ 1819 003b 3A       		.uleb128 0x3a
+ 1820 003c 0B       		.uleb128 0xb
+ 1821 003d 3B       		.uleb128 0x3b
+ 1822 003e 0B       		.uleb128 0xb
+ 1823 003f 01       		.uleb128 0x1
+ 1824 0040 13       		.uleb128 0x13
+ 1825 0041 00       		.byte	0
+ 1826 0042 00       		.byte	0
+ 1827 0043 06       		.uleb128 0x6
+ 1828 0044 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 40
+
+
+ 1829 0045 00       		.byte	0
+ 1830 0046 03       		.uleb128 0x3
+ 1831 0047 0E       		.uleb128 0xe
+ 1832 0048 3A       		.uleb128 0x3a
+ 1833 0049 0B       		.uleb128 0xb
+ 1834 004a 3B       		.uleb128 0x3b
+ 1835 004b 0B       		.uleb128 0xb
+ 1836 004c 49       		.uleb128 0x49
+ 1837 004d 13       		.uleb128 0x13
+ 1838 004e 38       		.uleb128 0x38
+ 1839 004f 0B       		.uleb128 0xb
+ 1840 0050 00       		.byte	0
+ 1841 0051 00       		.byte	0
+ 1842 0052 07       		.uleb128 0x7
+ 1843 0053 04       		.uleb128 0x4
+ 1844 0054 01       		.byte	0x1
+ 1845 0055 0B       		.uleb128 0xb
+ 1846 0056 0B       		.uleb128 0xb
+ 1847 0057 49       		.uleb128 0x49
+ 1848 0058 13       		.uleb128 0x13
+ 1849 0059 3A       		.uleb128 0x3a
+ 1850 005a 0B       		.uleb128 0xb
+ 1851 005b 3B       		.uleb128 0x3b
+ 1852 005c 05       		.uleb128 0x5
+ 1853 005d 01       		.uleb128 0x1
+ 1854 005e 13       		.uleb128 0x13
+ 1855 005f 00       		.byte	0
+ 1856 0060 00       		.byte	0
+ 1857 0061 08       		.uleb128 0x8
+ 1858 0062 28       		.uleb128 0x28
+ 1859 0063 00       		.byte	0
+ 1860 0064 03       		.uleb128 0x3
+ 1861 0065 0E       		.uleb128 0xe
+ 1862 0066 1C       		.uleb128 0x1c
+ 1863 0067 0B       		.uleb128 0xb
+ 1864 0068 00       		.byte	0
+ 1865 0069 00       		.byte	0
+ 1866 006a 09       		.uleb128 0x9
+ 1867 006b 16       		.uleb128 0x16
+ 1868 006c 00       		.byte	0
+ 1869 006d 03       		.uleb128 0x3
+ 1870 006e 0E       		.uleb128 0xe
+ 1871 006f 3A       		.uleb128 0x3a
+ 1872 0070 0B       		.uleb128 0xb
+ 1873 0071 3B       		.uleb128 0x3b
+ 1874 0072 05       		.uleb128 0x5
+ 1875 0073 49       		.uleb128 0x49
+ 1876 0074 13       		.uleb128 0x13
+ 1877 0075 00       		.byte	0
+ 1878 0076 00       		.byte	0
+ 1879 0077 0A       		.uleb128 0xa
+ 1880 0078 28       		.uleb128 0x28
+ 1881 0079 00       		.byte	0
+ 1882 007a 03       		.uleb128 0x3
+ 1883 007b 0E       		.uleb128 0xe
+ 1884 007c 1C       		.uleb128 0x1c
+ 1885 007d 06       		.uleb128 0x6
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 41
+
+
+ 1886 007e 00       		.byte	0
+ 1887 007f 00       		.byte	0
+ 1888 0080 0B       		.uleb128 0xb
+ 1889 0081 2E       		.uleb128 0x2e
+ 1890 0082 01       		.byte	0x1
+ 1891 0083 3F       		.uleb128 0x3f
+ 1892 0084 19       		.uleb128 0x19
+ 1893 0085 03       		.uleb128 0x3
+ 1894 0086 0E       		.uleb128 0xe
+ 1895 0087 3A       		.uleb128 0x3a
+ 1896 0088 0B       		.uleb128 0xb
+ 1897 0089 3B       		.uleb128 0x3b
+ 1898 008a 0B       		.uleb128 0xb
+ 1899 008b 27       		.uleb128 0x27
+ 1900 008c 19       		.uleb128 0x19
+ 1901 008d 49       		.uleb128 0x49
+ 1902 008e 13       		.uleb128 0x13
+ 1903 008f 11       		.uleb128 0x11
+ 1904 0090 01       		.uleb128 0x1
+ 1905 0091 12       		.uleb128 0x12
+ 1906 0092 06       		.uleb128 0x6
+ 1907 0093 40       		.uleb128 0x40
+ 1908 0094 18       		.uleb128 0x18
+ 1909 0095 9742     		.uleb128 0x2117
+ 1910 0097 19       		.uleb128 0x19
+ 1911 0098 01       		.uleb128 0x1
+ 1912 0099 13       		.uleb128 0x13
+ 1913 009a 00       		.byte	0
+ 1914 009b 00       		.byte	0
+ 1915 009c 0C       		.uleb128 0xc
+ 1916 009d 05       		.uleb128 0x5
+ 1917 009e 00       		.byte	0
+ 1918 009f 03       		.uleb128 0x3
+ 1919 00a0 0E       		.uleb128 0xe
+ 1920 00a1 3A       		.uleb128 0x3a
+ 1921 00a2 0B       		.uleb128 0xb
+ 1922 00a3 3B       		.uleb128 0x3b
+ 1923 00a4 0B       		.uleb128 0xb
+ 1924 00a5 49       		.uleb128 0x49
+ 1925 00a6 13       		.uleb128 0x13
+ 1926 00a7 02       		.uleb128 0x2
+ 1927 00a8 17       		.uleb128 0x17
+ 1928 00a9 00       		.byte	0
+ 1929 00aa 00       		.byte	0
+ 1930 00ab 0D       		.uleb128 0xd
+ 1931 00ac 34       		.uleb128 0x34
+ 1932 00ad 00       		.byte	0
+ 1933 00ae 03       		.uleb128 0x3
+ 1934 00af 0E       		.uleb128 0xe
+ 1935 00b0 3A       		.uleb128 0x3a
+ 1936 00b1 0B       		.uleb128 0xb
+ 1937 00b2 3B       		.uleb128 0x3b
+ 1938 00b3 0B       		.uleb128 0xb
+ 1939 00b4 49       		.uleb128 0x49
+ 1940 00b5 13       		.uleb128 0x13
+ 1941 00b6 02       		.uleb128 0x2
+ 1942 00b7 17       		.uleb128 0x17
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 42
+
+
+ 1943 00b8 00       		.byte	0
+ 1944 00b9 00       		.byte	0
+ 1945 00ba 0E       		.uleb128 0xe
+ 1946 00bb 0B       		.uleb128 0xb
+ 1947 00bc 01       		.byte	0x1
+ 1948 00bd 11       		.uleb128 0x11
+ 1949 00be 01       		.uleb128 0x1
+ 1950 00bf 12       		.uleb128 0x12
+ 1951 00c0 06       		.uleb128 0x6
+ 1952 00c1 01       		.uleb128 0x1
+ 1953 00c2 13       		.uleb128 0x13
+ 1954 00c3 00       		.byte	0
+ 1955 00c4 00       		.byte	0
+ 1956 00c5 0F       		.uleb128 0xf
+ 1957 00c6 898201   		.uleb128 0x4109
+ 1958 00c9 00       		.byte	0
+ 1959 00ca 11       		.uleb128 0x11
+ 1960 00cb 01       		.uleb128 0x1
+ 1961 00cc 31       		.uleb128 0x31
+ 1962 00cd 13       		.uleb128 0x13
+ 1963 00ce 00       		.byte	0
+ 1964 00cf 00       		.byte	0
+ 1965 00d0 10       		.uleb128 0x10
+ 1966 00d1 898201   		.uleb128 0x4109
+ 1967 00d4 01       		.byte	0x1
+ 1968 00d5 11       		.uleb128 0x11
+ 1969 00d6 01       		.uleb128 0x1
+ 1970 00d7 31       		.uleb128 0x31
+ 1971 00d8 13       		.uleb128 0x13
+ 1972 00d9 01       		.uleb128 0x1
+ 1973 00da 13       		.uleb128 0x13
+ 1974 00db 00       		.byte	0
+ 1975 00dc 00       		.byte	0
+ 1976 00dd 11       		.uleb128 0x11
+ 1977 00de 8A8201   		.uleb128 0x410a
+ 1978 00e1 00       		.byte	0
+ 1979 00e2 02       		.uleb128 0x2
+ 1980 00e3 18       		.uleb128 0x18
+ 1981 00e4 9142     		.uleb128 0x2111
+ 1982 00e6 18       		.uleb128 0x18
+ 1983 00e7 00       		.byte	0
+ 1984 00e8 00       		.byte	0
+ 1985 00e9 12       		.uleb128 0x12
+ 1986 00ea 898201   		.uleb128 0x4109
+ 1987 00ed 01       		.byte	0x1
+ 1988 00ee 11       		.uleb128 0x11
+ 1989 00ef 01       		.uleb128 0x1
+ 1990 00f0 31       		.uleb128 0x31
+ 1991 00f1 13       		.uleb128 0x13
+ 1992 00f2 00       		.byte	0
+ 1993 00f3 00       		.byte	0
+ 1994 00f4 13       		.uleb128 0x13
+ 1995 00f5 0B       		.uleb128 0xb
+ 1996 00f6 01       		.byte	0x1
+ 1997 00f7 11       		.uleb128 0x11
+ 1998 00f8 01       		.uleb128 0x1
+ 1999 00f9 12       		.uleb128 0x12
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 43
+
+
+ 2000 00fa 06       		.uleb128 0x6
+ 2001 00fb 00       		.byte	0
+ 2002 00fc 00       		.byte	0
+ 2003 00fd 14       		.uleb128 0x14
+ 2004 00fe 2E       		.uleb128 0x2e
+ 2005 00ff 01       		.byte	0x1
+ 2006 0100 3F       		.uleb128 0x3f
+ 2007 0101 19       		.uleb128 0x19
+ 2008 0102 03       		.uleb128 0x3
+ 2009 0103 0E       		.uleb128 0xe
+ 2010 0104 3A       		.uleb128 0x3a
+ 2011 0105 0B       		.uleb128 0xb
+ 2012 0106 3B       		.uleb128 0x3b
+ 2013 0107 05       		.uleb128 0x5
+ 2014 0108 27       		.uleb128 0x27
+ 2015 0109 19       		.uleb128 0x19
+ 2016 010a 49       		.uleb128 0x49
+ 2017 010b 13       		.uleb128 0x13
+ 2018 010c 11       		.uleb128 0x11
+ 2019 010d 01       		.uleb128 0x1
+ 2020 010e 12       		.uleb128 0x12
+ 2021 010f 06       		.uleb128 0x6
+ 2022 0110 40       		.uleb128 0x40
+ 2023 0111 18       		.uleb128 0x18
+ 2024 0112 9742     		.uleb128 0x2117
+ 2025 0114 19       		.uleb128 0x19
+ 2026 0115 01       		.uleb128 0x1
+ 2027 0116 13       		.uleb128 0x13
+ 2028 0117 00       		.byte	0
+ 2029 0118 00       		.byte	0
+ 2030 0119 15       		.uleb128 0x15
+ 2031 011a 05       		.uleb128 0x5
+ 2032 011b 00       		.byte	0
+ 2033 011c 03       		.uleb128 0x3
+ 2034 011d 0E       		.uleb128 0xe
+ 2035 011e 3A       		.uleb128 0x3a
+ 2036 011f 0B       		.uleb128 0xb
+ 2037 0120 3B       		.uleb128 0x3b
+ 2038 0121 05       		.uleb128 0x5
+ 2039 0122 49       		.uleb128 0x49
+ 2040 0123 13       		.uleb128 0x13
+ 2041 0124 02       		.uleb128 0x2
+ 2042 0125 17       		.uleb128 0x17
+ 2043 0126 00       		.byte	0
+ 2044 0127 00       		.byte	0
+ 2045 0128 16       		.uleb128 0x16
+ 2046 0129 34       		.uleb128 0x34
+ 2047 012a 00       		.byte	0
+ 2048 012b 03       		.uleb128 0x3
+ 2049 012c 0E       		.uleb128 0xe
+ 2050 012d 3A       		.uleb128 0x3a
+ 2051 012e 0B       		.uleb128 0xb
+ 2052 012f 3B       		.uleb128 0x3b
+ 2053 0130 05       		.uleb128 0x5
+ 2054 0131 49       		.uleb128 0x49
+ 2055 0132 13       		.uleb128 0x13
+ 2056 0133 02       		.uleb128 0x2
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 44
+
+
+ 2057 0134 17       		.uleb128 0x17
+ 2058 0135 00       		.byte	0
+ 2059 0136 00       		.byte	0
+ 2060 0137 17       		.uleb128 0x17
+ 2061 0138 0B       		.uleb128 0xb
+ 2062 0139 01       		.byte	0x1
+ 2063 013a 55       		.uleb128 0x55
+ 2064 013b 17       		.uleb128 0x17
+ 2065 013c 01       		.uleb128 0x1
+ 2066 013d 13       		.uleb128 0x13
+ 2067 013e 00       		.byte	0
+ 2068 013f 00       		.byte	0
+ 2069 0140 18       		.uleb128 0x18
+ 2070 0141 34       		.uleb128 0x34
+ 2071 0142 00       		.byte	0
+ 2072 0143 03       		.uleb128 0x3
+ 2073 0144 0E       		.uleb128 0xe
+ 2074 0145 3A       		.uleb128 0x3a
+ 2075 0146 0B       		.uleb128 0xb
+ 2076 0147 3B       		.uleb128 0x3b
+ 2077 0148 0B       		.uleb128 0xb
+ 2078 0149 49       		.uleb128 0x49
+ 2079 014a 13       		.uleb128 0x13
+ 2080 014b 3F       		.uleb128 0x3f
+ 2081 014c 19       		.uleb128 0x19
+ 2082 014d 3C       		.uleb128 0x3c
+ 2083 014e 19       		.uleb128 0x19
+ 2084 014f 00       		.byte	0
+ 2085 0150 00       		.byte	0
+ 2086 0151 19       		.uleb128 0x19
+ 2087 0152 0F       		.uleb128 0xf
+ 2088 0153 00       		.byte	0
+ 2089 0154 0B       		.uleb128 0xb
+ 2090 0155 0B       		.uleb128 0xb
+ 2091 0156 49       		.uleb128 0x49
+ 2092 0157 13       		.uleb128 0x13
+ 2093 0158 00       		.byte	0
+ 2094 0159 00       		.byte	0
+ 2095 015a 1A       		.uleb128 0x1a
+ 2096 015b 26       		.uleb128 0x26
+ 2097 015c 00       		.byte	0
+ 2098 015d 49       		.uleb128 0x49
+ 2099 015e 13       		.uleb128 0x13
+ 2100 015f 00       		.byte	0
+ 2101 0160 00       		.byte	0
+ 2102 0161 1B       		.uleb128 0x1b
+ 2103 0162 34       		.uleb128 0x34
+ 2104 0163 00       		.byte	0
+ 2105 0164 03       		.uleb128 0x3
+ 2106 0165 0E       		.uleb128 0xe
+ 2107 0166 3A       		.uleb128 0x3a
+ 2108 0167 0B       		.uleb128 0xb
+ 2109 0168 3B       		.uleb128 0x3b
+ 2110 0169 05       		.uleb128 0x5
+ 2111 016a 49       		.uleb128 0x49
+ 2112 016b 13       		.uleb128 0x13
+ 2113 016c 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 45
+
+
+ 2114 016d 19       		.uleb128 0x19
+ 2115 016e 3C       		.uleb128 0x3c
+ 2116 016f 19       		.uleb128 0x19
+ 2117 0170 00       		.byte	0
+ 2118 0171 00       		.byte	0
+ 2119 0172 1C       		.uleb128 0x1c
+ 2120 0173 35       		.uleb128 0x35
+ 2121 0174 00       		.byte	0
+ 2122 0175 49       		.uleb128 0x49
+ 2123 0176 13       		.uleb128 0x13
+ 2124 0177 00       		.byte	0
+ 2125 0178 00       		.byte	0
+ 2126 0179 1D       		.uleb128 0x1d
+ 2127 017a 2E       		.uleb128 0x2e
+ 2128 017b 00       		.byte	0
+ 2129 017c 3F       		.uleb128 0x3f
+ 2130 017d 19       		.uleb128 0x19
+ 2131 017e 3C       		.uleb128 0x3c
+ 2132 017f 19       		.uleb128 0x19
+ 2133 0180 6E       		.uleb128 0x6e
+ 2134 0181 0E       		.uleb128 0xe
+ 2135 0182 03       		.uleb128 0x3
+ 2136 0183 0E       		.uleb128 0xe
+ 2137 0184 3A       		.uleb128 0x3a
+ 2138 0185 0B       		.uleb128 0xb
+ 2139 0186 3B       		.uleb128 0x3b
+ 2140 0187 05       		.uleb128 0x5
+ 2141 0188 00       		.byte	0
+ 2142 0189 00       		.byte	0
+ 2143 018a 00       		.byte	0
+ 2144              		.section	.debug_loc,"",%progbits
+ 2145              	.Ldebug_loc0:
+ 2146              	.LLST0:
+ 2147 0000 00000000 		.4byte	.LVL0
+ 2148 0004 14000000 		.4byte	.LVL3
+ 2149 0008 0100     		.2byte	0x1
+ 2150 000a 50       		.byte	0x50
+ 2151 000b 14000000 		.4byte	.LVL3
+ 2152 000f 9C000000 		.4byte	.LVL9
+ 2153 0013 0100     		.2byte	0x1
+ 2154 0015 55       		.byte	0x55
+ 2155 0016 9C000000 		.4byte	.LVL9
+ 2156 001a BC000000 		.4byte	.LVL11
+ 2157 001e 0400     		.2byte	0x4
+ 2158 0020 F3       		.byte	0xf3
+ 2159 0021 01       		.uleb128 0x1
+ 2160 0022 50       		.byte	0x50
+ 2161 0023 9F       		.byte	0x9f
+ 2162 0024 BC000000 		.4byte	.LVL11
+ 2163 0028 C2000000 		.4byte	.LVL13
+ 2164 002c 0100     		.2byte	0x1
+ 2165 002e 55       		.byte	0x55
+ 2166 002f C2000000 		.4byte	.LVL13
+ 2167 0033 D0000000 		.4byte	.LFE132
+ 2168 0037 0400     		.2byte	0x4
+ 2169 0039 F3       		.byte	0xf3
+ 2170 003a 01       		.uleb128 0x1
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 46
+
+
+ 2171 003b 50       		.byte	0x50
+ 2172 003c 9F       		.byte	0x9f
+ 2173 003d 00000000 		.4byte	0
+ 2174 0041 00000000 		.4byte	0
+ 2175              	.LLST1:
+ 2176 0045 00000000 		.4byte	.LVL0
+ 2177 0049 12000000 		.4byte	.LVL2
+ 2178 004d 0100     		.2byte	0x1
+ 2179 004f 51       		.byte	0x51
+ 2180 0050 12000000 		.4byte	.LVL2
+ 2181 0054 86000000 		.4byte	.LVL8
+ 2182 0058 0100     		.2byte	0x1
+ 2183 005a 54       		.byte	0x54
+ 2184 005b 86000000 		.4byte	.LVL8
+ 2185 005f BC000000 		.4byte	.LVL11
+ 2186 0063 0400     		.2byte	0x4
+ 2187 0065 F3       		.byte	0xf3
+ 2188 0066 01       		.uleb128 0x1
+ 2189 0067 51       		.byte	0x51
+ 2190 0068 9F       		.byte	0x9f
+ 2191 0069 BC000000 		.4byte	.LVL11
+ 2192 006d C2000000 		.4byte	.LVL13
+ 2193 0071 0100     		.2byte	0x1
+ 2194 0073 54       		.byte	0x54
+ 2195 0074 C2000000 		.4byte	.LVL13
+ 2196 0078 D0000000 		.4byte	.LFE132
+ 2197 007c 0400     		.2byte	0x4
+ 2198 007e F3       		.byte	0xf3
+ 2199 007f 01       		.uleb128 0x1
+ 2200 0080 51       		.byte	0x51
+ 2201 0081 9F       		.byte	0x9f
+ 2202 0082 00000000 		.4byte	0
+ 2203 0086 00000000 		.4byte	0
+ 2204              	.LLST2:
+ 2205 008a 00000000 		.4byte	.LVL0
+ 2206 008e 17000000 		.4byte	.LVL4-1
+ 2207 0092 0100     		.2byte	0x1
+ 2208 0094 52       		.byte	0x52
+ 2209 0095 17000000 		.4byte	.LVL4-1
+ 2210 0099 D0000000 		.4byte	.LFE132
+ 2211 009d 0400     		.2byte	0x4
+ 2212 009f F3       		.byte	0xf3
+ 2213 00a0 01       		.uleb128 0x1
+ 2214 00a1 52       		.byte	0x52
+ 2215 00a2 9F       		.byte	0x9f
+ 2216 00a3 00000000 		.4byte	0
+ 2217 00a7 00000000 		.4byte	0
+ 2218              	.LLST3:
+ 2219 00ab 00000000 		.4byte	.LVL0
+ 2220 00af 17000000 		.4byte	.LVL4-1
+ 2221 00b3 0100     		.2byte	0x1
+ 2222 00b5 53       		.byte	0x53
+ 2223 00b6 17000000 		.4byte	.LVL4-1
+ 2224 00ba D0000000 		.4byte	.LFE132
+ 2225 00be 0400     		.2byte	0x4
+ 2226 00c0 F3       		.byte	0xf3
+ 2227 00c1 01       		.uleb128 0x1
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 47
+
+
+ 2228 00c2 53       		.byte	0x53
+ 2229 00c3 9F       		.byte	0x9f
+ 2230 00c4 00000000 		.4byte	0
+ 2231 00c8 00000000 		.4byte	0
+ 2232              	.LLST4:
+ 2233 00cc 0C000000 		.4byte	.LVL1
+ 2234 00d0 B6000000 		.4byte	.LVL10
+ 2235 00d4 0600     		.2byte	0x6
+ 2236 00d6 0C       		.byte	0xc
+ 2237 00d7 0100CE00 		.4byte	0xce0001
+ 2238 00db 9F       		.byte	0x9f
+ 2239 00dc B6000000 		.4byte	.LVL10
+ 2240 00e0 BC000000 		.4byte	.LVL11
+ 2241 00e4 0200     		.2byte	0x2
+ 2242 00e6 30       		.byte	0x30
+ 2243 00e7 9F       		.byte	0x9f
+ 2244 00e8 BC000000 		.4byte	.LVL11
+ 2245 00ec BE000000 		.4byte	.LVL12
+ 2246 00f0 0600     		.2byte	0x6
+ 2247 00f2 0C       		.byte	0xc
+ 2248 00f3 0100CE00 		.4byte	0xce0001
+ 2249 00f7 9F       		.byte	0x9f
+ 2250 00f8 BE000000 		.4byte	.LVL12
+ 2251 00fc D0000000 		.4byte	.LFE132
+ 2252 0100 0100     		.2byte	0x1
+ 2253 0102 50       		.byte	0x50
+ 2254 0103 00000000 		.4byte	0
+ 2255 0107 00000000 		.4byte	0
+ 2256              	.LLST5:
+ 2257 010b 60000000 		.4byte	.LVL7
+ 2258 010f B5000000 		.4byte	.LVL10-1
+ 2259 0113 0100     		.2byte	0x1
+ 2260 0115 50       		.byte	0x50
+ 2261 0116 00000000 		.4byte	0
+ 2262 011a 00000000 		.4byte	0
+ 2263              	.LLST6:
+ 2264 011e 00000000 		.4byte	.LVL14
+ 2265 0122 10000000 		.4byte	.LVL17
+ 2266 0126 0100     		.2byte	0x1
+ 2267 0128 50       		.byte	0x50
+ 2268 0129 10000000 		.4byte	.LVL17
+ 2269 012d 68000000 		.4byte	.LVL21
+ 2270 0131 0100     		.2byte	0x1
+ 2271 0133 55       		.byte	0x55
+ 2272 0134 68000000 		.4byte	.LVL21
+ 2273 0138 98000000 		.4byte	.LVL23
+ 2274 013c 0400     		.2byte	0x4
+ 2275 013e F3       		.byte	0xf3
+ 2276 013f 01       		.uleb128 0x1
+ 2277 0140 50       		.byte	0x50
+ 2278 0141 9F       		.byte	0x9f
+ 2279 0142 98000000 		.4byte	.LVL23
+ 2280 0146 9C000000 		.4byte	.LVL25
+ 2281 014a 0100     		.2byte	0x1
+ 2282 014c 55       		.byte	0x55
+ 2283 014d 9C000000 		.4byte	.LVL25
+ 2284 0151 AC000000 		.4byte	.LFE133
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 48
+
+
+ 2285 0155 0400     		.2byte	0x4
+ 2286 0157 F3       		.byte	0xf3
+ 2287 0158 01       		.uleb128 0x1
+ 2288 0159 50       		.byte	0x50
+ 2289 015a 9F       		.byte	0x9f
+ 2290 015b 00000000 		.4byte	0
+ 2291 015f 00000000 		.4byte	0
+ 2292              	.LLST7:
+ 2293 0163 00000000 		.4byte	.LVL14
+ 2294 0167 0E000000 		.4byte	.LVL16
+ 2295 016b 0100     		.2byte	0x1
+ 2296 016d 51       		.byte	0x51
+ 2297 016e 0E000000 		.4byte	.LVL16
+ 2298 0172 AC000000 		.4byte	.LFE133
+ 2299 0176 0400     		.2byte	0x4
+ 2300 0178 F3       		.byte	0xf3
+ 2301 0179 01       		.uleb128 0x1
+ 2302 017a 51       		.byte	0x51
+ 2303 017b 9F       		.byte	0x9f
+ 2304 017c 00000000 		.4byte	0
+ 2305 0180 00000000 		.4byte	0
+ 2306              	.LLST8:
+ 2307 0184 00000000 		.4byte	.LVL14
+ 2308 0188 13000000 		.4byte	.LVL18-1
+ 2309 018c 0100     		.2byte	0x1
+ 2310 018e 52       		.byte	0x52
+ 2311 018f 13000000 		.4byte	.LVL18-1
+ 2312 0193 AC000000 		.4byte	.LFE133
+ 2313 0197 0400     		.2byte	0x4
+ 2314 0199 F3       		.byte	0xf3
+ 2315 019a 01       		.uleb128 0x1
+ 2316 019b 52       		.byte	0x52
+ 2317 019c 9F       		.byte	0x9f
+ 2318 019d 00000000 		.4byte	0
+ 2319 01a1 00000000 		.4byte	0
+ 2320              	.LLST9:
+ 2321 01a5 08000000 		.4byte	.LVL15
+ 2322 01a9 94000000 		.4byte	.LVL22
+ 2323 01ad 0600     		.2byte	0x6
+ 2324 01af 0C       		.byte	0xc
+ 2325 01b0 0100CE00 		.4byte	0xce0001
+ 2326 01b4 9F       		.byte	0x9f
+ 2327 01b5 94000000 		.4byte	.LVL22
+ 2328 01b9 98000000 		.4byte	.LVL23
+ 2329 01bd 0200     		.2byte	0x2
+ 2330 01bf 30       		.byte	0x30
+ 2331 01c0 9F       		.byte	0x9f
+ 2332 01c1 98000000 		.4byte	.LVL23
+ 2333 01c5 9A000000 		.4byte	.LVL24
+ 2334 01c9 0600     		.2byte	0x6
+ 2335 01cb 0C       		.byte	0xc
+ 2336 01cc 0100CE00 		.4byte	0xce0001
+ 2337 01d0 9F       		.byte	0x9f
+ 2338 01d1 9A000000 		.4byte	.LVL24
+ 2339 01d5 AC000000 		.4byte	.LFE133
+ 2340 01d9 0100     		.2byte	0x1
+ 2341 01db 50       		.byte	0x50
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 49
+
+
+ 2342 01dc 00000000 		.4byte	0
+ 2343 01e0 00000000 		.4byte	0
+ 2344              	.LLST10:
+ 2345 01e4 4C000000 		.4byte	.LVL20
+ 2346 01e8 93000000 		.4byte	.LVL22-1
+ 2347 01ec 0100     		.2byte	0x1
+ 2348 01ee 50       		.byte	0x50
+ 2349 01ef 00000000 		.4byte	0
+ 2350 01f3 00000000 		.4byte	0
+ 2351              	.LLST11:
+ 2352 01f7 00000000 		.4byte	.LVL26
+ 2353 01fb 28000000 		.4byte	.LVL28
+ 2354 01ff 0100     		.2byte	0x1
+ 2355 0201 50       		.byte	0x50
+ 2356 0202 28000000 		.4byte	.LVL28
+ 2357 0206 5A000000 		.4byte	.LVL31
+ 2358 020a 0100     		.2byte	0x1
+ 2359 020c 54       		.byte	0x54
+ 2360 020d 5A000000 		.4byte	.LVL31
+ 2361 0211 74000000 		.4byte	.LVL33
+ 2362 0215 0400     		.2byte	0x4
+ 2363 0217 F3       		.byte	0xf3
+ 2364 0218 01       		.uleb128 0x1
+ 2365 0219 50       		.byte	0x50
+ 2366 021a 9F       		.byte	0x9f
+ 2367 021b 74000000 		.4byte	.LVL33
+ 2368 021f 78000000 		.4byte	.LVL35
+ 2369 0223 0100     		.2byte	0x1
+ 2370 0225 54       		.byte	0x54
+ 2371 0226 78000000 		.4byte	.LVL35
+ 2372 022a 88000000 		.4byte	.LFE134
+ 2373 022e 0400     		.2byte	0x4
+ 2374 0230 F3       		.byte	0xf3
+ 2375 0231 01       		.uleb128 0x1
+ 2376 0232 50       		.byte	0x50
+ 2377 0233 9F       		.byte	0x9f
+ 2378 0234 00000000 		.4byte	0
+ 2379 0238 00000000 		.4byte	0
+ 2380              	.LLST12:
+ 2381 023c 04000000 		.4byte	.LVL27
+ 2382 0240 70000000 		.4byte	.LVL32
+ 2383 0244 0600     		.2byte	0x6
+ 2384 0246 0C       		.byte	0xc
+ 2385 0247 0100CE00 		.4byte	0xce0001
+ 2386 024b 9F       		.byte	0x9f
+ 2387 024c 70000000 		.4byte	.LVL32
+ 2388 0250 74000000 		.4byte	.LVL33
+ 2389 0254 0200     		.2byte	0x2
+ 2390 0256 30       		.byte	0x30
+ 2391 0257 9F       		.byte	0x9f
+ 2392 0258 74000000 		.4byte	.LVL33
+ 2393 025c 76000000 		.4byte	.LVL34
+ 2394 0260 0600     		.2byte	0x6
+ 2395 0262 0C       		.byte	0xc
+ 2396 0263 0100CE00 		.4byte	0xce0001
+ 2397 0267 9F       		.byte	0x9f
+ 2398 0268 76000000 		.4byte	.LVL34
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 50
+
+
+ 2399 026c 88000000 		.4byte	.LFE134
+ 2400 0270 0100     		.2byte	0x1
+ 2401 0272 50       		.byte	0x50
+ 2402 0273 00000000 		.4byte	0
+ 2403 0277 00000000 		.4byte	0
+ 2404              	.LLST13:
+ 2405 027b 3C000000 		.4byte	.LVL30
+ 2406 027f 6F000000 		.4byte	.LVL32-1
+ 2407 0283 0100     		.2byte	0x1
+ 2408 0285 50       		.byte	0x50
+ 2409 0286 00000000 		.4byte	0
+ 2410 028a 00000000 		.4byte	0
+ 2411              	.LLST14:
+ 2412 028e 00000000 		.4byte	.LVL36
+ 2413 0292 15000000 		.4byte	.LVL38-1
+ 2414 0296 0100     		.2byte	0x1
+ 2415 0298 50       		.byte	0x50
+ 2416 0299 15000000 		.4byte	.LVL38-1
+ 2417 029d 36000000 		.4byte	.LVL39
+ 2418 02a1 0100     		.2byte	0x1
+ 2419 02a3 54       		.byte	0x54
+ 2420 02a4 36000000 		.4byte	.LVL39
+ 2421 02a8 46000000 		.4byte	.LVL40
+ 2422 02ac 0400     		.2byte	0x4
+ 2423 02ae F3       		.byte	0xf3
+ 2424 02af 01       		.uleb128 0x1
+ 2425 02b0 50       		.byte	0x50
+ 2426 02b1 9F       		.byte	0x9f
+ 2427 02b2 46000000 		.4byte	.LVL40
+ 2428 02b6 64000000 		.4byte	.LVL41
+ 2429 02ba 0100     		.2byte	0x1
+ 2430 02bc 54       		.byte	0x54
+ 2431 02bd 64000000 		.4byte	.LVL41
+ 2432 02c1 7A000000 		.4byte	.LVL43
+ 2433 02c5 0400     		.2byte	0x4
+ 2434 02c7 F3       		.byte	0xf3
+ 2435 02c8 01       		.uleb128 0x1
+ 2436 02c9 50       		.byte	0x50
+ 2437 02ca 9F       		.byte	0x9f
+ 2438 02cb 7A000000 		.4byte	.LVL43
+ 2439 02cf 7C000000 		.4byte	.LVL44
+ 2440 02d3 0100     		.2byte	0x1
+ 2441 02d5 50       		.byte	0x50
+ 2442 02d6 7C000000 		.4byte	.LVL44
+ 2443 02da 88000000 		.4byte	.LFE135
+ 2444 02de 0400     		.2byte	0x4
+ 2445 02e0 F3       		.byte	0xf3
+ 2446 02e1 01       		.uleb128 0x1
+ 2447 02e2 50       		.byte	0x50
+ 2448 02e3 9F       		.byte	0x9f
+ 2449 02e4 00000000 		.4byte	0
+ 2450 02e8 00000000 		.4byte	0
+ 2451              	.LLST15:
+ 2452 02ec 00000000 		.4byte	.LVL36
+ 2453 02f0 15000000 		.4byte	.LVL38-1
+ 2454 02f4 0100     		.2byte	0x1
+ 2455 02f6 51       		.byte	0x51
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 51
+
+
+ 2456 02f7 15000000 		.4byte	.LVL38-1
+ 2457 02fb 7A000000 		.4byte	.LVL43
+ 2458 02ff 0400     		.2byte	0x4
+ 2459 0301 F3       		.byte	0xf3
+ 2460 0302 01       		.uleb128 0x1
+ 2461 0303 51       		.byte	0x51
+ 2462 0304 9F       		.byte	0x9f
+ 2463 0305 7A000000 		.4byte	.LVL43
+ 2464 0309 88000000 		.4byte	.LFE135
+ 2465 030d 0100     		.2byte	0x1
+ 2466 030f 51       		.byte	0x51
+ 2467 0310 00000000 		.4byte	0
+ 2468 0314 00000000 		.4byte	0
+ 2469              	.LLST16:
+ 2470 0318 02000000 		.4byte	.LVL37
+ 2471 031c 76000000 		.4byte	.LVL42
+ 2472 0320 0600     		.2byte	0x6
+ 2473 0322 0C       		.byte	0xc
+ 2474 0323 0100CE00 		.4byte	0xce0001
+ 2475 0327 9F       		.byte	0x9f
+ 2476 0328 76000000 		.4byte	.LVL42
+ 2477 032c 7A000000 		.4byte	.LVL43
+ 2478 0330 0200     		.2byte	0x2
+ 2479 0332 30       		.byte	0x30
+ 2480 0333 9F       		.byte	0x9f
+ 2481 0334 7A000000 		.4byte	.LVL43
+ 2482 0338 7C000000 		.4byte	.LVL44
+ 2483 033c 0600     		.2byte	0x6
+ 2484 033e 0C       		.byte	0xc
+ 2485 033f 0100CE00 		.4byte	0xce0001
+ 2486 0343 9F       		.byte	0x9f
+ 2487 0344 7C000000 		.4byte	.LVL44
+ 2488 0348 88000000 		.4byte	.LFE135
+ 2489 034c 0100     		.2byte	0x1
+ 2490 034e 50       		.byte	0x50
+ 2491 034f 00000000 		.4byte	0
+ 2492 0353 00000000 		.4byte	0
+ 2493              	.LLST17:
+ 2494 0357 16000000 		.4byte	.LVL38
+ 2495 035b 75000000 		.4byte	.LVL42-1
+ 2496 035f 0100     		.2byte	0x1
+ 2497 0361 50       		.byte	0x50
+ 2498 0362 00000000 		.4byte	0
+ 2499 0366 00000000 		.4byte	0
+ 2500              	.LLST18:
+ 2501 036a 00000000 		.4byte	.LVL45
+ 2502 036e 28000000 		.4byte	.LVL48
+ 2503 0372 0100     		.2byte	0x1
+ 2504 0374 50       		.byte	0x50
+ 2505 0375 28000000 		.4byte	.LVL48
+ 2506 0379 70000000 		.4byte	.LVL51
+ 2507 037d 0100     		.2byte	0x1
+ 2508 037f 55       		.byte	0x55
+ 2509 0380 70000000 		.4byte	.LVL51
+ 2510 0384 A2000000 		.4byte	.LVL57
+ 2511 0388 0400     		.2byte	0x4
+ 2512 038a F3       		.byte	0xf3
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 52
+
+
+ 2513 038b 01       		.uleb128 0x1
+ 2514 038c 50       		.byte	0x50
+ 2515 038d 9F       		.byte	0x9f
+ 2516 038e A2000000 		.4byte	.LVL57
+ 2517 0392 BC000000 		.4byte	.LVL60
+ 2518 0396 0100     		.2byte	0x1
+ 2519 0398 55       		.byte	0x55
+ 2520 0399 BC000000 		.4byte	.LVL60
+ 2521 039d C0000000 		.4byte	.LVL61
+ 2522 03a1 0400     		.2byte	0x4
+ 2523 03a3 F3       		.byte	0xf3
+ 2524 03a4 01       		.uleb128 0x1
+ 2525 03a5 50       		.byte	0x50
+ 2526 03a6 9F       		.byte	0x9f
+ 2527 03a7 C0000000 		.4byte	.LVL61
+ 2528 03ab C4000000 		.4byte	.LVL63
+ 2529 03af 0100     		.2byte	0x1
+ 2530 03b1 55       		.byte	0x55
+ 2531 03b2 C4000000 		.4byte	.LVL63
+ 2532 03b6 D4000000 		.4byte	.LFE136
+ 2533 03ba 0400     		.2byte	0x4
+ 2534 03bc F3       		.byte	0xf3
+ 2535 03bd 01       		.uleb128 0x1
+ 2536 03be 50       		.byte	0x50
+ 2537 03bf 9F       		.byte	0x9f
+ 2538 03c0 00000000 		.4byte	0
+ 2539 03c4 00000000 		.4byte	0
+ 2540              	.LLST19:
+ 2541 03c8 00000000 		.4byte	.LVL45
+ 2542 03cc 0E000000 		.4byte	.LVL47
+ 2543 03d0 0100     		.2byte	0x1
+ 2544 03d2 51       		.byte	0x51
+ 2545 03d3 0E000000 		.4byte	.LVL47
+ 2546 03d7 7E000000 		.4byte	.LVL53
+ 2547 03db 0100     		.2byte	0x1
+ 2548 03dd 54       		.byte	0x54
+ 2549 03de 7E000000 		.4byte	.LVL53
+ 2550 03e2 8A000000 		.4byte	.LVL55
+ 2551 03e6 0400     		.2byte	0x4
+ 2552 03e8 F3       		.byte	0xf3
+ 2553 03e9 01       		.uleb128 0x1
+ 2554 03ea 51       		.byte	0x51
+ 2555 03eb 9F       		.byte	0x9f
+ 2556 03ec 8A000000 		.4byte	.LVL55
+ 2557 03f0 C4000000 		.4byte	.LVL63
+ 2558 03f4 0100     		.2byte	0x1
+ 2559 03f6 54       		.byte	0x54
+ 2560 03f7 C4000000 		.4byte	.LVL63
+ 2561 03fb D4000000 		.4byte	.LFE136
+ 2562 03ff 0400     		.2byte	0x4
+ 2563 0401 F3       		.byte	0xf3
+ 2564 0402 01       		.uleb128 0x1
+ 2565 0403 51       		.byte	0x51
+ 2566 0404 9F       		.byte	0x9f
+ 2567 0405 00000000 		.4byte	0
+ 2568 0409 00000000 		.4byte	0
+ 2569              	.LLST20:
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 53
+
+
+ 2570 040d 06000000 		.4byte	.LVL46
+ 2571 0411 74000000 		.4byte	.LVL52
+ 2572 0415 0600     		.2byte	0x6
+ 2573 0417 0C       		.byte	0xc
+ 2574 0418 0200CE00 		.4byte	0xce0002
+ 2575 041c 9F       		.byte	0x9f
+ 2576 041d 74000000 		.4byte	.LVL52
+ 2577 0421 A2000000 		.4byte	.LVL57
+ 2578 0425 0200     		.2byte	0x2
+ 2579 0427 30       		.byte	0x30
+ 2580 0428 9F       		.byte	0x9f
+ 2581 0429 A2000000 		.4byte	.LVL57
+ 2582 042d B6000000 		.4byte	.LVL58
+ 2583 0431 0600     		.2byte	0x6
+ 2584 0433 0C       		.byte	0xc
+ 2585 0434 0200CE00 		.4byte	0xce0002
+ 2586 0438 9F       		.byte	0x9f
+ 2587 0439 B6000000 		.4byte	.LVL58
+ 2588 043d B8000000 		.4byte	.LVL59
+ 2589 0441 0200     		.2byte	0x2
+ 2590 0443 30       		.byte	0x30
+ 2591 0444 9F       		.byte	0x9f
+ 2592 0445 B8000000 		.4byte	.LVL59
+ 2593 0449 BC000000 		.4byte	.LVL60
+ 2594 044d 0600     		.2byte	0x6
+ 2595 044f 0C       		.byte	0xc
+ 2596 0450 0200CE00 		.4byte	0xce0002
+ 2597 0454 9F       		.byte	0x9f
+ 2598 0455 BC000000 		.4byte	.LVL60
+ 2599 0459 C0000000 		.4byte	.LVL61
+ 2600 045d 0200     		.2byte	0x2
+ 2601 045f 30       		.byte	0x30
+ 2602 0460 9F       		.byte	0x9f
+ 2603 0461 C0000000 		.4byte	.LVL61
+ 2604 0465 C2000000 		.4byte	.LVL62
+ 2605 0469 0600     		.2byte	0x6
+ 2606 046b 0C       		.byte	0xc
+ 2607 046c 0200CE00 		.4byte	0xce0002
+ 2608 0470 9F       		.byte	0x9f
+ 2609 0471 C2000000 		.4byte	.LVL62
+ 2610 0475 D4000000 		.4byte	.LFE136
+ 2611 0479 0100     		.2byte	0x1
+ 2612 047b 50       		.byte	0x50
+ 2613 047c 00000000 		.4byte	0
+ 2614 0480 00000000 		.4byte	0
+ 2615              	.LLST21:
+ 2616 0484 74000000 		.4byte	.LVL52
+ 2617 0488 84000000 		.4byte	.LVL54
+ 2618 048c 0100     		.2byte	0x1
+ 2619 048e 56       		.byte	0x56
+ 2620 048f 84000000 		.4byte	.LVL54
+ 2621 0493 8A000000 		.4byte	.LVL55
+ 2622 0497 0800     		.2byte	0x8
+ 2623 0499 75       		.byte	0x75
+ 2624 049a 00       		.sleb128 0
+ 2625 049b 40       		.byte	0x40
+ 2626 049c 4B       		.byte	0x4b
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 54
+
+
+ 2627 049d 24       		.byte	0x24
+ 2628 049e 1F       		.byte	0x1f
+ 2629 049f 21       		.byte	0x21
+ 2630 04a0 9F       		.byte	0x9f
+ 2631 04a1 8A000000 		.4byte	.LVL55
+ 2632 04a5 A2000000 		.4byte	.LVL57
+ 2633 04a9 0100     		.2byte	0x1
+ 2634 04ab 56       		.byte	0x56
+ 2635 04ac BC000000 		.4byte	.LVL60
+ 2636 04b0 C0000000 		.4byte	.LVL61
+ 2637 04b4 0100     		.2byte	0x1
+ 2638 04b6 56       		.byte	0x56
+ 2639 04b7 00000000 		.4byte	0
+ 2640 04bb 00000000 		.4byte	0
+ 2641              		.section	.debug_aranges,"",%progbits
+ 2642 0000 3C000000 		.4byte	0x3c
+ 2643 0004 0200     		.2byte	0x2
+ 2644 0006 00000000 		.4byte	.Ldebug_info0
+ 2645 000a 04       		.byte	0x4
+ 2646 000b 00       		.byte	0
+ 2647 000c 0000     		.2byte	0
+ 2648 000e 0000     		.2byte	0
+ 2649 0010 00000000 		.4byte	.LFB132
+ 2650 0014 D0000000 		.4byte	.LFE132-.LFB132
+ 2651 0018 00000000 		.4byte	.LFB133
+ 2652 001c AC000000 		.4byte	.LFE133-.LFB133
+ 2653 0020 00000000 		.4byte	.LFB134
+ 2654 0024 88000000 		.4byte	.LFE134-.LFB134
+ 2655 0028 00000000 		.4byte	.LFB135
+ 2656 002c 88000000 		.4byte	.LFE135-.LFB135
+ 2657 0030 00000000 		.4byte	.LFB136
+ 2658 0034 D4000000 		.4byte	.LFE136-.LFB136
+ 2659 0038 00000000 		.4byte	0
+ 2660 003c 00000000 		.4byte	0
+ 2661              		.section	.debug_ranges,"",%progbits
+ 2662              	.Ldebug_ranges0:
+ 2663 0000 62000000 		.4byte	.LBB6
+ 2664 0004 A2000000 		.4byte	.LBE6
+ 2665 0008 BC000000 		.4byte	.LBB7
+ 2666 000c C0000000 		.4byte	.LBE7
+ 2667 0010 00000000 		.4byte	0
+ 2668 0014 00000000 		.4byte	0
+ 2669 0018 00000000 		.4byte	.LFB132
+ 2670 001c D0000000 		.4byte	.LFE132
+ 2671 0020 00000000 		.4byte	.LFB133
+ 2672 0024 AC000000 		.4byte	.LFE133
+ 2673 0028 00000000 		.4byte	.LFB134
+ 2674 002c 88000000 		.4byte	.LFE134
+ 2675 0030 00000000 		.4byte	.LFB135
+ 2676 0034 88000000 		.4byte	.LFE135
+ 2677 0038 00000000 		.4byte	.LFB136
+ 2678 003c D4000000 		.4byte	.LFE136
+ 2679 0040 00000000 		.4byte	0
+ 2680 0044 00000000 		.4byte	0
+ 2681              		.section	.debug_line,"",%progbits
+ 2682              	.Ldebug_line0:
+ 2683 0000 8F030000 		.section	.debug_str,"MS",%progbits,1
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 55
+
+
+ 2683      02007302 
+ 2683      00000201 
+ 2683      FB0E0D00 
+ 2683      01010101 
+ 2684              	.LASF56:
+ 2685 0000 70726F74 		.ascii	"protBusMasterMask\000"
+ 2685      4275734D 
+ 2685      61737465 
+ 2685      724D6173 
+ 2685      6B00
+ 2686              	.LASF123:
+ 2687 0012 72657456 		.ascii	"retVal\000"
+ 2687      616C00
+ 2688              	.LASF126:
+ 2689 0019 43795F54 		.ascii	"Cy_TrigMux_Connect\000"
+ 2689      7269674D 
+ 2689      75785F43 
+ 2689      6F6E6E65 
+ 2689      637400
+ 2690              	.LASF66:
+ 2691 002c 666C6173 		.ascii	"flashCtlMainWs3Freq\000"
+ 2691      6843746C 
+ 2691      4D61696E 
+ 2691      57733346 
+ 2691      72657100 
+ 2692              	.LASF88:
+ 2693 0040 6770696F 		.ascii	"gpioPrtCfgInOffset\000"
+ 2693      50727443 
+ 2693      6667496E 
+ 2693      4F666673 
+ 2693      657400
+ 2694              	.LASF122:
+ 2695 0053 74726967 		.ascii	"trigType\000"
+ 2695      54797065 
+ 2695      00
+ 2696              	.LASF106:
+ 2697 005c 6970634C 		.ascii	"ipcLockStatusOffset\000"
+ 2697      6F636B53 
+ 2697      74617475 
+ 2697      734F6666 
+ 2697      73657400 
+ 2698              	.LASF32:
+ 2699 0070 63727970 		.ascii	"cryptoVersion\000"
+ 2699      746F5665 
+ 2699      7273696F 
+ 2699      6E00
+ 2700              	.LASF50:
+ 2701 007e 70657269 		.ascii	"periClockNr\000"
+ 2701      436C6F63 
+ 2701      6B4E7200 
+ 2702              	.LASF28:
+ 2703 008a 70617373 		.ascii	"passBase\000"
+ 2703      42617365 
+ 2703      00
+ 2704              	.LASF41:
+ 2705 0093 63707573 		.ascii	"cpussIpcIrqNr\000"
+ 2705      73497063 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 56
+
+
+ 2705      4972714E 
+ 2705      7200
+ 2706              	.LASF2:
+ 2707 00a1 5F5F7569 		.ascii	"__uint8_t\000"
+ 2707      6E74385F 
+ 2707      7400
+ 2708              	.LASF85:
+ 2709 00ab 70657269 		.ascii	"periDiv24_5CtlOffset\000"
+ 2709      44697632 
+ 2709      345F3543 
+ 2709      746C4F66 
+ 2709      66736574 
+ 2710              	.LASF92:
+ 2711 00c0 63707573 		.ascii	"cpussCm4ClockCtlOffset\000"
+ 2711      73436D34 
+ 2711      436C6F63 
+ 2711      6B43746C 
+ 2711      4F666673 
+ 2712              	.LASF21:
+ 2713 00d7 63707573 		.ascii	"cpussBase\000"
+ 2713      73426173 
+ 2713      6500
+ 2714              	.LASF70:
+ 2715 00e1 64774368 		.ascii	"dwChCtlPrioPos\000"
+ 2715      43746C50 
+ 2715      72696F50 
+ 2715      6F7300
+ 2716              	.LASF12:
+ 2717 00f0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2717      206C6F6E 
+ 2717      6720756E 
+ 2717      7369676E 
+ 2717      65642069 
+ 2718              	.LASF116:
+ 2719 0107 43595F54 		.ascii	"CY_TRIGMUX_BAD_PARAM\000"
+ 2719      5249474D 
+ 2719      55585F42 
+ 2719      41445F50 
+ 2719      4152414D 
+ 2720              	.LASF74:
+ 2721 011c 70657269 		.ascii	"periTrCmdOffset\000"
+ 2721      5472436D 
+ 2721      644F6666 
+ 2721      73657400 
+ 2722              	.LASF98:
+ 2723 012c 63707573 		.ascii	"cpussSysTickCtlOffset\000"
+ 2723      73537973 
+ 2723      5469636B 
+ 2723      43746C4F 
+ 2723      66667365 
+ 2724              	.LASF136:
+ 2725 0142 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2725      52784275 
+ 2725      66666572 
+ 2725      00
+ 2726              	.LASF59:
+ 2727 014f 666C6173 		.ascii	"flashPipeRequired\000"
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 57
+
+
+ 2727      68506970 
+ 2727      65526571 
+ 2727      75697265 
+ 2727      6400
+ 2728              	.LASF63:
+ 2729 0161 666C6173 		.ascii	"flashCtlMainWs0Freq\000"
+ 2729      6843746C 
+ 2729      4D61696E 
+ 2729      57733046 
+ 2729      72657100 
+ 2730              	.LASF15:
+ 2731 0175 696E7431 		.ascii	"int16_t\000"
+ 2731      365F7400 
+ 2732              	.LASF11:
+ 2733 017d 6C6F6E67 		.ascii	"long long int\000"
+ 2733      206C6F6E 
+ 2733      6720696E 
+ 2733      7400
+ 2734              	.LASF0:
+ 2735 018b 7369676E 		.ascii	"signed char\000"
+ 2735      65642063 
+ 2735      68617200 
+ 2736              	.LASF79:
+ 2737 0197 70657269 		.ascii	"periDivCmdTypeSelPos\000"
+ 2737      44697643 
+ 2737      6D645479 
+ 2737      70655365 
+ 2737      6C506F73 
+ 2738              	.LASF25:
+ 2739 01ac 70726F74 		.ascii	"protBase\000"
+ 2739      42617365 
+ 2739      00
+ 2740              	.LASF37:
+ 2741 01b5 69706356 		.ascii	"ipcVersion\000"
+ 2741      65727369 
+ 2741      6F6E00
+ 2742              	.LASF99:
+ 2743 01c0 63707573 		.ascii	"cpussCm0NmiCtlOffset\000"
+ 2743      73436D30 
+ 2743      4E6D6943 
+ 2743      746C4F66 
+ 2743      66736574 
+ 2744              	.LASF119:
+ 2745 01d5 696E5472 		.ascii	"inTrig\000"
+ 2745      696700
+ 2746              	.LASF26:
+ 2747 01dc 6873696F 		.ascii	"hsiomBase\000"
+ 2747      6D426173 
+ 2747      6500
+ 2748              	.LASF8:
+ 2749 01e6 6C6F6E67 		.ascii	"long int\000"
+ 2749      20696E74 
+ 2749      00
+ 2750              	.LASF57:
+ 2751 01ef 63727970 		.ascii	"cryptoMemSize\000"
+ 2751      746F4D65 
+ 2751      6D53697A 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 58
+
+
+ 2751      6500
+ 2752              	.LASF86:
+ 2753 01fd 6770696F 		.ascii	"gpioPrtIntrCfgOffset\000"
+ 2753      50727449 
+ 2753      6E747243 
+ 2753      66674F66 
+ 2753      66736574 
+ 2754              	.LASF23:
+ 2755 0212 70657269 		.ascii	"periBase\000"
+ 2755      42617365 
+ 2755      00
+ 2756              	.LASF55:
+ 2757 021b 73797350 		.ascii	"sysPmSimoPresent\000"
+ 2757      6D53696D 
+ 2757      6F507265 
+ 2757      73656E74 
+ 2757      00
+ 2758              	.LASF127:
+ 2759 022c 43795F54 		.ascii	"Cy_TrigMux_Select\000"
+ 2759      7269674D 
+ 2759      75785F53 
+ 2759      656C6563 
+ 2759      7400
+ 2760              	.LASF130:
+ 2761 023e 656E6162 		.ascii	"enable\000"
+ 2761      6C6500
+ 2762              	.LASF114:
+ 2763 0245 646F7562 		.ascii	"double\000"
+ 2763      6C6500
+ 2764              	.LASF84:
+ 2765 024c 70657269 		.ascii	"periDiv16_5CtlOffset\000"
+ 2765      44697631 
+ 2765      365F3543 
+ 2765      746C4F66 
+ 2765      66736574 
+ 2766              	.LASF48:
+ 2767 0261 73727373 		.ascii	"srssNumPll\000"
+ 2767      4E756D50 
+ 2767      6C6C00
+ 2768              	.LASF82:
+ 2769 026c 70657269 		.ascii	"periDiv8CtlOffset\000"
+ 2769      44697638 
+ 2769      43746C4F 
+ 2769      66667365 
+ 2769      7400
+ 2770              	.LASF6:
+ 2771 027e 73686F72 		.ascii	"short unsigned int\000"
+ 2771      7420756E 
+ 2771      7369676E 
+ 2771      65642069 
+ 2771      6E7400
+ 2772              	.LASF138:
+ 2773 0291 43795F53 		.ascii	"Cy_SysLib_ExitCriticalSection\000"
+ 2773      79734C69 
+ 2773      625F4578 
+ 2773      69744372 
+ 2773      69746963 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 59
+
+
+ 2774              	.LASF142:
+ 2775 02af 5C5C4D61 		.ascii	"\\\\Mac\\Data\\VScode\\GIT\\Onethinx_Project_Exampl"
+ 2775      635C4461 
+ 2775      74615C56 
+ 2775      53636F64 
+ 2775      655C4749 
+ 2776 02dc 65735C45 		.ascii	"es\\Example_HelloWorld\\Onethinx_Creator.cydsn\000"
+ 2776      78616D70 
+ 2776      6C655F48 
+ 2776      656C6C6F 
+ 2776      576F726C 
+ 2777              	.LASF89:
+ 2778 0309 6770696F 		.ascii	"gpioPrtCfgOutOffset\000"
+ 2778      50727443 
+ 2778      66674F75 
+ 2778      744F6666 
+ 2778      73657400 
+ 2779              	.LASF22:
+ 2780 031d 666C6173 		.ascii	"flashcBase\000"
+ 2780      68634261 
+ 2780      736500
+ 2781              	.LASF9:
+ 2782 0328 5F5F7569 		.ascii	"__uint32_t\000"
+ 2782      6E743332 
+ 2782      5F7400
+ 2783              	.LASF52:
+ 2784 0333 70617373 		.ascii	"passSarChannels\000"
+ 2784      53617243 
+ 2784      68616E6E 
+ 2784      656C7300 
+ 2785              	.LASF3:
+ 2786 0343 5F5F696E 		.ascii	"__int16_t\000"
+ 2786      7431365F 
+ 2786      7400
+ 2787              	.LASF95:
+ 2788 034d 63707573 		.ascii	"cpussCm4PwrCtlOffset\000"
+ 2788      73436D34 
+ 2788      50777243 
+ 2788      746C4F66 
+ 2788      66736574 
+ 2789              	.LASF90:
+ 2790 0362 6770696F 		.ascii	"gpioPrtCfgSioOffset\000"
+ 2790      50727443 
+ 2790      66675369 
+ 2790      6F4F6666 
+ 2790      73657400 
+ 2791              	.LASF42:
+ 2792 0376 63707573 		.ascii	"cpussDwChNr\000"
+ 2792      73447743 
+ 2792      684E7200 
+ 2793              	.LASF13:
+ 2794 0382 756E7369 		.ascii	"unsigned int\000"
+ 2794      676E6564 
+ 2794      20696E74 
+ 2794      00
+ 2795              	.LASF16:
+ 2796 038f 75696E74 		.ascii	"uint16_t\000"
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 60
+
+
+ 2796      31365F74 
+ 2796      00
+ 2797              	.LASF111:
+ 2798 0398 63686172 		.ascii	"char_t\000"
+ 2798      5F7400
+ 2799              	.LASF75:
+ 2800 039f 70657269 		.ascii	"periTrCmdGrSelMsk\000"
+ 2800      5472436D 
+ 2800      64477253 
+ 2800      656C4D73 
+ 2800      6B00
+ 2801              	.LASF10:
+ 2802 03b1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2802      20756E73 
+ 2802      69676E65 
+ 2802      6420696E 
+ 2802      7400
+ 2803              	.LASF124:
+ 2804 03c3 696E7465 		.ascii	"interruptState\000"
+ 2804      72727570 
+ 2804      74537461 
+ 2804      746500
+ 2805              	.LASF40:
+ 2806 03d2 63707573 		.ascii	"cpussIpcNr\000"
+ 2806      73497063 
+ 2806      4E7200
+ 2807              	.LASF27:
+ 2808 03dd 6770696F 		.ascii	"gpioBase\000"
+ 2808      42617365 
+ 2808      00
+ 2809              	.LASF65:
+ 2810 03e6 666C6173 		.ascii	"flashCtlMainWs2Freq\000"
+ 2810      6843746C 
+ 2810      4D61696E 
+ 2810      57733246 
+ 2810      72657100 
+ 2811              	.LASF76:
+ 2812 03fa 70657269 		.ascii	"periTrGrOffset\000"
+ 2812      54724772 
+ 2812      4F666673 
+ 2812      657400
+ 2813              	.LASF103:
+ 2814 0409 63707573 		.ascii	"cpussRam1Ctl0\000"
+ 2814      7352616D 
+ 2814      3143746C 
+ 2814      3000
+ 2815              	.LASF128:
+ 2816 0417 43795F54 		.ascii	"Cy_TrigMux_Deselect\000"
+ 2816      7269674D 
+ 2816      75785F44 
+ 2816      6573656C 
+ 2816      65637400 
+ 2817              	.LASF77:
+ 2818 042b 70657269 		.ascii	"periTrGrSize\000"
+ 2818      54724772 
+ 2818      53697A65 
+ 2818      00
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 61
+
+
+ 2819              	.LASF35:
+ 2820 0438 6770696F 		.ascii	"gpioVersion\000"
+ 2820      56657273 
+ 2820      696F6E00 
+ 2821              	.LASF107:
+ 2822 0444 63795F73 		.ascii	"cy_stc_device_t\000"
+ 2822      74635F64 
+ 2822      65766963 
+ 2822      655F7400 
+ 2823              	.LASF137:
+ 2824 0454 43795F53 		.ascii	"Cy_SysLib_EnterCriticalSection\000"
+ 2824      79734C69 
+ 2824      625F456E 
+ 2824      74657243 
+ 2824      72697469 
+ 2825              	.LASF115:
+ 2826 0473 43595F54 		.ascii	"CY_TRIGMUX_SUCCESS\000"
+ 2826      5249474D 
+ 2826      55585F53 
+ 2826      55434345 
+ 2826      535300
+ 2827              	.LASF53:
+ 2828 0486 65704D6F 		.ascii	"epMonitorNr\000"
+ 2828      6E69746F 
+ 2828      724E7200 
+ 2829              	.LASF131:
+ 2830 0492 43795F54 		.ascii	"Cy_TrigMux_SwTrigger\000"
+ 2830      7269674D 
+ 2830      75785F53 
+ 2830      77547269 
+ 2830      67676572 
+ 2831              	.LASF100:
+ 2832 04a7 63707573 		.ascii	"cpussCm4NmiCtlOffset\000"
+ 2832      73436D34 
+ 2832      4E6D6943 
+ 2832      746C4F66 
+ 2832      66736574 
+ 2833              	.LASF96:
+ 2834 04bc 63707573 		.ascii	"cpussTrimRamCtlOffset\000"
+ 2834      73547269 
+ 2834      6D52616D 
+ 2834      43746C4F 
+ 2834      66667365 
+ 2835              	.LASF91:
+ 2836 04d2 63707573 		.ascii	"cpussCm0ClockCtlOffset\000"
+ 2836      73436D30 
+ 2836      436C6F63 
+ 2836      6B43746C 
+ 2836      4F666673 
+ 2837              	.LASF31:
+ 2838 04e9 63707573 		.ascii	"cpussVersion\000"
+ 2838      73566572 
+ 2838      73696F6E 
+ 2838      00
+ 2839              	.LASF38:
+ 2840 04f6 70657269 		.ascii	"periVersion\000"
+ 2840      56657273 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 62
+
+
+ 2840      696F6E00 
+ 2841              	.LASF94:
+ 2842 0502 63707573 		.ascii	"cpussCm0StatusOffset\000"
+ 2842      73436D30 
+ 2842      53746174 
+ 2842      75734F66 
+ 2842      66736574 
+ 2843              	.LASF20:
+ 2844 0517 73697A65 		.ascii	"sizetype\000"
+ 2844      74797065 
+ 2844      00
+ 2845              	.LASF68:
+ 2846 0520 64774368 		.ascii	"dwChOffset\000"
+ 2846      4F666673 
+ 2846      657400
+ 2847              	.LASF43:
+ 2848 052b 63707573 		.ascii	"cpussFlashPaSize\000"
+ 2848      73466C61 
+ 2848      73685061 
+ 2848      53697A65 
+ 2848      00
+ 2849              	.LASF81:
+ 2850 053c 70657269 		.ascii	"periDivCmdPaTypeSelPos\000"
+ 2850      44697643 
+ 2850      6D645061 
+ 2850      54797065 
+ 2850      53656C50 
+ 2851              	.LASF104:
+ 2852 0553 63707573 		.ascii	"cpussRam2Ctl0\000"
+ 2852      7352616D 
+ 2852      3243746C 
+ 2852      3000
+ 2853              	.LASF132:
+ 2854 0561 74726967 		.ascii	"trigLine\000"
+ 2854      4C696E65 
+ 2854      00
+ 2855              	.LASF134:
+ 2856 056a 7472436D 		.ascii	"trCmd\000"
+ 2856      6400
+ 2857              	.LASF72:
+ 2858 0570 64775374 		.ascii	"dwStatusChIdxPos\000"
+ 2858      61747573 
+ 2858      43684964 
+ 2858      78506F73 
+ 2858      00
+ 2859              	.LASF54:
+ 2860 0581 75646250 		.ascii	"udbPresent\000"
+ 2860      72657365 
+ 2860      6E7400
+ 2861              	.LASF34:
+ 2862 058c 666C6173 		.ascii	"flashcVersion\000"
+ 2862      68635665 
+ 2862      7273696F 
+ 2862      6E00
+ 2863              	.LASF30:
+ 2864 059a 63727970 		.ascii	"cryptoBase\000"
+ 2864      746F4261 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 63
+
+
+ 2864      736500
+ 2865              	.LASF51:
+ 2866 05a5 736D6966 		.ascii	"smifDeviceNr\000"
+ 2866      44657669 
+ 2866      63654E72 
+ 2866      00
+ 2867              	.LASF140:
+ 2868 05b2 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2868      43313120 
+ 2868      352E342E 
+ 2868      31203230 
+ 2868      31363036 
+ 2869 05e5 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m4 -mfloat-abi=s"
+ 2869      20726576 
+ 2869      6973696F 
+ 2869      6E203233 
+ 2869      37373135 
+ 2870 0618 6F667466 		.ascii	"oftfp -mfpu=fpv4-sp-d16 -mthumb -g -Og -ffunction-s"
+ 2870      70202D6D 
+ 2870      6670753D 
+ 2870      66707634 
+ 2870      2D73702D 
+ 2871 064b 65637469 		.ascii	"ections -ffat-lto-objects\000"
+ 2871      6F6E7320 
+ 2871      2D666661 
+ 2871      742D6C74 
+ 2871      6F2D6F62 
+ 2872              	.LASF120:
+ 2873 0665 6F757454 		.ascii	"outTrig\000"
+ 2873      72696700 
+ 2874              	.LASF113:
+ 2875 066d 666C6F61 		.ascii	"float\000"
+ 2875      7400
+ 2876              	.LASF73:
+ 2877 0673 64775374 		.ascii	"dwStatusChIdxMsk\000"
+ 2877      61747573 
+ 2877      43684964 
+ 2877      784D736B 
+ 2877      00
+ 2878              	.LASF135:
+ 2879 0684 63795F64 		.ascii	"cy_device\000"
+ 2879      65766963 
+ 2879      6500
+ 2880              	.LASF101:
+ 2881 068e 63707573 		.ascii	"cpussRomCtl\000"
+ 2881      73526F6D 
+ 2881      43746C00 
+ 2882              	.LASF71:
+ 2883 069a 64774368 		.ascii	"dwChCtlPreemptablePos\000"
+ 2883      43746C50 
+ 2883      7265656D 
+ 2883      70746162 
+ 2883      6C65506F 
+ 2884              	.LASF24:
+ 2885 06b0 75646242 		.ascii	"udbBase\000"
+ 2885      61736500 
+ 2886              	.LASF125:
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 64
+
+
+ 2887 06b8 5F426F6F 		.ascii	"_Bool\000"
+ 2887      6C00
+ 2888              	.LASF17:
+ 2889 06be 696E7433 		.ascii	"int32_t\000"
+ 2889      325F7400 
+ 2890              	.LASF1:
+ 2891 06c6 756E7369 		.ascii	"unsigned char\000"
+ 2891      676E6564 
+ 2891      20636861 
+ 2891      7200
+ 2892              	.LASF67:
+ 2893 06d4 666C6173 		.ascii	"flashCtlMainWs4Freq\000"
+ 2893      6843746C 
+ 2893      4D61696E 
+ 2893      57733446 
+ 2893      72657100 
+ 2894              	.LASF4:
+ 2895 06e8 73686F72 		.ascii	"short int\000"
+ 2895      7420696E 
+ 2895      7400
+ 2896              	.LASF109:
+ 2897 06f2 54524947 		.ascii	"TRIGGER_TYPE_EDGE\000"
+ 2897      4745525F 
+ 2897      54595045 
+ 2897      5F454447 
+ 2897      4500
+ 2898              	.LASF133:
+ 2899 0704 6379636C 		.ascii	"cycles\000"
+ 2899      657300
+ 2900              	.LASF78:
+ 2901 070b 70657269 		.ascii	"periDivCmdDivSelMsk\000"
+ 2901      44697643 
+ 2901      6D644469 
+ 2901      7653656C 
+ 2901      4D736B00 
+ 2902              	.LASF118:
+ 2903 071f 63795F65 		.ascii	"cy_en_trigmux_status_t\000"
+ 2903      6E5F7472 
+ 2903      69676D75 
+ 2903      785F7374 
+ 2903      61747573 
+ 2904              	.LASF49:
+ 2905 0736 73727373 		.ascii	"srssNumHfroot\000"
+ 2905      4E756D48 
+ 2905      66726F6F 
+ 2905      7400
+ 2906              	.LASF62:
+ 2907 0744 666C6173 		.ascii	"flashEraseDelay\000"
+ 2907      68457261 
+ 2907      73654465 
+ 2907      6C617900 
+ 2908              	.LASF45:
+ 2909 0754 63707573 		.ascii	"cpussFmIrq\000"
+ 2909      73466D49 
+ 2909      727100
+ 2910              	.LASF18:
+ 2911 075f 75696E74 		.ascii	"uint32_t\000"
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 65
+
+
+ 2911      33325F74 
+ 2911      00
+ 2912              	.LASF19:
+ 2913 0768 6C6F6E67 		.ascii	"long double\000"
+ 2913      20646F75 
+ 2913      626C6500 
+ 2914              	.LASF112:
+ 2915 0774 63686172 		.ascii	"char\000"
+ 2915      00
+ 2916              	.LASF129:
+ 2917 0779 43795F54 		.ascii	"Cy_TrigMux_SetDebugFreeze\000"
+ 2917      7269674D 
+ 2917      75785F53 
+ 2917      65744465 
+ 2917      62756746 
+ 2918              	.LASF39:
+ 2919 0793 70726F74 		.ascii	"protVersion\000"
+ 2919      56657273 
+ 2919      696F6E00 
+ 2920              	.LASF102:
+ 2921 079f 63707573 		.ascii	"cpussRam0Ctl0\000"
+ 2921      7352616D 
+ 2921      3043746C 
+ 2921      3000
+ 2922              	.LASF5:
+ 2923 07ad 5F5F7569 		.ascii	"__uint16_t\000"
+ 2923      6E743136 
+ 2923      5F7400
+ 2924              	.LASF83:
+ 2925 07b8 70657269 		.ascii	"periDiv16CtlOffset\000"
+ 2925      44697631 
+ 2925      3643746C 
+ 2925      4F666673 
+ 2925      657400
+ 2926              	.LASF7:
+ 2927 07cb 5F5F696E 		.ascii	"__int32_t\000"
+ 2927      7433325F 
+ 2927      7400
+ 2928              	.LASF36:
+ 2929 07d5 6873696F 		.ascii	"hsiomVersion\000"
+ 2929      6D566572 
+ 2929      73696F6E 
+ 2929      00
+ 2930              	.LASF110:
+ 2931 07e2 656E5F74 		.ascii	"en_trig_type_t\000"
+ 2931      7269675F 
+ 2931      74797065 
+ 2931      5F7400
+ 2932              	.LASF108:
+ 2933 07f1 54524947 		.ascii	"TRIGGER_TYPE_LEVEL\000"
+ 2933      4745525F 
+ 2933      54595045 
+ 2933      5F4C4556 
+ 2933      454C00
+ 2934              	.LASF64:
+ 2935 0804 666C6173 		.ascii	"flashCtlMainWs1Freq\000"
+ 2935      6843746C 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 66
+
+
+ 2935      4D61696E 
+ 2935      57733146 
+ 2935      72657100 
+ 2936              	.LASF139:
+ 2937 0818 43795F53 		.ascii	"Cy_SysLib_AssertFailed\000"
+ 2937      79734C69 
+ 2937      625F4173 
+ 2937      73657274 
+ 2937      4661696C 
+ 2938              	.LASF69:
+ 2939 082f 64774368 		.ascii	"dwChSize\000"
+ 2939      53697A65 
+ 2939      00
+ 2940              	.LASF105:
+ 2941 0838 69706353 		.ascii	"ipcStructSize\000"
+ 2941      74727563 
+ 2941      7453697A 
+ 2941      6500
+ 2942              	.LASF44:
+ 2943 0846 63707573 		.ascii	"cpussIpc0Irq\000"
+ 2943      73497063 
+ 2943      30497271 
+ 2943      00
+ 2944              	.LASF87:
+ 2945 0853 6770696F 		.ascii	"gpioPrtCfgOffset\000"
+ 2945      50727443 
+ 2945      66674F66 
+ 2945      66736574 
+ 2945      00
+ 2946              	.LASF141:
+ 2947 0864 47656E65 		.ascii	"Generated_Source\\PSoC6\\pdl\\drivers\\peripheral\\"
+ 2947      72617465 
+ 2947      645F536F 
+ 2947      75726365 
+ 2947      5C50536F 
+ 2948 0892 74726967 		.ascii	"trigmux\\cy_trigmux.c\000"
+ 2948      6D75785C 
+ 2948      63795F74 
+ 2948      7269676D 
+ 2948      75782E63 
+ 2949              	.LASF46:
+ 2950 08a7 63707573 		.ascii	"cpussNotConnectedIrq\000"
+ 2950      734E6F74 
+ 2950      436F6E6E 
+ 2950      65637465 
+ 2950      64497271 
+ 2951              	.LASF60:
+ 2952 08bc 666C6173 		.ascii	"flashWriteDelay\000"
+ 2952      68577269 
+ 2952      74654465 
+ 2952      6C617900 
+ 2953              	.LASF14:
+ 2954 08cc 75696E74 		.ascii	"uint8_t\000"
+ 2954      385F7400 
+ 2955              	.LASF93:
+ 2956 08d4 63707573 		.ascii	"cpussCm4StatusOffset\000"
+ 2956      73436D34 
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\cczKUh32.s 			page 67
+
+
+ 2956      53746174 
+ 2956      75734F66 
+ 2956      66736574 
+ 2957              	.LASF117:
+ 2958 08e9 43595F54 		.ascii	"CY_TRIGMUX_INVALID_STATE\000"
+ 2958      5249474D 
+ 2958      55585F49 
+ 2958      4E56414C 
+ 2958      49445F53 
+ 2959              	.LASF97:
+ 2960 0902 63707573 		.ascii	"cpussTrimRomCtlOffset\000"
+ 2960      73547269 
+ 2960      6D526F6D 
+ 2960      43746C4F 
+ 2960      66667365 
+ 2961              	.LASF47:
+ 2962 0918 73727373 		.ascii	"srssNumClkpath\000"
+ 2962      4E756D43 
+ 2962      6C6B7061 
+ 2962      746800
+ 2963              	.LASF33:
+ 2964 0927 64775665 		.ascii	"dwVersion\000"
+ 2964      7273696F 
+ 2964      6E00
+ 2965              	.LASF29:
+ 2966 0931 69706342 		.ascii	"ipcBase\000"
+ 2966      61736500 
+ 2967              	.LASF80:
+ 2968 0939 70657269 		.ascii	"periDivCmdPaDivSelPos\000"
+ 2968      44697643 
+ 2968      6D645061 
+ 2968      44697653 
+ 2968      656C506F 
+ 2969              	.LASF61:
+ 2970 094f 666C6173 		.ascii	"flashProgramDelay\000"
+ 2970      6850726F 
+ 2970      6772616D 
+ 2970      44656C61 
+ 2970      7900
+ 2971              	.LASF121:
+ 2972 0961 696E7665 		.ascii	"invert\000"
+ 2972      727400
+ 2973              	.LASF58:
+ 2974 0968 666C6173 		.ascii	"flashRwwRequired\000"
+ 2974      68527777 
+ 2974      52657175 
+ 2974      69726564 
+ 2974      00
+ 2975              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

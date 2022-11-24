@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-DEBUG-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "DEBUG",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Example_SWV",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Example_SWV::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Example_SWV-DEBUG-a2c2dea0146b8f7d41f0.json",
+					"name" : "Example_SWV",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Example_SWV.elf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Example_SWV.elf-DEBUG-6d8029d9a72d46a324f9.json",
+					"name" : "Example_SWV.elf",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_SWV/build/DEBUG",
+		"source" : "/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_SWV"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

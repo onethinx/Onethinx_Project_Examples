@@ -1,0 +1,212 @@
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\ccatUGhw.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0plus
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main_cm0p.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB0:
+  27              		.file 1 "main_cm0p.c"
+   1:main_cm0p.c   **** /* ========================================
+   2:main_cm0p.c   ****  *
+   3:main_cm0p.c   ****  * Do not use this file.
+   4:main_cm0p.c   ****  *
+   5:main_cm0p.c   ****  * The source file is here: source/main.c 
+   6:main_cm0p.c   ****  * 
+   7:main_cm0p.c   ****  * ========================================
+   8:main_cm0p.c   **** */
+   9:main_cm0p.c   **** 
+  10:main_cm0p.c   **** int main(void)
+  11:main_cm0p.c   **** {
+  28              		.loc 1 11 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  12:main_cm0p.c   **** }
+  33              		.loc 1 12 0
+  34 0000 0020     		movs	r0, #0
+  35              		@ sp needed
+  36 0002 7047     		bx	lr
+  37              		.cfi_endproc
+  38              	.LFE0:
+  39              		.size	main, .-main
+  40              		.text
+  41              	.Letext0:
+  42              		.section	.debug_info,"",%progbits
+  43              	.Ldebug_info0:
+  44 0000 3E000000 		.4byte	0x3e
+  45 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\ccatUGhw.s 			page 2
+
+
+  46 0006 00000000 		.4byte	.Ldebug_abbrev0
+  47 000a 04       		.byte	0x4
+  48 000b 01       		.uleb128 0x1
+  49 000c 00000000 		.4byte	.LASF0
+  50 0010 0C       		.byte	0xc
+  51 0011 F3000000 		.4byte	.LASF1
+  52 0015 92000000 		.4byte	.LASF2
+  53 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  54 001d 00000000 		.4byte	0
+  55 0021 00000000 		.4byte	.Ldebug_line0
+  56 0025 02       		.uleb128 0x2
+  57 0026 FF000000 		.4byte	.LASF3
+  58 002a 01       		.byte	0x1
+  59 002b 0A       		.byte	0xa
+  60 002c 3A000000 		.4byte	0x3a
+  61 0030 00000000 		.4byte	.LFB0
+  62 0034 04000000 		.4byte	.LFE0-.LFB0
+  63 0038 01       		.uleb128 0x1
+  64 0039 9C       		.byte	0x9c
+  65 003a 03       		.uleb128 0x3
+  66 003b 04       		.byte	0x4
+  67 003c 05       		.byte	0x5
+  68 003d 696E7400 		.ascii	"int\000"
+  69 0041 00       		.byte	0
+  70              		.section	.debug_abbrev,"",%progbits
+  71              	.Ldebug_abbrev0:
+  72 0000 01       		.uleb128 0x1
+  73 0001 11       		.uleb128 0x11
+  74 0002 01       		.byte	0x1
+  75 0003 25       		.uleb128 0x25
+  76 0004 0E       		.uleb128 0xe
+  77 0005 13       		.uleb128 0x13
+  78 0006 0B       		.uleb128 0xb
+  79 0007 03       		.uleb128 0x3
+  80 0008 0E       		.uleb128 0xe
+  81 0009 1B       		.uleb128 0x1b
+  82 000a 0E       		.uleb128 0xe
+  83 000b 55       		.uleb128 0x55
+  84 000c 17       		.uleb128 0x17
+  85 000d 11       		.uleb128 0x11
+  86 000e 01       		.uleb128 0x1
+  87 000f 10       		.uleb128 0x10
+  88 0010 17       		.uleb128 0x17
+  89 0011 00       		.byte	0
+  90 0012 00       		.byte	0
+  91 0013 02       		.uleb128 0x2
+  92 0014 2E       		.uleb128 0x2e
+  93 0015 00       		.byte	0
+  94 0016 3F       		.uleb128 0x3f
+  95 0017 19       		.uleb128 0x19
+  96 0018 03       		.uleb128 0x3
+  97 0019 0E       		.uleb128 0xe
+  98 001a 3A       		.uleb128 0x3a
+  99 001b 0B       		.uleb128 0xb
+ 100 001c 3B       		.uleb128 0x3b
+ 101 001d 0B       		.uleb128 0xb
+ 102 001e 27       		.uleb128 0x27
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\ccatUGhw.s 			page 3
+
+
+ 103 001f 19       		.uleb128 0x19
+ 104 0020 49       		.uleb128 0x49
+ 105 0021 13       		.uleb128 0x13
+ 106 0022 11       		.uleb128 0x11
+ 107 0023 01       		.uleb128 0x1
+ 108 0024 12       		.uleb128 0x12
+ 109 0025 06       		.uleb128 0x6
+ 110 0026 40       		.uleb128 0x40
+ 111 0027 18       		.uleb128 0x18
+ 112 0028 9742     		.uleb128 0x2117
+ 113 002a 19       		.uleb128 0x19
+ 114 002b 00       		.byte	0
+ 115 002c 00       		.byte	0
+ 116 002d 03       		.uleb128 0x3
+ 117 002e 24       		.uleb128 0x24
+ 118 002f 00       		.byte	0
+ 119 0030 0B       		.uleb128 0xb
+ 120 0031 0B       		.uleb128 0xb
+ 121 0032 3E       		.uleb128 0x3e
+ 122 0033 0B       		.uleb128 0xb
+ 123 0034 03       		.uleb128 0x3
+ 124 0035 08       		.uleb128 0x8
+ 125 0036 00       		.byte	0
+ 126 0037 00       		.byte	0
+ 127 0038 00       		.byte	0
+ 128              		.section	.debug_aranges,"",%progbits
+ 129 0000 1C000000 		.4byte	0x1c
+ 130 0004 0200     		.2byte	0x2
+ 131 0006 00000000 		.4byte	.Ldebug_info0
+ 132 000a 04       		.byte	0x4
+ 133 000b 00       		.byte	0
+ 134 000c 0000     		.2byte	0
+ 135 000e 0000     		.2byte	0
+ 136 0010 00000000 		.4byte	.LFB0
+ 137 0014 04000000 		.4byte	.LFE0-.LFB0
+ 138 0018 00000000 		.4byte	0
+ 139 001c 00000000 		.4byte	0
+ 140              		.section	.debug_ranges,"",%progbits
+ 141              	.Ldebug_ranges0:
+ 142 0000 00000000 		.4byte	.LFB0
+ 143 0004 04000000 		.4byte	.LFE0
+ 144 0008 00000000 		.4byte	0
+ 145 000c 00000000 		.4byte	0
+ 146              		.section	.debug_line,"",%progbits
+ 147              	.Ldebug_line0:
+ 148 0000 38000000 		.section	.debug_str,"MS",%progbits,1
+ 148      02002200 
+ 148      00000201 
+ 148      FB0E0D00 
+ 148      01010101 
+ 149              	.LASF0:
+ 150 0000 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 150      43313120 
+ 150      352E342E 
+ 150      31203230 
+ 150      31363036 
+ 151 0033 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0plus -mthumb -"
+ARM GAS  C:\Users\Rolf\AppData\Local\Temp\ccatUGhw.s 			page 4
+
+
+ 151      20726576 
+ 151      6973696F 
+ 151      6E203233 
+ 151      37373135 
+ 152 0066 67202D4F 		.ascii	"g -Og -ffunction-sections -ffat-lto-objects\000"
+ 152      67202D66 
+ 152      66756E63 
+ 152      74696F6E 
+ 152      2D736563 
+ 153              	.LASF2:
+ 154 0092 5C5C4D61 		.ascii	"\\\\Mac\\Data\\VScode\\GIT\\Onethinx_Project_Exampl"
+ 154      635C4461 
+ 154      74615C56 
+ 154      53636F64 
+ 154      655C4749 
+ 155 00bf 65735C45 		.ascii	"es\\Example_DevKitLightSensor\\Onethinx_Creator.cyd"
+ 155      78616D70 
+ 155      6C655F44 
+ 155      65764B69 
+ 155      744C6967 
+ 156 00f0 736E00   		.ascii	"sn\000"
+ 157              	.LASF1:
+ 158 00f3 6D61696E 		.ascii	"main_cm0p.c\000"
+ 158      5F636D30 
+ 158      702E6300 
+ 159              	.LASF3:
+ 160 00ff 6D61696E 		.ascii	"main\000"
+ 160      00
+ 161              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

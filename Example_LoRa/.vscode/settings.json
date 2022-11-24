@@ -1,0 +1,37 @@
+{
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "C_Cpp.loggingLevel":"Debug",
+  "cmake.preferredGenerators": [
+    "Unix Makefiles",
+    "MinGW Makefiles"
+  ],
+  "cmake.statusbar.advanced": {
+    "buildTarget": { "visibility": "hidden" },
+    "build": { "visibility": "hidden" },
+    "debug": { "visibility": "hidden" },
+    "launch": { "visibility": "hidden" }
+  },
+  "cmake.buildDirectory": "${workspaceFolder}/build/${buildType}",
+  "ego.power-tools": {
+    "commands": {
+      "otx.preLaunch": {
+        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+      },
+      "otx.clean": {
+        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+        "button": { "text": "$(references) Clean-Reconfigure" },
+      },
+      "otx.build": {
+        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+        "button": { "text": "$(file-binary) Build" },
+      },
+      "otx.run": {
+        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+        "button": { "text": "$(debug-start) Build-and-Launch" },
+      }
+    }
+  },
+  "files.associations": {
+    "lorawan_keys.h": "c"
+  }
+}

@@ -1,0 +1,115 @@
+--
+--	Conversion of Onethinx_Creator.v to vh2:
+--
+--	Cypress Semiconductor - WARP Version 6.3 IR 41
+--	Wed Nov 23 16:23:14 2022
+--
+
+USE cypress.cypress.all;
+USE cypress.rtlpkg.all;
+ENTITY top_RTL IS
+ATTRIBUTE part_name of top_RTL:TYPE IS "cpsoc3";
+END top_RTL;
+--------------------------------------------------------
+ARCHITECTURE R_T_L OF top_RTL IS
+SIGNAL Net_3 : bit;
+SIGNAL cydff_1 : bit;
+SIGNAL Net_10 : bit;
+SIGNAL Net_1 : bit;
+SIGNAL one : bit;
+SIGNAL tmpFB_0__LED_R_net_0 : bit;
+SIGNAL tmpIO_0__LED_R_net_0 : bit;
+TERMINAL tmpSIOVREF__LED_R_net_0 : bit;
+SIGNAL zero : bit;
+SIGNAL tmpFB_0__LED_B_net_0 : bit;
+SIGNAL tmpIO_0__LED_B_net_0 : bit;
+TERMINAL tmpSIOVREF__LED_B_net_0 : bit;
+SIGNAL cydff_1D : bit;
+BEGIN
+
+one <=  ('1') ;
+
+zero <=  ('0') ;
+
+Net_10 <= (not cydff_1);
+
+Clock_1:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"dbfbb3fc-f55c-491e-aa8f-6fe3ca2d63d0",
+		source_clock_id=>"2FB4EC85-8328-4C5A-9ED9-8B63060178EB",
+		divisor=>0,
+		period=>"200000000000000",
+		is_direct=>'0',
+		is_digital=>'0')
+	PORT MAP(clock_out=>Net_3,
+		dig_domain_out=>open);
+LED_R:cy_mxs40_gpio_v1_0
+	GENERIC MAP(cy_registers=>"",
+		width=>1,
+		sio_grp_cnt=>0,
+		id=>"a61270bc-07ec-447d-ac9e-34cfe85c30e9",
+		drive_mode=>"6",
+		ibuf_enabled=>"0",
+		init_dr_st=>"1",
+		input_sync=>"0",
+		intr_mode=>"0",
+		io_voltage=>"",
+		output_conn=>"1",
+		oe_conn=>"0",
+		output_sync=>"0",
+		oe_sync=>"0",
+		drive_strength=>"0",
+		max_frequency=>"100",
+		output_current_cap=>"8",
+		i2c_mode=>"0",
+		pin_aliases=>"",
+		pin_mode=>"O",
+		slew_rate=>"0",
+		vtrip=>"0",
+		use_annotation=>"0",
+		hotswap_needed=>"0")
+	PORT MAP(oe=>(one),
+		y=>cydff_1,
+		fb=>(tmpFB_0__LED_R_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__LED_R_net_0),
+		annotation=>(open),
+		siovref=>(tmpSIOVREF__LED_R_net_0));
+LED_B:cy_mxs40_gpio_v1_0
+	GENERIC MAP(cy_registers=>"",
+		width=>1,
+		sio_grp_cnt=>0,
+		id=>"f43651a0-fb2f-40bf-9566-fa65fbb8ff22",
+		drive_mode=>"6",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"0",
+		intr_mode=>"0",
+		io_voltage=>"",
+		output_conn=>"0",
+		oe_conn=>"0",
+		output_sync=>"0",
+		oe_sync=>"0",
+		drive_strength=>"0",
+		max_frequency=>"100",
+		output_current_cap=>"8",
+		i2c_mode=>"0",
+		pin_aliases=>"",
+		pin_mode=>"O",
+		slew_rate=>"0",
+		vtrip=>"0",
+		use_annotation=>"0",
+		hotswap_needed=>"0")
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>(tmpFB_0__LED_B_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__LED_B_net_0),
+		annotation=>(open),
+		siovref=>(tmpSIOVREF__LED_B_net_0));
+cydff_1:cy_dff
+	PORT MAP(d=>Net_10,
+		clk=>Net_3,
+		q=>cydff_1);
+
+END R_T_L;
