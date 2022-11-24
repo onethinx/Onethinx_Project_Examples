@@ -7,3 +7,4 @@ build/**
 Onethinx_Creator.cydsn/codegentemp/**
 Onethinx_Creator.cydsn/CortexM0p/**
 Onethinx_Creator.cydsn/CortexM4/**
+.DS_Store
