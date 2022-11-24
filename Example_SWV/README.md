@@ -6,7 +6,7 @@ Single Wire Viewer is an ARM implementation to send debug messages over a single
 Unfortunately, the Onethinx Module doesn't have the SWO pin routed for use outside the module. This can be overcome by using a separate UART configured at 6Mbps and emulating the ARM SWV protocol.
 
 
-![OTX_SWV_Example](../assets/SWO_Example.png?raw=true)<br/>
+![OTX_SWV_Example](https://github.com/onethinx/Readme_assets/blob/main/SWO_Example.png?raw=true)<br/>
 _SWV Example: sending debug info to VS Code output window_
 
 1. Prerequisites
@@ -21,15 +21,15 @@ _SWV Example: sending debug info to VS Code output window_
 
 2. Hardware connection setup.
    - P9_0 should be connected with pin 6 (SWO / TDO) of the 10 pin ARM SWD connector of the J-Link debugger (J-Link Adapter CortexM)<br/><br/>
-   - ![ARM_10_pin](../assets/ARM_10pin.png?raw=true)<br/> _ARM SWD 10 pin connector_<br/><br/>
-   - ![ARM_10_pin](../assets/OTX_DevKit.png?raw=true)<br/> _Onethinx Dev Kit_<br/><br/>
+   - ![ARM_10_pin](https://github.com/onethinx/Readme_assets/blob/main/ARM_10pin.png?raw=true)<br/> _ARM SWD 10 pin connector_<br/><br/>
+   - ![ARM_10_pin](https://github.com/onethinx/Readme_assets/blob/main/OTX_DevKit.png?raw=true)<br/> _Onethinx Dev Kit_<br/><br/>
    
 3. Building the example
    - Clean Reconfigure All Projects<br/>
-   ![Clean Reconfigure](../assets/Debug_info%201.png?raw=true)<br/>
+   ![Clean Reconfigure](https://github.com/onethinx/Readme_assets/blob/main/Debug_info%201.png?raw=true)<br/>
      *if you get errors, try to delete the contents of the build/ folder*<br/><br/>
    - Build & Launch<br/>
-   ![Build & Launch](../assets/Debug_info%202.png?raw=true)
+   ![Build & Launch](https://github.com/onethinx/Readme_assets/blob/main/Debug_info%202.png?raw=true)
    
 
    
@@ -38,6 +38,6 @@ _SWV Example: sending debug info to VS Code output window_
    - Modify your configuration accordingly and do a clean-rebuild
    - Go back to VS Code and do a \[Clean Reconfigure\] and \[Build & Launch\] (see steps above).
   
-![OTX_SWV_Example](../assets/SWV_UART.png?raw=true)<br/>
+![OTX_SWV_Example](https://github.com/onethinx/Readme_assets/blob/main/SWV_UART.png?raw=true)<br/>
 _6 MBaud UART Example in PSoC Creator: double click and change settings_
 
