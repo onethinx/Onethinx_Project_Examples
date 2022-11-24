@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_ble_clk.c
-* \version 2.60
+* \version 2.70
 *
 * \brief
 *  Contains the source code for the BLE ECO clock.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2017-2020, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2017-2021, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -135,7 +135,7 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
 *
 *  Configures and starts BLE ECO clock.
 *
-*  If Cy_BLE_Start()/Cy_BLE_Enable() APIs are called by the application, 
+*  If Cy_BLE_Start()/Cy_BLE_Enable() APIs are called by the application,
 *  the stack enables the BLE ECO clock automatically with the following default
 *  parameters:
 *
@@ -146,20 +146,20 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
 *    Startup time              | CY_BLE_DEFAULT_OSC_STARTUP_DELAY_LF
 *    Load cap                  | CY_BLE_DEFAULT_CAP_TRIM_VALUE
 *
-*  If there is a need to start the BLE ECO with non-default parameters, call the  
+*  If there is a need to start the BLE ECO with non-default parameters, call the
 *  Cy_BLE_EcoConfigure() function with the custom configuration each time before calling
 *  the Cy_BLE_Enable() function.
 *
 *  This clock is stopped in Deep Sleep and Hibernate power modes.
-*                         
+*
 *  \return
-*  \ref cy_en_ble_eco_status_t : The return value indicates if the function 
+*  \ref cy_en_ble_eco_status_t : The return value indicates if the function
 *  succeeded or failed. The possible error codes:
 *
 *  \param ecoConfig: Clock configuration of type 'cy_stc_ble_bless_eco_cfg_params_t'.
 *
 *  \return
-*  \ref cy_en_ble_eco_status_t : The return value indicates if the function 
+*  \ref cy_en_ble_eco_status_t : The return value indicates if the function
 *  succeeded or failed. The possible error codes:
 *
 *  Error Codes                 | Description
@@ -171,7 +171,7 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
 *  CY_BLE_ECO_HARDWARE_ERROR   | RCB or BLE ECO operation failed.
 *
 *  \sideeffect
-*   The I/O pins will be automatically unfrozen coming out of hibernate when 
+*   The I/O pins will be automatically unfrozen coming out of hibernate when
 *   the BLE ECO is in use.
 *
 *  \note Limitation: Do not call this API in case if BLE is executed with LPM.
@@ -184,7 +184,7 @@ cy_en_ble_eco_status_t Cy_BLE_EcoStart(const cy_stc_ble_bless_eco_cfg_params_t *
     cy_en_ble_eco_status_t status = CY_BLE_ECO_SUCCESS;
     uint32_t timeout;
     uint32_t temp = 0UL;
-    
+
     if(ecoConfig == NULL)
     {
         status = CY_BLE_ECO_BAD_PARAM;
@@ -192,21 +192,21 @@ cy_en_ble_eco_status_t Cy_BLE_EcoStart(const cy_stc_ble_bless_eco_cfg_params_t *
     else
     {
         timeout = CY_BLE_ACT_TIMEOUT;
-          
+
         /* Unfreeze IO after Hibernate */
         if(Cy_SysPm_GetIoFreezeStatus())
         {
             Cy_SysPm_IoUnfreeze();
         }
-        
+
         /* Cypress Id 307068: wait for controller shut-down */
         while((BLE->BLESS.INTR_MASK != 0U) && (timeout > 0U))
         {
             timeout--;
             Cy_SysLib_DelayUs(CY_BLE_DELAY_TIME);
-        }   
-        
-        if((((BLE->BLESS.MT_CFG & BLE_BLESS_MT_CFG_ENABLE_BLERD_Msk) != 0U) && 
+        }
+
+        if((((BLE->BLESS.MT_CFG & BLE_BLESS_MT_CFG_ENABLE_BLERD_Msk) != 0U) &&
             ((BLE->BLESS.MT_STATUS & BLE_BLESS_MT_STATUS_BLESS_STATE_Msk) != 0U)) || (BLE->BLESS.INTR_MASK != 0U))
         {
             status = CY_BLE_ECO_ALREADY_STARTED;
@@ -215,7 +215,7 @@ cy_en_ble_eco_status_t Cy_BLE_EcoStart(const cy_stc_ble_bless_eco_cfg_params_t *
         {
             /* HAL Initialization */
             Cy_BLE_HAL_Init();
-    
+
             /* BLESS MT Delays configuration */
             BLE->BLESS.MT_DELAY_CFG =
                 (uint32_t)(CY_BLE_DEFAULT_HVLDO_STARTUP_DELAY << BLE_BLESS_MT_DELAY_CFG_HVLDO_STARTUP_DELAY_Pos) |
@@ -526,7 +526,7 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_RcbRegWrite(uint16_t addr, uint16_t dat
         BLE->RCB.INTR |= BLE_RCB_INTR_RCB_DONE_Msk;
         status = CY_BLE_ECO_SUCCESS;
     }
-    
+
     return(status);
 }
 
@@ -553,21 +553,21 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_EcoSetTrim(uint8_t trim, uint8_t startU
 {
     uint16_t reg = CY_BLE_RF_DCXO_CFG_REG_VALUE;
     cy_en_ble_eco_status_t status;
-    
+
     /* Load the new CAP TRIM value */
     reg |= (uint16_t)((uint16_t)trim << CY_BLE_RF_DCXO_CFG_REG_DCXO_CAP_SHIFT);
 
     /* Write the new value to the register */
     status = Cy_BLE_HAL_RcbRegWrite(CY_BLE_RF_DCXO_CFG_REG, reg);
-        
+
     if(status == CY_BLE_ECO_SUCCESS)
     {
         /* Write the new value to the CFG2 register */
         status = Cy_BLE_HAL_RcbRegWrite(CY_BLE_RF_DCXO_CFG2_REG, CY_BLE_RF_DCXO_CFG2_REG_VALUE);
     }
-    
+
     Cy_SysLib_DelayUs(startUpTime * CY_BLE_ECO_SET_TRIM_DELAY_COEF);
-    
+
     return(status);
 }
 
@@ -577,7 +577,7 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_EcoSetTrim(uint8_t trim, uint8_t startU
 ****************************************************************************//**
 *
 *  Enables and configures radio clock.
-*  
+*
 *  \param ecoConfig: Clock configuration of type 'cy_stc_ble_bless_eco_cfg_params_t'.
 *
 *  \return
@@ -621,7 +621,7 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
     {
         retries = CY_BLE_RCB_RETRIES;
         status = Cy_BLE_HAL_RcbRegRead(CY_BLE_PMU_PMU_CTRL_REG, &temp);
-        if((status == CY_BLE_ECO_SUCCESS) && ((temp & CY_BLE_MXD_RADIO_DIG_CLK_OUT_EN_VAL) == 0U)) 
+        if((status == CY_BLE_ECO_SUCCESS) && ((temp & CY_BLE_MXD_RADIO_DIG_CLK_OUT_EN_VAL) == 0U))
         {
             /* Enable digital ECO clock output from MXD Radio to BLESS */
             do
@@ -700,10 +700,10 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
         }
 
         temp |= (uint16_t)(blerdDivider << CY_BLE_RF_DCXO_BUF_CFG_REG_CLK_DIV_SHIFT);
-        
+
         /* Write the MXD Radio register */
         status = Cy_BLE_HAL_RcbRegWrite(CY_BLE_RF_DCXO_BUF_CFG_REG, temp);
-        
+
         /* Reduce BLESS divider by BLERD divider value */
         ecoSysDivider = (uint16_t)ecoConfig->ecoSysDiv - blerdDivider;
         temp = (uint16_t)(ecoSysDivider & BLE_BLESS_XTAL_CLK_DIV_CONFIG_SYSCLK_DIV_Msk);
@@ -712,7 +712,7 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
         /* Set clock divider */
         BLE->BLESS.XTAL_CLK_DIV_CONFIG = temp;
     }
-    
+
     /* Update RADIO LDO trim values */
     if((Cy_SysLib_GetDeviceRevision() != CY_SYSLIB_DEVICE_REV_0A) && (SFLASH->RADIO_LDO_TRIMS != 0U))
     {
@@ -720,39 +720,39 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
         {
             status = Cy_BLE_HAL_RcbRegRead(CY_BLE_RF_LDO_CFG_REG, &temp);
         }
-        
-        if(status == CY_BLE_ECO_SUCCESS) 
+
+        if(status == CY_BLE_ECO_SUCCESS)
         {
             /* Update LDO_IF value */
             temp &= (uint16_t)~((uint16_t) ((uint16_t)CY_BLE_RF_LDO_CFG_REG_LDO_IF_CFG_MASK << CY_BLE_RF_LDO_CFG_REG_LDO_IF_CFG_SHIFT));
             temp |= (uint16_t)(((SFLASH->RADIO_LDO_TRIMS & SFLASH_RADIO_LDO_TRIMS_LDO_IF_Msk) >>
                                 SFLASH_RADIO_LDO_TRIMS_LDO_IF_Pos) << CY_BLE_RF_LDO_CFG_REG_LDO_IF_CFG_SHIFT);
-            
+
             /* Update LDO_ACT value */
             temp &= (uint16_t)~((uint16_t) ((uint16_t)CY_BLE_RF_LDO_CFG_REG_LDO_ACT_CFG_MASK << CY_BLE_RF_LDO_CFG_REG_LDO_ACT_CFG_SHIFT));
             temp |= (uint16_t)(((SFLASH->RADIO_LDO_TRIMS & SFLASH_RADIO_LDO_TRIMS_LDO_ACT_Msk) >>
                                 SFLASH_RADIO_LDO_TRIMS_LDO_ACT_Pos) << CY_BLE_RF_LDO_CFG_REG_LDO_ACT_CFG_SHIFT);
-            
+
             /* Update LDO_DIG value */
             temp &= (uint16_t)~((uint16_t) ((uint16_t)CY_BLE_RF_LDO_CFG_REG_LDO10_CFG_MASK << CY_BLE_RF_LDO_CFG_REG_LDO10_CFG_SHIFT));
             temp |= (uint16_t)(((SFLASH->RADIO_LDO_TRIMS & SFLASH_RADIO_LDO_TRIMS_LDO_DIG_Msk) >>
                                 SFLASH_RADIO_LDO_TRIMS_LDO_DIG_Pos) << CY_BLE_RF_LDO_CFG_REG_LDO10_CFG_SHIFT);
-            
+
             status = Cy_BLE_HAL_RcbRegWrite(CY_BLE_RF_LDO_CFG_REG, temp);
         }
-        
+
         if(status == CY_BLE_ECO_SUCCESS)
         {
            status = Cy_BLE_HAL_RcbRegRead(CY_BLE_RF_LDO_EN_REG, &temp);
         }
-        
+
         if(status == CY_BLE_ECO_SUCCESS)
-        {  
+        {
             /* Update LDO_LNA value */
             temp &= (uint16_t)~(CY_BLE_RF_LDO_EN_REG_LDO_RF_CFG_MASK << CY_BLE_RF_LDO_EN_REG_LDO_RF_CFG_SHIFT);
             temp |= (uint16_t)(((SFLASH->RADIO_LDO_TRIMS & SFLASH_RADIO_LDO_TRIMS_LDO_LNA_Msk) >>
-                       SFLASH_RADIO_LDO_TRIMS_LDO_LNA_Pos) << CY_BLE_RF_LDO_EN_REG_LDO_RF_CFG_SHIFT); 
-            
+                       SFLASH_RADIO_LDO_TRIMS_LDO_LNA_Pos) << CY_BLE_RF_LDO_EN_REG_LDO_RF_CFG_SHIFT);
+
             status = Cy_BLE_HAL_RcbRegWrite(CY_BLE_RF_LDO_EN_REG, temp);
         }
     }
@@ -808,7 +808,7 @@ uint8_t Cy_BLE_HAL_IsEcoCpuClockSrc(void)
 * Function Name: Cy_BLE_HAL_IsWcoLfclkSrc
 ****************************************************************************//**
 *
-*  Check if WCO or PILO are the source for the low frequency clock (clkLf) 
+*  Check if WCO or PILO are the source for the low frequency clock (clkLf)
 *
 *  \return
 *  uint8_t: 0 - WCO or PILO are not source for the low frequency clock

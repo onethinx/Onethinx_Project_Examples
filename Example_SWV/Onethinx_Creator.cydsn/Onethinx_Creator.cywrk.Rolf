@@ -67,6 +67,18 @@
 <v>Onethinx_Creator\Onethinx_Creator\Generated_Source\PSoC6</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Onethinx_Creator</v>
+<v>Onethinx_Creator\Onethinx_Creator</v>
+<v>Onethinx_Creator\Onethinx_Creator\TopDesign</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr\Pins</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr\Analog</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr\DMA</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr\Clocks</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr\Interrupts</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr\System</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.cydwr\Directives</v>
+<v>Onethinx_Creator\Onethinx_Creator\CM0p (Core 0)</v>
 <v>Onethinx_Creator\Onethinx_Creator\CM0p (Core 0)\ARM GCC Generic</v>
 <v>Onethinx_Creator\Onethinx_Creator\CM0p (Core 0)\ARM GCC Generic\cy8c6xx7_cm0plus.ld</v>
 <v>Onethinx_Creator\Onethinx_Creator\CM0p (Core 0)\ARM IAR Generic</v>
@@ -308,6 +320,8 @@
 <VisibleNodeIds>
 <v>Onethinx_Creator</v>
 <v>Onethinx_Creator\Onethinx_Creator</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator.rpt</v>
+<v>Onethinx_Creator\Onethinx_Creator\Onethinx_Creator_timing.html</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>

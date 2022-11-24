@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_ble_clk.h
-* \version 2.60
+* \version 2.70
 *
 * \brief
 *  Contains the function prototypes and constants for the BLE clock.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2017-2020, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2017-2021, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -28,7 +28,7 @@ extern "C" {
 
 
 /******************************************************************************
- *      Macro definitions                                         
+ *      Macro definitions
  ******************************************************************************/
 
  #define CY_BLE_CLK_ID                                   (0x05ul << 18u)
@@ -50,7 +50,7 @@ typedef enum
     CY_BLE_MXD_RADIO_CLK_DIV_4  = 2U,
     CY_BLE_MXD_RADIO_CLK_DIV_8  = 4U,
     CY_BLE_MXD_RADIO_CLK_DIV_16 = 8U
-    
+
 } cy_en_ble_mxd_radio_clk_div_t;
 
 /** Sine wave buffer output capability select */
@@ -60,7 +60,7 @@ typedef enum
     CY_BLE_MXD_RADIO_CLK_BUF_AMP_16M_LARGE = 1U,
     CY_BLE_MXD_RADIO_CLK_BUF_AMP_32M_SMALL = 2U,
     CY_BLE_MXD_RADIO_CLK_BUF_AMP_32M_LARGE = 3U
-    
+
 } cy_en_ble_mxd_radio_clk_buf_amp_t;
 
 /** BLESS clock divider */
@@ -70,7 +70,7 @@ typedef enum
     CY_BLE_BLESS_XTAL_CLK_DIV_2 = 1U,
     CY_BLE_BLESS_XTAL_CLK_DIV_4 = 2U,
     CY_BLE_BLESS_XTAL_CLK_DIV_8 = 3U
-    
+
 }cy_en_ble_bless_xtal_clk_div_config_llclk_div_t;
 
 /** BLE ECO Clock Frequency. */
@@ -81,7 +81,7 @@ typedef enum
 
     /** ECO Frequency of 32MHz */
     CY_BLE_BLESS_ECO_FREQ_32MHZ
-    
+
 } cy_en_ble_bless_eco_freq_t;
 
 /** BLE ECO System clock divider */
@@ -101,7 +101,7 @@ typedef enum
 
     /** Invalid Link Layer clock divider */
     CY_BLE_SYS_ECO_CLK_DIV_INVALID
-    
+
 } cy_en_ble_bless_sys_eco_clk_div_t;
 
 /** BLE ECO Clock return value */
@@ -118,10 +118,10 @@ typedef enum
 
     /** ECO already started */
     CY_BLE_ECO_ALREADY_STARTED = CY_PDL_STATUS_ERROR | CY_BLE_CLK_ID | 0x0003UL,
-    
+
     /** Hardware error */
     CY_BLE_ECO_HARDWARE_ERROR  = CY_PDL_STATUS_ERROR | CY_BLE_CLK_ID | 0x0004UL,
-    
+
 } cy_en_ble_eco_status_t;
 
 /** BLE ECO configuration parameters */
@@ -140,13 +140,13 @@ typedef struct
 
     /** System divider for ECO clock */
     cy_en_ble_bless_sys_eco_clk_div_t ecoSysDiv;
-    
+
 } cy_stc_ble_bless_eco_cfg_params_t;
 /** \} */
 
 
 /******************************************************************************
- *       Function Prototypes                                        
+ *       Function Prototypes
  ******************************************************************************/
 
 /**
@@ -159,7 +159,7 @@ void Cy_BLE_EcoStop(void);
 
 
 /******************************************************************************
- *       Private Function Prototypes                                     
+ *       Private Function Prototypes
  ******************************************************************************/
 
 void Cy_BLE_HAL_Init(void);

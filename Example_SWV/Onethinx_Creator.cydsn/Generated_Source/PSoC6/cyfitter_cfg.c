@@ -319,7 +319,10 @@ static void AnalogSetDefault(void)
 
 void Cy_SystemInit(void)
 {
+	CyDelay(1500); /* Failsafe guard: wrong clocksettings may brick the Onethinx module. Remove this delay in the release version. */
+
 	/* Removed Onethinx Core conflicting code by Onethinx CoreStripper */
+
 	//	/* Set worst case memory wait states (150 MHz), ClockInit() will update */
 	Cy_SysLib_SetWaitStates(false, 150);
 	//	Cy_SysLib_SetWaitStates(false, 150);
