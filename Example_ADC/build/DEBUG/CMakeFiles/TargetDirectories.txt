@@ -1,4 +1,0 @@
-/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_ADC/build/DEBUG/CMakeFiles/Example_ADC.elf.dir
-/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_ADC/build/DEBUG/CMakeFiles/Example_ADC.dir
-/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_ADC/build/DEBUG/CMakeFiles/edit_cache.dir
-/Volumes/Data/VScode/GIT/Onethinx_Project_Examples/Example_ADC/build/DEBUG/CMakeFiles/rebuild_cache.dir

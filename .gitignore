@@ -2,10 +2,10 @@
 cmake-build*./**
 **/local\.cmake
 **/\.idea
-build/**
+**/build/**
 !compile_commands.json
 .viscid/ipch*
-Onethinx_Creator.cydsn/codegentemp/**
-Onethinx_Creator.cydsn/CortexM0p/**
-Onethinx_Creator.cydsn/CortexM4/**
+**/Onethinx_Creator.cydsn/codegentemp/**
+**/Onethinx_Creator.cydsn/CortexM0p/**
+**/Onethinx_Creator.cydsn/CortexM4/**
 .DS_Store
