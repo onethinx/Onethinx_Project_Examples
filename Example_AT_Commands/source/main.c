@@ -46,7 +46,6 @@
 
 int main(void)
 {
-		
 	__enable_irq();  /* enable global interrupts */
 	Cy_GPIO_Write(LED_R_PORT, LED_R_NUM, 0);
 	Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);

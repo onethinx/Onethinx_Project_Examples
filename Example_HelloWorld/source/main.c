@@ -94,7 +94,6 @@ uint8_t TXbuffer[64];
 
 int main(void)
 {
-	CyDelay(1000); // Needs to be here
 	uint8_t j=0;
 
 

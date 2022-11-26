@@ -85,9 +85,6 @@ coreStatus_t CoreStatus;
 
 int main(void)
 {
-	CyDelay(2000);	// Use only for debugging otherwise testmode acquire might not work. Testmode acquire (ENABLE_ACQUIRE 1) is the preferred method. 
-					// To acquire in non-testmode use 'ENABLE_ACQUIRE 0' in the OpenOCD settings (launch.json)
-
 	/* Initialize the GPIO for the blue LED */
 	Cy_GPIO_Pin_FastInit(LED_B_PORT, LED_B_NUM, CY_GPIO_DM_STRONG, 0UL, HSIOM_SEL_GPIO);
 	/* Initialize the GPIO for the red LED */

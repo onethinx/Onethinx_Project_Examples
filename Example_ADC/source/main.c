@@ -93,7 +93,6 @@ uint8_t TXbuffer[64];
 
 int main(void)
 {
-	CyDelay(2000); // Needs to be here for debugging
 	volatile int32_t adcResult = 0; 
 	volatile int32_t voltage = 0;
 	uint8_t j = 0;

@@ -98,9 +98,6 @@ uint8_t wakeUpCounter = 0;
 
 int main(void)
  {
-	CyDelay(2000); // Needs to be here
-	//Cy_SystemInit();
-
 	/* enable global interrupts */
 	__enable_irq();
 
