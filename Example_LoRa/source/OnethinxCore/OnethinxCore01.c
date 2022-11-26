@@ -113,7 +113,7 @@ coreStatus_t coreComm(coreFunctions_e function, WaitMode_e waitMode)
 		if (pipeStatus != CY_IPC_PIPE_SUCCESS) systemError = system_IPCError;
 		else
 		{
-			while (!callBackDone) {}															// Wait till IPC call is finalized
+			while (!callBackDone) {}													// Wait till IPC call is finalized. If the Onethinx core 'hangs' at this point, make sure the global interrupts are enabled: __enable_irq();
 			if (waitMode != M4_NoWait)
 			{
 				switch (waitMode)
@@ -127,7 +127,7 @@ coreStatus_t coreComm(coreFunctions_e function, WaitMode_e waitMode)
 					default:
 						break;
 				}
-				while (coreArguments.status.system.isBusy) {}
+				while (coreArguments.status.system.isBusy) {}							// If the Onethinx core 'hangs' at this point, make sure the Core API version matches with the module;
 			}
 		}
 	}
