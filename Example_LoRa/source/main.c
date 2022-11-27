@@ -42,9 +42,15 @@
 
 /* Let the M0p go into deepsleep when waiting for the CM4, we don't use the BLE ECO and we like to debug this code */
 coreConfiguration_t	coreConfig = {
-	.System.Idle.Mode = 		M0_DeepSleep,
-	.System.Idle.BleEcoON = 	false,
-	.System.Idle.DebugON =  	true,
+	.System =
+	{
+		.Idle =
+		{
+			.Mode = 		M0_DeepSleep,
+			.BleEcoON =		false,
+			.DebugON =		true,
+		}
+	}
 };
 
 /* The LoRa Radio parameters are defined below. Change the frequency according your region */
@@ -52,17 +58,27 @@ RadioParams_t RadioParams =
 {
 	.Frequency = 8690000,		// Frequency in 100Hz steps
 	.TXpower = PWR_MAX,
+	.RXboost = true,
 	.PacketType = PACKET_TYPE_LORA,
-	.LoRa.Modulation.SF = LORA_SF12,
-	.LoRa.Modulation.BW = LORA_BW_250,
-	.LoRa.Modulation.CR = LORA_CR_4_5,
-	.LoRa.Modulation.LowDataRateOptimize = LORA_LOWDATARATEOPTIMIZE_OFF,
-	.LoRa.Packet.PreambleLength = 8,
-	.LoRa.Packet.HeaderType = LORA_PACKET_VARIABLE_LENGTH,
-	.LoRa.Packet.PayloadSize = PAYLOADSIZE,
-	.LoRa.Packet.CRCmode = LORA_CRC_ON,
-	.LoRa.Packet.IQmode = LORA_IQ_NORMAL,
-	.LoRa.Packet.SyncWord = LORA_MAC_PUBLIC_SYNCWORD
+	.LoRa = 
+	{
+		.Modulation =
+		{
+			.SF = LORA_SF12,
+			.BW = LORA_BW_250,
+			.CR = LORA_CR_4_5,
+			.LowDataRateOptimize = LORA_LOWDATARATEOPTIMIZE_OFF
+		},
+		.Packet =
+		{
+			.PreambleLength = 8,
+			.HeaderType = LORA_PACKET_VARIABLE_LENGTH,
+			.PayloadSize = PAYLOADSIZE,
+			.CRCmode = LORA_CRC_ON,
+			.IQmode = LORA_IQ_NORMAL,
+			.SyncWord = LORA_MAC_PUBLIC_SYNCWORD
+		}
+	}
 };
 
 sleepConfig_t sleepConfig =

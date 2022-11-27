@@ -48,20 +48,35 @@
 /* Go to ../OnethinxCore/LoRaWAN_keys.h and fill in the fields of the TTN_OTAAkeys structure */
 
 coreConfiguration_t	coreConfig = {
-	.Join.KeysPtr = 		&TTN_OTAAkeys,
-	.Join.DataRate =		DR_AUTO,
-	.Join.Power =			PWR_MAX,
-	.Join.MAXTries = 		100,
-    .Join.SubBand_1st =     EU_SUB_BANDS_DEFAULT,
-	.Join.SubBand_2nd =     EU_SUB_BANDS_DEFAULT,
-	.TX.Confirmed = 		false,
-	.TX.DataRate = 			DR_ADR,		// Adaptive Data Rate
-	.TX.Power = 			PWR_ADR,	// Adaptive Data Rate
-	.TX.FPort = 			1,
-	.System.Idle.Mode = 	M0_DeepSleep,
-	.System.Idle.BleEcoON = false,
-	.System.Idle.DebugON =  true,
-	.RX.Boost			  = false,
+	.Join =
+	{
+		.KeysPtr = 			&TTN_OTAAkeys,
+		.DataRate =			DR_AUTO,
+		.Power =			PWR_MAX,
+		.MAXTries = 		100,
+		.SubBand_1st =     	EU_SUB_BANDS_DEFAULT,
+		.SubBand_2nd =     	EU_SUB_BANDS_DEFAULT
+	},
+	.TX =
+	{
+		.Confirmed = 		false,
+		.DataRate = 		DR_ADR,
+		.Power = 			PWR_ADR,
+		.FPort = 			1
+	},
+	.RX =
+	{
+		.Boost = 			true
+	},
+	.System =
+	{
+		.Idle =
+		{
+			.Mode = 		M0_DeepSleep,
+			.BleEcoON =		false,
+			.DebugON =		true,
+		}
+	}
 };
 
 sleepConfig_t sleepConfig =
