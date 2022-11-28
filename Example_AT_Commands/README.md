@@ -28,8 +28,8 @@ The following AT commands can be used with this AT commands firmware:
 | AT+RADIO_SET_FREQUENCY [frequency]          | OK / Error     | Set Radio Frequency                          |
 | AT+RADIO_SET_LORA_MODULATION [mod.settings] | OK / Error     | Sets the Radio LoRa Modulation configuration |
 | AT+RADIO_SET_LORA_PACKET [packet.settings]  | OK / Error     | Sets the Radio LoRa Packet configuration.    |
-| AT+RADIO_SET_FSK_MODULATION [mod.settings]  | OK / Error     | Sets the Radio LoRa Modulation configuration |
-| AT+RADIO_SET_FSK_PACKET [packet.settings]   | OK / Error     | Sets the Radio LoRa Packet configuration.    |
+| AT+RADIO_SET_FSK_MODULATION [mod.settings]  | OK / Error     | Sets the Radio FSK Modulation configuration  |
+| AT+RADIO_SET_FSK_PACKET [packet.settings]   | OK / Error     | Sets the Radio FSK Packet configuration.     |
 | AT+RADIO_TX [data]                          | OK / Error     | Send the [data]                              |
 | AT+RADIO_RX [RX timeout in ms]              | RX:[data] / OK | Activates the receiver for [timeout ms]      |
 
