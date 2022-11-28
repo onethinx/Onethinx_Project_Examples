@@ -3,20 +3,37 @@ Library to use AT commands for the Onethinx Core LoRaWAN module
 
 The following AT commands can be used with this AT commands firmware:
 
+## System commands
+| Command             | Response   | Description                               |
+|---------------------|------------|-------------------------------------------|
+| AT+RESET            | [info]     | Resets the module                         |
+| AT+PING             | OK         | Ping                                      |
+| AT+INFO             | [info]     | Show the info of the module               |
+| AT+STATUS           | [status]   | Show the status of the module             |
+| AT+UNLOCK           | OK         | Unlocks the module for RAW Radio commands |
+| AT+SLEEPMODE [mode] | OK / Error | Set sleepmode                             |
+
+## LoRaWAN commands
 | Command             | Response   | Description                          |
 |---------------------|------------|--------------------------------------|
-| AT+PING             | OK         | Ping                                 |
-| AT+INFO             | [info]     | Show the info of the module          |
-| AT+STATUS           | [status]   | Show the status of the module        |
 | AT+SET_OTAA [keys]  | OK / Error | Set OTAA keys                        |
 | AT+JOIN             | OK / Error | Join the LoRaWAN network             |
 | AT+TX [data]        | OK / Error |                                      |
 | AT+RX_LENGTH        | [length]   | Show amount of data in the RX buffer |
 | AT+RX               | [data]     | Show received data                   |
-| AT+SLEEPMODE [mode] | OK / Error | Set sleepmode                        |
 
-Connections:
+## Radio LoRa / FSK commands
+| Command                                     | Response       | Description                                  |
+|---------------------------------------------|----------------|----------------------------------------------|
+| AT+RADIO_SET_FREQUENCY [frequency]          | OK / Error     | Set Radio Frequency                          |
+| AT+RADIO_SET_LORA_MODULATION [mod.settings] | OK / Error     | Sets the Radio LoRa Modulation configuration |
+| AT+RADIO_SET_LORA_PACKET [packet.settings]  | OK / Error     | Sets the Radio LoRa Packet configuration.    |
+| AT+RADIO_SET_FSK_MODULATION [mod.settings]  | OK / Error     | Sets the Radio LoRa Modulation configuration |
+| AT+RADIO_SET_FSK_PACKET [packet.settings]   | OK / Error     | Sets the Radio LoRa Packet configuration.    |
+| AT+RADIO_TX [data]                          | OK / Error     | Send the [data]                              |
+| AT+RADIO_RX [RX timeout in ms]              | RX:[data] / OK | Activates the receiver for [timeout ms]      |
 
+##Connections:
 | Module   | Function      | To                                                         |
 |----------|---------------|------------------------------------------------------------|
 | P9_0     | Module RX     | Host UART TX (TTL level)                                   |
@@ -49,6 +66,9 @@ Connections:
     - connect to external wakeup signal (voltage may not exceed module voltage) for wakeup on falling edge
     - connect to Host TX for wakeup on TX activity
     
+# AT Command LoRa & FSK Settings Generator
+Use [this tool](https://onethinx.com/AT_Command_SettingsGen) to generate the AT Command Settings for LoRa and FSK settings:<br><br>
+<a href="https://onethinx.com/AT_Command_SettingsGen" rel="Onethinx">![AT_Command_SettingsGen](https://github.com/onethinx/Readme_assets/blob/main/AT_Command_SettingsGen.png)</a>
 ## Examples
 
 - Set OTAA Keys
@@ -59,12 +79,10 @@ Connections:
    
     ```AT+SET_OTAA 1 DE01020304050607 AE01020304050607 AA0102030405060708090A0B0C0D0E0F```
 
-
 - Send data over LoRaWAN
     - Data: "Hello World!" (hexadecimal = 48656c6c6f20576f726c6421)
     
     ```AT+TX 48656c6c6f20576f726c6421```
-
 
 - Enter sleep mode
     - mode: Deep Sleep (1)
