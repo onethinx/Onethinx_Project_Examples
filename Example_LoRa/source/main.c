@@ -67,7 +67,7 @@ RadioParams_t RadioParams =
 			.SF = LORA_SF12,
 			.BW = LORA_BW_250,
 			.CR = LORA_CR_4_5,
-			.LowDataRateOptimize = LORA_LOWDATARATEOPTIMIZE_OFF
+			.LowDataRateOptimize = LORA_LOWDATARATEOPTIMIZE_ON
 		},
 		.Packet =
 		{
