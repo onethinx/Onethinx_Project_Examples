@@ -42,7 +42,7 @@ The following AT commands can be used with this AT commands firmware:
 
 
 ## Notes
-- All commands are terminated by "\r\n"
+- All commands are terminated by "\n"
 - Sleep IO: 
     - low: enter sleep mode
     - high: wake up
