@@ -4,39 +4,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "PSoC Config",
+            "label": "JLink_Power_Off",
             "type": "shell",
-            "args": [ "${workspaceRoot}/design/design.modus" ],
-            "options": {
-                "cwd": "${workspaceRoot}/design"
-            },
-            "command": "${env:ONETHINX_PACK_LOC}/tools_2.0/device-configurator/device-configurator",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },   
-        {
-            "label": "PDL 1.3.1.1499 documentation",
-            "type": "shell",
-            "command": "open",
-            "args": ["${env:ONETHINX_PDL_LOC}/docs/pdl_api_reference_manual.html"],
+            "command": "jlinkexe -device CY8C5868xxxLP -if swd -speed 4000 -CommanderScript ${ONETHINX_PACK_LOC}/config/scripts/power_off.jlink",
         },
         {
-            "label": "Check build",
+            "label": "JLink_Power_On",
             "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "windows": {
-                "command": "${env:ONETHINX_PACK_LOC}/config/scripts/check_build.bat ${workspaceFolderBasename}"
-            },
-            "linux": {
-                "command": "${env:ONETHINX_PACK_LOC}/config/scripts/check_build.bash ${workspaceFolderBasename}"
-            },
-            "osx": {
-                "command": "${env:ONETHINX_PACK_LOC}/config/scripts/check_build.bash ${workspaceFolderBasename}"
-            }
+            "command": "jlinkexe -device CY8C5868xxxLP -if swd -speed 4000 -CommanderScript ${ONETHINX_PACK_LOC}/config/scripts/power_on.jlink"
         },
         {
             "label": "UART Console",
@@ -51,7 +26,7 @@
             },
             "linux": {
                 "command": "screen",
-                "args": ["/dev/tty.usbserial-A603TZRU","19200"]
+                "args": ["/dev/tty.usbserial-A603TZRU","9600"]
             },
             "osx": {
                 "command": "screen",

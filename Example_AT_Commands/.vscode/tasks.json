@@ -4,19 +4,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "PSoC Config",
-            "type": "shell",
-            "args": [ "${workspaceRoot}/design/design.modus" ],
-            "options": {
-                "cwd": "${workspaceRoot}/design"
-            },
-            "command": "${env:ONETHINX_PACK_LOC}/tools_2.0/device-configurator/device-configurator",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
             "label": "JLink_Power_Off",
             "type": "shell",
             "command": "jlinkexe -device CY8C5868xxxLP -if swd -speed 4000 -CommanderScript ${ONETHINX_PACK_LOC}/config/scripts/power_off.jlink",
