@@ -60,7 +60,7 @@
             "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",          // svdFile is optional, it can be very large.
             "runToEntryPoint": "main",                                  // if true, program will halt at main. Not used for a restart     
             "preLaunchTask": "${command:otx.preLaunch}",                // otx.preLaunch will build the project to prevent unmatched source code debugging
-            "showDevDebugOutput": "raw",                                // Shows output of GDB, helpful when something is not working right
+            "showDevDebugOutput": "none",                                // Shows output of GDB, helpful when something is not working right
         },
         {
             "name": "Launch CM4 (J-Link)",
@@ -115,7 +115,7 @@
             "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",          // svdFile is optional, it can be very large.
             "runToEntryPoint": "main",                                  // if true, program will halt at main. Not used for a restart     
             "preLaunchTask": "${command:otx.preLaunch}",                // otx.preLaunch will build the project to prevent unmatched source code debugging
-            "showDevDebugOutput": "raw",                                // Shows output of GDB, helpful when something is not working right
+            "showDevDebugOutput": "none",                                // Shows output of GDB, helpful when something is not working right
         },
         // When using 'attach', make sure your program is running on the board and that your executable matches
         // the image in the chip exactly, or else strange things can happen with breakpoint, variables, etc.
@@ -154,7 +154,7 @@
                 "tbreak main"
             ],
             "svdFile": "${env:ONETHINX_SVD_LOC}/psoc6_01.svd",          // svdFile is optional, it can be very large.
-            "showDevDebugOutput": "raw",                                // Shows output of GDB, helpful when something is not working right
+            "showDevDebugOutput": "none",                                // Shows output of GDB, helpful when something is not working right
         },
         {
             "name": "Erase (KitProg)",
