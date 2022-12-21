@@ -4,12 +4,21 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "JLink_Power_Off",
+            "type": "shell",
+            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff off"
+        },
+        {
+            "label": "JLink_Power_On",
+            "type": "shell",
+            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff on"
+        },
+        {
             "label": "UART Console",
             "type": "shell",
             "options": {
                 "cwd": "${workspaceRoot}/build"
             },
-            
             "windows": {
                 "command": "${env:ONETHINX_TOOLS_LOC}/comsniff",            // Nice tool from https://github.com/klarsys/comsniff
                 "args": ["-d 4","-b 19200"],                                 // -d portnum   -b baudrate
