@@ -2,7 +2,7 @@
 
 DESIGN= Onethinx_Creator
 CONFIG= debug
-TOOLCHAIN_DIR ?= C:/Program Files (x86)/Cypress/PSoC Creator/4.3/PSoC Creator/import/gnu/arm/5.4.1/bin
+TOOLCHAIN_DIR ?= C:/Program Files (x86)/Cypress/PSoC Creator/4.4/4.4/PSoC Creator/import/gnu/arm/5.4.1/bin
 
 CC_BASE= arm-none-eabi-gcc
 CC_PATH= $(shell which $(CC_BASE) 2>/dev/null)

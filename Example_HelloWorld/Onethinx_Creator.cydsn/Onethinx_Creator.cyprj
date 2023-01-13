@@ -1897,7 +1897,7 @@
 </GlobalTools>
 <GlobalTools name="Target IDEs">
 <GlobalPages>
-<name_val_pair name="General@Target IDEs" v="0; 0; 0" />
+<name_val_pair name="General@Target IDEs" v="0; 0; 1" />
 <name_val_pair name="General@CMSIS Pack Vendor" v="Cypress" />
 <name_val_pair name="General@CMSIS Pack Name" v="Pack" />
 <name_val_pair name="General@CMSIS Pack Major" v="1" />
