@@ -25,6 +25,7 @@ endif()
 
 find_program(CYPRESS_ELF_TOOL cymcuelftool "$ENV{ONETHINX_TOOLS_LOC}/cymcuelftool-1.0/bin" DOC "Cypress ELF tool executable")
 find_program(READELF_TOOL arm-none-eabi-readelf "${COMPILER_DIR}" DOC "ReadELF tool executable")
+find_program(MEMCALC_TOOL memcalc "${CONFIG_DIR}/scripts" DOC "OTX Memcalc tool")
 
 #Get the top directory name. This will be used as project_name in later section
 string(FIND ${CMAKE_CURRENT_SOURCE_DIR} / POSITION REVERSE )
@@ -179,8 +180,10 @@ add_custom_target(
     COMMAND "${CYPRESS_ELF_TOOL}" --sign "${PROJECT_NAME}.elf" --output "${PROJECT_NAME}_signed.elf" --hex "${PROJECT_NAME}.hex"
     COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_NAME}.elf ../${PROJECT_NAME}.elf
     COMMAND ${CMAKE_COMMAND} -E copy compile_commands.json ../compile_commands.json
-    COMMAND echo "------- Memory usage -------"
-    COMMAND "${READELF_TOOL}" -Sl ${PROJECT_NAME}.elf > ${PROJECT_NAME}.readelf
-    COMMAND "${BASH_TOOL}" ${CONFIG_DIR}/scripts/memcalc.bash ${PROJECT_NAME}.readelf "917504" "229376" "268435456" "134217728"  #Flash 0x0e0000   SRAM 0x38000   Flash start 0x10000000   SRAM start 0x08000000
+    #COMMAND echo "------- Memory usage -------"
+    #COMMAND "${CYPRESS_ELF_TOOL}" -A "${PROJECT_NAME}.elf"
+    #COMMAND "${READELF_TOOL}" -Sl ${PROJECT_NAME}.elf > ${PROJECT_NAME}.readelf
+    #COMMAND "${BASH_TOOL}" ${CONFIG_DIR}/scripts/memcalc.bash ${PROJECT_NAME}.readelf "917504" "229376" "268435456" "134217728" #Flash 0x0e0000   SRAM 0x38000   Flash start 0x10000000   SRAM start 0x08000000
+    COMMAND "${MEMCALC_TOOL}" ${READELF_TOOL} ${PROJECT_NAME}.elf "0x0e0000" "0x38000" "0x10000000" "0x08000000" "${PROJECT_NAME}_memcalc.txt" #Flash 0x0e0000   SRAM 0x38000   Flash start 0x10000000   SRAM start 0x08000000
     DEPENDS "${PROJECT_NAME}.elf"
 )

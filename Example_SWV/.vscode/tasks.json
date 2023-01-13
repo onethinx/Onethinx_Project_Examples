@@ -6,12 +6,12 @@
         {
             "label": "JLink_Power_Off",
             "type": "shell",
-            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff off"
+            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff off"
         },
         {
             "label": "JLink_Power_On",
             "type": "shell",
-            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff on"
+            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff on"
         },
         {
             "label": "UART Console",
