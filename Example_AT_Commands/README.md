@@ -1,5 +1,6 @@
 # AT Command example project
-Library to use AT commands for the Onethinx Core LoRaWAN module
+Library to use AT commands for the Onethinx Core LoRaWAN module<br><br>
+![LoRa AT Commands wiring](https://github.com/onethinx/Readme_assets/blob/main/OTX_DevKit%20AT_commands.png?raw=true)<br/>
 
 The following AT commands can be used with this AT commands firmware:
 
