@@ -1,8 +1,77 @@
---------------- Rebuild Started: 11/23/2022 16:32:35 Project: Onethinx_Creator, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 05/16/2023 17:38:08 Project: Onethinx_Creator, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\startup_psoc6_01_cm0plus.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\main_cm0p.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\system_psoc6_cm0plus.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cyfitter_sysint_cfg.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cyfitter_cfg.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cymetadata.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_efuse.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_flash.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_gpio.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_ipc_drv.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_ipc_sema.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_ipc_pipe.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_lvd.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_profile.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_prot.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_sysanalog.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_sysclk.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_sysint.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_syslib.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_syslib_gcc.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_syspm.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_systick.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_trigmux.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_wdt.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_device.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_sar.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\cy_ble_clk.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\ADC.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\ADC_INT.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\ADC_INIT.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\ADC_PM.o"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator.hex"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator.elf"
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator.map"
 Deleting file ".\Onethinx_Creator.cycdx"
 Deleting file ".\Onethinx_Creator.rpt"
 Deleting file ".\Onethinx_Creator_timing.html"
-cydsfit.exe -.appdatapath "C:\Users\Rolf\AppData\Local\Cypress Semiconductor\PSoC Creator\4.4" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Onethinx_Creator.cyprj -d CY8C6347BZI-BLD53 -s \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Generated_Source\PSoC6 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+Deleting file ".\CortexM0p\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\startup_psoc6_01_cm4.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\main_cm4.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\system_psoc6_cm4.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cyfitter_sysint_cfg.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cymetadata.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_efuse.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_flash.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_gpio.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_ipc_drv.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_ipc_sema.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_ipc_pipe.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_lvd.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_profile.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_prot.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_sysanalog.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_sysclk.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_sysint.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_syslib.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_syslib_gcc.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_syspm.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_systick.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_trigmux.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_wdt.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_device.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_sar.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\cy_ble_clk.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\ADC.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\ADC_INT.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\ADC_INIT.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\ADC_PM.o"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator.hex"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator.elf"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator.map"
+Deleting file ".\CortexM4\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.P"
+cydsfit.exe -.appdatapath "C:\Users\rolf\AppData\Local\Cypress Semiconductor\PSoC Creator\4.4" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Onethinx_Creator.cyprj -d CY8C6347BZI-BLD53 -s \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Generated_Source\PSoC6 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 ADD: fit.M0067: information: Clock Information: (The WCO is enabled. Chip startup will be slower because clock configuration cannot continue until the WCO is ready. See the device datasheet for WCO startup timing. If WCO is not required during startup, consider starting it in main() for faster chip startup.).
  * \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Onethinx_Creator.cydwr (WCO)
 ADD: fit.M0032: warning: Clock Warning: (The best possible frequency for pump clock (8 MHz) is outside the target range (24 MHz +/- 10%, (21.6 MHz - 26.4 MHz)).).
@@ -102,15 +171,22 @@ Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 "C:\Program Files (x86)\Cypress\PDL\3.1.5\tools\win\elf\cymcuelftool.exe" -A \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator.elf
 code:15920	sram:2140
-CoreStripper.exe 
-****************************************************
-*          Onethinx CoreStripper Tool 1.21          *
+Creator_PostBuild -v2 -targetOTX
+*****************************************************
+*            Creator PostBuild tool 2.10            *
 *   The source code of this tool can be found at    *
-* https://github.com/onethinx/Onethinx_CoreStripper *
+*   https://github.com/RolfNoot/CreatorPostBuild01  *
 *                (c) Rolf / Onethinx                *
-****************************************************
+*****************************************************
+Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Export\PSoCCreatorExportIDECortexM4.xml
+Done!
 Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Generated_Source\PSoC6\cyfitter_cfg.c
-Changed line 9 to: * This file was automatically generated by PSoC Creator and is ported for universal use by a Onethinx Tool (c).
 Changed line 152 to: 	status = CY_RET_SUCCESS;          // Removed enabling of WCO as it is already enabled by the Onethinx Core: status = Cy_SysClk_WcoEnable(500000u);
 Found Cy_SystemInit() at line 245, skipping code...
---------------- Rebuild Succeeded: 11/23/2022 16:35:21 ---------------
+Done!
+Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.c
+Found SFLASH->RADIO_LDO_TRIMS at line 716, changing code...
+Done!
+Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_DevKitLightSensor\Onethinx_Creator.cydsn\..\meson.build
+Done!
+--------------- Rebuild Succeeded: 05/16/2023 17:40:14 ---------------

@@ -1,36 +1,96 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
+    {
+        "label": "JLink_Power_Off",
+        "type": "shell",
+        "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff off"
+    },
+    {
+        "label": "JLink_Power_On",
+        "type": "shell",
+        "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff on"
+    },
+    {
+        "label": "Meson: configure",
+        "hide": true,
+        "type": "shell",
+        "command": "meson setup --cross-file cross_gcc.build build",
+        "args": [],
+        "options": {
+            "statusbar": { "hide" : true },
+            "cwd": "${workspaceFolder}"
+        }
+    },
+    {
+        "label": "Meson: build",
+        "type": "shell",
+        "command": "ninja -C build",
+        "args": [],
+        "options": {
+            "statusbar": { "hide" : true },
+            "cwd": "${workspaceFolder}",
+        },
+        "problemMatcher": [
         {
-            "label": "JLink_Power_Off",
-            "type": "shell",
-            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff off"
+            "base": "$gcc",
+            "fileLocation": ["relative", "${workspaceFolder}/build" ]
         },
         {
-            "label": "JLink_Power_On",
-            "type": "shell",
-            "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff on"
+            "owner": "linker0",
+            "severity": "error",
+            "fileLocation" : "absolute",
+            "pattern": {
+            "regexp": "((error): ld returned (-?\\d+) exit status)",
+            "message": 1,
+            "file" : 2
+            }
         },
         {
-            "label": "UART Console",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "windows": {
-                "command": "${env:ONETHINX_TOOLS_LOC}/comsniff",            // Nice tool from https://github.com/klarsys/comsniff
-                "args": ["-d 4","-b 19200"],                                 // -d portnum   -b baudrate
-            },
-            "linux": {
-                "command": "screen",
-                "args": ["/dev/tty.usbserial-A603TZRU","9600"]
-            },
-            "osx": {
-                "command": "screen",
-                "args": ["/dev/tty.usbserial-A603TZRU","19200"],
+            "owner": "linker1",
+            "severity": "error",
+            "fileLocation" : "absolute",
+            "pattern": {
+            "regexp": "(\\S*\\..{0,2}):(\\d*):\\s(undefined reference to `\\S*')",
+            "file": 1,
+            "line": 2,
+            "message": 3
+            }
+        },
+        {
+            "owner": "linker2",
+            "severity": "error",
+            "fileLocation" : "absolute",
+            "pattern": {
+            "regexp": "((.*\\..{0,2}):(\\d+): (multiple definition of .+);.+:(.*\\..{0,2}):(\\d+): first defined here)",
+            "message": 4,
+            "file": 5,
+            "line": 3
+            }
+        },
+        {
+            "owner": "linker3",
+            "severity": "error",
+            "fileLocation" : "absolute",
+            "pattern": {
+            "regexp": "((cannot open linker script file (.+.ld): No such file or directory))",
+            "message": 1,
+            "file": 3
+            }
+        },
+        {
+            "owner": "linker4",
+            "severity": "error",
+            "fileLocation" : "absolute",
+            "pattern": {
+            "regexp": "((region `\\S+' overflowed by \\d+ bytes))",
+            "message": 1
             }
         }
-    ]
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        }
+    }]
 }

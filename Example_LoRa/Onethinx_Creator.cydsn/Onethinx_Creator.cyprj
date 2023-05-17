@@ -1897,7 +1897,7 @@
 </GlobalTools>
 <GlobalTools name="Target IDEs">
 <GlobalPages>
-<name_val_pair name="General@Target IDEs" v="0; 0; 0" />
+<name_val_pair name="General@Target IDEs" v="0; 0; 1" />
 <name_val_pair name="General@CMSIS Pack Vendor" v="Cypress" />
 <name_val_pair name="General@CMSIS Pack Name" v="Pack" />
 <name_val_pair name="General@CMSIS Pack Major" v="1" />
@@ -2037,7 +2037,7 @@
 <name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4@Linker@Optimization@SHARED Link Time Optimization" v="" />
 <name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4@Linker@Optimization@SHARED Fat LTO objects" v="" />
 <name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4@User Commands@General@Pre Build Commands" v="" />
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4@User Commands@General@Post Build Commands" v="CoreStripper.exe" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM4@User Commands@General@Post Build Commands" v="Creator_PostBuild -v2 -targetOTX" />
 <name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM4@General@Output Directory" v="${ProjectDir}\${ProcessorType}\${Platform}\${Config}" />
 <name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM4@Assembly@General@Additional Include Directories" v="" />
 <name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM4@Assembly@General@Create Listing File" v="True" />

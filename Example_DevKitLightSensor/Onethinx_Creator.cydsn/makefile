@@ -138,6 +138,11 @@ $(OUT_DIR_CortexM0p)/%.o : $(GEN_SOURCE_DIR)/pdl/drivers/peripheral/device/%.c
 	@"$(CC)" $(CDEPGEN_CortexM0p)
 	"$(CC)" -c $(CFLAGS_CortexM0p) $< -o $@
 
+$(OUT_DIR_CortexM0p)/%.o : $(GEN_SOURCE_DIR)/pdl/drivers/peripheral/sar/%.c
+	@mkdir -p $(OUT_DIR_CortexM0p)
+	@"$(CC)" $(CDEPGEN_CortexM0p)
+	"$(CC)" -c $(CFLAGS_CortexM0p) $< -o $@
+
 $(OUT_DIR_CortexM0p)/%.o : $(GEN_SOURCE_DIR)/pdl/middleware/ble/%.c
 	@mkdir -p $(OUT_DIR_CortexM0p)
 	@"$(CC)" $(CDEPGEN_CortexM0p)
@@ -229,6 +234,11 @@ $(OUT_DIR_CortexM4)/%.o : $(GEN_SOURCE_DIR)/pdl/drivers/peripheral/wdt/%.c
 	"$(CC)" -c $(CFLAGS_CortexM4) $< -o $@
 
 $(OUT_DIR_CortexM4)/%.o : $(GEN_SOURCE_DIR)/pdl/drivers/peripheral/device/%.c
+	@mkdir -p $(OUT_DIR_CortexM4)
+	@"$(CC)" $(CDEPGEN_CortexM4)
+	"$(CC)" -c $(CFLAGS_CortexM4) $< -o $@
+
+$(OUT_DIR_CortexM4)/%.o : $(GEN_SOURCE_DIR)/pdl/drivers/peripheral/sar/%.c
 	@mkdir -p $(OUT_DIR_CortexM4)
 	@"$(CC)" $(CDEPGEN_CortexM4)
 	"$(CC)" -c $(CFLAGS_CortexM4) $< -o $@

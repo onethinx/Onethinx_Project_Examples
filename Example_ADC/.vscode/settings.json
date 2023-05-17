@@ -1,34 +1,27 @@
 {
-  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-  "C_Cpp.loggingLevel":"Debug",
-  "cmake.preferredGenerators": [
-    "Unix Makefiles",
-    "MinGW Makefiles"
-  ],
-  "cmake.statusbar.advanced": {
-    "buildTarget": { "visibility": "hidden" },
-    "build": { "visibility": "hidden" },
-    "debug": { "visibility": "hidden" },
-    "launch": { "visibility": "hidden" }
-  },
-  "cmake.buildDirectory": "${workspaceFolder}/build/${buildType}",
+  "json.validate.enable": false,  //temporary disable as tasks.json yields error on "fileLocation": ["relative", "${workspaceFolder}/build" ]
   "ego.power-tools": {
     "commands": {
       "otx.preLaunch": {
-        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+        "script": "${workspaceRoot}/.vscode/meson.js",
       },
       "otx.clean": {
-        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+        "script": "${workspaceRoot}/.vscode/meson.js",
         "button": { "text": "$(references) Clean-Reconfigure" },
       },
       "otx.build": {
-        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+        "script": "${workspaceRoot}/.vscode/meson.js",
         "button": { "text": "$(file-binary) Build" },
       },
       "otx.run": {
-        "script": "${ONETHINX_PACK_LOC}/config/scripts/otxCommands.js",
+        "script": "${workspaceRoot}/.vscode/meson.js",
         "button": { "text": "$(debug-start) Build-and-Launch" },
       }
     }
+  },
+  "files.associations": {
+    "project.h": "c",
+    "new.h": "c",
+    "lorawan_keys.h": "c"
   }
 }

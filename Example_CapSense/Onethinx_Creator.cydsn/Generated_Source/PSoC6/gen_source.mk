@@ -46,6 +46,7 @@ GEN_SEP_C_SOURCE_CortexM0p=\
 	$(GEN_SOURCE_DIR)/I2C_CapSense.c
 
 GEN_LIBS_CortexM0p=\
+	Export/ARM_GCC_Generic/CapSense_v3_0/CapSense_Library_GCC_M0p.a
 
 
 GEN_C_SOURCE_CortexM4=\
@@ -91,4 +92,5 @@ GEN_SEP_C_SOURCE_CortexM4=\
 	$(GEN_SOURCE_DIR)/I2C_CapSense.c
 
 GEN_LIBS_CortexM4=\
+	Export/ARM_GCC_Generic/CapSense_v3_0/CapSense_Library_GCC_M4.a
 

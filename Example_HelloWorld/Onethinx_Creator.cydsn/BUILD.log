@@ -1,29 +1,25 @@
---------------- Build Started: 12/23/2022 21:25:31 Project: Onethinx_Creator, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 05/16/2023 15:59:17 Project: Onethinx_Creator, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
-arm-none-eabi-gcc.exe -mcpu=cortex-m0plus -mthumb -I. -IGenerated_Source\PSoC6 -IGenerated_Source\PSoC6\pdl\cmsis/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ -IGenerated_Source\PSoC6\pdl\devices/psoc6/include/ip/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/device/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/efuse/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/flash/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/gpio/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/ipc/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/lvd/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/profile/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/prot/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysanalog/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysclk/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/sysint/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syslib/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/syspm/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/systick/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/trigmux/ -IGenerated_Source\PSoC6\pdl\drivers/peripheral/wdt/ -IGenerated_Source\PSoC6\pdl\middleware/ -Wa,-alh=.\CortexM0p\ARM_GCC_541\Debug/cyfitter_cfg.lst -g -D DEBUG -D CY_CORE_ID=0 -D CY_PSOC_CREATOR_USED=1 -D CY8C6347BZI_BLD53 -Wall -ffunction-sections -ffat-lto-objects -Og -c Generated_Source\PSoC6\cyfitter_cfg.c -o .\CortexM0p\ARM_GCC_541\Debug\cyfitter_cfg.o
-arm-none-eabi-gcc.exe -Wl,--start-group -o R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator_link.elf .\CortexM0p\ARM_GCC_541\Debug\startup_psoc6_01_cm0plus.o .\CortexM0p\ARM_GCC_541\Debug\main_cm0p.o .\CortexM0p\ARM_GCC_541\Debug\system_psoc6_cm0plus.o .\CortexM0p\ARM_GCC_541\Debug\cyfitter_sysint_cfg.o .\CortexM0p\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0p\ARM_GCC_541\Debug\cymetadata.o .\CortexM0p\ARM_GCC_541\Debug\cy_efuse.o .\CortexM0p\ARM_GCC_541\Debug\cy_flash.o .\CortexM0p\ARM_GCC_541\Debug\cy_gpio.o .\CortexM0p\ARM_GCC_541\Debug\cy_ipc_drv.o .\CortexM0p\ARM_GCC_541\Debug\cy_ipc_sema.o .\CortexM0p\ARM_GCC_541\Debug\cy_ipc_pipe.o .\CortexM0p\ARM_GCC_541\Debug\cy_lvd.o .\CortexM0p\ARM_GCC_541\Debug\cy_profile.o .\CortexM0p\ARM_GCC_541\Debug\cy_prot.o .\CortexM0p\ARM_GCC_541\Debug\cy_sysanalog.o .\CortexM0p\ARM_GCC_541\Debug\cy_sysclk.o .\CortexM0p\ARM_GCC_541\Debug\cy_sysint.o .\CortexM0p\ARM_GCC_541\Debug\cy_syslib.o .\CortexM0p\ARM_GCC_541\Debug\cy_syslib_gcc.o .\CortexM0p\ARM_GCC_541\Debug\cy_syspm.o .\CortexM0p\ARM_GCC_541\Debug\cy_systick.o .\CortexM0p\ARM_GCC_541\Debug\cy_trigmux.o .\CortexM0p\ARM_GCC_541\Debug\cy_wdt.o .\CortexM0p\ARM_GCC_541\Debug\cy_device.o .\CortexM0p\ARM_GCC_541\Debug\cy_ble_clk.o -mcpu=cortex-m0plus -mthumb -L Generated_Source\PSoC6 -Wl,-Map,.\CortexM0p\ARM_GCC_541\Debug/Onethinx_Creator.map -T cy8c6xx7_cm0plus.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
-"C:\Program Files (x86)\Cypress\PDL\3.1.5\tools\win\elf\cymcuelftool.exe" --sign R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator_link.elf --output R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator.elf --hex R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator.hex
-No ELF section .cychecksum found, creating one
-Application checksum calculated and stored in ELF section .cychecksum
-Checksum calculated and stored in ELF section .cymeta
 The compile step is up to date, no work needs to be done.
 The link step is up to date, no work needs to be done.
-"C:\Program Files (x86)\Cypress\PDL\3.1.5\tools\win\elf\cymcuelftool.exe" --sign R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator_link.elf --output R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator_signed.elf --hex R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator_signed.hex
-No ELF section .cychecksum found, creating one
-Application checksum calculated and stored in ELF section .cychecksum
-Checksum calculated and stored in ELF section .cymeta
-"C:\Program Files (x86)\Cypress\PDL\3.1.5\tools\win\elf\cymcuelftool.exe" --merge R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator_signed.elf R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM0p\ARM_GCC_541\Debug\Onethinx_Creator.elf --output R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator.elf --hex R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator.hex
-Application checksum calculated and stored in ELF section .cychecksum
-Checksum calculated and stored in ELF section .cymeta
-"C:\Program Files (x86)\Cypress\PDL\3.1.5\tools\win\elf\cymcuelftool.exe" -A R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\CortexM4\ARM_GCC_541\Debug\Onethinx_Creator.elf
-code:17628	sram:2140
-CoreStripper.exe 
-****************************************************
-*          Onethinx CoreStripper Tool 1.22          *
+The compile step is up to date, no work needs to be done.
+The link step is up to date, no work needs to be done.
+Creator_PostBuild -v2 -targetOTX
+*****************************************************
+*            Creator PostBuild tool 2.10            *
 *   The source code of this tool can be found at    *
-* https://github.com/onethinx/Onethinx_CoreStripper *
+*   https://github.com/RolfNoot/CreatorPostBuild01  *
 *                (c) Rolf / Onethinx                *
-****************************************************
-Target file: R:\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\Generated_Source\PSoC6\cyfitter_cfg.c
-File already parsed, no work to be done :-)
---------------- Build Succeeded: 12/23/2022 21:25:38 ---------------
+*****************************************************
+Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\Export\PSoCCreatorExportIDECortexM4.xml
+Done!
+Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\Generated_Source\PSoC6\cyfitter_cfg.c
+Changed line 194 to: 	status = CY_RET_SUCCESS;          // Removed enabling of WCO as it is already enabled by the Onethinx Core: status = Cy_SysClk_WcoEnable(500000u);
+Found Cy_SystemInit() at line 285, skipping code...
+Done!
+Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\Generated_Source\PSoC6\pdl\middleware\ble\cy_ble_clk.c
+Found SFLASH->RADIO_LDO_TRIMS at line 716, changing code...
+Done!
+Target file: \\Mac\Data\VScode\GIT\Onethinx_Project_Examples\Example_HelloWorld\Onethinx_Creator.cydsn\..\meson.build
+Done!
+--------------- Build Succeeded: 05/16/2023 15:59:21 ---------------
