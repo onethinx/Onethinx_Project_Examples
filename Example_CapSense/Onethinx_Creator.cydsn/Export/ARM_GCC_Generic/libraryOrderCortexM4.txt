@@ -1,0 +1,1 @@
+.\Export\ARM_GCC_Generic\CapSense_v3_0\CapSense_Library_GCC_M4.a
