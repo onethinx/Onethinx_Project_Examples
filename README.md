@@ -21,9 +21,9 @@ These projects combine the Visual Code setup for code editing with the magnifice
 1. The PSoC Schematic Editor and the Design Wide Resources can be accessed at the left 'Workspace Explorer' pane:
 <br>`..Onethinx_Project_Examples\Example_X\Onethinx_Creator.cydsn\Onethinx_Creator.cywrk`<br><br>
 ![PSoC_Creator_Config](https://github.com/onethinx/Readme_assets/blob/main/PSoC_Creator_Config.png)
-1. After the changes to the chip configuration are done, build the Onethinx Creator project (Build >> Build Onethinx_Creator or Shift + F5)
-1. Make sure the project builds well from the output tab and the Onethinx CoreStripper has run:<br>
-![Onethinx CoreStripper](https://github.com/onethinx/Readme_assets/blob/main/PSoC_Creator_Build.png)
+1. After the changes to the chip configuration are done, build the Onethinx Creator project (Build >> Build Onethinx_Creator or Shift + F6)
+1. Make sure the project builds well from the output tab and the Creator_Postbuild has run:<br>
+![Creator_Postbuild](https://raw.githubusercontent.com/onethinx/Readme_assets/main/Output.png)
 1. The chip configuration is done and PSoC Creator may be closed.
 
 ## 3 Firmware Coding and Debugging (uses Visual Studio Code)
