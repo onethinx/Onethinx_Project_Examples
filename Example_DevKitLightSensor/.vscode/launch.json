@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch CM4 (KitProg)",
+            "name": "Launch",
             "type": "cortex-debug",
             "request": "launch",
             "cwd": "${workspaceRoot}",
@@ -11,98 +11,25 @@
             "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
             "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
             "openOCDPreConfigLaunchCommands": [
-                "set PROGRAMMER kitprog3",
-                "set ENABLE_ACQUIRE 1",
-                "set ENABLE_CM0 0"
-            ],
-            "openOCDLaunchCommands": [
-                "tcl_port disabled",
-                "telnet_port disabled",
-                //"cmsis_dap_serial 141610F301237400",                          // Select debugger if you have multiple connected
-                "kitprog3 power_config on 3300"
-            ],
-            "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/openocd.tcl"
-            ],
-            "overrideLaunchCommands": [
-                "set mem inaccessible-by-default off",
-                "-enable-pretty-printing",
-                "monitor reset init",
-                "-target-download",                                             // Comment this out if you don't want to reload program
-                //"set output-radix 16",                                        // Comment this out if you want decimal output instead of hexadecimal
-                "monitor reset run",
-                //"monitor sleep 200",
-                "monitor psoc6 reset_halt sysresetreq"
-            ],
-            "postStartSessionCommands": [                                       // Needed if runToMain is false
-                // Following two commands are needed to get gdb and openocd and HW all in sync.
-                // Or, execution context (PC, stack, registers, etc.) look like they are from before reset.
-                // The stepi, is a pretend instruction that does not actually do a stepi, but MUST be done
-                // Its a documented workaround in openocd. Do a 'monitor help' to see more info
-                //
-                // An alternative command to use is "continue" instead of the following two
-
-                "monitor gdb_sync",
-                "stepi"
-            ],
-            "overrideRestartCommands": [
-                "monitor reset init",
-                "monitor reset run",
-                //"monitor sleep 200",
-                "monitor psoc6 reset_halt sysresetreq"
-            ],
-            "postRestartSessionCommands": [
-                "monitor gdb_sync",
-                "stepi",
-                "tbreak main"
-            ],
-            "svdFile": "${env:ONETHINX_PACK_LOC}/config/svd/psoc6_01.svd",      // svdFile is optional, it can be very large.
-            "runToEntryPoint": "main",                                          // if true, program will halt at main. Not used for a restart     
-            "preLaunchTask": "${command:otx.preLaunch}",                        // otx.preLaunch will build the project to prevent unmatched source code debugging
-            "showDevDebugOutput": "none",                                       // Shows output of GDB, helpful when something is not working right
-        },
-        {
-            "name": "Launch CM4 (J-Link)",
-            "type": "cortex-debug",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-            "executable": "build/${workspaceFolderBasename}.elf",
-            "servertype": "openocd",
-            "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
-            "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
-            "openOCDPreConfigLaunchCommands": [
-                "set PROGRAMMER jlink",
                 "set ENABLE_ACQUIRE 0",
                 "set ENABLE_CM0 0"
             ],
+            "openOCDLaunchCommands": [
+              //  "tcl_port disabled",
+              //  "telnet_port disabled",
+               // "cmsis_dap_vid_pid 0xc251 0xf001; cmsis_dap_backend hid",
+                //"cmsis_dap_serial 141610F301237400",                          // Select debugger if you have multiple connected
+                //"kitprog3 power_config on 3300"
+               // "reset_config srst_only;adapter_nsrst_delay 1000" 
+            ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/openocd.tcl"
+                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
             ],
-            "overrideLaunchCommands": [
-                "set mem inaccessible-by-default off",
-                "-enable-pretty-printing",
-                //"monitor reset init",
-                "-target-download",                                             // Comment this out if you don't want to reload program
-                //"set output-radix 16",                                        // Comment this out if you want decimal output instead of hexadecimal
-                "monitor reset run",
-                "monitor sleep 200",
-                "monitor psoc6 reset_halt sysresetreq"
-            ],
-            "postStartSessionCommands": [                                       // Needed if runToMain is false
-                // Following two commands are needed to get gdb and openocd and HW all in sync.
-                // Or, execution context (PC, stack, registers, etc.) look like they are from before reset.
-                // The stepi, is a pretend instruction that does not actually do a stepi, but MUST be done
-                // Its a documented workaround in openocd. Do a 'monitor help' to see more info
-                //
-                // An alternative command to use is "continue" instead of the following two
 
-                "monitor gdb_sync",
-                "stepi"
-            ],
             "overrideRestartCommands": [
                 "monitor reset init",
                 "monitor reset run",
-                "monitor sleep 200",
+                //"monitor sleep 200",
                 "monitor psoc6 reset_halt sysresetreq"
             ],
             "postRestartSessionCommands": [
@@ -114,11 +41,11 @@
             "runToEntryPoint": "main",                                          // if true, program will halt at main. Not used for a restart     
             "preLaunchTask": "${command:otx.preLaunch}",                        // otx.preLaunch will build the project to prevent unmatched source code debugging
             "showDevDebugOutput": "none",                                       // Shows output of GDB, helpful when something is not working right
-        },
+        },
         // When using 'attach', make sure your program is running on the board and that your executable matches
         // the image in the chip exactly, or else strange things can happen with breakpoint, variables, etc.
         {
-            "name": "Attach CM4 (KitProg)",
+            "name": "Attach",
             "type": "cortex-debug",
             "request": "attach",
             "cwd": "${workspaceRoot}",
@@ -127,12 +54,11 @@
             "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
             "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
             "openOCDPreConfigLaunchCommands": [
-                "set PROGRAMMER kitprog3",
                 "set ENABLE_ACQUIRE 0",
                 "set ENABLE_CM0 0"
             ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/openocd.tcl"
+                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
             ],
             "overrideAttachCommands": [
                 "set mem inaccessible-by-default off",
@@ -155,7 +81,7 @@
             "showDevDebugOutput": "none",                                       // Shows output of GDB, helpful when something is not working right
         },
         {
-            "name": "Erase (KitProg)",
+            "name": "Erase",
             "type": "cortex-debug",
             "request": "launch",
             "cwd": "${workspaceRoot}",
@@ -164,12 +90,11 @@
             "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
             "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
             "openOCDPreConfigLaunchCommands": [
-                "set PROGRAMMER kitprog3",
                 "set ENABLE_ACQUIRE 0",
                 "set ENABLE_CM0 0"
             ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/openocd.tcl"
+                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
             ],
             "overrideLaunchCommands": [
                 "monitor reset init",
@@ -179,7 +104,7 @@
             ]
         },
         {
-            "name": "Program (KitProg)",
+            "name": "Program",
             "type": "cortex-debug",
             "request": "launch",
             "cwd": "${workspaceRoot}",
@@ -188,12 +113,11 @@
             "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
             "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
             "openOCDPreConfigLaunchCommands": [
-                "set PROGRAMMER kitprog3",
                 "set ENABLE_ACQUIRE 0",
                 "set ENABLE_CM0 0"
             ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/openocd.tcl"
+                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
             ],
             "openOCDLaunchCommands": [
                 "tcl_port disabled",
@@ -208,6 +132,6 @@
                 "monitor psoc6.dap dpreg 0x04 0x00",
                 "-gdb-exit"
             ],
-        }
+        },
     ]
 }

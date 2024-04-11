@@ -5,6 +5,10 @@
       "otx.preLaunch": {
         "script": "${workspaceRoot}/.vscode/meson.js",
       },
+      "otx.selProg": {
+        "script": "${workspaceRoot}/.vscode/meson.js",
+        "button": { "text": "$(wrench) Select Programmer" },
+      },
       "otx.clean": {
         "script": "${workspaceRoot}/.vscode/meson.js",
         "button": { "text": "$(references) Clean-Reconfigure" },
@@ -15,7 +19,7 @@
       },
       "otx.run": {
         "script": "${workspaceRoot}/.vscode/meson.js",
-        "button": { "text": "$(debug-start) Build-and-Launch" },
+        "button": { "text": "$(debug-alt) Build-and-Launch" },
       }
     }
   },

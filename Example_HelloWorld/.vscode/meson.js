@@ -17,6 +17,9 @@ exports.execute = async (args) => {
         case 'otx.run':
             ret = await otxRun();
             break;
+		case 'otx.selProg':
+			ret = await otxSelProg();
+			break;
     }
     return ret;
 };
@@ -82,8 +85,49 @@ otxClean = async () => {
     return null;
 };
 
+otxSelProg = async () => {
+	const programmers = [
+		{ s: "kitprog3", l: "Infineon KitProg3 Programmer" },
+		{ s: "jlink", l: "SEGGER J-Link Programmer" },
+		{ s: "cmsis-dap", l: "CMSIS-DAP Compliant Debugger" },
+		{ s: "kitprog", l: "Infineon KitProg Programmer" },
+		{ s: "ulink", l: "Keil ULINK JTAG Programmer" },
+		{ s: "stlink", l: "ST-Link Programmer" },
+		{ s: "ft232r", l: "Bitbang mode of FT232R based devices" },
+		{ s: "ftdi", l: "MPSSE mode of FTDI based devices" },
+		{ s: "buspirate", l: "Bus Pirate" },
+		{ s: "altera-usb-blaster", l: "Altera USB-Blaster Compatible" },
+		{ s: "altera-usb-blaster2", l: "Altera USB-Blaster II Compatible" },
+		{ s: "usbprog", l: "USBProg JTAG Programmer" },
+		{ s: "arm-jtag-ew", l: "Olimex ARM-JTAG-EW Programmer" },
+		{ s: "angie", l: "ANGIE Adapter" },
+		{ s: "vsllink", l: "Versaloon-Link JTAG Programmer" },
+		{ s: "osbdm", l: "OSBDM (JTAG only) Programmer" },
+		{ s: "opendous", l: "eStick/opendous JTAG Programmer" },
+		{ s: "rlink", l: "Raisonance RLink JTAG Programmer" },
+		{ s: "nulink", l: "Nu-Link Programmer" },
+		{ s: "presto", l: "ASIX Presto Adapter" },
+		{ s: "openjtag", l: "OpenJTAG Adapter" },
+		{ s: "linuxgpiod", l: "Linux GPIO bitbang through libgpiod" },
+		{ s: "xds110", l: "TI XDS110 Debug Probe" },
+		{ s: "ti-icdi", l: "TI ICDI JTAG Programmer" },
+	];
+	const progNames = programmers.map(prog => prog.l);
+	vscode.window.showQuickPick(progNames, {
+		canPickMany: false,
+		placeHolder: 'Select a programmer'
+	}).then((selected) => {
+		if (selected) {
+			const programmer = programmers.find(prog => prog.l === selected);
+			vscode.window.showInformationMessage(`You selected: ${selected}`);
+			selectProgrammer(programmer.s);
+		}
+	});
+	return null;
+}
+
 otxBuild = async () => {
-    let { status, message, basePath } =  await checkSetup();
+    let { status, message, basePath } = await checkSetup();
     if (status != 'ok') 
     {
         vscode.window.showErrorMessage("The build task terminated with exit code: " + status + "\r\nPlease Clean-Reconfigure.", { modal: true });
@@ -98,7 +142,7 @@ otxBuild = async () => {
     }
     var headerContents = readDirectory(basePath, [], sourcePath, '.h', true);
     var sourceContents = readDirectory(basePath, [], sourcePath, '.c', false);
-
+	console.log(headerContents);
     updateMeson(mesonBuildFile, headerContents, sourceContents);
     var ret = await executeTask("Meson: build");
     if (ret == 0) return '';
@@ -132,10 +176,14 @@ async function executeTask(taskName)
 otxRun = async () => {
     //var ret = await vscode.commands.executeCommand('workbench.action.debug.run');
     //var ret = await vscode.commands.executeCommand('workbench.action.debug.selectandstart');
+	vscode.commands.executeCommand('workbench.action.terminal.focus');
     var ret = await vscode.commands.executeCommand('workbench.action.debug.start');
+	console.log(`------ status: ${ret}`);
     //vscode.treeView.reveal('Run', {focus: true});
     //vscode.commands.executeCommand('workbench.action.output.focus');
-    vscode.commands.executeCommand('workbench.debug.action.focusRepl');
+    //vscode.commands.executeCommand('workbench.debug.action.focusRepl');
+    vscode.commands.executeCommand('workbench.action.terminal.focus');
+
     return ret;
 };
 
@@ -189,6 +237,29 @@ function readDirectory(basePath, refArray, dir, extension, foldersOnly) {
 			readDirectory(basePath, refArray, current, extension, foldersOnly)
 	});
     return refArray;
+}
+
+function selectProgrammer(programmer) {
+	const basePath = substituteVariables("${env:ONETHINX_PACK_LOC}");
+	const boardSettingsFile = path.join(basePath, "config", "scripts", "brd.cfg");
+	//console.log(boardSettingsFile);  // View console Help > Toggle developers tools
+	if (!fs.existsSync(boardSettingsFile))
+    {
+        vscode.window.showErrorMessage(`${boardSettingsFile} file not found!`);
+        return null;
+    }
+    const boardSettingsContent = fs.readFileSync(boardSettingsFile, 'utf-8');
+	const lines = boardSettingsContent.split(/\r?\n/);
+	const newLine = `set PROGRAMMER ${programmer}`;
+	if (!lines[0].includes('PROGRAMMER')) {
+		lines.unshift(newLine);
+	} else {
+		lines[0] = newLine;
+	}
+	const contents= lines.join('\n');
+	//console.log(contents);
+	if(contents == boardSettingsContent) return;
+	writeFile(boardSettingsFile, contents);
 }
 
 var process = require('process');
