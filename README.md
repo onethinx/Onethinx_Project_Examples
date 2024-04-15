@@ -8,10 +8,7 @@ These projects combine the Visual Code setup for code editing with the magnifice
     - Unfortunately PSoC Creator is Windows only. PSoC Creator is used for chip configuration only and isn't needed for writing and debugging code.
     - The projects in this folder are pre-configured and don't need PSoC Creator to run.
 1. Download and install the [Visual Studio Code IDE](https://code.visualstudio.com) 
-1. Follow the instructions in the link to install the Onethinx Dependencies Pack:
-    - For Windows: [VSCode_OnethinxPack_Windows](https://github.com/onethinx/VSCode_OnethinxPack_Windows)
-    - For Linux: [VSCode_OnethinxPack_Linux](https://github.com/onethinx/VSCode_OnethinxPack_Linux)
-    - For MacOS: [VSCode_OnethinxPack_MacOS](https://github.com/onethinx/VSCode_OnethinxPack_MacOS)
+1. Follow the instructions in the [link to install the OTX Maestro (project dependency pack)](https://github.com/onethinx/OTX-Maestro) 
 1. Clone `https://github.com/onethinx/Onethinx_Project_Examples.git` or [download](https://github.com/onethinx/Onethinx_Project_Examples/archive/refs/heads/master.zip) and unpack the Example Projects to your local machine.
 
 ## 2 Configure the Chip Setup (IOs, peripherals etc.) using PSoC Creator
