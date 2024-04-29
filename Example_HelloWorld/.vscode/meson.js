@@ -1,24 +1,32 @@
-//import * as logging from '@cmt/logging';
+const thisVersion = "1.0.2";
+// Keep the version definition on top
+
 const vscode = require("vscode");
+const fs = require("fs");
+const path = require("path");
+const https = require('https');
 
 exports.execute = async (args) => {
     var ret = null;
-    switch (args.command)
+	switch (args.command)
     {
         case 'otx.preLaunch':
-            ret = await otxBuild(); 
+            ret = await otxBuild(args); 
+            break;
+		case 'otx.updateProject':
+            ret = await otxUpdate(args);
             break;
         case 'otx.clean':
-            ret = await otxClean();
+            ret = await otxClean(args);
             break;
         case 'otx.build':
-            ret = await otxBuild();
+            ret = await otxBuild(args);
             break;
         case 'otx.run':
-            ret = await otxRun();
+            ret = await otxRun(args);
             break;
 		case 'otx.selProg':
-			ret = await otxSelProg();
+			ret = await otxSelProg(args);
 			break;
     }
     return ret;
@@ -48,7 +56,114 @@ function getDate() {
 //     return null;
 // };
 
-otxClean = async () => {
+function downloadFile(url, destPath) {
+    return new Promise((resolve, reject) => {
+        const file = fs.createWriteStream(destPath);
+        https.get(url, response => {
+            response.pipe(file);
+            file.on('finish', () => {
+                file.close(resolve);
+            });
+        }).on('error', err => {
+            fs.unlink(destPath);
+            reject(err);
+        });
+    });
+}
+
+function readFirstLineFromURL(url) {
+	const options = {
+        headers: {
+            'Cache-Control': 'no-cache'
+        }
+    };
+    return new Promise((resolve, reject) => {
+        https.get(url, options, response => {
+            let data = '';
+            response.on('data', chunk => {
+                data += chunk;
+                const newlineIndex = data.indexOf('\n');
+                if (newlineIndex !== -1) {
+                    resolve(data.slice(0, newlineIndex));
+                    response.destroy();
+                }
+            });
+            response.on('end', () => {
+                resolve(data);
+            });
+        }).on('error', error => {
+            reject(error);
+        });
+    });
+}
+
+function updateFile(folder, file) {
+	basePath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+	vsCodePath = path.join(basePath, folder, file);
+	const folderWithSlash = folder ? folder + '/' : '';
+	downloadFile(`https://raw.githubusercontent.com/onethinx/Maestro-lib/main/${folderWithSlash}${file}`, vsCodePath)
+    //.then(() => console.log('File downloaded successfully.'))
+    .catch(err => console.error('Error downloading file:', err));
+}
+
+otxUpdate = async (args) => {
+	var onlineVersion = thisVersion;
+	const firstMesonLine = await readFirstLineFromURL("https://raw.githubusercontent.com/onethinx/Maestro-lib/main/.vscode/meson.js");
+	const match = firstMesonLine.match(/"([^"]+)"/); // Find the first match of the text inside double quotes in the string
+
+	if (match && match.length > 1) {
+		onlineVersion = match[1]; // Extract the captured group (the version number)
+	}
+	//console.log(`version: ${onlineVersion}`);
+	if (versionCompare(onlineVersion, thisVersion) != 'h')
+	{
+		await vscode.window.showInformationMessage(
+			'No newer project version found online.', 
+			{ modal: true }, // Make the message modal
+		);
+		return;
+	}
+
+	const result = await vscode.window.showInformationMessage(
+		`Project update from ${thisVersion} to ${onlineVersion}.\n\n\
+        This might need an OTX-Meastro update and will update the meson build files and the configuration files in .vscode.\n\n\
+		Backup your project if unsure.\n\nContinue?`, 
+        { modal: true }, // Make the message modal
+        'Yes', 'No'     // Add "Yes" and "No" buttons
+    );
+    if (result != 'Yes') return;
+	updateFile("", 'meson.build');
+	updateFile("", 'cross_gcc.build');
+	updateFile(".vscode", 'launch.json');
+	updateFile(".vscode", 'settings.json');
+	updateFile(".vscode", 'tasks.json');
+	updateFile(".vscode", 'meson.js');
+	vscode.window.showInformationMessage(`Project updated to ${onlineVersion}`);
+}
+
+function versionCompare(versionIn, versionMinimum) {
+    const v_in =  String(versionIn).split('.').map(Number).reduce((acc, val, idx) => acc * 1000 + val, 0);
+	const v_ref =  String(versionMinimum).split('.').map(Number).reduce((acc, val, idx) => acc * 1000 + val, 0);
+	if (v_in < v_ref) return 'l';
+	if (v_in > v_ref) return 'h';
+	return 'e';
+}
+
+otxClean = async (args) => {
+	const maestroVersion = checkVersion();
+	//console.log(`version: ${maestroVersion}`);
+	var compare = versionCompare(thisVersion, maestroVersion);
+	if (compare == 'h')
+	{
+        vscode.window.showErrorMessage(`Please update OTX Maestro\ngot: ${maestroVersion}\n project: ${thisVersion}`, { modal: true });
+        return null;
+    }
+	if (compare == 'l')
+	{
+        vscode.window.showErrorMessage(`Please update project\ngot: ${thisVersion}\n OTX Maestro: ${maestroVersion}`, { modal: true });
+        return null;
+    }
+	vscode.window.showInformationMessage(`OTX-Maestro Version: ${maestroVersion}`);
     let { status, message, basePath } = await checkSetup();
     var buildFolder = path.join(basePath, "build");
     var ret = 0;
@@ -60,12 +175,14 @@ otxClean = async () => {
     else if (status == 'missing') await fs.promises.mkdir(buildFolder);
     else
     {
+		const elfFiles = fs.readdirSync(buildFolder).filter(file => file.endsWith('.elf'));
+		const copy  = elfFiles.length > 0;
         var backupFolder = path.join(buildFolder, "backup");
         var nowFolder = path.join(backupFolder, getDate());
         if (!fs.existsSync(backupFolder)) await fs.promises.mkdir(backupFolder);
         fs.readdirSync(buildFolder).forEach(file => {
             let current = path.join(buildFolder, file);
-            if (fs.statSync(current).isFile()) {
+            if (copy && fs.statSync(current).isFile()) {
                 if(current.endsWith(".elf") || current.endsWith(".hex") || current.endsWith(".txt") || current.endsWith(".json")) {
                     if (!fs.existsSync(nowFolder)) fs.promises.mkdir(nowFolder);
                     var destFile =  path.join(nowFolder, file);
@@ -77,16 +194,42 @@ otxClean = async () => {
         });
     }
 
-	const mesonBuildFile = path.join(basePath, "meson.build");
+    ret = await executeTask("Creator: postbuild");
+    if (ret != 0) 
+	{ 
+		vscode.window.showErrorMessage("The build task terminated with exit code:" + JSON.stringify(ret));
+		return null;
+	}
+	const crossBuildFile = path.join(basePath, "cross_gcc.build");
+    await updateMeson(crossBuildFile, [], []);
+    const mesonBuildFile = path.join(basePath, "meson.build");
     await updateMeson(mesonBuildFile, [], []);
     ret = await executeTask("Meson: configure");
-    if (ret == 0) return '';
-    vscode.window.showErrorMessage("The build task terminated with exit code:" + JSON.stringify(ret));
-    return null;
+    if (ret != 0) 
+	{ 
+		vscode.window.showErrorMessage("The build task terminated with exit code:" + JSON.stringify(ret));
+		return null;
+	}
+	ret = selectProgrammer("", "", true);
+	if (ret == null) return null;
+	if (ret == "" || ret == "default") {	// Current programmer is default or not set?
+		var currentProgrammer = args.replaceValues("${defaultDebugger}");
+		if (currentProgrammer == "${defaultDebugger}")
+		{ // Default programmer isn't set > show picker
+			await otxSelProg(args);
+		}
+		else
+		{	// Default set, select programmer
+			//console.log(`default: ${currentProgrammer}`);
+			selectProgrammer("default", currentProgrammer);
+		}
+	}
+	return '';
 };
 
-otxSelProg = async () => {
+otxSelProg = async (args) => {
 	const programmers = [
+		{ s: "default", l: "Default (defined in settings.json)" },
 		{ s: "kitprog3", l: "Infineon KitProg3 Programmer" },
 		{ s: "jlink", l: "SEGGER J-Link Programmer" },
 		{ s: "cmsis-dap", l: "CMSIS-DAP Compliant Debugger" },
@@ -112,17 +255,69 @@ otxSelProg = async () => {
 		{ s: "xds110", l: "TI XDS110 Debug Probe" },
 		{ s: "ti-icdi", l: "TI ICDI JTAG Programmer" },
 	];
+	// Check for default programmer
+	var currentProgrammer = args.replaceValues("${defaultDebugger}");
+	if (currentProgrammer == "${defaultDebugger}") currentProgrammer = selectProgrammer("", "", true);
+	if (currentProgrammer == null) return null;
+
+	const index = programmers.findIndex(prog => prog.s === currentProgrammer);
+	console.log(`${currentProgrammer} - ${index}`);
 	const progNames = programmers.map(prog => prog.l);
-	vscode.window.showQuickPick(progNames, {
+	// Create a Quick Pick instance
+	const quickPick = vscode.window.createQuickPick();
+	quickPick.canSelectMany = false;
+	quickPick.placeholder = 'Select a programmer';
+
+	// Set Quick Pick items
+	quickPick.items = progNames.map(name => ({ label: name }));
+
+	// Pre-select an item
+	quickPick.activeItems = [quickPick.items[index]];
+
+	// Show the Quick Pick
+	quickPick.show();
+
+	// Handle the selection
+	quickPick.onDidAccept(() => {
+		const selected = quickPick.selectedItems[0];
+		if (selected) {
+			// Handle the selected value here
+			//console.log("Selected programmer:", selected.label);
+			const programmer = programmers.find(prog => prog.l === selected.label);
+			vscode.window.showInformationMessage(`You selected: ${selected.label}`);
+			selectProgrammer(programmer.s, args.replaceValues("${defaultDebugger}"));
+			quickPick.dispose();
+		}
+	});
+	/*
+	vscode.window.showQuickPick(quickPickItems, {
 		canPickMany: false,
-		placeHolder: 'Select a programmer'
+		placeHolder: 'Select a programmer',
+		picked: "Bus Pirate",
+
 	}).then((selected) => {
 		if (selected) {
+			//console.log(selected);
 			const programmer = programmers.find(prog => prog.l === selected);
 			vscode.window.showInformationMessage(`You selected: ${selected}`);
+			if (programmer.s == "default")
+			{
+				try
+				{
+					programmer.s = args.replaceValues("${defaultDebugger}");
+				}
+				catch
+				{
+					vscode.window.showErrorMessage("No default programmer set!\tPlease set the correct programmer in settings.json\neg: \"ego.power-tools.user\": {\"values\": { \"defaultDebugger\": \"cmsis-dap\" }}", { modal: true });
+					return null;
+				}
+			}
 			selectProgrammer(programmer.s);
 		}
 	});
+
+
+*/
 	return null;
 }
 
@@ -178,7 +373,7 @@ otxRun = async () => {
     //var ret = await vscode.commands.executeCommand('workbench.action.debug.selectandstart');
 	vscode.commands.executeCommand('workbench.action.terminal.focus');
     var ret = await vscode.commands.executeCommand('workbench.action.debug.start');
-	console.log(`------ status: ${ret}`);
+	//console.log(`------ status: ${ret}`);
     //vscode.treeView.reveal('Run', {focus: true});
     //vscode.commands.executeCommand('workbench.action.output.focus');
     //vscode.commands.executeCommand('workbench.debug.action.focusRepl');
@@ -186,9 +381,6 @@ otxRun = async () => {
 
     return ret;
 };
-
-const fs = require("fs");
-const path = require("path");
 
 async function checkSetup()
 {
@@ -207,6 +399,19 @@ async function checkSetup()
     if (!fs.existsSync(path.join(buildDir, "build.ninja"))) return { 'status': 'unconfigured', 'message': "Unconfigured Build Folder", 'basePath': basePath };
     if (!fs.existsSync(path.join(buildDir, "compile_commands.json"))) return { 'status': 'unconfigured', 'message': "Unconfigured Build Folder", 'basePath': basePath };
     return { 'status': 'ok', 'message': "OK", 'basePath': basePath };
+}
+
+const { execSync } = require('child_process');
+
+function checkVersion() {
+    try {
+		const versionGet = path.join(substituteVariables("${env:ONETHINX_PACK_LOC}"), 'bin', `OTX-Maestro-version ${thisVersion}`);
+        const stdout = execSync(versionGet);
+        return stdout.toString().trim();
+    } catch (error) {
+		//console.error("Error:", error);
+        return "1.0.0";
+    }
 }
 
 function writeFile(fileName, contents)
@@ -239,18 +444,46 @@ function readDirectory(basePath, refArray, dir, extension, foldersOnly) {
     return refArray;
 }
 
-function selectProgrammer(programmer) {
-	const basePath = substituteVariables("${env:ONETHINX_PACK_LOC}");
-	const boardSettingsFile = path.join(basePath, "config", "scripts", "brd.cfg");
+
+function selectProgrammer(programmer, defaultPrg, checkOnly = false) {
+	var basePath = substituteVariables("${env:ONETHINX_PACK_LOC}");
+	const sourceFile = path.join(basePath, "config", "scripts", "brd.cfg");
+	basePath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+    const boardSettingsFile = path.join(basePath, ".vscode", "brd.cfg");
 	//console.log(boardSettingsFile);  // View console Help > Toggle developers tools
 	if (!fs.existsSync(boardSettingsFile))
     {
-        vscode.window.showErrorMessage(`${boardSettingsFile} file not found!`);
-        return null;
+		try {
+			fs.copyFileSync(sourceFile, boardSettingsFile);
+		} catch (err) {
+			vscode.window.showErrorMessage(`File copy error: ${err}`);
+			return null;
+		}
     }
-    const boardSettingsContent = fs.readFileSync(boardSettingsFile, 'utf-8');
+	const boardSettingsContent = fs.readFileSync(boardSettingsFile, 'utf-8');
 	const lines = boardSettingsContent.split(/\r?\n/);
-	const newLine = `set PROGRAMMER ${programmer}`;
+	//const prgMatch = lines[0].match(/PROGRAMMER\s+(.+)/);
+
+	// Match the words using regular expressions
+	const prgMatch = lines[0].match(/PROGRAMMER\s+([^\s;]+)/);
+	const useDefaultMatch = lines[0].match(/USE_DEFAULT\s+([^\s;]+)/);
+
+	const currentProgrammer = prgMatch ? prgMatch[1] : "";
+	var currentUseDefault = useDefaultMatch ? useDefaultMatch[1] == "true" : true;
+	//console.log(currentProgrammer);
+	if (checkOnly) return currentProgrammer == ""? "" : (currentUseDefault? "default" : currentProgrammer);
+
+	currentUseDefault = programmer == "default";
+	if (currentUseDefault)
+	{
+		programmer = defaultPrg;
+		if (programmer == "${defaultDebugger}")
+		{
+			vscode.window.showErrorMessage("No default programmer set!\tPlease set the correct programmer in settings.json\neg: \"ego.power-tools.user\": {\"values\": { \"defaultDebugger\": \"cmsis-dap\" }}", { modal: true });
+			return null;
+		}
+	}
+	const newLine = `set PROGRAMMER ${programmer}; set USE_DEFAULT ${currentUseDefault}`;
 	if (!lines[0].includes('PROGRAMMER')) {
 		lines.unshift(newLine);
 	} else {
