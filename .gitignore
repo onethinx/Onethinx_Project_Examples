@@ -1,0 +1,15 @@
+**/Onethinx_Creator.cydsn/codegentemp/**
+**/Onethinx_Creator.cydsn/CortexM0p/**
+**/Onethinx_Creator.cydsn/CortexM4/**
+**/Onethinx_Creator.cydsn/Onethinx_Creator.cyprj.*
+**/Onethinx_Creator.cydsn/Onethinx_Creator.cywrk.*
+.DS_Store
+.cache/**
+**/build/backup/**
+**/build/meson-info/**
+**/build/meson-logs/**
+**/build/meson-private/**
+**/build/.ninja*
+**/build/*.ninja
+**/build/*.elf.p
+**/.vscode/brd.cfg
