@@ -4,7 +4,6 @@
 **/Onethinx_Creator.cydsn/Onethinx_Creator.cyprj.*
 **/Onethinx_Creator.cydsn/Onethinx_Creator.cywrk.*
 .DS_Store
-.DS_Store
 .cache/**
 **/build/backup/**
 **/build/meson-info/**
@@ -13,3 +12,4 @@
 **/build/.ninja*
 **/build/*.ninja
 **/build/*.elf.p
+**/.vscode/brd.cfg
