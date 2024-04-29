@@ -8,8 +8,8 @@
             "cwd": "${workspaceRoot}",
             "executable": "build/${workspaceFolderBasename}.elf",
             "servertype": "openocd",
-            "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
-            "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
+            "serverpath": "${env:ONETHINX_PACK_LOC}/openocd/bin/openocd",
+            "searchDir": [ "${env:ONETHINX_PACK_LOC}/openocd/scripts" ],
             "openOCDPreConfigLaunchCommands": [
                 "set ENABLE_ACQUIRE 0",
                 "set ENABLE_CM0 0"
@@ -23,7 +23,7 @@
                // "reset_config srst_only;adapter_nsrst_delay 1000" 
             ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
+                ".vscode/brd.cfg"
             ],
 
             "overrideRestartCommands": [
@@ -51,14 +51,14 @@
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/${workspaceFolderBasename}.elf",
             "servertype": "openocd",
-            "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
-            "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
+            "serverpath": "${env:ONETHINX_PACK_LOC}/openocd/bin/openocd",
+            "searchDir": [ "${env:ONETHINX_PACK_LOC}/openocd/scripts" ],
             "openOCDPreConfigLaunchCommands": [
                 "set ENABLE_ACQUIRE 0",
                 "set ENABLE_CM0 0"
             ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
+                ".vscode/brd.cfg"
             ],
             "overrideAttachCommands": [
                 "set mem inaccessible-by-default off",
@@ -87,14 +87,14 @@
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/${workspaceFolderBasename}.elf",
             "servertype": "openocd",
-            "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
-            "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
+            "serverpath": "${env:ONETHINX_PACK_LOC}/openocd/bin/openocd",
+            "searchDir": [ "${env:ONETHINX_PACK_LOC}/openocd/scripts" ],
             "openOCDPreConfigLaunchCommands": [
                 "set ENABLE_ACQUIRE 0",
                 "set ENABLE_CM0 0"
             ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
+                ".vscode/brd.cfg"
             ],
             "overrideLaunchCommands": [
                 "monitor reset init",
@@ -117,7 +117,7 @@
                 "set ENABLE_CM0 0"
             ],
             "configFiles": [
-                "${env:ONETHINX_PACK_LOC}/config/scripts/brd.cfg"
+                ".vscode/brd.cfg"
             ],
             "openOCDLaunchCommands": [
                 "tcl_port disabled",

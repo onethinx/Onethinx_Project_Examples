@@ -1,14 +1,18 @@
 [binaries]
-c       = 'arm-none-eabi-gcc'
-cpp     = 'arm-none-eabi-g++'
-ld      = 'arm-none-eabi-ld'
-ar      = 'arm-none-eabi-ar'
-as      = 'arm-none-eabi-as'
-size    = 'arm-none-eabi-size'
-objdump = 'arm-none-eabi-objdump'
-objcopy = 'arm-none-eabi-objcopy'
-strip   = 'arm-none-eabi-strip'
-gdb     = 'arm-none-eabi-gdb'
+# OTX_Extension_print(ONETHINX_PACK_LOC = '${env:ONETHINX_PACK_LOC}')
+ONETHINX_PACK_LOC = '/Applications/OTX-Maestro'
+
+GCC_DIR = ONETHINX_PACK_LOC + '/gcc-arm/bin'
+c       = GCC_DIR + '/arm-none-eabi-gcc'
+cpp     = GCC_DIR + '/arm-none-eabi-g++'
+ld      = GCC_DIR + '/arm-none-eabi-ld'
+ar      = GCC_DIR + '/arm-none-eabi-ar'
+as      = GCC_DIR + '/arm-none-eabi-as'
+size    = GCC_DIR + '/arm-none-eabi-size'
+objdump = GCC_DIR + '/arm-none-eabi-objdump'
+objcopy = GCC_DIR + '/arm-none-eabi-objcopy'
+strip   = GCC_DIR + '/arm-none-eabi-strip'
+gdb     = GCC_DIR + '/arm-none-eabi-gdb'
 
 [host_machine]
 system     = 'none'

@@ -1,5 +1,11 @@
+
+.
 Generated_Source\PSoC6
 Generated_Source\PSoC6\pdl\cmsis\include
+Generated_Source\PSoC6\pdl\devices\psoc6\include
+Generated_Source\PSoC6\pdl\devices\psoc6\include\ip
+Generated_Source\PSoC6\pdl\drivers\peripheral
+Generated_Source\PSoC6\pdl\drivers\peripheral\device
 Generated_Source\PSoC6\pdl\drivers\peripheral\efuse
 Generated_Source\PSoC6\pdl\drivers\peripheral\flash
 Generated_Source\PSoC6\pdl\drivers\peripheral\gpio
@@ -15,10 +21,4 @@ Generated_Source\PSoC6\pdl\drivers\peripheral\syspm
 Generated_Source\PSoC6\pdl\drivers\peripheral\systick
 Generated_Source\PSoC6\pdl\drivers\peripheral\trigmux
 Generated_Source\PSoC6\pdl\drivers\peripheral\wdt
-Generated_Source\PSoC6\pdl\drivers\peripheral\device
-Generated_Source\PSoC6\pdl\middleware\ble
-Generated_Source\PSoC6\pdl\devices\psoc6\include
-Generated_Source\PSoC6\pdl\devices\psoc6\include\ip
-.
-Generated_Source\PSoC6\pdl\drivers\peripheral
 Generated_Source\PSoC6\pdl\middleware

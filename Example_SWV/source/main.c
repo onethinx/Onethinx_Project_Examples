@@ -43,9 +43,8 @@
 #include <project.h>
 #include <stdio.h>
 
-
 // Use UART SWV emulation to output data on SWO port.
-int _write(int file, char *ptr, int len) 
+int _write(int file __attribute__((unused)), char *ptr, int len) 
 {
     for (int i = 0; i < ((len + 3) & ~3); i++) 
     {

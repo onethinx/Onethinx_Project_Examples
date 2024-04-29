@@ -714,7 +714,7 @@ static cy_en_ble_eco_status_t Cy_BLE_HAL_MxdRadioEnableClocks(const cy_stc_ble_b
     }
 
     /* Update RADIO LDO trim values */
-    if((Cy_SysLib_GetDeviceRevision() != CY_SYSLIB_DEVICE_REV_0A) && (false))        // Changed from (false) to (false) by Creator PostBuild for OTX-18        // Changed from (SFLASH->RADIO_LDO_TRIMS != 0U) to (false) by Creator PostBuild for OTX-18
+    if((Cy_SysLib_GetDeviceRevision() != CY_SYSLIB_DEVICE_REV_0A) && (false))        // Changed from (false) to (false) by Creator PostBuild for OTX-18        // Changed from (false) to (false) by Creator PostBuild for OTX-18        // Changed from (SFLASH->RADIO_LDO_TRIMS != 0U) to (false) by Creator PostBuild for OTX-18
     {
         if(status == CY_BLE_ECO_SUCCESS)
         {

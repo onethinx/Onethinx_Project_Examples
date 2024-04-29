@@ -1,9 +1,14 @@
 {
   "json.validate.enable": false,  //temporary disable as tasks.json yields error on "fileLocation": ["relative", "${workspaceFolder}/build" ]
+  "cortex-debug.armToolchainPath": "${env:ONETHINX_PACK_LOC}/gcc-arm/bin",
   "ego.power-tools": {
     "commands": {
       "otx.preLaunch": {
         "script": "${workspaceRoot}/.vscode/meson.js",
+      },
+      "otx.updateProject": {
+        "script": "${workspaceRoot}/.vscode/meson.js",
+        "button": { "text": "$(notebook-render-output) Update project" },
       },
       "otx.selProg": {
         "script": "${workspaceRoot}/.vscode/meson.js",
@@ -21,11 +26,6 @@
         "script": "${workspaceRoot}/.vscode/meson.js",
         "button": { "text": "$(debug-alt) Build-and-Launch" },
       }
-    }
-  },
-  "files.associations": {
-    "project.h": "c",
-    "new.h": "c",
-    "lorawan_keys.h": "c"
+    },
   }
 }

@@ -4,22 +4,36 @@
     {
         "label": "JLink_Power_Off",
         "type": "shell",
-        "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff off"
+        "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff off"
     },
     {
         "label": "JLink_Power_On",
         "type": "shell",
-        "command": "${env:ONETHINX_PACK_LOC}/config/scripts/JlinkOnOff/JlinkOnOff on"
+        "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff on"
     },
+    {
+        "label": "Creator: postbuild",
+        "hide": true,
+        "type": "shell",
+        "command": "${env:ONETHINX_PACK_LOC}/bin/Creator_PostBuild -v2 -targetOTX",
+        "linux": {
+            "command": "TERM=XTERM ${env:ONETHINX_PACK_LOC}/bin/Creator_PostBuild -v2 -targetOTX"
+        },
+        "options": {
+            "statusbar": { "hide" : true },
+            "cwd": "${workspaceFolder}/Onethinx_Creator.cydsn/"
+        }
+    },  
     {
         "label": "Meson: configure",
         "hide": true,
         "type": "shell",
-        "command": "meson setup --cross-file cross_gcc.build build",
+        "command": "${env:ONETHINX_PACK_LOC}/bin/meson setup --cross-file cross_gcc.build build",
         "args": [],
         "options": {
             "statusbar": { "hide" : true },
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
+            "env": { "PATH": "${env:ONETHINX_PACK_LOC}/bin" },
         }
     },
     {
@@ -30,6 +44,7 @@
         "options": {
             "statusbar": { "hide" : true },
             "cwd": "${workspaceFolder}",
+            "env": { "PATH": "${env:ONETHINX_PACK_LOC}/bin" },
         },
         "problemMatcher": [
         {

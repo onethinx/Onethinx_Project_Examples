@@ -90,7 +90,7 @@ ipc_msgs_t ipcMsgs =
 
 volatile uint32_t callBackDone;
 
-void CM4_MessageCallback(uint32_t *msg)
+void CM4_MessageCallback(uint32_t *msg __attribute__((unused)))
 {
 }
 
