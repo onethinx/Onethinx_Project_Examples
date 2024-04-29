@@ -1,4 +1,4 @@
-# Onethinx Project Examples
+# 🚀 Onethinx Project Examples 🚀
 This folder contains several project examples for use with the Onethinx OTX-18 LoRa(WAN) module.
 
 These projects combine the Visual Code setup for code editing with the magnificent PSoC Creator Schematic Editor & Design Wide Resources Editor for chip setup.
