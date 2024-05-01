@@ -10,13 +10,7 @@
             "servertype": "openocd",
             "serverpath": "${env:ONETHINX_PACK_LOC}/openocd/bin/openocd",
             "searchDir": [ "${env:ONETHINX_PACK_LOC}/openocd/scripts" ],
-            "openOCDPreConfigLaunchCommands": [
-                "set ENABLE_ACQUIRE 0",
-                "set ENABLE_CM0 0"
-            ],
             "openOCDLaunchCommands": [
-              //  "tcl_port disabled",
-              //  "telnet_port disabled",
                // "cmsis_dap_vid_pid 0xc251 0xf001; cmsis_dap_backend hid",
                 //"cmsis_dap_serial 141610F301237400",                          // Select debugger if you have multiple connected
                 //"kitprog3 power_config on 3300"
@@ -25,7 +19,6 @@
             "configFiles": [
                 ".vscode/brd.cfg"
             ],
-
             "overrideRestartCommands": [
                 "monitor reset init",
                 "monitor reset run",
@@ -53,12 +46,11 @@
             "servertype": "openocd",
             "serverpath": "${env:ONETHINX_PACK_LOC}/openocd/bin/openocd",
             "searchDir": [ "${env:ONETHINX_PACK_LOC}/openocd/scripts" ],
-            "openOCDPreConfigLaunchCommands": [
-                "set ENABLE_ACQUIRE 0",
-                "set ENABLE_CM0 0"
-            ],
             "configFiles": [
                 ".vscode/brd.cfg"
+            ],
+            "openOCDPreConfigLaunchCommands": [
+                "set ATTACH 1",
             ],
             "overrideAttachCommands": [
                 "set mem inaccessible-by-default off",
@@ -89,17 +81,12 @@
             "servertype": "openocd",
             "serverpath": "${env:ONETHINX_PACK_LOC}/openocd/bin/openocd",
             "searchDir": [ "${env:ONETHINX_PACK_LOC}/openocd/scripts" ],
-            "openOCDPreConfigLaunchCommands": [
-                "set ENABLE_ACQUIRE 0",
-                "set ENABLE_CM0 0"
-            ],
             "configFiles": [
                 ".vscode/brd.cfg"
             ],
             "overrideLaunchCommands": [
-                "monitor reset init",
-                "monitor psoc6 sflash_restrictions 1",
-                "monitor erase_all",
+                "mon reset init",
+                "mon flash erase_address 0x10000000 0xE000",
                 "-gdb-exit"
             ]
         },
@@ -110,22 +97,12 @@
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/${workspaceFolderBasename}.elf",
             "servertype": "openocd",
-            "serverpath": "${env:ONETHINX_TOOLS_LOC}/openocd/bin/openocd",
-            "searchDir": [ "${env:ONETHINX_TOOLS_LOC}/openocd/scripts" ],
-            "openOCDPreConfigLaunchCommands": [
-                "set ENABLE_ACQUIRE 0",
-                "set ENABLE_CM0 0"
-            ],
+            "serverpath": "${env:ONETHINX_PACK_LOC}/openocd/bin/openocd",
+            "searchDir": [ "${env:ONETHINX_PACK_LOC}/openocd/scripts" ],
             "configFiles": [
                 ".vscode/brd.cfg"
             ],
-            "openOCDLaunchCommands": [
-                "tcl_port disabled",
-                "telnet_port disabled",
-                "kitprog3 power_config on 3300"
-            ],
             "overrideLaunchCommands": [
-                "monitor psoc6 sflash_restrictions 1",
                 "monitor program ./build/${workspaceFolderBasename}.elf",
                 "monitor reset_config srst_only",
                 "monitor reset run",
