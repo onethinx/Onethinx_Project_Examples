@@ -4,10 +4,10 @@
             "name": "GCC",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${env:ONETHINX_COMPILER_LOC}/../arm-none-eabi/include"
+                "${env:ONETHINX_PACK_LOC}/gcc-arm/arm-none-eabi/include"
             ],
             "defines": [],
-            "compilerPath": "${env:ONETHINX_COMPILER_LOC}/arm-none-eabi-gcc",
+            "compilerPath": "${env:ONETHINX_PACK_LOC}/gcc-arm/bin/arm-none-eabi-gcc",
             "cStandard": "gnu99",
             "cppStandard": "c++98",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json"

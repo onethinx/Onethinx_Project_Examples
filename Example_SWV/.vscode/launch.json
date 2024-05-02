@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch",
+            "name": "Debug",
             "type": "cortex-debug",
             "request": "launch",
             "cwd": "${workspaceRoot}",
