@@ -5,11 +5,24 @@
         "label": "JLink_Power_Off",
         "type": "shell",
         "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff off"
+        "options": {
+            "statusbar": { 
+                "label": "$(terminal) JLink Power Off",
+                "hide" : "${notJlink}"
+            },
+        },
     },
     {
         "label": "JLink_Power_On",
         "type": "shell",
         "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff on"
+        "options": {
+            "statusbar": { 
+                "label": "$(terminal) JLink Power On",
+                "hide" : "${notJlink}",
+                "color" : "#10C010",
+            },
+        }
     },
     {
         "label": "Creator: postbuild",
@@ -23,10 +36,61 @@
             "statusbar": { "hide" : true },
             "cwd": "${workspaceFolder}/Onethinx_Creator.cydsn/"
         }
-    },  
+    }, 
+    {
+        "label": "Update Project",
+        "command": "${command:otx-maestro.updateProject}",
+        "options": {
+            "statusbar": { 
+                "label": "$(notebook-render-output) Update Project",
+                "hide" : false
+            },
+        }
+    },
+    {
+        "label": "Select Programmer",
+        "command": "${command:otx-maestro.selectProgrammer}",
+        "options": {
+            "statusbar": { 
+                "label": "$(wrench) Select Programmer",
+                "hide" : false
+            },
+        }
+    },
+    {
+        "label": "Clean-Reconfigure",
+        "command": "${command:otx-maestro.clean}",
+        "options": {
+            "statusbar": { 
+                "label": "$(references) Clean-Reconfigure",
+                "detail" : "Clean and Reconfigure Workspace"
+            },
+        }
+    },
+    {
+        "label": "Build",
+        "command": "${command:otx-maestro.build}",
+        "options": {
+            "statusbar": { 
+                "label": "$(file-binary) Build",
+                "detail" : "Build your project"
+            },
+        }
+    },
+    {
+        "label": "Build-and-Launch",
+        "command": "${command:otx-maestro.launch}",
+        "options": {
+            "statusbar": { 
+                "label": "$(rocket) Build-and-Launch",
+                "color" : "#FF8000",
+                "detail" : "Build and Launch your project"
+            },
+        },
+    }, 
+
     {
         "label": "Meson: configure",
-        "hide": true,
         "type": "shell",
         "command": "${env:ONETHINX_PACK_LOC}/bin/meson setup --cross-file cross_gcc.build build",
         "args": [],

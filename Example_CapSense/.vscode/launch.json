@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Debug",
-            "type": "cortex-debug",
+            "type": "cortex-gdb",
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "executable": "build/${workspaceFolderBasename}.elf",
@@ -22,7 +22,6 @@
             "overrideRestartCommands": [
                 "monitor reset init",
                 "monitor reset run",
-                //"monitor sleep 200",
                 "monitor psoc6 reset_halt sysresetreq"
             ],
             "postRestartSessionCommands": [
@@ -32,14 +31,15 @@
             ],
             "svdFile": "${env:ONETHINX_PACK_LOC}/config/svd/psoc6_01.svd",      // svdFile is optional, it can be very large.
             "runToEntryPoint": "main",                                          // if true, program will halt at main. Not used for a restart     
-            "preLaunchTask": "${command:otx.preLaunch}",                        // otx.preLaunch will build the project to prevent unmatched source code debugging
+            "preLaunchTask": "${command:otx-maestro.preLaunch}",                        // otx.preLaunch will build the project to prevent unmatched source code debugging
             "showDevDebugOutput": "none",                                       // Shows output of GDB, helpful when something is not working right
+            "showServerOutput": "switch",
         },
         // When using 'attach', make sure your program is running on the board and that your executable matches
         // the image in the chip exactly, or else strange things can happen with breakpoint, variables, etc.
         {
             "name": "Attach",
-            "type": "cortex-debug",
+            "type": "cortex-gdb",
             "request": "attach",
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/${workspaceFolderBasename}.elf",
@@ -74,7 +74,7 @@
         },
         {
             "name": "Erase",
-            "type": "cortex-debug",
+            "type": "cortex-gdb",
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/${workspaceFolderBasename}.elf",
@@ -92,7 +92,7 @@
         },
         {
             "name": "Program",
-            "type": "cortex-debug",
+            "type": "cortex-gdb",
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/${workspaceFolderBasename}.elf",

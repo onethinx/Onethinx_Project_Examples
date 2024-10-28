@@ -2,14 +2,44 @@
     "version": "2.0.0",
     "tasks": [
     {
-        "label": "JLink_Power_Off",
-        "type": "shell",
-        "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff off"
+        "label": "OTX Maestro",
+        "command": "${command:otx-maestro.showInfo}",
+        "options": {
+            "statusbar": { 
+                "label": "$(zap)OTX-Maestro$(zap)",
+                "color": "#25C0D8",
+                "alignment": "left",
+                "priority": 0,
+                "detail": "OTX-Maestro v${thisVersion}\n\n[Learn More](https://github.com/onethinx/OTX-Maestro/blob/main/README.md)"
+            },
+        },
     },
     {
-        "label": "JLink_Power_On",
+        "label": "JLink Power Off",
         "type": "shell",
-        "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff on"
+        "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff off",
+        "options": {
+            "statusbar": { 
+                "label": "$(terminal) JLink Power Off",
+                "hide" : "${notJlink}",
+                "alignment": "right",
+                "priority": 500
+            },
+        },
+    },
+    {
+        "label": "JLink Power On",
+        "type": "shell",
+        "command": "${env:ONETHINX_PACK_LOC}/bin/JlinkOnOff/JlinkOnOff on",
+        "options": {
+            "statusbar": { 
+                "label": "$(terminal) JLink Power On",
+                "hide" : "${notJlink}",
+                "color" : "#10C010",
+                "alignment": "right",
+                "priority": 500
+            },
+        }
     },
     {
         "label": "Creator: postbuild",
@@ -21,12 +51,72 @@
         },
         "options": {
             "statusbar": { "hide" : true },
-            "cwd": "${workspaceFolder}/Onethinx_Creator.cydsn/"
+            "cwd": "${workspaceFolder}/${command:otx-maestro.getPSoCCreatorFolder}/"
         }
-    },  
+    }, 
     {
-        "label": "Meson: configure",
-        "hide": true,
+        "label": "Update Project",
+        "command": "${command:otx-maestro.updateProject}",
+        "options": {
+            "statusbar": { 
+                "label": "$(notebook-render-output) Update Project",
+                "hide" : false,
+                "alignment": "right",
+                "priority": 500
+            },
+        }
+    },
+    {
+        "label": "Select Programmer",
+        "command": "${command:otx-maestro.selectProgrammer}",
+        "options": {
+            "statusbar": { 
+                "label": "$(wrench) Select Programmer",
+                "hide" : false,
+                "alignment": "right",
+                "priority": 500
+            },
+        }
+    },
+    {
+        "label": "Clean-Reconfigure",
+        "command": "${command:otx-maestro.clean}",
+        "options": {
+            "statusbar": { 
+                "label": "$(references) Clean-Reconfigure",
+                "detail" : "Clean and Reconfigure Workspace",
+                "alignment": "right",
+                "priority": 500
+            },
+        }
+    },
+    {
+        "label": "Build",
+        "command": "${command:otx-maestro.build}",
+        "options": {
+            "statusbar": { 
+                "label": "$(file-binary) Build",
+                "detail" : "Build your project",
+                "alignment": "right",
+                "priority": 500
+            },
+        }
+    },
+    {
+        "label": "Build-and-Launch",
+        "command": "${command:otx-maestro.launch}",
+        "options": {
+            "statusbar": { 
+                "label": "$(rocket) Build-and-Launch",
+                "color" : "#FF8000",
+                "detail" : "Build and Launch your project",
+                "alignment": "right",
+                "priority": 500
+            },
+        },
+    }, 
+    {
+        "label": "OTX: configure",
         "type": "shell",
         "command": "${env:ONETHINX_PACK_LOC}/bin/meson setup --cross-file cross_gcc.build build",
         "args": [],
@@ -37,7 +127,7 @@
         }
     },
     {
-        "label": "Meson: build",
+        "label": "OTX: build",
         "type": "shell",
         "command": "ninja -C build",
         "args": [],

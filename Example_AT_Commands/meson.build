@@ -15,27 +15,27 @@ endian     = 'little'
 # Creator_PostBuild_Minumum_Version: '2.10' - used for checking Creator_PostBuild minimum version, do not remove
 
 # Creator_PostBuild_Version_Line - automatic insert of Creator_PostBuild version. Do not edit the line below
-creatorPostBuildVersion = '2.11'
+
 
 # Creator_PostBuild_DateTime_Line - automatic insert of Creator Generated DateTime. Do not edit the line below
-creatorGeneratedDateTime = '2024-01-01 00:00:00'
+
 
 # Creator_PostBuild_devicePart_Line - automatic insert of device part by Creator_PostBuild. Do not edit the line below
-devicePart = 'CY8C6347BZI-BLD53'
+
 
 # Creator_PostBuild_linkerFile_Line - automatic insert of linker file by Creator_PostBuild. Do not edit the line below
-linkerFile = './cy8c6xx7_cm4_dual.ld'
+
 
 # Creator_PostBuild_SVDfile_Line - automatic insert of SVD file by Creator_PostBuild. Do not edit the line below
-SVDfile = 'Onethinx_Creator.svd'
+
 
 # Creator_PostBuild_prePostBuild_Lines - automatic insert of pre- and postbuild commands by Creator_PostBuild. Do not edit the two line below
-preBuildCommands = ''
-postBuildCommands = ''
+
+
 
 # set directories
 # Creator_PostBuild_Directory_Line - automatic insert of Creator Project main directory. Do not edit the line below
-creatorDirectory = 'Onethinx_Creator.cydsn'
+
 
 # OTX_Extension_print(PROJECTNAME = '${workspaceFolderBasename}')
 PROJECTNAME = 'BLE-example'

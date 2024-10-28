@@ -15,10 +15,10 @@ endian     = 'little'
 # Creator_PostBuild_Minumum_Version: '2.10' - used for checking Creator_PostBuild minimum version, do not remove
 
 # Creator_PostBuild_Version_Line - automatic insert of Creator_PostBuild version. Do not edit the line below
-creatorPostBuildVersion = '2.11'
+creatorPostBuildVersion = '2.13'
 
 # Creator_PostBuild_DateTime_Line - automatic insert of Creator Generated DateTime. Do not edit the line below
-creatorGeneratedDateTime = '2024-01-01 00:00:00'
+creatorGeneratedDateTime = '2024-07-18 00:46:54'
 
 # Creator_PostBuild_devicePart_Line - automatic insert of device part by Creator_PostBuild. Do not edit the line below
 devicePart = 'CY8C6347BZI-BLD53'
@@ -38,7 +38,7 @@ postBuildCommands = ''
 creatorDirectory = 'Onethinx_Creator.cydsn'
 
 # OTX_Extension_print(PROJECTNAME = '${workspaceFolderBasename}')
-PROJECTNAME = 'BLE-example'
+PROJECTNAME = 'Example_ADC'
 
 # OTX_Extension_print(ONETHINX_PACK_LOC = '${env:ONETHINX_PACK_LOC}')
 ONETHINX_PACK_LOC = '/Applications/OTX-Maestro'
@@ -67,11 +67,30 @@ memcalc 		= find_program(BIN_DIR + '/memcalc').path()
 
 assembler_args = [
 # Creator_PostBuild_AssemblerOptions_Start - automatic insert of assembler options by Creator_PostBuild. Do not edit below this line
+	'-mcpu=cortex-m4',
+	'-mfloat-abi=softfp',
+	'-mfpu=fpv4-sp-d16',
+	'-mthumb',
+	'-g',
+	'-W',
 # Creator_PostBuild_AssemblerOptions_End - automatic insert of assembler options by Creator_PostBuild. Do not edit above this line
 ]
 
 compiler_args     = [
 # Creator_PostBuild_CompilerOptions_Start - automatic insert of compiler options by Creator_PostBuild. Do not edit below this line
+	'-mcpu=cortex-m4',
+	'-mfloat-abi=softfp',
+	'-mfpu=fpv4-sp-d16',
+	'-mthumb',
+	'-g',
+	'-DDEBUG',
+	'-DCY_CORE_ID=0',
+	'-DCY_PSOC_CREATOR_USED=1',
+	'-DCY8C6347BZI_BLD53',
+	'-Wall',
+	'-ffunction-sections',
+	'-ffat-lto-objects',
+	'-Og',
 # Creator_PostBuild_CompilerOptions_End - automatic insert of compiler options by Creator_PostBuild. Do not edit above this line
 	'-O0'
 ]
@@ -79,13 +98,48 @@ compiler_args     = [
 linker_args     = [
 	'-T'+SCRIPTS_DIR+'/linker/OnethinxCore_18.ld', 		# manual insert of OTX18 linkerfile
 # Creator_PostBuild_LinkerOptions_Start - automatic insert of linker options by Creator_PostBuild. Do not edit below this line
+	'-mcpu=cortex-m4',
+	'-mfloat-abi=softfp',
+	'-mfpu=fpv4-sp-d16',
+	'-mthumb',
+	'-specs=nano.specs',
+	'-Wl,--gc-sections',
+	'-g',
+	'-ffunction-sections',
+	'-Og',
+	'-ffat-lto-objects',
 # Creator_PostBuild_LinkerOptions_End - automatic insert of linker options by Creator_PostBuild. Do not edit above this line
 ]
 
 include_dirs       = [
 # OTX_Extension_HeaderFiles_Start - automatic insert of source files by the OTX VSCode extension. Do not edit below this line
+	'source/OnethinxCore',
 # OTX_Extension_HeaderFiles_End - automatic insert of source files by the OTX VSCode extension. Do not edit above this line
 # Creator_PostBuild_IncludeFolders_Start - automatic insert of include header folders by Creator_PostBuild. Do not edit below this line
+	'Onethinx_Creator.cydsn/',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/cmsis/include',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/devices/psoc6/include',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/devices/psoc6/include/ip',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/device',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/efuse',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/flash',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/gpio',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/lvd',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/profile',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/prot',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sar',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysanalog',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysclk',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysint',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syspm',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/systick',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/trigmux',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/wdt',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/middleware',
 # Creator_PostBuild_IncludeFolders_End - automatic insert of include header folders by Creator_PostBuild. Do not edit above this line
 ]
 
@@ -95,8 +149,37 @@ sourcefiles       = [
 	CREATOR_DIR + '/system_psoc6_cm4.c',
 	CREATOR_DIR + '/Generated_Source/PSoC6/cyfitter_cfg_otx.c',
 # OTX_Extension_SourceFiles_Start - automatic insert of source files by the OTX VSCode extension. Do not edit below this line
+	'source/OnethinxCore/OnethinxCore01.c',
+	'source/main.c',
 # OTX_Extension_SourceFiles_End - automatic insert of source files by the OTX VSCode extension. Do not edit above this line
 # Creator_PostBuild_SourceFiles_Start - automatic insert of source files by Creator_PostBuild. Do not edit below this line
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/cyfitter_sysint_cfg.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/cymetadata.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/ADC.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/ADC_INT.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/ADC_INIT.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/ADC_PM.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/efuse/cy_efuse.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/flash/cy_flash.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/gpio/cy_gpio.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc/cy_ipc_drv.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc/cy_ipc_sema.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/ipc/cy_ipc_pipe.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/lvd/cy_lvd.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/profile/cy_profile.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/prot/cy_prot.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysanalog/cy_sysanalog.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysclk/cy_sysclk.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sysint/cy_sysint.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib/cy_syslib.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syslib/gcc/cy_syslib_gcc.S',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/syspm/cy_syspm.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/systick/cy_systick.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/trigmux/cy_trigmux.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/wdt/cy_wdt.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/device/cy_device.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/drivers/peripheral/sar/cy_sar.c',
+	'Onethinx_Creator.cydsn/Generated_Source/PSoC6/pdl/middleware/ble/cy_ble_clk.c',
 # Creator_PostBuild_SourceFiles_End - automatic insert of source files by Creator_PostBuild. Do not edit above this line
 ]
 

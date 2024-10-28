@@ -59,8 +59,8 @@ coreConfiguration_t	coreConfig = {
 	.TX =
 	{
 		.Confirmed = 		false,
-		.DataRate = 		DR_0,
-		.Power = 			PWR_MAX,
+		.DataRate = 		DR_ADR,
+		.Power = 			PWR_ADR,
 		.FPort = 			1
 	},
 	.RX =
@@ -110,7 +110,6 @@ uint8_t TXbuffer[64];
 int main(void)
 {
 	uint8_t j=0;
-
 
 	/* enable global interrupts */
 	__enable_irq();
